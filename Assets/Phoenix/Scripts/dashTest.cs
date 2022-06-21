@@ -10,7 +10,7 @@ public class dashTest : MonoBehaviour
     public float startDashTime;
     private Vector2 _dashingDir;
     private bool _isDashing;
-    private bool _canDash;
+    private bool _canDash = true;
 
     private void Start()
     {
@@ -29,6 +29,7 @@ public class dashTest : MonoBehaviour
             {
                 _dashingDir = new Vector2(transform.localScale.x, 0);
             }
+            StartCoroutine(StopDashing());
         }
 
         if (_isDashing) //Dashing Stops
@@ -37,6 +38,10 @@ public class dashTest : MonoBehaviour
             return;
         }
     }
-
+    private IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(_dashTime);
+        _isDashing = false;
+    }
 
 }
