@@ -8,7 +8,7 @@ public class dashTest : MonoBehaviour
     [SerializeField]public float _dashSpeed;
     [SerializeField]private float _dashTime;
     public float startDashTime;
-    private Vector2 _dashingDir;
+    private Vector3 _dashingDir;
     private bool _isDashing;
     private bool _canDash = true;
 
@@ -24,10 +24,10 @@ public class dashTest : MonoBehaviour
         {
             _isDashing = true;
             _canDash = false;
-            _dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if (_dashingDir == Vector2.zero)
+            _dashingDir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if (_dashingDir == Vector3.zero)
             {
-                _dashingDir = new Vector2(transform.localScale.x, 0);
+                _dashingDir = new Vector3(transform.localScale.x, 0, transform.localScale.z);
             }
             StartCoroutine(StopDashing());
         }
