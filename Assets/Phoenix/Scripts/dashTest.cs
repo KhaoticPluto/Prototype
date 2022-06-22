@@ -4,44 +4,35 @@ using UnityEngine;
 
 public class dashTest : MonoBehaviour
 {
+    // Player
     private Rigidbody _rb;
-    [SerializeField]public float _dashSpeed;
-    [SerializeField]private float _dashTime;
-    public float startDashTime;
-    private Vector3 _dashingDir;
-    private bool _isDashing;
-    private bool _canDash = true;
+    public float _dashSpeed;
+    private float _dashTime;
+    public float _startDashTime;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _dashTime = startDashTime;
+        _dashTime = _startDashTime;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _canDash) //When pressing LeftShift and you can dash
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            _isDashing = true;
-            _canDash = false;
-            _dashingDir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if (_dashingDir == Vector3.zero)
+            _rb.velocity = Vector3.forward * _dashSpeed;
+        }
+        else
+        {
+            if(_dashTime <= 0)
             {
-                _dashingDir = new Vector3(transform.localScale.x, 0, transform.localScale.z);
+                _dashTime = _startDashTime;
+                _rb.velocity = Vector3.zero;
             }
-            StartCoroutine(StopDashing());
-        }
-
-        if (_isDashing) //Dashing Stops
-        {
-            _rb.velocity = _dashingDir.normalized * _dashSpeed;
-            return;
+            else
+            {
+                _dashTime -= Time.deltaTime;
+            }
         }
     }
-    private IEnumerator StopDashing()
-    {
-        yield return new WaitForSeconds(_dashTime);
-        _isDashing = false;
-    }
-
 }
