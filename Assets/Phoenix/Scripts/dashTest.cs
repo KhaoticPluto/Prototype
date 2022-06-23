@@ -6,9 +6,9 @@ public class dashTest : MonoBehaviour
 {
     // Player
     private Rigidbody _rb;
-    public float _dashSpeed;
     private float _dashTime;
     public float _startDashTime;
+    private Vector3 _direction;
 
     private void Start()
     {
@@ -20,19 +20,10 @@ public class dashTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            _rb.velocity = Vector3.forward * _dashSpeed;
+            
         }
-        else
-        {
-            if(_dashTime <= 0)
-            {
-                _dashTime = _startDashTime;
-                _rb.velocity = Vector3.zero;
-            }
-            else
-            {
-                _dashTime -= Time.deltaTime;
-            }
-        }
+        
     }
+
+    
 }

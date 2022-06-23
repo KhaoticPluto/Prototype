@@ -4,56 +4,54 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
+    // Dash Terms
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+    private int direction;
+
+    // Player Movement Terms
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float _speed = 15;
-    [SerializeField] private float _turnSpeed = 360;
+    [SerializeField] public float _speed = 15;
+    [SerializeField] private Transform _model;
+    private Vector3 moveDirection;
+
     private Vector3 _input;
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+        dashTime = startDashTime;
+    }
 
     private void Update()
     {
-        GatherInput();
-        Look();
+        // Inputs
+        _input.x = Input.GetAxis("Horizontal");
+        _input.z = Input.GetAxis("Vertical");
+
+        moveDirection = new Vector3(_input.x, 0, _input.z).normalized;
+
+        // Dash Inputs
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+
+        }
+
+        //Look();
     }
 
     private void FixedUpdate()
     {
-        Move();
+        // Movement
+        _rb.velocity = new Vector3(moveDirection.x * _speed,0, moveDirection.z * _speed);
     }
 
-    void GatherInput()
-    {
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"),0, Input.GetAxisRaw("Vertical"));
-    }
-    private void Look()
-    {
-        if (_input == Vector3.zero) return;
-
-        Quaternion rot = Quaternion.LookRotation(_input, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
-    }
-
-    private void Move()
-    {
-        _rb.MovePosition(transform.position + transform.forward * _input.normalized.magnitude * _speed * Time.deltaTime);
-    }
-    //// Player
-    //public float _moveSpeed = 10f;
-    //public CharacterController controller;
-    //private Vector3 _movement;
-
-    //void Start()
+    //private void Look()
     //{
+    //    if (_input == Vector3.zero) return;
 
-    //}
-
-    //private void Update()
-    //{
-    //    _movement.x = Input.GetAxisRaw("Horizontal");
-    //    _movement.y = Input.GetAxisRaw("Vertical");
-    //}
-
-    //private void FixedUpdate()
-    //{
-
+    //    Quaternion rot = Quaternion.LookRotation(_input, Vector3.up);
+    //    _model.rotation = Quaternion.RotateTowards(_model.rotation, rot, _speed * Time.deltaTime);
     //}
 }

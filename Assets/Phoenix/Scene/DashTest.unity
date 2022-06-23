@@ -147,13 +147,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151308112}
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.655, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1292332063}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1724870356}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!1001 &1040169115
 PrefabInstance:
@@ -162,13 +162,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4985398454887748376, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5454130351434875313, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705123703468308701, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 151308113}
+    - target: {fileID: 6705123703468308701, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
+      propertyPath: controller
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7186297112182775478, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
       propertyPath: m_RootOrder
@@ -492,3 +496,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1724870356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7186297112182775478, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
+  m_PrefabInstance: {fileID: 1040169115}
+  m_PrefabAsset: {fileID: 0}
