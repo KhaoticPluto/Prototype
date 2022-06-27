@@ -4,47 +4,41 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    // Dash Terms
-    public float dashSpeed;
-    private float dashTime;
-    public float startDashTime;
-    private int direction;
 
     // Player Movement Terms
-    [SerializeField] private Rigidbody _rb;
+    [SerializeField] public CharacterController controller;
     [SerializeField] public float _speed = 15;
-    [SerializeField] private Transform _model;
-    private Vector3 moveDirection;
-
-    private Vector3 _input;
+    public Vector3 _moveDirection;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
-        dashTime = startDashTime;
+        
     }
 
     private void Update()
     {
         // Inputs
-        _input.x = Input.GetAxis("Horizontal");
-        _input.z = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        moveDirection = new Vector3(_input.x, 0, _input.z).normalized;
+        _moveDirection = new Vector3(horizontal, 0, vertical).normalized;
 
-        // Dash Inputs
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+
+        if (_moveDirection.magnitude >= 0.1f)
         {
+            float targetAngle = Mathf.Atan2(horizontal, vertical) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
+            controller.Move(_moveDirection * _speed * Time.deltaTime);
         }
 
-        //Look();
+        
     }
 
     private void FixedUpdate()
     {
         // Movement
-        _rb.velocity = new Vector3(moveDirection.x * _speed,0, moveDirection.z * _speed);
+        
     }
 
     //private void Look()

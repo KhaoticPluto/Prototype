@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class dashTest : MonoBehaviour
 {
-    // Player
-    private Rigidbody _rb;
-    private float _dashTime;
-    public float _startDashTime;
-    private Vector3 _direction;
+    movement _script;
+
+    //Dash Terms
+    public float _dashSpeed = 20f;
+    public float _dashTime = 0.25f;
+    private float _dashCooldown = 2f;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
-        _dashTime = _startDashTime;
+        _script = GetComponent<movement>();
     }
 
     private void Update()
     {
+        // Dash Inputs
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            
+            StartCoroutine(Dash());
         }
-        
     }
 
-    
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
+
+        while (Time.time < startTime + _dashTime)
+        {
+            _script.controller.Move(_script._moveDirection * _dashSpeed * Time.deltaTime);
+
+            yield return null;
+
+        }
+    }
 }
