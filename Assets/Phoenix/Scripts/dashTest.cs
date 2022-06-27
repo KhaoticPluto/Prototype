@@ -7,22 +7,29 @@ public class dashTest : MonoBehaviour
     movement _script;
 
     //Dash Terms
+
     public float _dashSpeed = 20f;
     public float _dashTime = 0.25f;
-    private float _dashCooldown = 2f;
+    float _dashCooldown;
 
     private void Start()
     {
         _script = GetComponent<movement>();
     }
 
-    private void Update()
+    void Update()
     {
         // Dash Inputs
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            StartCoroutine(Dash());
+            if (_dashCooldown <= 0)
+            {
+                StartCoroutine(Dash());
+            }
         }
+
+        _dashCooldown -= Time.deltaTime;
+
     }
 
     IEnumerator Dash()
@@ -32,9 +39,9 @@ public class dashTest : MonoBehaviour
         while (Time.time < startTime + _dashTime)
         {
             _script.controller.Move(_script._moveDirection * _dashSpeed * Time.deltaTime);
+            _dashCooldown = 3;
 
             yield return null;
-
         }
     }
 }
