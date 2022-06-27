@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -726,6 +726,8 @@ MonoBehaviour:
   _rb: {fileID: 991977543}
   _speed: 15
   _turnSpeed: 480
+  shootProjectile: {fileID: 991977551}
+  upgrades: {fileID: 991977552}
 --- !u!54 &991977543
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -747,6 +749,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3238923163223638071, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
   m_PrefabInstance: {fileID: 2337345971171397958}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &991977551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3595486081212923854, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
+  m_PrefabInstance: {fileID: 2337345971171397958}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991977541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d96937875ac3b488053838eeb14eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &991977552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991977541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabfe0f31b867e148bb2a14313bd0670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 700
+  projectileDamage: 1
+  _fireRate: 1
+  _nextFire: 0
 --- !u!1 &1185203306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,8 +1043,20 @@ PrefabInstance:
       value: player
       objectReference: {fileID: 0}
     - target: {fileID: 358276939856273200, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 358276939856273200, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 358276939856273200, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 769143903219205959, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3238923163223638071, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
       propertyPath: m_RootOrder
@@ -1061,5 +1102,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3595486081212923854, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
+      propertyPath: upgrades
+      value: 
+      objectReference: {fileID: 991977552}
+    - target: {fileID: 3595486081212923854, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}
+      propertyPath: _pfBullet
+      value: 
+      objectReference: {fileID: 5072560294769514290, guid: 43792ad4e1b00054d847868028802d6c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21a3ddef99477134998a6326eedc45b7, type: 3}

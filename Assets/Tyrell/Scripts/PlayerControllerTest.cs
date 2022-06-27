@@ -9,10 +9,22 @@ public class PlayerControllerTest : MonoBehaviour
     [SerializeField] private float _turnSpeed = 360;
     private Vector3 _input;
 
+    public ShootProjectile shootProjectile;
+    public Upgradeables upgrades;
+    private void Start()
+    {
+        shootProjectile.GetComponent<ShootProjectile>();
+        upgrades.GetComponent<Upgradeables>();
+    }
+
     private void Update()
     {
         GatherInput();
         Look();
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            shootProjectile.ComponentShoot();
+        }
     }
 
     private void FixedUpdate()
