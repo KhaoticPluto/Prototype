@@ -11,6 +11,9 @@ public class PlayerControllerTest : MonoBehaviour
 
     public ShootProjectile shootProjectile;
     public Upgradeables upgrades;
+
+    public InventoryUIHandler inventoryUIHandler;
+
     private void Start()
     {
         shootProjectile.GetComponent<ShootProjectile>();
@@ -19,17 +22,23 @@ public class PlayerControllerTest : MonoBehaviour
 
     private void Update()
     {
-        GatherInput();
-        Look();
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (inventoryUIHandler.InventoryOpen == false)
         {
-            shootProjectile.ComponentShoot();
+            GatherInput();
+            Look();
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                shootProjectile.ComponentShoot();
+            }
         }
+
+        
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (inventoryUIHandler.InventoryOpen == false)
+            Move();
     }
 
     private void GatherInput()

@@ -38,6 +38,6 @@ public class ShootProjectile : MonoBehaviour
         GameObject bullet = Instantiate(_pfBullet, transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>();
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * upgrades.projectileSpeed);
-        
+        Destroy(bullet, 5);
     }
 }
