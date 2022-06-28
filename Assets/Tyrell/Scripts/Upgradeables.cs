@@ -10,12 +10,21 @@ public class Upgradeables : MonoBehaviour
     public float _fireRate = 1;
     public float _nextFire;
 
+    public int NumberOfProjectile = 1;
+
+    public float SpreadFactor = 0.5f;
+
+    public float Health = 100;
+
+
+
     private void Start()
     {
         projectileDamage = 1;
         projectileSpeed = 700;
         _fireRate = 1;
-
+        NumberOfProjectile = 1;
+        SpreadFactor = 0.5f;
     }
 
     public void UpgradeProjectileSpeed(float amount)
@@ -46,6 +55,15 @@ public class Upgradeables : MonoBehaviour
         _fireRate += amount;
     }
 
+    public void UpgradeNumOfProjectiles(float amount)
+    {
+        NumberOfProjectile += (int)amount;
+    }
+
+    public void RemoveUpgradeNumOfProjectiles(float amount)
+    {
+        NumberOfProjectile -= (int)amount;
+    }
 
     private void Update()
     {

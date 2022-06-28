@@ -20,24 +20,33 @@ public class ShootProjectile : MonoBehaviour
     {
         if (upgrades._fireRate == 0)
         {
-            Shoot();
+            Shoot(upgrades.NumberOfProjectile);
         }
         else{
             if (Time.time > upgrades._nextFire && upgrades._fireRate > 0)
             {
                 upgrades._nextFire = Time.time + upgrades._fireRate;
-                Shoot();
+                Shoot(upgrades.NumberOfProjectile);
             }
  
         }
             
     }
 
-    void Shoot()
+    void Shoot(int NumberOfProjectiles)
     {
-        GameObject bullet = Instantiate(_pfBullet, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>();
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * upgrades.projectileSpeed);
-        Destroy(bullet, 5);
+        
+        for (int i = 0; i < NumberOfProjectiles; i++)
+        {
+            Vector3 ShootDirection = transform.forward;
+            ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
+            ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
+            GameObject bullet = Instantiate(_pfBullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>();
+            bullet.GetComponent<Rigidbody>().AddForce(ShootDirection * upgrades.projectileSpeed);
+            Destroy(bullet, 5);
+            
+        }
+        
     }
 }
