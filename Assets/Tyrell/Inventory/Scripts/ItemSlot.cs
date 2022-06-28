@@ -23,11 +23,18 @@ public class ItemSlot : MonoBehaviour
         icon.sprite = null;
     }
 
+    public void RemoveItem()
+    {
+        item.Remove();
+    }
+
     public void UseItem()
     {
         if (item == null || isBeingDraged == true) return;
 
         Inventory.instance.SwitchHotbarInventory(item);
+
+        item.Use();
 
         //*------ old code --------*//
         //if (Input.GetKey(KeyCode.LeftAlt))

@@ -11,9 +11,19 @@ public class Item : ScriptableObject
     public Sprite icon = null;
     public string itemDescription = "Used for projectile";
 
+    public ItemType itemType;
+    public float amount;
+
     public virtual void Use()
     {
         Debug.Log("Using " + name);
+        GameManager.instance.OnStatItemUse(itemType, amount);
+    }
+
+    public virtual void Remove()
+    {
+        Debug.Log("Removing " + name);
+        GameManager.instance.OnStatItemRemove(itemType, amount);
     }
 
     public virtual string GetItemDescription()
@@ -21,4 +31,13 @@ public class Item : ScriptableObject
         return itemDescription;
     }
 
+    
+
+}
+
+public enum ItemType
+{
+    FireRate,
+    Damage,
+    ProjectileSpeed
 }

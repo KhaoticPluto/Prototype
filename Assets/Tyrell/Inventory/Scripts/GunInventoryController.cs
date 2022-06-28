@@ -29,10 +29,12 @@ public class GunInventoryController : MonoBehaviour
             if (i < currentUsedSlotCount)
             {
                 GunInventorySlots[i].AddItem(Inventory.instance.GunInventoryItemList[i]);
+                
             }
             else
             {
                 GunInventorySlots[i].ClearSlot();
+                
             }
         }
 

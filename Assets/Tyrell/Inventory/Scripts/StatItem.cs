@@ -7,22 +7,22 @@ using UnityEngine;
 public class StatItem : Item
 {
 
-    public StatItemType itemType;
-    public float amount;
+    //public StatItemType itemType;
+    //public float amount;
 
-    public override void Use()
-    {
-        base.Use();
+    //public override void Use()
+    //{
+    //    base.Use();
         
-        GameManager.instance.OnStatItemUse(itemType, amount);
-        Inventory.instance.RemoveItem(this);
-    }
+    //    GameManager.instance.OnStatItemUse(itemType, amount);
+    //    Inventory.instance.RemoveItem(this);
+    //}
 }
 
 
-public enum StatItemType
-{
-    FireRate,
-    Damage,
-    ProjectileSpeed
-}
+//public enum StatItemType
+//{
+//    FireRate,
+//    Damage,
+//    ProjectileSpeed
+//}

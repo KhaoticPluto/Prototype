@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public Upgradeables upgrade;
+
     public List<Item> itemList = new List<Item>();
 
     public Transform canvas;
@@ -60,9 +62,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnStatItemUse(StatItemType ItemType, float amount)
+    public void OnStatItemUse(ItemType itemType, float amount)
     {
-        Debug.Log("Upgrade" + ItemType + " by " + amount);
+        upgrade.GetComponent<Upgradeables>();
+        Debug.Log("Upgrade" + itemType + " by " + amount);
+        switch (itemType)
+        {
+            case ItemType.FireRate:
+                upgrade.UpgradeFireRate(amount);
+                break;
+
+            case ItemType.Damage:
+                upgrade.UpgradeProjectileDamage(amount);
+                break;
+
+            case ItemType.ProjectileSpeed:
+                upgrade.UpgradeProjectileSpeed(amount);
+                break;
+
+            
+        }
+    }
+
+    public void OnStatItemRemove(ItemType itemType, float amount)
+    {
+        upgrade.GetComponent<Upgradeables>();
+        Debug.Log("Remove " + itemType + " by " + amount);
+        switch (itemType)
+        {
+            case ItemType.FireRate:
+                upgrade.RemoveUpgradeFireRate(amount);
+                break;
+
+            case ItemType.Damage:
+                upgrade.RemoveUpgradeProjectileDamage(amount);
+                break;
+
+            case ItemType.ProjectileSpeed:
+                upgrade.RemoveUpgradeProjectileSpeed(amount);
+                break;
+
+
+        }
     }
 
 }

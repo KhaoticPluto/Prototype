@@ -41,6 +41,7 @@ public static Inventory instance;
                 {
                     GunInventoryItemList.Add(item);
                     inventoryItemList.Remove(item);
+                    item.Use();
                     onItemChange.Invoke();
                 }
                 return;
@@ -54,6 +55,7 @@ public static Inventory instance;
             {
                 GunInventoryItemList.Remove(item);
                 inventoryItemList.Add(item);
+                item.Remove();
                 onItemChange.Invoke();
                 return;
             }
