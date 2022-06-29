@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3307521731157396059}
   - component: {fileID: 3307521731157396060}
   - component: {fileID: 3307521731157396061}
-  - component: {fileID: 3307521731157396056}
+  - component: {fileID: -8582391336687900752}
+  - component: {fileID: -1426208937223786598}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: EnemyMelee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +122,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3307521731157396056
+--- !u!114 &-8582391336687900752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,23 +131,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 3307521731157396062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81fd0817b409f8a449d479b8896560aa, type: 3}
+  m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 10
+--- !u!114 &-1426208937223786598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307521731157396062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3d1a54af6354b44acff965617bf509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3307521731157396061}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  health: 100
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  timeBetweenAttacks: 2
-  projectile: {fileID: 6671229746167309813, guid: 88908d3e6dc3ee244b51a5d3f53dbdd4, type: 3}
+  walkPointRange: 40
+  timeBetweenAttacks: 1
+  alreadyAttacked: 0
   sightRange: 50
-  attackRange: 10
+  attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0

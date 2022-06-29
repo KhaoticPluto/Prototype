@@ -26,6 +26,15 @@ public static Inventory instance;
     public List<Item> GunInventoryItemList = new List<Item>();
     public GunInventoryController gunInventoryController;
 
+    void Start()
+    {
+        //if (gunInventoryController == null)
+        //{
+        //    gunInventoryController = GameObject.FindWithTag("GunInventory").GetComponent<GunInventoryController>();
+        //    Debug.Log("way" + gunInventoryController);
+        //}
+    }
+
     public void SwitchHotbarInventory(Item item)
     {
         //inventory to hotbar, CHECK if we have enaugh space

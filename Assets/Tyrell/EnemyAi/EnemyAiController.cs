@@ -7,11 +7,10 @@ public class EnemyAiController : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public GameObject player;
+    public Transform player;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
 
     //Patroling
     public Vector3 walkPoint;
@@ -20,12 +19,16 @@ public class EnemyAiController : MonoBehaviour
 
     //Attacking
     public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public GameObject projectile;
+    public bool alreadyAttacked;
+    
 
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+
+
+
+
 
     void Awake()
     {
@@ -35,8 +38,12 @@ public class EnemyAiController : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player");
-
+        if (GameObject.FindWithTag("Player") != null)
+        {
+            player = GameObject.FindWithTag("Player").transform;
+        }
+        
+        
     }
 
     private void Update()
@@ -50,7 +57,7 @@ public class EnemyAiController : MonoBehaviour
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 
-    private void Patroling()
+    public virtual void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
@@ -63,7 +70,7 @@ public class EnemyAiController : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
-    private void SearchWalkPoint()
+    public virtual void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -75,45 +82,31 @@ public class EnemyAiController : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    public virtual void ChasePlayer()
     {
-        agent.SetDestination(player.transform.position);
+        agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    public virtual void AttackPlayer()
     {
-        //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        ////Make sure enemy doesn't move
+        //agent.SetDestination(transform.position);
 
-        transform.LookAt(player.transform);
+        //transform.LookAt(player);
 
-        if (!alreadyAttacked)
-        {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
+        //if (!alreadyAttacked)
+        //{
+            
 
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
+        //    alreadyAttacked = true;
+        //    Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        //}
     }
-    private void ResetAttack()
+    public virtual void ResetAttack()
     {
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
 
     private void OnDrawGizmosSelected()
     {

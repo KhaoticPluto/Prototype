@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Hierarchy
   m_RootView: {fileID: 11}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 97
+  controlID: 88
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 95
+  controlID: 128
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 107
+  controlID: 100
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 96
+  controlID: 129
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -366,7 +366,8 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets/Tyrell/Items
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -380,7 +381,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ee5a0000
     m_LastClickedID: 23278
-    m_ExpandedIDs: 00000000485c00004a5c00004c5c00004e5c0000505c0000525c0000
+    m_ExpandedIDs: 000000008e5b0000905b0000925b0000945b0000965b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -405,24 +406,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 208}
+    scrollPos: {x: 0, y: 424}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000485c00004a5c00004c5c0000505c00006e8d0000
+    m_ExpandedIDs: ffffffff000000008e5b0000905b0000925b0000945b0000965b0000c25b0000c45b0000c65b0000485c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: EnemySpawnSystem
+      m_OriginalName: EnemySpawnSystem
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 59342
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 7}
     m_SearchString: 
@@ -499,7 +500,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 534
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -536,9 +537,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c65a0000
-      m_LastClickedID: 23238
-      m_ExpandedIDs: a6faffff2c5a0000a05a0000025b0000125b00006c5b0000
+      m_SelectedIDs: 5459ffff
+      m_LastClickedID: -42668
+      m_ExpandedIDs: 38fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -554,7 +555,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 5}
+        m_ClientGUIView: {fileID: 0}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -836,13 +837,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.3325891, y: -0.59989464, z: 0.30119753, w: -0.6624246}
+    m_Target: {x: -0.32982504, y: -0.32141906, z: 0.12054879, w: -0.87942815}
     speed: 2
-    m_Value: {x: -0.33258656, y: -0.59989005, z: 0.30119523, w: -0.66241956}
+    m_Value: {x: -0.32982168, y: -0.32141575, z: 0.120547555, w: -0.87941915}
   m_Size:
-    m_Target: 42.10679
+    m_Target: 75.197945
     speed: 2
-    m_Value: 42.10679
+    m_Value: 75.197945
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -939,7 +940,7 @@ MonoBehaviour:
       y: 21
       width: 1099
       height: 656
-    m_Scale: {x: 0.57239586, y: 0.5723958}
+    m_Scale: {x: 0.57239586, y: 0.57239586}
     m_Translation: {x: 549.49994, y: 327.99997}
     m_MarginLeft: 0
     m_MarginRight: 0

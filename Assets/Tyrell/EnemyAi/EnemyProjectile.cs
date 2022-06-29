@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     float Damage;
-
+    public float MaxDamage;
+    public float MinDamage;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -13,7 +14,8 @@ public class EnemyProjectile : MonoBehaviour
         {
             Damage = Random.Range(10, 20);
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(Damage);
-            Debug.Log("playerHealth");
+            Destroy(gameObject);
+            
         }
     }
 

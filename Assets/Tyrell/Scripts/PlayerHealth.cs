@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Player Died");
         }
+
+        
     }
 
     public void TakeDamage(float amount)

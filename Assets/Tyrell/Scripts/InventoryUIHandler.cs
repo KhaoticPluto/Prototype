@@ -21,6 +21,7 @@ public class InventoryUIHandler : MonoBehaviour
         Inventory.instance.onItemChange += UpdateInventoryUI;
         UpdateInventoryUI();
         
+
     }
 
     // Update is called once per frame
