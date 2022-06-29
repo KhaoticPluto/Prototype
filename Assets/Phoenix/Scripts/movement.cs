@@ -11,12 +11,18 @@ public class movement : MonoBehaviour
     // Player Movement Terms
     [SerializeField] public CharacterController controller;
     [SerializeField] public float _speed = 15;
+    public GameObject crossHair;
+
+    // Dash
+    public float _dashSpeed = 40f;
+    public float _dashTime = 0.25f;
+    float _dashCooldown;
 
     // Movement Inputs
-    public Vector3 _moveDirection;
+    private Vector3 _moveDirection;
 
     // Mouse Position
-    private Vector3 _mousePosition;
+    //private Vector3 _mousePosition;
 
     private void Update()
     {
@@ -43,6 +49,16 @@ public class movement : MonoBehaviour
     private void GatherInput()
     {
         _moveDirection = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (_dashCooldown <= 0)
+            {
+                StartCoroutine(Dash());
+            }
+        }
+
+        _dashCooldown -= Time.deltaTime;
     }
 
     // Code for Aim/Mouse
@@ -70,5 +86,18 @@ public class movement : MonoBehaviour
     private void Move()
     {
         controller.Move(_moveDirection * _speed * Time.deltaTime);
+    }
+
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
+
+        while (Time.time < startTime + _dashTime)
+        {
+            controller.Move(_moveDirection * _dashSpeed * Time.deltaTime);
+            _dashCooldown = 3;
+
+            yield return null;
+        }
     }
 }
