@@ -4,48 +4,71 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
+    //Camera
+    private Camera mainCam;
+    [SerializeField] private LayerMask ground;
 
     // Player Movement Terms
     [SerializeField] public CharacterController controller;
     [SerializeField] public float _speed = 15;
+
+    // Movement Inputs
     public Vector3 _moveDirection;
 
-    private void Start()
-    {
-        
-    }
+    // Mouse Position
+    private Vector3 _mousePosition;
 
     private void Update()
     {
         // Inputs
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        GatherInput();
 
-        _moveDirection = new Vector3(horizontal, 0, vertical).normalized;
+        // Player Rotation
+        Aim();
+    }
 
-
-        if (_moveDirection.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(horizontal, vertical) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-
-            controller.Move(_moveDirection * _speed * Time.deltaTime);
-        }
-
-        
+    private void Start()
+    {
+        // Cache the camera, Camera.main is an expensive operation.
+        mainCam = Camera.main;
     }
 
     private void FixedUpdate()
     {
         // Movement
-        
+        Move();
     }
 
-    //private void Look()
-    //{
-    //    if (_input == Vector3.zero) return;
+    // Inputs for Movement
+    private void GatherInput()
+    {
+        _moveDirection = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
+    }
 
-    //    Quaternion rot = Quaternion.LookRotation(_input, Vector3.up);
-    //    _model.rotation = Quaternion.RotateTowards(_model.rotation, rot, _speed * Time.deltaTime);
-    //}
+    // Code for Aim/Mouse
+    private void Aim()
+    {
+        // Inputs Mouse Position in Game
+        Vector2 mouseScreenPos = Input.mousePosition;
+
+        // Distance of the Mouse Cursor in game from Camera
+        Vector3 mousePos = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 1000);
+
+        // Transforms mouse world position to game Camera
+        Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
+
+        // Player looks towards the mouse as it moves
+        var direction = mouseWorldPos - transform.position;
+
+        // Ignore the height difference.
+        direction.y = 0;
+
+        // Make the transform look in the direction.
+        transform.forward = direction;
+    }
+
+    private void Move()
+    {
+        controller.Move(_moveDirection * _speed * Time.deltaTime);
+    }
 }

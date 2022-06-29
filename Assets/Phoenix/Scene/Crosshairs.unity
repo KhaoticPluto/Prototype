@@ -140,9 +140,9 @@ GameObject:
   - component: {fileID: 503338862}
   - component: {fileID: 503338861}
   - component: {fileID: 503338860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,10 +327,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1297681675585104830, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 5454130351434875313, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 5579092841085959735, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60631411c332c484c81703049c076445, type: 2}
+    - target: {fileID: 6705123703468308701, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
+      propertyPath: sceneCamera
+      value: 
+      objectReference: {fileID: 1823524022}
     - target: {fileID: 7186297112182775478, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -375,7 +387,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1297681675585104830, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5dbe185ed40e6e54ebdaa2d0597c4006, type: 3}
 --- !u!1 &1823524019
 GameObject:
@@ -410,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 475334781}
   smoothedSpeed: 10.5
-  offset: {x: 0, y: 10, z: 0}
+  offset: {x: 0, y: 14, z: 4.46}
 --- !u!81 &1823524021
 AudioListener:
   m_ObjectHideFlags: 0
@@ -469,11 +482,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823524019}
-  m_LocalRotation: {x: 0.6976124, y: -0, z: -0, w: 0.71647537}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 40.91, z: -21.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 88.472, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
