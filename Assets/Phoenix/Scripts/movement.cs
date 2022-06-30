@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    //Camera
+    // Camera
     private Camera mainCam;
     [SerializeField] private LayerMask ground;
 
     // Player Movement Terms
     [SerializeField] public CharacterController controller;
     [SerializeField] public float _speed = 15;
-    public GameObject crossHair;
 
     // Dash
     public float _dashSpeed = 40f;
@@ -22,7 +21,7 @@ public class movement : MonoBehaviour
     private Vector3 _moveDirection;
 
     // Mouse Position
-    //private Vector3 _mousePosition;
+    // private Vector3 _mousePosition;
 
     private void Update()
     {
@@ -81,6 +80,8 @@ public class movement : MonoBehaviour
 
         // Make the transform look in the direction.
         transform.forward = direction;
+
+        
     }
 
     private void Move()
