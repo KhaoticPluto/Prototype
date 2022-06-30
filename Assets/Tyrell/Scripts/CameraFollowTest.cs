@@ -9,6 +9,13 @@ public class CameraFollowTest : MonoBehaviour
     public float smoothedSpeed =  10.5f;
     public Vector3 offset;
 
+    private void Start()
+    {
+        if(GameObject.FindWithTag("Player") != null)
+        {
+            player = GameObject.FindWithTag("Player").transform;
+        }
+    }
     void FixedUpdate()
     {
         Vector3 desiredPosition = player.transform.position + offset;

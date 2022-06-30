@@ -28,6 +28,17 @@ public class GameManager : MonoBehaviour
     public float moveX;
     public float moveY;
 
+    private void Start()
+    {
+        if(GameObject.FindWithTag("Player") != null)
+        {
+            upgrade = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+            Debug.Log("found " + upgrade);
+        }
+    }
+
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
