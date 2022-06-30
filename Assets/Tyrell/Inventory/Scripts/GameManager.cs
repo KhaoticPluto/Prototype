@@ -79,7 +79,9 @@ public class GameManager : MonoBehaviour
             case ItemType.ProjectileSpeed:
                 upgrade.UpgradeProjectileSpeed(amount);
                 break;
-
+            case ItemType.NumOfProjectiles:
+                upgrade.UpgradeNumOfProjectiles(amount);
+                break;
             
         }
     }
@@ -101,7 +103,9 @@ public class GameManager : MonoBehaviour
             case ItemType.ProjectileSpeed:
                 upgrade.RemoveUpgradeProjectileSpeed(amount);
                 break;
-
+            case ItemType.NumOfProjectiles:
+                upgrade.RemoveUpgradeNumOfProjectiles(amount);
+                break;
 
         }
     }

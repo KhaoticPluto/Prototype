@@ -10,12 +10,23 @@ public class Upgradeables : MonoBehaviour
     public float _fireRate = 1;
     public float _nextFire;
 
+    public int NumberOfProjectile = 1;
+    public float ProjectileLifeTime = 1;
+
+    public float SpreadFactor = 0.2f;
+
+    public float Health = 100;
+
+
+
     private void Start()
     {
-        projectileDamage = 1;
-        projectileSpeed = 700;
-        _fireRate = 1;
-
+        //projectileDamage = 1;
+        //projectileSpeed = 100;
+        //_fireRate = 1;
+        //NumberOfProjectile = 1;
+        //SpreadFactor = 0.5f;
+        //ProjectileLifeTime = 1;
     }
 
     public void UpgradeProjectileSpeed(float amount)
@@ -46,6 +57,18 @@ public class Upgradeables : MonoBehaviour
         _fireRate += amount;
     }
 
+    public void UpgradeNumOfProjectiles(float amount)
+    {
+        NumberOfProjectile += (int)amount;
+    }
+
+    public void RemoveUpgradeNumOfProjectiles(float amount)
+    {
+        NumberOfProjectile -= (int)amount;
+    }
+
+    
+
 
     private void Update()
     {
@@ -54,9 +77,9 @@ public class Upgradeables : MonoBehaviour
             _fireRate = 0.15f;
         }
 
-        if(projectileSpeed >= 1500)
+        if(projectileSpeed >= 700)
         {
-            projectileSpeed = 1400;
+            projectileSpeed = 600;
         }
 
 
