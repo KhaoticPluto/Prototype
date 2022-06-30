@@ -11,10 +11,13 @@ public class ItemChooser : MonoBehaviour
 
     public Image icon;
 
+    public GameManager manager;
     
 
     private void Start()
     {
+        manager = GameObject.FindObjectOfType<GameManager>();
+        
         Item newItem = itemList[Random.Range(0, itemList.Count)];
         AddItem(newItem);
         Debug.Log("Didnt work");
@@ -40,6 +43,18 @@ public class ItemChooser : MonoBehaviour
         if (item == null) return;
 
         GameManager.instance.DestroyItemInfo();
+    }
+
+    public void PutInInventory()
+    {
+        Inventory.instance.AddItem(Instantiate(item));
+        
+    }
+
+    public void ClearItemChoice()
+    {
+        manager.GetComponent<GameManager>();
+        manager.DestroyItemChoice();
     }
 
 }

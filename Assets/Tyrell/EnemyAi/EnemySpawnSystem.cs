@@ -21,6 +21,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     public Transform EnemyParent;
 
+    public bool showItems;
 
     public int WaveNumber;
     public int MaxWaves;
@@ -32,12 +33,15 @@ public class EnemySpawnSystem : MonoBehaviour
     public TextMeshProUGUI WaveText;
     public TextMeshProUGUI NextWaveText;
 
+    public GameManager manager;
+
 
     private void Start()
     {
         StartedWaves = false;
         StartWave();
-
+        manager = FindObjectOfType<GameManager>();
+        manager.GetComponent<GameManager>();
     }
 
     private void Update()
@@ -46,9 +50,15 @@ public class EnemySpawnSystem : MonoBehaviour
         
         if(nextWave)
         {
+
             NextWaveTimer -= Time.deltaTime;
             NextWaveText.gameObject.SetActive(true);
             DisplayTime(NextWaveTimer);
+            if (showItems)
+            {
+                ShowItemChooser();
+                showItems = false;
+            }
             
         }
         else
@@ -67,12 +77,18 @@ public class EnemySpawnSystem : MonoBehaviour
         if(enemyList.Count == 0 && StartedWaves == true)
         {
             nextWave = true;
+            showItems = true;
             Invoke("NextWave", 5);
             
             StartedWaves = false;
         }
 
         enemyList.RemoveAll(GameObject => GameObject == null);
+    }
+
+    void ShowItemChooser()
+    {
+        manager.ShowItemChoice();
     }
 
     void DisplayTime(float timeToDisplay)
