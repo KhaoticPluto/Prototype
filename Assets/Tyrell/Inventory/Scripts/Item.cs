@@ -39,5 +39,6 @@ public enum ItemType
 {
     FireRate,
     Damage,
-    ProjectileSpeed
+    ProjectileSpeed,
+    NumOfProjectiles
 }
