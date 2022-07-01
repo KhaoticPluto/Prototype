@@ -11,6 +11,9 @@ public class movement : MonoBehaviour
     // Player Movement Terms
     [SerializeField] public CharacterController controller;
     [SerializeField] public float _speed = 15;
+    
+
+
 
     // Dash
     public float _dashSpeed = 40f;
@@ -21,7 +24,10 @@ public class movement : MonoBehaviour
     private Vector3 _moveDirection;
 
     // Mouse Position
-    // private Vector3 _mousePosition;
+    public MousePosition mousePos;
+
+    //InventoryHandler
+    public InventoryUIHandler inventoryUIHandler;
 
     private void Update()
     {
@@ -30,6 +36,8 @@ public class movement : MonoBehaviour
 
         // Player Rotation
         Aim();
+
+
     }
 
     private void Start()
@@ -40,8 +48,9 @@ public class movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Movement
-        Move();
+        //Movement
+            if (inventoryUIHandler.InventoryOpen == false)
+                Move();
     }
 
     // Inputs for Movement
@@ -63,17 +72,17 @@ public class movement : MonoBehaviour
     // Code for Aim/Mouse
     private void Aim()
     {
-        // Inputs Mouse Position in Game
-        Vector2 mouseScreenPos = Input.mousePosition;
+        //// Inputs Mouse Position in Game
+        //Vector2 mouseScreenPos = Input.mousePosition;
 
-        // Distance of the Mouse Cursor in game from Camera
-        Vector3 mousePos = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 1000);
+        //// Distance of the Mouse Cursor in game from Camera
+        //Vector3 mousePos = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 1000);
 
-        // Transforms mouse world position to game Camera
-        Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
+        //// Transforms mouse world position to game Camera
+        //Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
 
         // Player looks towards the mouse as it moves
-        var direction = mouseWorldPos - transform.position;
+        var direction = mousePos.WorldPosition - transform.position;
 
         // Ignore the height difference.
         direction.y = 0;
