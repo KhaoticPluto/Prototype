@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 
-public class _MainMenu : MonoBehaviour
+public class _gameOver : MonoBehaviour
 {
-    public UnityEvent interactEVNT;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +16,15 @@ public class _MainMenu : MonoBehaviour
     {
         
     }
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void OptionsGame()
-    {
-
-    }
-
+    // Sends us back to the Main Menu
     public void QuitGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Menu");
+    }
+
+    // Restarts Game, sends it back to Start Level
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("DashTest");
     }
 }
