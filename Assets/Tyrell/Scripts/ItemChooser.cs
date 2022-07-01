@@ -27,7 +27,8 @@ public class ItemChooser : MonoBehaviour
     {
         Debug.Log("New Item");
         item = newItem;
-        icon.sprite = newItem.icon;
+        icon.GetComponent<Image>().sprite = newItem.icon;
+        
     }
 
     public void OnCursorEnter()

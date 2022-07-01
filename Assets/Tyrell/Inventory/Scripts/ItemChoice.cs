@@ -31,6 +31,7 @@ public class ItemChoice : MonoBehaviour
 
    public void DestoryItems()
     {
+        GameManager.instance.DestroyItemInfo();
         foreach(ItemChooser items in itemChoiceList)
         {
             Destroy(items.gameObject);

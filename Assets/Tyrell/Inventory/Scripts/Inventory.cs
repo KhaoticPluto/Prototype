@@ -28,11 +28,11 @@ public static Inventory instance;
 
     void Start()
     {
-        //if (gunInventoryController == null)
-        //{
-        //    gunInventoryController = GameObject.FindWithTag("GunInventory").GetComponent<GunInventoryController>();
-        //    Debug.Log("way" + gunInventoryController);
-        //}
+        if (gunInventoryController == null)
+        {
+            gunInventoryController = GameObject.FindWithTag("GunInventory").GetComponent<GunInventoryController>();
+            Debug.Log("way" + gunInventoryController);
+        }
     }
 
     public void SwitchHotbarInventory(Item item)

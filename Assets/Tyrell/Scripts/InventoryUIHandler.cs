@@ -33,6 +33,7 @@ public class InventoryUIHandler : MonoBehaviour
             {
                 //close inventory
                 CloseInventory();
+                GameManager.instance.DestroyItemInfo();
             }
             else
             {
