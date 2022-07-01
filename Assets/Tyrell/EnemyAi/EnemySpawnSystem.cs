@@ -27,11 +27,11 @@ public class EnemySpawnSystem : MonoBehaviour
     public int MaxWaves;
     public bool StartedWaves;
     public bool nextWave;
-    float NextWaveTimer = 5;
-    float resetTimer = 5;
+    public float NextWaveTimer = 5;
+    public float resetTimer = 5;
 
-    public TextMeshProUGUI WaveText;
-    public TextMeshProUGUI NextWaveText;
+
+
 
     public GameManager manager;
 
@@ -46,27 +46,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     private void Update()
     {
-        WaveText.text = "Wave : " + WaveNumber;
-        
-        if(nextWave)
-        {
 
-            NextWaveTimer -= Time.deltaTime;
-            NextWaveText.gameObject.SetActive(true);
-            DisplayTime(NextWaveTimer);
-            if (showItems)
-            {
-                ShowItemChooser();
-                showItems = false;
-            }
-            
-        }
-        else
-        {
-            NextWaveText.gameObject.SetActive(false);
-            NextWaveTimer = resetTimer;
-        }
-        
 
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -86,17 +66,12 @@ public class EnemySpawnSystem : MonoBehaviour
         enemyList.RemoveAll(GameObject => GameObject == null);
     }
 
-    void ShowItemChooser()
+    public void ShowItemChooser()
     {
         manager.ShowItemChoice();
     }
 
-    void DisplayTime(float timeToDisplay)
-    {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        NextWaveText.text = "Next Wave " + string.Format("{1:00}", minutes, seconds);
-    }
+    
 
     void StartWave()
     {
@@ -126,20 +101,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
         
     }
-    
-    //IEnumerator SpawnEnemiesDelay()
-    //{
-    //    yield return new WaitForSeconds(5);
-
-    //    int spawnNum = Random.Range(0, spawnZones.Length);
-    //    int enemyNum = Random.Range(0, enemyPrefabs.Length);
-
-    //    GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
-    //    Enemy.GetComponent<EnemyHealth>().EnemyGainHealth(WaveNumber);
-    //    Debug.Log(Enemy.GetComponent<EnemyHealth>().Health);
-    //    enemyList.Add(Enemy);
-
-    //}
+ 
 
     private void SpawnEnemies()
     {

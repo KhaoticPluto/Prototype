@@ -25,6 +25,6 @@ public class _gameOver : MonoBehaviour
     // Restarts Game, sends it back to Start Level
     public void RestartGame()
     {
-        SceneManager.LoadScene("DashTest");
+        SceneManager.LoadScene(1);
     }
 }

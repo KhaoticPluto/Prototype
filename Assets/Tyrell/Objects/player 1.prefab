@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 6636662577993940683}
   - component: {fileID: 6636662577993940687}
   - component: {fileID: 6636662577993940686}
-  - component: {fileID: 6636662578237803696}
   - component: {fileID: 5008527870502875136}
   - component: {fileID: 9165569769253607155}
   m_Layer: 6
@@ -231,10 +230,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 50
-  projectileDamage: 20
+  projectileDamage: 1
   _fireRate: 1
   _nextFire: 0
-  NumberOfProjectile: 20
+  NumberOfProjectile: 1
   ProjectileLifeTime: 5
   SpreadFactor: 0.2
   Health: 100
@@ -280,21 +279,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScreenPosition: {x: 0, y: 0, z: 0}
   WorldPosition: {x: 0, y: 0, z: 0}
---- !u!114 &6636662578237803696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404949389928579497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52cb095af49322f4094c27ae2286f52b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _script: {fileID: 0}
-  _dashSpeed: 20
-  _dashTime: 0.25
 --- !u!114 &5008527870502875136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,9 +296,11 @@ MonoBehaviour:
     m_Bits: 512
   controller: {fileID: 9165569769253607155}
   _speed: 15
-  crossHair: {fileID: 0}
+  shootProjectile: {fileID: 7926215467572273495}
   _dashSpeed: 40
   _dashTime: 0.25
+  mousePos: {fileID: 6636662577993940686}
+  inventoryUIHandler: {fileID: 0}
 --- !u!143 &9165569769253607155
 CharacterController:
   m_ObjectHideFlags: 0

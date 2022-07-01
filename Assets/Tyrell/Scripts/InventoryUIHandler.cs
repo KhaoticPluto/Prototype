@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryUIHandler : MonoBehaviour
 {
-    private bool inventoryOpen = false;
+    public bool inventoryOpen = false;
     public bool InventoryOpen => inventoryOpen;
     public GameObject inventoryParent;
     public GameObject GunInventory;

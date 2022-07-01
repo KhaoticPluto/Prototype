@@ -11,8 +11,9 @@ public class movement : MonoBehaviour
     // Player Movement Terms
     [SerializeField] public CharacterController controller;
     [SerializeField] public float _speed = 15;
-    
 
+    //ShootProjectile script
+    public ShootProjectile shootProjectile;
 
 
     // Dash
@@ -31,17 +32,28 @@ public class movement : MonoBehaviour
 
     private void Update()
     {
-        // Inputs
-        GatherInput();
+        if (inventoryUIHandler.InventoryOpen == false)
+        {
+            //Input
+            GatherInput();
+            //Aim
+            Aim();
 
-        // Player Rotation
-        Aim();
+            //Shoots projectile from shootprojectile script
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                
+                shootProjectile.ComponentShoot();
+            }
+        }
 
 
     }
 
     private void Start()
     {
+        inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
+
         // Cache the camera, Camera.main is an expensive operation.
         mainCam = Camera.main;
     }

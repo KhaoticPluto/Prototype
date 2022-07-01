@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public List<Item> itemList = new List<Item>();
 
-    public Transform canvas;
+    
     public GameObject itemInfoPrefab;
     private GameObject currentItemInfo = null;
 
@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("found " + upgrade);
         }
         ItemChoice = GameObject.FindWithTag("ItemChoice");
-        ItemChoice.SetActive(false);
+        ItemChoice.SetActive(true);
+        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
     }
 
 
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
         buttonPos.x -= moveX;
         buttonPos.y += moveY;
 
-        currentItemInfo = Instantiate(itemInfoPrefab, buttonPos, Quaternion.identity, canvas);
+        currentItemInfo = Instantiate(itemInfoPrefab, buttonPos, Quaternion.identity, mainCanvas);
         currentItemInfo.GetComponent<ItemInfo>().SetUp(itemName, itemDescription);
     }
 

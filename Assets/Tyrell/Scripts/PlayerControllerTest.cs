@@ -32,6 +32,7 @@ public class PlayerControllerTest : MonoBehaviour
             
             if (Input.GetKey(KeyCode.Mouse0))
             {
+                Debug.Log("Shot");
                 shootProjectile.ComponentShoot();
             }
         }
