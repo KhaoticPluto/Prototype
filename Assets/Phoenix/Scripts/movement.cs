@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    //Camera
+    // Camera
     private Camera mainCam;
     [SerializeField] private LayerMask ground;
 
@@ -89,6 +89,8 @@ public class movement : MonoBehaviour
 
         // Make the transform look in the direction.
         transform.forward = direction;
+
+        
     }
 
     private void Move()
