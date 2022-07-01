@@ -28,6 +28,22 @@ public class GameManager : MonoBehaviour
     public float moveX;
     public float moveY;
 
+    public GameObject ItemChoice;
+
+
+    private void Start()
+    {
+        if(GameObject.FindWithTag("Player") != null)
+        {
+            upgrade = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+            Debug.Log("found " + upgrade);
+        }
+        ItemChoice = GameObject.FindWithTag("ItemChoice");
+        ItemChoice.SetActive(false);
+    }
+
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
@@ -38,7 +54,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void ShowItemChoice()
+    {
+        ItemChoice.SetActive(true);
+        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
+    }
+
+    public void DestroyItemChoice()
+    {
+        ItemChoice.GetComponent<ItemChoice>().DestoryItems();
+        ItemChoice.SetActive(false);
+        
+    }
 
     public void DisplayItemInfo(string itemName, string itemDescription, Vector2 buttonPos)
     {

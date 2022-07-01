@@ -25,28 +25,22 @@ public class ItemSlot : MonoBehaviour
 
     public void RemoveItem()
     {
+        
         item.Remove();
     }
 
     public void UseItem()
     {
         if (item == null || isBeingDraged == true) return;
-
+        
         Inventory.instance.SwitchHotbarInventory(item);
 
         item.Use();
 
-        //*------ old code --------*//
-        //if (Input.GetKey(KeyCode.LeftAlt))
-        //{
-        //    Debug.Log("Trying to switch");
-        //    Inventory.instance.SwitchHotbarInventory(item);
-        //}
-        //else
-        //{
-        //    item.Use();
-        //}
+        
     }
+
+
 
     public void DestroySlot()
     {

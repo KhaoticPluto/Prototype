@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &331081965036376904
+--- !u!1 &2766983514429887759
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,27 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 513854834381883960}
-  - component: {fileID: 7177714603859189121}
-  - component: {fileID: 6267514005782741355}
-  - component: {fileID: 7014650917200386793}
-  - component: {fileID: 8929068615702100269}
-  - component: {fileID: 5709810834274622813}
-  - component: {fileID: 6543226912268969789}
+  - component: {fileID: 2766983514429887752}
+  - component: {fileID: 2766983514429887749}
+  - component: {fileID: 2766983514429887748}
+  - component: {fileID: 2766983514429887755}
+  - component: {fileID: 2766983514429887754}
+  - component: {fileID: 2766983514429887753}
   m_Layer: 5
-  m_Name: GunInventorySlot
+  m_Name: ItemToChoose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &513854834381883960
+--- !u!224 &2766983514429887752
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
+  m_GameObject: {fileID: 2766983514429887759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,26 +36,26 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 200, y: 0}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7177714603859189121
+--- !u!222 &2766983514429887749
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
+  m_GameObject: {fileID: 2766983514429887759}
   m_CullTransparentMesh: 1
---- !u!114 &6267514005782741355
+--- !u!114 &2766983514429887748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
+  m_GameObject: {fileID: 2766983514429887759}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -80,13 +79,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7014650917200386793
+--- !u!114 &2766983514429887755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
+  m_GameObject: {fileID: 2766983514429887759}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -120,31 +119,41 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 6267514005782741355}
+  m_TargetGraphic: {fileID: 2766983514429887748}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &8929068615702100269
+      m_Calls:
+      - m_Target: {fileID: 2766983514429887753}
+        m_TargetAssemblyTypeName: ItemChooser, Assembly-CSharp
+        m_MethodName: PutInInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2766983514429887753}
+        m_TargetAssemblyTypeName: ItemChooser, Assembly-CSharp
+        m_MethodName: ClearItemChoice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2766983514429887754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f69e5e1c7f0cd4d4b9e286d2efb16339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 6267514005782741355}
-  isBeingDraged: 0
---- !u!114 &5709810834274622813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
+  m_GameObject: {fileID: 2766983514429887759}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
@@ -155,7 +164,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8929068615702100269}
+        - m_Target: {fileID: 2766983514429887753}
           m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
           m_MethodName: OnCursorEnter
           m_Mode: 1
@@ -171,8 +180,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8929068615702100269}
-          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
+        - m_Target: {fileID: 2766983514429887753}
+          m_TargetAssemblyTypeName: ItemChooser, Assembly-CSharp
           m_MethodName: OnCursorExit
           m_Mode: 1
           m_Arguments:
@@ -183,16 +192,23 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &6543226912268969789
+--- !u!114 &2766983514429887753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
+  m_GameObject: {fileID: 2766983514429887759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9711b0b9f44510442b4d3176c15459d3, type: 3}
+  m_Script: {fileID: 11500000, guid: e71b3d66acdc4c04fb6b22d7ef00619e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewPrefab: {fileID: 1536721052074975365, guid: ec6d9d7c5589e8e42bc8bedcf5ade131, type: 3}
+  itemList:
+  - {fileID: 11400000, guid: 0f34afea145a6d0408f1f6021c139c1f, type: 2}
+  - {fileID: 11400000, guid: 15b1ae76b0a8f52439e727a5de5792a9, type: 2}
+  - {fileID: 11400000, guid: f333082691d21f143b94c515b5a7ce0b, type: 2}
+  - {fileID: 11400000, guid: 4a289d4bb0646be4ba74ecc6c407c2fd, type: 2}
+  item: {fileID: 0}
+  icon: {fileID: 0}
+  manager: {fileID: 0}
