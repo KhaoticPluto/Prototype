@@ -36,9 +36,10 @@ public class GameManager : MonoBehaviour
         if(GameObject.FindWithTag("Player") != null)
         {
             upgrade = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
-            Debug.Log("found " + upgrade);
+            Debug.Log("GameManager found " + upgrade);
         }
         ItemChoice = GameObject.FindWithTag("ItemChoice");
+        Debug.Log("GameManager found " + ItemChoice);
         ItemChoice.SetActive(true);
         ItemChoice.GetComponent<ItemChoice>().EndOfWave();
     }
@@ -110,7 +111,9 @@ public class GameManager : MonoBehaviour
             case ItemType.NumOfProjectiles:
                 upgrade.UpgradeNumOfProjectiles(amount);
                 break;
-            
+            case ItemType.ProjectileSize:
+                upgrade.UpgradeProjectileSize(amount);
+                break;
         }
     }
 
@@ -134,7 +137,9 @@ public class GameManager : MonoBehaviour
             case ItemType.NumOfProjectiles:
                 upgrade.RemoveUpgradeNumOfProjectiles(amount);
                 break;
-
+            case ItemType.ProjectileSize:
+                upgrade.RemoveProjectileSize(amount);
+                break;
         }
     }
 

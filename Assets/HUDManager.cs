@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class HUDManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class HUDManager : MonoBehaviour
     //Scripts
     public Upgradeables stats;
     public EnemySpawnSystem EnemySpawn;
-
+    public movement playermovement;
 
     //UI Elements
     public TextMeshProUGUI HealthText;
@@ -19,6 +20,7 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI FireRateText;
     public TextMeshProUGUI NumOfProjectiles;
 
+    public Slider dashCoolDown;
     
 
     // Start is called before the first frame update
@@ -26,18 +28,35 @@ public class HUDManager : MonoBehaviour
     {
         stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
         EnemySpawn = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawnSystem>();
+        playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Player Stats Text
         HealthText.text = "Health " + stats.Health;
-        WaveText.text = "Wave : " + EnemySpawn.WaveNumber;
+
+        //Gun stats texts
         DamageText.text = "Damage: " + stats.projectileDamage;
         ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
         FireRateText.text = "Fire Rate: " + stats._fireRate;
         NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
 
+        //Dashing Text
+        dashCoolDown.value = playermovement._dashCooldown;
+        if (playermovement._isDashing)
+        {
+            
+            
+        }
+        else
+        {
+            
+        }
+
+        //Wave Text
+        WaveText.text = "Wave : " + EnemySpawn.WaveNumber;
         if (EnemySpawn.nextWave)
         {
 

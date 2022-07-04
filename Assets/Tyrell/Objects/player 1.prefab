@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2015512932532975316}
   m_Layer: 6
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,9 +234,14 @@ MonoBehaviour:
   _fireRate: 1
   _nextFire: 0
   NumberOfProjectile: 1
-  ProjectileLifeTime: 5
   SpreadFactor: 0.2
+  ProjectileSize: {x: 0.5, y: 0.5, z: 0.5}
+  ProjectileLifeTime: 5
   Health: 100
+  playerSpeed: 15
+  _dashSpeed: 40
+  _dashTime: 0.25
+  _dashCooldownTime: 3
 --- !u!114 &6636662577993940683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgrade: {fileID: 6636662577993940681}
+  manager: {fileID: 0}
 --- !u!114 &6636662577993940686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,12 +301,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   controller: {fileID: 9165569769253607155}
-  _speed: 15
   shootProjectile: {fileID: 7926215467572273495}
-  _dashSpeed: 40
-  _dashTime: 0.25
   mousePos: {fileID: 6636662577993940686}
   inventoryUIHandler: {fileID: 0}
+  upgrade: {fileID: 6636662577993940681}
 --- !u!143 &9165569769253607155
 CharacterController:
   m_ObjectHideFlags: 0

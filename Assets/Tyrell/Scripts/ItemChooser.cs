@@ -9,7 +9,7 @@ public class ItemChooser : MonoBehaviour
 
     public Item item;
 
-    public Image icon;
+    public Image image;
 
     public GameManager manager;
     
@@ -17,17 +17,24 @@ public class ItemChooser : MonoBehaviour
     private void Start()
     {
         manager = GameObject.FindObjectOfType<GameManager>();
-        
+        image.GetComponent<Image>();
         Item newItem = itemList[Random.Range(0, itemList.Count)];
         AddItem(newItem);
-        Debug.Log("Didnt work");
+        
+    }
+
+    private void Update()
+    {
+
+        
     }
 
     public void AddItem(Item newItem)
     {
-        Debug.Log("New Item");
+        //Debug.Log("New Item");
         item = newItem;
-        icon.GetComponent<Image>().sprite = newItem.icon;
+        image.sprite = newItem.icon;
+        
         
     }
 

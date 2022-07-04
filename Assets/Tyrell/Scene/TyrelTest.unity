@@ -538,7 +538,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 15
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -4845,17 +4845,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5008527870502875136, guid: dff9de890db91034babd92332f484b8c, type: 3}
-      propertyPath: inventoryUIHandler
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6404949389928579497, guid: dff9de890db91034babd92332f484b8c, type: 3}
       propertyPath: m_Name
       value: player 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636662577993940683, guid: dff9de890db91034babd92332f484b8c, type: 3}
-      propertyPath: gunInventoryController
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8135996849882291886, guid: dff9de890db91034babd92332f484b8c, type: 3}
       propertyPath: m_RootOrder
@@ -4910,6 +4902,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1750118833, guid: eb7eec8dda41c4c48b8ac6f574d53be9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750118833, guid: eb7eec8dda41c4c48b8ac6f574d53be9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750118833, guid: eb7eec8dda41c4c48b8ac6f574d53be9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3479037723966399463, guid: eb7eec8dda41c4c48b8ac6f574d53be9, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -5310,14 +5314,6 @@ PrefabInstance:
     - target: {fileID: 6612633198863433440, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6612633198863433441, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
-      propertyPath: moveX
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 6612633198863433441, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
-      propertyPath: moveY
-      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6612633198863433441, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
       propertyPath: mainCanvas

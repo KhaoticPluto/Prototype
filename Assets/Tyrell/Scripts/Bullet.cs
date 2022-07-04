@@ -16,13 +16,18 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "WhatIsWall")
         {
-            Debug.Log("Hit Wall");
+            //Debug.Log("Hit Wall");
             rb.velocity = Vector3.zero;
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
+            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y * 3, collision.gameObject.transform.position.z);
+            
+            //Transform parent = collision.gameObject.transform.GetChild(0);
+            DamagePopUp.Create(enemyPos, Damage);
+
 
 
         }

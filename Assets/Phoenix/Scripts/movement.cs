@@ -10,16 +10,13 @@ public class movement : MonoBehaviour
 
     // Player Movement Terms
     [SerializeField] public CharacterController controller;
-    [SerializeField] public float _speed = 15;
 
     //ShootProjectile script
     public ShootProjectile shootProjectile;
 
-
     // Dash
-    public float _dashSpeed = 40f;
-    public float _dashTime = 0.25f;
-    float _dashCooldown;
+    public float _dashCooldown;
+    public bool _isDashing;
 
     // Movement Inputs
     private Vector3 _moveDirection;
@@ -29,6 +26,9 @@ public class movement : MonoBehaviour
 
     //InventoryHandler
     public InventoryUIHandler inventoryUIHandler;
+
+    //Upgradeables
+    public Upgradeables upgrade;
 
     private void Update()
     {
@@ -75,6 +75,7 @@ public class movement : MonoBehaviour
             if (_dashCooldown <= 0)
             {
                 StartCoroutine(Dash());
+                _isDashing = true;
             }
         }
 
@@ -107,18 +108,18 @@ public class movement : MonoBehaviour
 
     private void Move()
     {
-        controller.Move(_moveDirection * _speed * Time.deltaTime);
+        controller.Move(_moveDirection * upgrade.playerSpeed * Time.deltaTime);
     }
 
     IEnumerator Dash()
     {
         float startTime = Time.time;
 
-        while (Time.time < startTime + _dashTime)
+        while (Time.time < startTime + upgrade._dashTime)
         {
-            controller.Move(_moveDirection * _dashSpeed * Time.deltaTime);
-            _dashCooldown = 3;
-
+            controller.Move(_moveDirection * upgrade._dashSpeed * Time.deltaTime);
+            _dashCooldown = upgrade._dashCooldownTime;
+            _isDashing = false;
             yield return null;
         }
     }
