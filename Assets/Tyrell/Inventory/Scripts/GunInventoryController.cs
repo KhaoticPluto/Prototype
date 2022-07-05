@@ -51,4 +51,9 @@ public class GunInventoryController : MonoBehaviour
             GunInventorySlots.Add(slot);
         }
     }
+
+    public void AddGunInventorySlot()
+    {
+        GunInventorySlots.Add(Instantiate(InventorySlot, this.transform));
+    }
 }

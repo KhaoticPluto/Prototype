@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     public Upgradeables stats;
     public EnemySpawnSystem EnemySpawn;
     public movement playermovement;
+    
 
     //UI Elements
     public TextMeshProUGUI HealthText;
@@ -19,6 +20,8 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI ProSpeedText;
     public TextMeshProUGUI FireRateText;
     public TextMeshProUGUI NumOfProjectiles;
+    public TextMeshProUGUI MoneyText;
+
 
     public Slider dashCoolDown;
     
@@ -29,13 +32,15 @@ public class HUDManager : MonoBehaviour
         stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
         EnemySpawn = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawnSystem>();
         playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         //Player Stats Text
-        HealthText.text = "Health " + stats.Health;
+        HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
+        MoneyText.text = "Instant Noodles " + MoneyManager.Money;
 
         //Gun stats texts
         DamageText.text = "Damage: " + stats.projectileDamage;
@@ -45,15 +50,7 @@ public class HUDManager : MonoBehaviour
 
         //Dashing Text
         dashCoolDown.value = playermovement._dashCooldown;
-        if (playermovement._isDashing)
-        {
-            
-            
-        }
-        else
-        {
-            
-        }
+        
 
         //Wave Text
         WaveText.text = "Wave : " + EnemySpawn.WaveNumber;

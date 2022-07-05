@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public Upgradeables upgrade;
-    public LoadSceneManager manager;
 
     private void Start()
     {
@@ -17,10 +16,14 @@ public class PlayerHealth : MonoBehaviour
         if (upgrade.Health <= 0)
         {
             Debug.Log("Player Died");
-            manager = GameObject.FindWithTag("GameManager").GetComponent<LoadSceneManager>();
-            manager.LoadGameOver();
+            LoadSceneManager.instance.LoadGameOver();
+            
         }
 
+        if (upgrade.Health > upgrade.MaxHealth)
+        {
+            upgrade.Health = upgrade.MaxHealth;
+        }
         
     }
 

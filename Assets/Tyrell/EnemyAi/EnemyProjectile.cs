@@ -8,7 +8,7 @@ public class EnemyProjectile : MonoBehaviour
     public float MaxDamage;
     public float MinDamage;
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -18,6 +18,8 @@ public class EnemyProjectile : MonoBehaviour
             
         }
     }
+
+
 
     private void Start()
     {

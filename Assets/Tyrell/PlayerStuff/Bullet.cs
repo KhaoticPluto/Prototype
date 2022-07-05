@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag == "WhatIsWall")
         {
             //Debug.Log("Hit Wall");
-            rb.velocity = Vector3.zero;
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag == "Enemy")

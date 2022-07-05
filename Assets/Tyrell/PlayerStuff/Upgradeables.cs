@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Upgradeables : MonoBehaviour
 {
-
+    #region singleton
+    public static Upgradeables instance;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
 
     //upgrade values
     public float projectileSpeed = 700;
@@ -21,10 +28,14 @@ public class Upgradeables : MonoBehaviour
 
     public Vector3 ProjectileSize = new Vector3(0.5f,0.5f,0.5f);
 
-    //other values
     public float ProjectileLifeTime = 1;
 
+    //Player values
+
+
     public float Health = 100;
+    public float MaxHealth = 100;
+
 
     public float playerSpeed = 15;
 
@@ -32,17 +43,19 @@ public class Upgradeables : MonoBehaviour
     public float _dashTime = 0.25f;
     public float _dashCooldownTime = 3;
 
-    public static float ItemDropChance = 20;
+    public float ItemDropChance = 10;
+    public int dropchanceincrease = 100;
+
+
+    //scripts
+    public GunInventoryController gunInventoryController;
+
 
     private void Start()
     {
-        //projectileDamage = 1;
-        //projectileSpeed = 100;
-        //_fireRate = 1;
-        //NumberOfProjectile = 1;
-        //SpreadFactor = 0.5f;
-        //ProjectileLifeTime = 1;
+        gunInventoryController = FindObjectOfType<GunInventoryController>(transform);
     }
+    //*------- Gun Upgrades --------*//
 
     //Projectile speed upgrade
     public void UpgradeProjectileSpeed(float amount)
@@ -93,6 +106,40 @@ public class Upgradeables : MonoBehaviour
     {
         ProjectileSize -= new Vector3(amount,amount,amount);
     }
+
+
+    //*------- Gun Upgrades --------*//
+
+
+
+    //*------- Player upgrades --------*//
+
+    //Gun Inventory
+    public void UpgradeGunInventory()
+    {
+        gunInventoryController.AddGunInventorySlot();
+    }
+
+
+    //MaxHealth
+    public void UpgradeMaxHealth(float amount)
+    {
+        MaxHealth += amount;
+    }
+
+    //Heal
+    public void HealHealth()
+    {
+        Health = MaxHealth;
+    }
+
+    //Speed
+    public void UpgradeSpeed(float amount)
+    {
+        playerSpeed += amount;
+    }
+
+    //*------- Player upgrades --------*//
 
 
     //Reset upgrades if lowered past lowest amount

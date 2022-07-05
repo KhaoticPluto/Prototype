@@ -17,13 +17,13 @@ public class Item : ScriptableObject
     public virtual void Use()
     {
         Debug.Log("Using " + name);
-        GameManager.instance.OnStatItemUse(itemType, amount);
+        ItemUpgradeRemove.instance.OnStatItemUse(itemType, amount);
     }
 
     public virtual void Remove()
     {
         Debug.Log("Removing " + name);
-        GameManager.instance.OnStatItemRemove(itemType, amount);
+        ItemUpgradeRemove.instance.OnStatItemRemove(itemType, amount);
     }
 
     public virtual string GetItemDescription()

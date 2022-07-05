@@ -116,8 +116,9 @@ GameObject:
   - component: {fileID: 6636662577993940686}
   - component: {fileID: 5008527870502875136}
   - component: {fileID: 9165569769253607155}
+  - component: {fileID: 4563656471038277561}
   m_Layer: 6
-  m_Name: player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,6 +243,8 @@ MonoBehaviour:
   _dashSpeed: 40
   _dashTime: 0.25
   _dashCooldownTime: 3
+  ItemDropChance: 5
+  dropchanceincrease: 100
 --- !u!114 &6636662577993940683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +305,8 @@ MonoBehaviour:
     m_Bits: 512
   controller: {fileID: 9165569769253607155}
   shootProjectile: {fileID: 7926215467572273495}
+  _dashCooldown: 0
+  _isDashing: 0
   mousePos: {fileID: 6636662577993940686}
   inventoryUIHandler: {fileID: 0}
   upgrade: {fileID: 6636662577993940681}
@@ -323,3 +328,15 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4563656471038277561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6404949389928579497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fda21ce44f06d44a12a52ef661e2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
