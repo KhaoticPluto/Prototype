@@ -10,6 +10,9 @@ TagManager:
   - GunInventory
   - InventoryParent
   - Ground
+  - ItemChoice
+  - EnemySpawner
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -43,11 +46,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Top
+    uniqueID: 2962752415
     locked: 0

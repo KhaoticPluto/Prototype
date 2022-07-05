@@ -48,6 +48,7 @@ public class ShootProjectile : MonoBehaviour
             ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             bullet.GetComponent<Rigidbody>().velocity = ShootDirection * upgrades.projectileSpeed;
+            bullet.transform.localScale = upgrades.ProjectileSize;
             Destroy(bullet, upgrades.ProjectileLifeTime);
 
         }

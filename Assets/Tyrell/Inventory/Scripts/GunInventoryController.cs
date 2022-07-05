@@ -5,9 +5,9 @@ using UnityEngine;
 public class GunInventoryController : MonoBehaviour
 {
     public int GunInventorySlotSize => gameObject.transform.childCount;
-    private List<ItemSlot> GunInventorySlots = new List<ItemSlot>();
+    public List<ItemSlot> GunInventorySlots = new List<ItemSlot>();
 
-    
+    public ItemSlot InventorySlot;
 
 
     private void Start()
@@ -18,7 +18,10 @@ public class GunInventoryController : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            GunInventorySlots.Add(Instantiate(InventorySlot, this.transform));
+        }
     }
 
     private void UpdateGunInventoryUI()

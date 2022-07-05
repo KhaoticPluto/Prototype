@@ -11,6 +11,7 @@ public class EnemyAiController : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public EnemySpawnSystem enemySpawn;
 
     //Patroling
     public Vector3 walkPoint;
@@ -102,6 +103,13 @@ public class EnemyAiController : MonoBehaviour
         //    Invoke(nameof(ResetAttack), timeBetweenAttacks);
         //}
     }
+
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
+
+    }
+
     public virtual void ResetAttack()
     {
         alreadyAttacked = false;

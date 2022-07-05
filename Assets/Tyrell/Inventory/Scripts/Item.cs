@@ -40,5 +40,14 @@ public enum ItemType
     FireRate,
     Damage,
     ProjectileSpeed,
-    NumOfProjectiles
+    NumOfProjectiles,
+    ProjectileSize,
+    Ricochet,
+    SpreadFactor,
+    DoubleDamage,
+    SeekingProjectiles,
+    ProjectilePierce,
+    CritChance,
+    critDamage
+
 }

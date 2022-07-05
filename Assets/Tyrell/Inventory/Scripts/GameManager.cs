@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public List<Item> itemList = new List<Item>();
 
-    public Transform canvas;
+    
     public GameObject itemInfoPrefab;
     private GameObject currentItemInfo = null;
 
@@ -27,6 +27,24 @@ public class GameManager : MonoBehaviour
 
     public float moveX;
     public float moveY;
+
+    public GameObject ItemChoice;
+
+
+    private void Start()
+    {
+        if(GameObject.FindWithTag("Player") != null)
+        {
+            upgrade = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+            Debug.Log("GameManager found " + upgrade);
+        }
+        ItemChoice = GameObject.FindWithTag("ItemChoice");
+        Debug.Log("GameManager found " + ItemChoice);
+        ItemChoice.SetActive(true);
+        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
+    }
+
+
 
     private void Update()
     {
@@ -38,7 +56,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void ShowItemChoice()
+    {
+        ItemChoice.SetActive(true);
+        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
+    }
+
+    public void DestroyItemChoice()
+    {
+        ItemChoice.GetComponent<ItemChoice>().DestoryItems();
+        ItemChoice.SetActive(false);
+        
+    }
 
     public void DisplayItemInfo(string itemName, string itemDescription, Vector2 buttonPos)
     {
@@ -50,7 +79,7 @@ public class GameManager : MonoBehaviour
         buttonPos.x -= moveX;
         buttonPos.y += moveY;
 
-        currentItemInfo = Instantiate(itemInfoPrefab, buttonPos, Quaternion.identity, canvas);
+        currentItemInfo = Instantiate(itemInfoPrefab, buttonPos, Quaternion.identity, mainCanvas);
         currentItemInfo.GetComponent<ItemInfo>().SetUp(itemName, itemDescription);
     }
 
@@ -82,7 +111,9 @@ public class GameManager : MonoBehaviour
             case ItemType.NumOfProjectiles:
                 upgrade.UpgradeNumOfProjectiles(amount);
                 break;
-            
+            case ItemType.ProjectileSize:
+                upgrade.UpgradeProjectileSize(amount);
+                break;
         }
     }
 
@@ -106,7 +137,9 @@ public class GameManager : MonoBehaviour
             case ItemType.NumOfProjectiles:
                 upgrade.RemoveUpgradeNumOfProjectiles(amount);
                 break;
-
+            case ItemType.ProjectileSize:
+                upgrade.RemoveProjectileSize(amount);
+                break;
         }
     }
 

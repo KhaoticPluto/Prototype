@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class PlayerControllerTest : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rb;
+    public Rigidbody _rb;
     [SerializeField] private float _speed = 5;
-    [SerializeField] private float _turnSpeed = 360;
+    
     private Vector3 _input;
 
     public ShootProjectile shootProjectile;
     public Upgradeables upgrades;
 
     public InventoryUIHandler inventoryUIHandler;
+    public MousePosition mousePos;
 
     private void Start()
     {
+
+
         shootProjectile.GetComponent<ShootProjectile>();
         upgrades.GetComponent<Upgradeables>();
     }
@@ -25,15 +28,39 @@ public class PlayerControllerTest : MonoBehaviour
         if (inventoryUIHandler.InventoryOpen == false)
         {
             GatherInput();
-            Look();
+            Aim();
+            
             if (Input.GetKey(KeyCode.Mouse0))
             {
+                Debug.Log("Shot");
                 shootProjectile.ComponentShoot();
             }
         }
 
         
     }
+
+    private void Aim()
+    {
+        //// Inputs Mouse Position in Game
+        //Vector2 mouseScreenPos = Input.mousePosition;
+
+        //// Distance of the Mouse Cursor in game from Camera
+        //Vector3 mousePos = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 1000);
+
+        //// Transforms mouse world position to game Camera
+        //Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
+
+        //// Player looks towards the mouse as it moves
+        var direction = mousePos.WorldPosition - transform.position;
+
+        //// Ignore the height difference.
+        direction.y = 0;
+
+        //// Make the transform look in the direction.
+        transform.forward = direction;
+    }
+
 
     private void FixedUpdate()
     {
@@ -46,13 +73,7 @@ public class PlayerControllerTest : MonoBehaviour
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
-    private void Look()
-    {
-        if (_input == Vector3.zero) return;
-
-        Quaternion rot = Quaternion.LookRotation(_input.ToIso(), Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
-    }
+    
 
     private void Move()
     {
