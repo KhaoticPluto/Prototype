@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2278534874290217369}
   - component: {fileID: 3972534601552213221}
   - component: {fileID: 1467093714}
+  - component: {fileID: 5734234200986776026}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -54,6 +55,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a289d4bb0646be4ba74ecc6c407c2fd, type: 2}
   - {fileID: 11400000, guid: f333082691d21f143b94c515b5a7ce0b, type: 2}
   - {fileID: 11400000, guid: 66bcc459e3502ac498f0d56373cdf0db, type: 2}
+  - {fileID: 11400000, guid: d710076baac5dae45a12cb802bfe0654, type: 2}
+  - {fileID: 11400000, guid: 4094cab9e3ace8940a0e013833f08238, type: 2}
   itemInfoPrefab: {fileID: 2069418967156432285, guid: b7c75c5a0167a2b48bd168237bb9bd30, type: 3}
   mainCanvas: {fileID: 0}
   GunInventoryTransform: {fileID: 0}
@@ -114,3 +117,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgrade: {fileID: 0}
+--- !u!114 &5734234200986776026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612633198863433442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955135d4aed4d894990546a21835212a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshair: {fileID: 2800000, guid: f51d88348bda9984bac2ca2caf1d3404, type: 3}

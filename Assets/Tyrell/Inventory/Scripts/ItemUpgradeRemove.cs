@@ -43,12 +43,24 @@ public class ItemUpgradeRemove : MonoBehaviour
             case ItemType.ProjectileSpeed:
                 upgrade.UpgradeProjectileSpeed(amount);
                 break;
+
             case ItemType.NumOfProjectiles:
                 upgrade.UpgradeNumOfProjectiles(amount);
                 break;
+
             case ItemType.ProjectileSize:
                 upgrade.UpgradeProjectileSize(amount);
                 break;
+
+            case ItemType.ProjectilePierce:
+                upgrade.UpgradePierceCount(amount);
+                break;
+
+            case ItemType.CritChance:
+                upgrade.UpgradeCritChance(amount);
+                break;
+
+
         }
     }
 
@@ -69,12 +81,23 @@ public class ItemUpgradeRemove : MonoBehaviour
             case ItemType.ProjectileSpeed:
                 upgrade.RemoveUpgradeProjectileSpeed(amount);
                 break;
+
             case ItemType.NumOfProjectiles:
                 upgrade.RemoveUpgradeNumOfProjectiles(amount);
                 break;
+
             case ItemType.ProjectileSize:
                 upgrade.RemoveProjectileSize(amount);
                 break;
+
+            case ItemType.ProjectilePierce:
+                upgrade.RemovePierceCount(amount);
+                break;
+
+            case ItemType.CritChance:
+                upgrade.RemoveCritChance(amount);
+                break;
+
         }
     }
 }

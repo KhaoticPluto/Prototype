@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
             //Debug.Log("Enemy Died");
             AiController.DestroyEnemy();
             randItemDrop.RandomlyDropItem();
-            eMoney.GetComponent<EnemyMoney>().DropMoney();
+            MoneyManager.instance.DropMoney();
         }
 
         if (Health > MaxHealth)

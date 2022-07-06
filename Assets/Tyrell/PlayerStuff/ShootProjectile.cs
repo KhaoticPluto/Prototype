@@ -10,7 +10,7 @@ public class ShootProjectile : MonoBehaviour
 
     public MousePosition mousepos;
 
-
+    bool isCriticalHit;
 
     private void Start()
     {
@@ -42,8 +42,9 @@ public class ShootProjectile : MonoBehaviour
         {
             
             GameObject bullet = Instantiate(_pfBullet, transform.position, Quaternion.identity);
-            bullet.GetComponent<Bullet>().Damage = upgrades.projectileDamage;
+            bullet.GetComponent<Bullet>().Damage = CalculateDamage();
             bullet.transform.LookAt(mousepos.WorldPosition);
+            bullet.GetComponent<Bullet>().isCritical = isCriticalHit;
             Vector3 ShootDirection = bullet.transform.forward;
             ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
@@ -53,5 +54,25 @@ public class ShootProjectile : MonoBehaviour
 
         }
         
+    }
+
+
+
+    private float CalculateDamage()
+    {
+        float calCritChance = Random.Range(1, 100);
+        if(upgrades.critChance >= calCritChance)
+        {
+            upgrades.projectileDamage = upgrades.projectileDamage * 2;
+            isCriticalHit = true;
+        }
+        else
+        {
+            upgrades.projectileDamage = upgrades.BaseDamage;
+            isCriticalHit = false;
+        }
+            
+
+        return upgrades.projectileDamage;
     }
 }

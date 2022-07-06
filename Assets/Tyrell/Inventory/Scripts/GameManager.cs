@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         ShopOpen = true;
         Shop.SetActive(true);
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.7f;
     }
     
     void CloseShop()

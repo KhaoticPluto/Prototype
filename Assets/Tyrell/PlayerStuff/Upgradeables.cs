@@ -17,6 +17,8 @@ public class Upgradeables : MonoBehaviour
     public float projectileSpeed = 700;
 
     public float projectileDamage = 1;
+    public float BaseDamage = 1;
+    public float critChance = 0;
 
     public float _fireRate = 1;
 
@@ -29,6 +31,8 @@ public class Upgradeables : MonoBehaviour
     public Vector3 ProjectileSize = new Vector3(0.5f,0.5f,0.5f);
 
     public float ProjectileLifeTime = 1;
+
+    public float PierceCountUpgraded = 0;
 
     //Player values
 
@@ -49,7 +53,7 @@ public class Upgradeables : MonoBehaviour
 
     //scripts
     public GunInventoryController gunInventoryController;
-
+    public MoneyManager moneyManager;
 
     private void Start()
     {
@@ -71,10 +75,12 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeProjectileDamage(float amount)
     {
         projectileDamage += amount;
+        BaseDamage += amount;
     }
     public void RemoveUpgradeProjectileDamage(float amount)
     {
         projectileDamage -= amount;
+        BaseDamage -= amount;
     }
     
     //Fire Rate upgrades
@@ -107,6 +113,27 @@ public class Upgradeables : MonoBehaviour
         ProjectileSize -= new Vector3(amount,amount,amount);
     }
 
+    //Upgrade Pierce
+    public void UpgradePierceCount(float amount)
+    {
+        PierceCountUpgraded += amount;
+    }
+    public void RemovePierceCount(float amount)
+    {
+        PierceCountUpgraded -= amount;
+    }
+
+
+    //Crit Chance
+    public void UpgradeCritChance(float amount)
+    {
+        critChance += amount;
+    }
+    public void RemoveCritChance(float amount)
+    {
+        critChance -= amount;
+    }
+
 
     //*------- Gun Upgrades --------*//
 
@@ -137,6 +164,26 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeSpeed(float amount)
     {
         playerSpeed += amount;
+    }
+
+    //money Gain
+    public void UpgradeMoney(float amount)
+    {
+        moneyManager.IncreaseMoney(amount);
+    }
+
+    //Give Random Item
+    public void RandomItem()
+    {
+        Item newItem = GameManager.instance.itemList[Random.Range(0, GameManager.instance.itemList.Count)];
+
+        Inventory.instance.AddItem(Instantiate(newItem));
+    }
+
+    //Dash Cooldown
+    public void DashCooldown(float amount)
+    {
+        _dashCooldownTime -= amount;
     }
 
     //*------- Player upgrades --------*//

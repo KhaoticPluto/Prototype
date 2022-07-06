@@ -33,5 +33,9 @@ public enum DropItemType
     MaxHealth,
     HealHealth,
     Speed,
+    RandomItem,
+    IncreaseMoneyGain,
+    DashCooldown,
+
 
 }

@@ -48,6 +48,6 @@ public enum ItemType
     SeekingProjectiles,
     ProjectilePierce,
     CritChance,
-    critDamage
+    CritDamage
 
 }

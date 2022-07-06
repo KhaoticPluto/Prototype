@@ -15,4 +15,13 @@ public class EnemyMoney : MonoBehaviour
     }
 
 
+    //called from upgradables script
+    public  void IncreaseMoney(float amount)
+    {
+        
+        maxAmount = maxAmount + (int)amount;
+        minAmount = minAmount + (int)amount;
+    }
+
+
 }

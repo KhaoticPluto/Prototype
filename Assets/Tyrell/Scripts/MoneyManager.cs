@@ -28,4 +28,27 @@ public class MoneyManager : MonoBehaviour
     {
         Money += Amount;
     }
+
+
+    //Enemies drop money
+
+    int droppedMoneyAmount;
+    public int maxAmount = 3;
+    public int minAmount = 1;
+
+    //called from enemy health script
+    public void DropMoney()
+    {
+        droppedMoneyAmount = Random.Range(minAmount, maxAmount);
+        GainMoney(droppedMoneyAmount);
+    }
+
+    //called from upgradables script
+    public void IncreaseMoney(float amount)
+    {
+
+        maxAmount += (int)amount;
+        minAmount += (int)amount;
+    }
+
 }

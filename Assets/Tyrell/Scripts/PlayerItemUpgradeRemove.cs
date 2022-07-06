@@ -44,6 +44,17 @@ public class PlayerItemUpgradeRemove : MonoBehaviour
             case DropItemType.Speed:
                 upgrade.UpgradeSpeed(amount);
                 break;
+            case DropItemType.RandomItem:
+                upgrade.RandomItem();
+                break;
+            case DropItemType.IncreaseMoneyGain:
+                upgrade.UpgradeMoney(amount);
+                break;
+            case DropItemType.DashCooldown:
+                upgrade.DashCooldown(amount);
+                break;
+
+
 
         }
     }
