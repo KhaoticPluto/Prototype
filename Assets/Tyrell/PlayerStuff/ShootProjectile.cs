@@ -42,14 +42,21 @@ public class ShootProjectile : MonoBehaviour
         {
             
             GameObject bullet = Instantiate(_pfBullet, transform.position, Quaternion.identity);
+
+            //changes value of the bullets before sending it
             bullet.GetComponent<Bullet>().Damage = CalculateDamage();
-            bullet.transform.LookAt(mousepos.WorldPosition);
             bullet.GetComponent<Bullet>().isCritical = isCriticalHit;
+            bullet.GetComponent<Bullet>().BulletSpeed = upgrades.projectileSpeed;
+            bullet.transform.localScale = upgrades.ProjectileSize;
+
+            //sends bullet in the direction the bullet is facing, bullet is facing towards cursor when fired
+            bullet.transform.LookAt(mousepos.WorldPosition);
             Vector3 ShootDirection = bullet.transform.forward;
             ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             bullet.GetComponent<Rigidbody>().velocity = ShootDirection * upgrades.projectileSpeed;
-            bullet.transform.localScale = upgrades.ProjectileSize;
+
+            //destorys bulet after its lifetime has passed
             Destroy(bullet, upgrades.ProjectileLifeTime);
 
         }

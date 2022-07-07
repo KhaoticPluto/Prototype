@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    Rigidbody rb;
     public float Damage;
 
     int pierceCount = 0;
 
     public bool isCritical;
 
+    public LayerMask Ricochet;
+
+    public float BulletSpeed;
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        
+        
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "WhatIsWall")
+        if (collision.gameObject.tag == "WhatIsWall")
         {
             //Debug.Log("Hit Wall");
-            Destroy(gameObject);
+            
         }
 
         if (collision.gameObject.tag == "Enemy")
@@ -33,16 +37,37 @@ public class Bullet : MonoBehaviour
             //Transform parent = collision.gameObject.transform.GetChild(0);
             DamagePopUp.Create(enemyPos, Damage, isCritical);
 
-            if(pierceCount > Upgradeables.instance.PierceCountUpgraded)
+            if (pierceCount > Upgradeables.instance.PierceCountUpgraded)
             {
                 Destroy(gameObject);
                 pierceCount = 0;
-            
+
             }
 
 
 
         }
     }
+
+    private void Update()
+    {
+        
+
+
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, Time.deltaTime * BulletSpeed + 1f, Ricochet))
+        {
+            Debug.Log("hit wall");
+            Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
+            float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
+            transform.eulerAngles = new Vector3(rot, 0, 0);
+        }
+
+
+    }
+
+    
 
 }
