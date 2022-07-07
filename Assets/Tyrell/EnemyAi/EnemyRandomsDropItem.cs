@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyRandomsDropItem : MonoBehaviour
 {
-    int dropchanceincrease = 100;
+    
     
 
     public GameObject RareItem;
@@ -14,10 +14,10 @@ public class EnemyRandomsDropItem : MonoBehaviour
 
     public void RandomlyDropItem()
     {
-        int RandomSpawnChance = Random.Range(0, dropchanceincrease);
-        int ItemRarity = Random.Range(0, dropchanceincrease);
+        int RandomSpawnChance = Random.Range(0, Upgradeables.instance.dropchanceincrease);
+        int ItemRarity = Random.Range(0, Upgradeables.instance.dropchanceincrease);
         Debug.Log("spawn Chance: " + RandomSpawnChance + "Item Rarity: " + ItemRarity);
-        if (RandomSpawnChance <= Upgradeables.ItemDropChance)
+        if (RandomSpawnChance <= Upgradeables.instance.ItemDropChance)
         {
 
             if (ItemRarity <= 50)

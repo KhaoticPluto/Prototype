@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 6612633198863433441}
   - component: {fileID: 6612633198863433247}
   - component: {fileID: 2278534874290217369}
+  - component: {fileID: 3972534601552213221}
+  - component: {fileID: 1467093714}
+  - component: {fileID: 5734234200986776026}
+  - component: {fileID: 7816036095176410321}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -46,20 +50,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4fe3afec26ed449b42aa9b4c63d409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrade: {fileID: 0}
   itemList:
   - {fileID: 11400000, guid: 0f34afea145a6d0408f1f6021c139c1f, type: 2}
   - {fileID: 11400000, guid: 15b1ae76b0a8f52439e727a5de5792a9, type: 2}
   - {fileID: 11400000, guid: 4a289d4bb0646be4ba74ecc6c407c2fd, type: 2}
   - {fileID: 11400000, guid: f333082691d21f143b94c515b5a7ce0b, type: 2}
   - {fileID: 11400000, guid: 66bcc459e3502ac498f0d56373cdf0db, type: 2}
+  - {fileID: 11400000, guid: d710076baac5dae45a12cb802bfe0654, type: 2}
+  - {fileID: 11400000, guid: 4094cab9e3ace8940a0e013833f08238, type: 2}
   itemInfoPrefab: {fileID: 2069418967156432285, guid: b7c75c5a0167a2b48bd168237bb9bd30, type: 3}
   mainCanvas: {fileID: 0}
   GunInventoryTransform: {fileID: 0}
   inventoryTransform: {fileID: 0}
-  moveX: 300
-  moveY: 150
+  moveX: 150
+  moveY: 180
   ItemChoice: {fileID: 0}
+  Shop: {fileID: 0}
+  ShopOpen: 0
 --- !u!114 &6612633198863433247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,3 +92,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfDamagePopUp: {fileID: 3713975880430784845, guid: de1379ac2df484f42874273c7519ffd6, type: 3}
+--- !u!114 &3972534601552213221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612633198863433442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a71ef1b13e5db047a3313aa2c611f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrade: {fileID: 0}
+--- !u!114 &1467093714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612633198863433442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6a849aa4694344e87e293e8f34e8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrade: {fileID: 0}
+--- !u!114 &5734234200986776026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612633198863433442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955135d4aed4d894990546a21835212a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshair: {fileID: 2800000, guid: f51d88348bda9984bac2ca2caf1d3404, type: 3}
+--- !u!114 &7816036095176410321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612633198863433442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32cb82fa5a209641b3b32eaeed40bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 6404949389928579497, guid: dff9de890db91034babd92332f484b8c, type: 3}
+  InventoryCanvas: {fileID: 4548980009996714919, guid: 54707455c663dba41b09599532ca661c, type: 3}
+  EnemySpawner: {fileID: 7699816711054587749, guid: 85fa5c760395afe49b37937d20d1530a, type: 3}
+  Hud: {fileID: 3479037723966399463, guid: eb7eec8dda41c4c48b8ac6f574d53be9, type: 3}
+  Shop: {fileID: 9220581109693778005, guid: e07226586d20be94995eda99960854bd, type: 3}
+  NavMesh: {fileID: 2406480605717007602, guid: 9a222061bfd5a844691b692c8629247a, type: 3}
+  SpawnZones: {fileID: 5918471803410121695, guid: 5a18f76c6662c04498eae9170de70772, type: 3}

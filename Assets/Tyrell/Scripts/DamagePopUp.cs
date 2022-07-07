@@ -6,13 +6,13 @@ using TMPro;
 public class DamagePopUp : MonoBehaviour
 {
     //Create damage popup just call DamamgePopUp.create(Vector3 position, float damageAmount);
-    public static DamagePopUp Create(Vector3 position, float damageAmount)
+    public static DamagePopUp Create(Vector3 position, float damageAmount, bool isCrit)
     {
         Transform damagePopUPTransform = Instantiate(GameAssets.instance.pfDamagePopUp, position, Quaternion.identity);
         damagePopUPTransform.LookAt(Camera.main.transform);
         damagePopUPTransform.localScale = new Vector3(-1, 1, 1);
         DamagePopUp damagePopUp = damagePopUPTransform.GetComponent<DamagePopUp>();
-        damagePopUp.Setup(damageAmount);
+        damagePopUp.Setup(damageAmount, isCrit);
 
         return damagePopUp;
 
@@ -30,17 +30,29 @@ public class DamagePopUp : MonoBehaviour
         Destroy(gameObject, 2);
     }
 
-    public void Setup(float damageAmount)
+    public void Setup(float damageAmount, bool isCrit)
     {
         TextMesh.SetText(damageAmount.ToString());
-        textColor = TextMesh.color;
+        if (!isCrit)
+        {
+            TextMesh.fontSize = 18;
+            textColor = Color.yellow;
+        }
+        else
+        {
+            TextMesh.fontSize = 36;
+            textColor = Color.red;
+        }
+        
+        TextMesh.color = textColor;
+        disappearTime = 1f;
     }
 
     private void Update()
     {
         float moveYSpeed = 3f;
         transform.position += new Vector3(0, moveYSpeed) * Time.deltaTime;
-        disappearTime = 1f;
+        
 
         disappearTime -= Time.deltaTime;
         if(disappearTime < 0)

@@ -49,10 +49,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SpawnEnemies();
-        }
+        
 
         if(enemyList.Count == 0 && StartedWaves == true)
         {

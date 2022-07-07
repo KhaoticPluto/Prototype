@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public Upgradeables upgrade;
+    
 
     public List<Item> itemList = new List<Item>();
 
@@ -30,18 +30,26 @@ public class GameManager : MonoBehaviour
 
     public GameObject ItemChoice;
 
+    public GameObject Shop;
+    public bool ShopOpen;
 
     private void Start()
     {
-        if(GameObject.FindWithTag("Player") != null)
-        {
-            upgrade = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
-            Debug.Log("GameManager found " + upgrade);
-        }
+        Time.timeScale = 1;
         ItemChoice = GameObject.FindWithTag("ItemChoice");
         Debug.Log("GameManager found " + ItemChoice);
         ItemChoice.SetActive(true);
         ItemChoice.GetComponent<ItemChoice>().EndOfWave();
+        Shop = GameObject.FindWithTag("ShopManager");
+        Shop.SetActive(false);
+
+
+
+
+        //find objects if not in slot
+        inventoryTransform = GameObject.FindWithTag("InventoryParent").transform;
+        mainCanvas = GameObject.FindWithTag("InventoryCanvas").transform;
+        GunInventoryTransform = GameObject.FindWithTag("GunInventory").transform;
     }
 
 
@@ -53,6 +61,19 @@ public class GameManager : MonoBehaviour
             Item newItem = itemList[Random.Range(0, itemList.Count)];
 
             Inventory.instance.AddItem(Instantiate(newItem));
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (ShopOpen)
+            {
+                CloseShop();
+            }
+            else
+            {
+                
+                OpenShop();
+            }
         }
     }
 
@@ -91,56 +112,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnStatItemUse(ItemType itemType, float amount)
+    void OpenShop()
     {
-        upgrade.GetComponent<Upgradeables>();
-        Debug.Log("Upgrade" + itemType + " by " + amount);
-        switch (itemType)
-        {
-            case ItemType.FireRate:
-                upgrade.UpgradeFireRate(amount);
-                break;
-
-            case ItemType.Damage:
-                upgrade.UpgradeProjectileDamage(amount);
-                break;
-
-            case ItemType.ProjectileSpeed:
-                upgrade.UpgradeProjectileSpeed(amount);
-                break;
-            case ItemType.NumOfProjectiles:
-                upgrade.UpgradeNumOfProjectiles(amount);
-                break;
-            case ItemType.ProjectileSize:
-                upgrade.UpgradeProjectileSize(amount);
-                break;
-        }
+        ShopOpen = true;
+        Shop.SetActive(true);
+        Time.timeScale = 0.7f;
     }
-
-    public void OnStatItemRemove(ItemType itemType, float amount)
+    
+    void CloseShop()
     {
-        upgrade.GetComponent<Upgradeables>();
-        Debug.Log("Remove " + itemType + " by " + amount);
-        switch (itemType)
-        {
-            case ItemType.FireRate:
-                upgrade.RemoveUpgradeFireRate(amount);
-                break;
-
-            case ItemType.Damage:
-                upgrade.RemoveUpgradeProjectileDamage(amount);
-                break;
-
-            case ItemType.ProjectileSpeed:
-                upgrade.RemoveUpgradeProjectileSpeed(amount);
-                break;
-            case ItemType.NumOfProjectiles:
-                upgrade.RemoveUpgradeNumOfProjectiles(amount);
-                break;
-            case ItemType.ProjectileSize:
-                upgrade.RemoveProjectileSize(amount);
-                break;
-        }
+        ShopOpen = false;
+        Shop.SetActive(false);
+        Time.timeScale = 1;
+        DestroyItemInfo();
     }
-
 }

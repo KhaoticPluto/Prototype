@@ -2,20 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+
+[System.Serializable]
+[CreateAssetMenu(fileName = "Item", menuName = "Item/DropItem")]
+public class ItemDrop : ScriptableObject
 {
-    public List<GameObject> itemList = new List<GameObject>();
+    new public string name = "Defulat Item";
+    public Sprite icon = null;
+    public string itemDescription = "Upgrade Player stats";
 
+    public DropItemType dropItemType;
+    public float amount;
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void Use()
     {
-        
+        PlayerItemUpgradeRemove.instance.OnStatItemUse(dropItemType, amount);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public virtual string GetItemDescription()
     {
-        
+        return itemDescription;
     }
+}
+
+
+public enum DropItemType
+{
+    ExtraInventorySlot,
+    MaxHealth,
+    HealHealth,
+    Speed,
+    RandomItem,
+    IncreaseMoneyGain,
+    DashCooldown,
+
+
 }

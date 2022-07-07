@@ -17,7 +17,7 @@ public class MousePosition : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(ScreenPosition);
 
-        if(Physics.Raycast(ray, out RaycastHit hitData))
+        if(Physics.Raycast(ray, out RaycastHit hitData, 1000))
         {
             WorldPosition = hitData.point;
         }
