@@ -46,7 +46,7 @@ public class ShootProjectile : MonoBehaviour
             //changes value of the bullets before sending it
             bullet.GetComponent<Bullet>().Damage = CalculateDamage();
             bullet.GetComponent<Bullet>().isCritical = isCriticalHit;
-            bullet.GetComponent<Bullet>().BulletSpeed = upgrades.projectileSpeed;
+            bullet.GetComponent<Bullet>().isRicochet = upgrades.Ricochet;
             bullet.transform.localScale = upgrades.ProjectileSize;
 
             //sends bullet in the direction the bullet is facing, bullet is facing towards cursor when fired
@@ -55,6 +55,7 @@ public class ShootProjectile : MonoBehaviour
             ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             bullet.GetComponent<Rigidbody>().velocity = ShootDirection * upgrades.projectileSpeed;
+
 
             //destorys bulet after its lifetime has passed
             Destroy(bullet, upgrades.ProjectileLifeTime);

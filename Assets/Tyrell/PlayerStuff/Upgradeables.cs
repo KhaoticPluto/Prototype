@@ -34,6 +34,8 @@ public class Upgradeables : MonoBehaviour
 
     public float PierceCountUpgraded = 0;
 
+    public bool Ricochet = false;
+
     //Player values
 
 
@@ -134,6 +136,15 @@ public class Upgradeables : MonoBehaviour
         critChance -= amount;
     }
 
+    //Ricochet
+    public void UpgradeRicochet()
+    {
+        Ricochet = true;
+    }
+    public void RemoveRicochet()
+    {
+        Ricochet = false;
+    }
 
     //*------- Gun Upgrades --------*//
 

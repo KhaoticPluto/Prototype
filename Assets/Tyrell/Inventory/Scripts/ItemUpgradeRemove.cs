@@ -60,7 +60,9 @@ public class ItemUpgradeRemove : MonoBehaviour
                 upgrade.UpgradeCritChance(amount);
                 break;
 
-
+            case ItemType.Ricochet:
+                upgrade.UpgradeRicochet();
+                break;
         }
     }
 
@@ -96,6 +98,10 @@ public class ItemUpgradeRemove : MonoBehaviour
 
             case ItemType.CritChance:
                 upgrade.RemoveCritChance(amount);
+                break;
+
+            case ItemType.Ricochet:
+                upgrade.RemoveRicochet();
                 break;
 
         }
