@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
         ItemChoice.GetComponent<ItemChoice>().EndOfWave();
         Shop = GameObject.FindWithTag("ShopManager");
         Shop.SetActive(false);
+
+
+
+
+        //find objects if not in slot
+        inventoryTransform = GameObject.FindWithTag("InventoryParent").transform;
+        mainCanvas = GameObject.FindWithTag("InventoryCanvas").transform;
+        GunInventoryTransform = GameObject.FindWithTag("GunInventory").transform;
     }
 
 
