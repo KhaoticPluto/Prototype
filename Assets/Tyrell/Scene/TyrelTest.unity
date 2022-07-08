@@ -982,6 +982,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5918471801625040909, guid: 5a18f76c6662c04498eae9170de70772, type: 3}
   m_PrefabInstance: {fileID: 5918471801988335653}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &555620930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1010372284064883625, guid: e07226586d20be94995eda99960854bd, type: 3}
+  m_PrefabInstance: {fileID: 9220581110684715377}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &560869384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5918471802543175725, guid: 5a18f76c6662c04498eae9170de70772, type: 3}
@@ -1317,7 +1328,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6612633198863433441, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
   m_PrefabInstance: {fileID: 6612633198189907103}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1372721913}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de4fe3afec26ed449b42aa9b4c63d409, type: 3}
@@ -1509,6 +1520,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5918471802786794052, guid: 5a18f76c6662c04498eae9170de70772, type: 3}
   m_PrefabInstance: {fileID: 5918471801988335653}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1372721913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6612633198863433442, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
+  m_PrefabInstance: {fileID: 6612633198189907103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1372721921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372721913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6c291e024709a40a90b86674c7fd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1410714347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5918471802861617870, guid: 5a18f76c6662c04498eae9170de70772, type: 3}
@@ -1873,6 +1901,14 @@ PrefabInstance:
     - target: {fileID: 6404949389928579497, guid: dff9de890db91034babd92332f484b8c, type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636662577993940681, guid: dff9de890db91034babd92332f484b8c, type: 3}
+      propertyPath: SpreadFactor
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636662577993940681, guid: dff9de890db91034babd92332f484b8c, type: 3}
+      propertyPath: ExplosionArea
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6636662577993940681, guid: dff9de890db91034babd92332f484b8c, type: 3}
       propertyPath: PierceCountUpgraded
@@ -2467,9 +2503,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1820732399}
     - target: {fileID: 6612633198863433441, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
+      propertyPath: itemList.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612633198863433441, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
       propertyPath: GunInventoryTransform
       value: 
       objectReference: {fileID: 1526665456}
+    - target: {fileID: 6612633198863433441, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
+      propertyPath: itemList.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4fc8c2a44c33c28409347a5c7c903e61, type: 2}
     - target: {fileID: 6612633198863433442, guid: aa19993143eaa5c4a91c4acc00dd0765, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2998,6 +3042,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5042232106629490536, guid: e07226586d20be94995eda99960854bd, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 555620930}
     - target: {fileID: 6015343534635704174, guid: e07226586d20be94995eda99960854bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

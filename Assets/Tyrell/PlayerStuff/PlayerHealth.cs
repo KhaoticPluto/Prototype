@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
         if (upgrade.Health <= 0)
         {
             Debug.Log("Player Died");
+            Analytics.instance.SendAnalytics();
             LoadSceneManager.instance.LoadGameOver();
             
         }

@@ -48,6 +48,7 @@ public enum ItemType
     SeekingProjectiles,
     ProjectilePierce,
     CritChance,
-    CritDamage
+    ImpactExplosion,
+
 
 }

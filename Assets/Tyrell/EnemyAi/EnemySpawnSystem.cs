@@ -46,7 +46,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     private void Update()
     {
-
+        manager.WavesCompleted = WaveNumber - 1;
 
 
         

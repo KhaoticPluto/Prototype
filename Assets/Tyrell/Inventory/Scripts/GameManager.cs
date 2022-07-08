@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public GameObject Shop;
     public bool ShopOpen;
 
+    public int WavesCompleted;
+
     private void Start()
     {
         Time.timeScale = 1;
