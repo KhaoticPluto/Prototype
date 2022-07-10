@@ -449,7 +449,7 @@ Transform:
   m_GameObject: {fileID: 3307521731157396062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.2, y: 0.9628582, z: 21}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 329525761}
@@ -464,7 +464,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3307521731157396062}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: eafb7e7cbbbd8804c90d56816d245071, type: 3}
 --- !u!23 &3307521731157396059
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -485,7 +485,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8633711207a22fd4c909971b9a052a13, type: 2}
+  - {fileID: 2100000, guid: 5ee741244fad7564b91bf301014d9835, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -518,8 +518,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.4894845, y: 2.453799, z: 0.9730029}
+  m_Center: {x: 0.0075882277, y: -0.010839741, z: -0.16638415}
 --- !u!195 &3307521731157396061
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -529,8 +529,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 3307521731157396062}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 1.24
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -538,8 +538,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
+  m_Height: 2.44
+  m_BaseOffset: 1.24
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &-8582391336687900752
@@ -558,7 +558,6 @@ MonoBehaviour:
   MaxHealth: 5
   AiController: {fileID: -1426208937223786598}
   randItemDrop: {fileID: 6957948385316207956}
-  eMoney: {fileID: 0}
   HealthSlider: {fileID: 2023155902}
 --- !u!114 &-1426208937223786598
 MonoBehaviour:
@@ -586,7 +585,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   alreadyAttacked: 0
   sightRange: 300
-  attackRange: 5
+  attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
   projectile: {fileID: 6671229746167309813, guid: 88908d3e6dc3ee244b51a5d3f53dbdd4, type: 3}
@@ -651,8 +650,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7696790886886248511, guid: 8117017a25526484abdb852c47dea9e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696790886886248511, guid: 8117017a25526484abdb852c47dea9e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696790886886248511, guid: 8117017a25526484abdb852c47dea9e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696790886886248511, guid: 8117017a25526484abdb852c47dea9e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.625
+      value: -1.42
       objectReference: {fileID: 0}
     - target: {fileID: 7696790886886248511, guid: 8117017a25526484abdb852c47dea9e4, type: 3}
       propertyPath: m_LocalPosition.y
