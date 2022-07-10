@@ -7,9 +7,11 @@ public class MeleeEnemy : EnemyAiController
 {
     public GameObject projectile;
     public Animator animator;
+    public Collider MeleeWeaponCollider;
 
     public override void AttackPlayer()
     {
+        MeleeWeaponCollider.enabled = true;
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
@@ -32,5 +34,12 @@ public class MeleeEnemy : EnemyAiController
 
         }
     }
+
+    public override void ResetAttack()
+    {
+        alreadyAttacked=false;
+        MeleeWeaponCollider.enabled = false;
+    }
+
 
 }

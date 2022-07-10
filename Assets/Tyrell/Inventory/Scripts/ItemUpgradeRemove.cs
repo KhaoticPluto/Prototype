@@ -63,7 +63,7 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.Ricochet:
-                upgrade.UpgradeRicochet();
+                upgrade.UpgradeRicochet(amount);
                 break;
 
             case ItemType.ImpactExplosion:
@@ -109,7 +109,7 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.Ricochet:
-                upgrade.RemoveRicochet();
+                upgrade.RemoveRicochet(amount);
                 break;
 
             case ItemType.ImpactExplosion:

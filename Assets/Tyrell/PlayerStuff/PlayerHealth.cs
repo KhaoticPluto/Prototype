@@ -32,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
     {
         upgrade.Health -= amount;
         Debug.Log("Player took damage " + amount);
+        DamagePopUp.Create(transform.position + Vector3.up, amount, false);
     }
 
     public void GainHealth(float amount)

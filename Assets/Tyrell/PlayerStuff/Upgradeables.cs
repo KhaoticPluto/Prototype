@@ -38,6 +38,7 @@ public class Upgradeables : MonoBehaviour
     public float PierceCountUpgraded = 0;
 
     public bool Ricochet = false;
+    public int ricochetCountUpgraded = 0;
 
     public float ExplosionArea = 0;
     public int explosiveCountUpgraded = 0;
@@ -144,13 +145,15 @@ public class Upgradeables : MonoBehaviour
     }
 
     //Ricochet
-    public void UpgradeRicochet()
+    public void UpgradeRicochet(float amount)
     {
         Ricochet = true;
+        ricochetCountUpgraded += (int)amount;
     }
-    public void RemoveRicochet()
+    public void RemoveRicochet(float amount)
     {
         Ricochet = false;
+        ricochetCountUpgraded -= (int)amount;
     }
 
     //Impact Explosion

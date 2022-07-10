@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public float explosiveArea = 0;
 
     int pierceCount = 0;
-
+    int ricochetCount = 0;
 
     public bool isCritical;
     public bool isRicochet;
@@ -54,12 +54,7 @@ public class Bullet : MonoBehaviour
                 Debug.Log("checkingEnemies");
                 CheckForEnemies();
             }
-            if (pierceCount > Upgradeables.instance.PierceCountUpgraded)
-            {
-                Destroy(gameObject);
-                pierceCount = 0;
-
-            }
+            
             
 
 
@@ -68,12 +63,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-
+        ricochetCount++;
+        Debug.Log(ricochetCount);
         if (collision.gameObject.tag == "Enemy")
         {
             
-            pierceCount++;
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y * 3, collision.gameObject.transform.position.z);
 
@@ -84,7 +78,7 @@ public class Bullet : MonoBehaviour
             {
                 CheckForEnemies();
             }
-
+            
 
 
         }
@@ -111,8 +105,21 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (ricochetCount > Upgradeables.instance.ricochetCountUpgraded)
+        {
+            Destroy(gameObject);
+            ricochetCount = 0;
+        }
+        if (pierceCount > Upgradeables.instance.PierceCountUpgraded)
+        {
+            Destroy(gameObject);
+            pierceCount = 0;
 
-    
+        }
+    }
+
 
 
 

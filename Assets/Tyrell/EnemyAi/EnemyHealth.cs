@@ -10,7 +10,6 @@ public class EnemyHealth : MonoBehaviour
 
     public EnemyAiController AiController;
     public EnemyRandomsDropItem randItemDrop;
-    public EnemyMoney eMoney;
 
     public Slider HealthSlider;
 
