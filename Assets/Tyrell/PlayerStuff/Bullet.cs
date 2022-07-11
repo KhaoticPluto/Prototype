@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private LayerMask WhatIsEnemy;
 
     public GameObject Explosion;
-    int damageSpawn;
+    float damageSpawn;
 
 
 
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
     {
         ricochet.enabled = isRicochet;
         Pierce.enabled = !isRicochet;
-        damageSpawn = Random.Range(1, 2);
+        
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -42,12 +42,11 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            
+            damageSpawn = Random.Range(0, 3);
             pierceCount++;
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
-            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y * 3, collision.gameObject.transform.position.z);
+            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
-            //Transform parent = collision.gameObject.transform.GetChild(0);
             DamagePopUp.Create(enemyPos, Damage, isCritical);
             if (Upgradeables.instance.explosiveCountUpgraded > 0)
             {
@@ -64,14 +63,13 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         ricochetCount++;
-        Debug.Log(ricochetCount);
+        //Debug.Log(ricochetCount);
         if (collision.gameObject.tag == "Enemy")
         {
-            
+            damageSpawn = Random.Range(0, 3);
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
-            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y * 3, collision.gameObject.transform.position.z);
+            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
-            //Transform parent = collision.gameObject.transform.GetChild(0);
             DamagePopUp.Create(enemyPos, Damage, isCritical);
 
             if (Upgradeables.instance.explosiveCountUpgraded > 0)
@@ -96,7 +94,7 @@ public class Bullet : MonoBehaviour
                 GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
                 explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
                 collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
-                Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y * 3, collider.gameObject.transform.position.z);
+                Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
 
                 
                 DamagePopUp.Create(enemyPos, Damage / 2, isCritical);
