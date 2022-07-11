@@ -21,6 +21,9 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI FireRateText;
     public TextMeshProUGUI NumOfProjectiles;
     public TextMeshProUGUI MoneyText;
+    public TextMeshProUGUI PriceCountText;
+    public TextMeshProUGUI RicochetCountText;
+    public TextMeshProUGUI CritChance;
 
 
     public Slider dashCoolDown;
@@ -47,6 +50,9 @@ public class HUDManager : MonoBehaviour
         ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
         FireRateText.text = "Fire Rate: " + stats._fireRate;
         NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
+        CritChance.text = "Crit Chance: " + stats.critChance + "%";
+        PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
+        RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
 
         //Dashing Text
         dashCoolDown.value = playermovement._dashCooldown;

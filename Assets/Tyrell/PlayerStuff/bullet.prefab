@@ -100,10 +100,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
+  explosiveArea: 0
   isCritical: 0
   isRicochet: 0
   ricochet: {fileID: 4069234190582742969}
   Pierce: {fileID: -552768996964659963}
+  WhatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
+  Explosion: {fileID: 3802423153891719707, guid: 44704e05c2f49374c95bd881a7185710, type: 3}
 --- !u!54 &-7997453344690166918
 Rigidbody:
   m_ObjectHideFlags: 0

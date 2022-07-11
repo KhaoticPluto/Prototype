@@ -85,15 +85,7 @@ public class movement : MonoBehaviour
     // Code for Aim/Mouse
     private void Aim()
     {
-        //// Inputs Mouse Position in Game
-        //Vector2 mouseScreenPos = Input.mousePosition;
-
-        //// Distance of the Mouse Cursor in game from Camera
-        //Vector3 mousePos = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 1000);
-
-        //// Transforms mouse world position to game Camera
-        //Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
-
+        
         // Player looks towards the mouse as it moves
         var direction = mousePos.WorldPosition - transform.position;
 
@@ -123,4 +115,15 @@ public class movement : MonoBehaviour
             yield return null;
         }
     }
+
+
+    
+
+}
+
+
+public static class Helpers
+{
+    private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+    public static Vector3 ToIso(this Vector3 _moveDirection) => _isoMatrix.MultiplyPoint3x4(_moveDirection);
 }

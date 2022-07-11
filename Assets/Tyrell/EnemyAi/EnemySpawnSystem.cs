@@ -46,7 +46,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     private void Update()
     {
-
+        manager.WavesCompleted = WaveNumber - 1;
 
 
         
@@ -108,7 +108,8 @@ public class EnemySpawnSystem : MonoBehaviour
         int enemyNum = Random.Range(0, enemyPrefabs.Length);
 
         GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
-        Enemy.GetComponent<EnemyHealth>().EnemyGainHealth(WaveNumber);
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += WaveNumber;
+        Enemy.GetComponent<EnemyHealth>().Health += WaveNumber;
         enemyList.Add(Enemy);
         
 

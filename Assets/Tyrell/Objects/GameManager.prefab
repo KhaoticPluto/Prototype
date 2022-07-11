@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1467093714}
   - component: {fileID: 5734234200986776026}
   - component: {fileID: 7816036095176410321}
+  - component: {fileID: 1372721921}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -59,6 +60,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d710076baac5dae45a12cb802bfe0654, type: 2}
   - {fileID: 11400000, guid: 4094cab9e3ace8940a0e013833f08238, type: 2}
   - {fileID: 11400000, guid: 79ebab1f3f971914588e8aa843015f6a, type: 2}
+  - {fileID: 11400000, guid: 4fc8c2a44c33c28409347a5c7c903e61, type: 2}
   itemInfoPrefab: {fileID: 2069418967156432285, guid: b7c75c5a0167a2b48bd168237bb9bd30, type: 3}
   mainCanvas: {fileID: 0}
   GunInventoryTransform: {fileID: 0}
@@ -68,6 +70,7 @@ MonoBehaviour:
   ItemChoice: {fileID: 0}
   Shop: {fileID: 0}
   ShopOpen: 0
+  WavesCompleted: 0
 --- !u!114 &6612633198863433247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a71ef1b13e5db047a3313aa2c611f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NumberOfUpgrades: 0
   upgrade: {fileID: 0}
 --- !u!114 &1467093714
 MonoBehaviour:
@@ -118,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6a849aa4694344e87e293e8f34e8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NumberOfPurchases: 0
   upgrade: {fileID: 0}
 --- !u!114 &5734234200986776026
 MonoBehaviour:
@@ -151,3 +156,15 @@ MonoBehaviour:
   Shop: {fileID: 9220581109693778005, guid: e07226586d20be94995eda99960854bd, type: 3}
   NavMesh: {fileID: 2406480605717007602, guid: 9a222061bfd5a844691b692c8629247a, type: 3}
   SpawnZones: {fileID: 5918471803410121695, guid: 5a18f76c6662c04498eae9170de70772, type: 3}
+--- !u!114 &1372721921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612633198863433442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6c291e024709a40a90b86674c7fd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

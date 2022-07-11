@@ -6,6 +6,7 @@ public class ItemUpgradeRemove : MonoBehaviour
 {
     #region singleton
     public static ItemUpgradeRemove instance;
+
     private void Awake()
     {
         if (instance == null)
@@ -13,7 +14,7 @@ public class ItemUpgradeRemove : MonoBehaviour
     }
     #endregion
 
-
+    public int NumberOfUpgrades;
     public Upgradeables upgrade;
 
     private void Start()
@@ -28,6 +29,7 @@ public class ItemUpgradeRemove : MonoBehaviour
 
     public void OnStatItemUse(ItemType itemType, float amount)
     {
+        NumberOfUpgrades++;
         upgrade.GetComponent<Upgradeables>();
         Debug.Log("Upgrade" + itemType + " by " + amount);
         switch (itemType)
@@ -61,13 +63,19 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.Ricochet:
-                upgrade.UpgradeRicochet();
+                upgrade.UpgradeRicochet(amount);
                 break;
+
+            case ItemType.ImpactExplosion:
+                upgrade.UpgradeImpactExpolosion(amount);
+                break;
+
         }
     }
 
     public void OnStatItemRemove(ItemType itemType, float amount)
     {
+        NumberOfUpgrades--;
         upgrade.GetComponent<Upgradeables>();
         Debug.Log("Remove " + itemType + " by " + amount);
         switch (itemType)
@@ -101,7 +109,11 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.Ricochet:
-                upgrade.RemoveRicochet();
+                upgrade.RemoveRicochet(amount);
+                break;
+
+            case ItemType.ImpactExplosion:
+                upgrade.RemoveImpactExplosion(amount);
                 break;
 
         }

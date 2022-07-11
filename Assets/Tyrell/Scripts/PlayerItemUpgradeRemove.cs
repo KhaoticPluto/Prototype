@@ -13,6 +13,7 @@ public class PlayerItemUpgradeRemove : MonoBehaviour
     }
     #endregion
 
+    public int NumberOfPurchases;
 
     public Upgradeables upgrade;
 
@@ -28,6 +29,7 @@ public class PlayerItemUpgradeRemove : MonoBehaviour
 
     public void OnStatItemUse(DropItemType itemType, float amount)
     {
+        NumberOfPurchases++;
         upgrade.GetComponent<Upgradeables>();
         Debug.Log("Upgrade" + itemType + " by " + amount);
         switch (itemType)

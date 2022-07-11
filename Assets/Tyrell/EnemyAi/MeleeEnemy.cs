@@ -7,21 +7,23 @@ public class MeleeEnemy : EnemyAiController
 {
     public GameObject projectile;
     public Animator animator;
+    public Collider MeleeWeaponCollider;
+
+    
 
     public override void AttackPlayer()
     {
+        //MeleeWeaponCollider.enabled = true;
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
+            ///Attack code here
             animator.SetTrigger("isAttacking");
             
-            ///Attack code here
-            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            
             ///End of attack code
             
              alreadyAttacked = true;
@@ -32,5 +34,12 @@ public class MeleeEnemy : EnemyAiController
 
         }
     }
+
+    public override void ResetAttack()
+    {
+        alreadyAttacked=false;
+        //MeleeWeaponCollider.enabled = false;
+    }
+
 
 }

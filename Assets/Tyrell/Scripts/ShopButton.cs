@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ShopButton : MonoBehaviour
 {
@@ -10,11 +11,11 @@ public class ShopButton : MonoBehaviour
     public TextMeshProUGUI CostText;
 
     public ItemDrop item;
-    
+    public Image icon;
 
     void Start()
     {
-        
+        icon.sprite = item.icon;
     }
 
 

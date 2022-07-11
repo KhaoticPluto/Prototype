@@ -13,6 +13,9 @@ public class Upgradeables : MonoBehaviour
     }
     #endregion
 
+    public int NumberOfUpgrades;
+
+
     //upgrade values
     public float projectileSpeed = 700;
 
@@ -35,6 +38,11 @@ public class Upgradeables : MonoBehaviour
     public float PierceCountUpgraded = 0;
 
     public bool Ricochet = false;
+    public int ricochetCountUpgraded = 0;
+
+    public float ExplosionArea = 0;
+    public int explosiveCountUpgraded = 0;
+
 
     //Player values
 
@@ -137,14 +145,30 @@ public class Upgradeables : MonoBehaviour
     }
 
     //Ricochet
-    public void UpgradeRicochet()
+    public void UpgradeRicochet(float amount)
     {
         Ricochet = true;
+        ricochetCountUpgraded += (int)amount;
     }
-    public void RemoveRicochet()
+    public void RemoveRicochet(float amount)
     {
         Ricochet = false;
+        ricochetCountUpgraded -= (int)amount;
     }
+
+    //Impact Explosion
+    public void UpgradeImpactExpolosion(float amount)
+    {
+        ExplosionArea += amount;
+        explosiveCountUpgraded++;
+    }
+    public void RemoveImpactExplosion(float amount)
+    {
+        ExplosionArea -= amount;
+        explosiveCountUpgraded--;
+    }
+
+
 
     //*------- Gun Upgrades --------*//
 

@@ -16,6 +16,11 @@ public class MoneyManager : MonoBehaviour
 
     public static int Money = 0;
 
+    private void Start()
+    {
+        Money = 0;
+    }
+
     private void Update()
     {
         if(Money < 0)
