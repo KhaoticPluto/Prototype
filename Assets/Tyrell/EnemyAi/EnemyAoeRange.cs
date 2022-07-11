@@ -15,7 +15,7 @@ public class EnemyAoeRange : EnemyAiController
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
-
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         if (!alreadyAttacked)
         {
             ///Attack code here

@@ -5,17 +5,34 @@ using UnityEngine;
 public class EnemyMeleeWeapon : MonoBehaviour
 {
     float Damage;
-    public float MaxDamage;
-    public float MinDamage;
+    public int MaxDamage;
+    public int MinDamage;
+    bool alreadyDamaged;
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Damage = Random.Range(10, 20);
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(Damage);
+            if (!alreadyDamaged)
+            {
+                Damage = Random.Range(MinDamage, MaxDamage);
+                collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(Damage);
+            }
+            else
+            {
+                alreadyDamaged = true;
+                StartCoroutine(AlreadyAttacked());
+            }
+            
             
 
         }
+    }
+
+    IEnumerator AlreadyAttacked()
+    {
+        yield return new WaitForSeconds(.5f);
+        alreadyDamaged = false;
+        Debug.Log(alreadyDamaged);
     }
 }
