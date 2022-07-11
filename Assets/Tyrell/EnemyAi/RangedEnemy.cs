@@ -18,9 +18,11 @@ public class RangedEnemy : EnemyAiController
         if (!alreadyAttacked)
         {
             ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            Rigidbody rb = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.transform.LookAt(player.transform);
+            rb.velocity = transform.forward * 30f;
+            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+
             ///End of attack code
 
             alreadyAttacked = true;
