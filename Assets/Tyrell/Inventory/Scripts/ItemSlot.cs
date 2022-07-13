@@ -25,17 +25,17 @@ public class ItemSlot : MonoBehaviour
 
     public void RemoveItem()
     {
+        Inventory.instance.SwitchHotBarToInventory(item);
         
-        item.Remove();
     }
 
     public void UseItem()
     {
         if (item == null || isBeingDraged == true) return;
         
-        Inventory.instance.SwitchHotbarInventory(item);
+        Inventory.instance.SwitchInventoryToHotBar(item);
 
-        item.Use();
+        
 
         
     }

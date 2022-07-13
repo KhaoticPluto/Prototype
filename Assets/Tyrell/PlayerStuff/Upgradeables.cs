@@ -13,10 +13,23 @@ public class Upgradeables : MonoBehaviour
     }
     #endregion
 
-    public int NumberOfUpgrades;
+    
 
+    //upgrade Analytics values
+    [Header("Analytics values")]
+    public int NumberOfUpgrades = 0;
+    public int ProSpeedUpgraded = 0;
+    public int ProDamageUpgraded = 0;
+    public int FireRateUpgraded = 0;
+    public int ProjectilesNumUpgraded = 0;
+    public int projectileSizeUpgraded = 0;
+    public int PierceUpgraded = 0;
+    public int CritChanceUpgraded = 0;
+    public int RicochetUpgraded = 0;
+    public int ExplosionUpgraded = 0;
 
     //upgrade values
+    [Header("Upgrade values")]
     public float projectileSpeed = 700;
 
     public float projectileDamage = 1;
@@ -46,7 +59,7 @@ public class Upgradeables : MonoBehaviour
 
     //Player values
 
-
+    [Header("Player values")]
     public float Health = 100;
     public float MaxHealth = 100;
 
@@ -62,6 +75,7 @@ public class Upgradeables : MonoBehaviour
 
 
     //scripts
+    [Header("Script Refrences")]
     public GunInventoryController gunInventoryController;
     public MoneyManager moneyManager;
 
@@ -74,21 +88,25 @@ public class Upgradeables : MonoBehaviour
     //Projectile speed upgrade
     public void UpgradeProjectileSpeed(float amount)
     {
+        ProSpeedUpgraded++;
         projectileSpeed += amount;
     }
     public void RemoveUpgradeProjectileSpeed(float amount)
     {
+        ProSpeedUpgraded--;
         projectileSpeed -= amount;
     }
 
     //Projectile Damage upgrade
     public void UpgradeProjectileDamage(float amount)
     {
+        ProDamageUpgraded++;
         projectileDamage += amount;
         BaseDamage += amount;
     }
     public void RemoveUpgradeProjectileDamage(float amount)
     {
+        ProDamageUpgraded--;
         projectileDamage -= amount;
         BaseDamage -= amount;
     }
@@ -96,40 +114,48 @@ public class Upgradeables : MonoBehaviour
     //Fire Rate upgrades
     public void UpgradeFireRate(float amount)
     {
+        FireRateUpgraded++;
         _fireRate -= amount;
     }
     public void RemoveUpgradeFireRate(float amount)
     {
+        FireRateUpgraded--;
         _fireRate += amount;
     }
 
     //increase amount of Projectiles upgrade
     public void UpgradeNumOfProjectiles(float amount)
     {
+        ProjectilesNumUpgraded++;
         NumberOfProjectile += (int)amount;
     }
     public void RemoveUpgradeNumOfProjectiles(float amount)
     {
+        ProjectilesNumUpgraded--;
         NumberOfProjectile -= (int)amount;
     }
 
     //ProjectileSize upgrades
     public void UpgradeProjectileSize(float amount)
     {
+        projectileSizeUpgraded++;
         ProjectileSize += new Vector3(amount,amount,amount);
     }
     public void RemoveProjectileSize(float amount)
     {
+        projectileSizeUpgraded--;
         ProjectileSize -= new Vector3(amount,amount,amount);
     }
 
     //Upgrade Pierce
     public void UpgradePierceCount(float amount)
     {
+        PierceUpgraded++;
         PierceCountUpgraded += amount;
     }
     public void RemovePierceCount(float amount)
     {
+        PierceUpgraded--;
         PierceCountUpgraded -= amount;
     }
 
@@ -137,21 +163,25 @@ public class Upgradeables : MonoBehaviour
     //Crit Chance
     public void UpgradeCritChance(float amount)
     {
+        CritChanceUpgraded++;
         critChance += amount;
     }
     public void RemoveCritChance(float amount)
     {
+        CritChanceUpgraded--;
         critChance -= amount;
     }
 
     //Ricochet
     public void UpgradeRicochet(float amount)
     {
+        RicochetUpgraded++;
         Ricochet = true;
         ricochetCountUpgraded += (int)amount;
     }
     public void RemoveRicochet(float amount)
     {
+        RicochetUpgraded--;
         Ricochet = false;
         ricochetCountUpgraded -= (int)amount;
     }
@@ -159,11 +189,13 @@ public class Upgradeables : MonoBehaviour
     //Impact Explosion
     public void UpgradeImpactExpolosion(float amount)
     {
+        ExplosionUpgraded++;
         ExplosionArea += amount;
         explosiveCountUpgraded++;
     }
     public void RemoveImpactExplosion(float amount)
     {
+        ExplosionUpgraded--;
         ExplosionArea -= amount;
         explosiveCountUpgraded--;
     }

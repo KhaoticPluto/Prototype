@@ -55,7 +55,7 @@ public class ItemDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         if ((RectTransformUtility.RectangleContainsScreenPoint(hotbarRect, Input.mousePosition) && !isHotbarSlot)
             || (RectTransformUtility.RectangleContainsScreenPoint(inventoryRect, Input.mousePosition) && isHotbarSlot))
         {
-            Inventory.instance.SwitchHotbarInventory(itemSlot.Item);
+            Inventory.instance.SwitchInventoryToHotBar(itemSlot.Item);
         }
 
         Destroy(currentPreview);

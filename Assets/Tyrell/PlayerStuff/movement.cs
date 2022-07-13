@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    // Camera
-    private Camera mainCam;
-    [SerializeField] private LayerMask ground;
+    #region singleton
+    public static movement instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
 
     // Player Movement Terms
     [SerializeField] public CharacterController controller;
@@ -30,10 +36,19 @@ public class movement : MonoBehaviour
     //Upgradeables
     public Upgradeables upgrade;
 
+
+    //analytics stuff
+    Vector3 lastPos;
+    float DetectMovement;
+    public int HowMuchPlayerMoved = 0;
+    public int HowMuchPlayerStill = 0;
+    float Timer = 0;
+    int DelayAmount = 1;
+
     private void Update()
     {
-        if (inventoryUIHandler.InventoryOpen == false)
-        {
+        //if (inventoryUIHandler.InventoryOpen == false)
+        //{
             //Input
             GatherInput();
             //Aim
@@ -45,24 +60,55 @@ public class movement : MonoBehaviour
                 
                 shootProjectile.ComponentShoot();
             }
+        //}
+
+        if (transform.position != lastPos)
+        {
+            //Player has Moved
+            DetectMovement = 1;
+        }
+        else
+        {
+            //Player has not Moved
+            DetectMovement = 0;
         }
 
+        
 
+        Timer += Time.deltaTime;
+
+        if(Timer > DelayAmount)
+        {
+            Timer = 0;
+            if (DetectMovement == 1)
+            {
+                HowMuchPlayerMoved++;
+                
+            }
+            if (DetectMovement == 0)
+            {
+                HowMuchPlayerStill++;
+                
+            }
+
+        }
+
+        
     }
 
     private void Start()
     {
         inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
 
-        // Cache the camera, Camera.main is an expensive operation.
-        mainCam = Camera.main;
+
     }
 
     private void FixedUpdate()
     {
+        lastPos = transform.position;
         //Movement
-            if (inventoryUIHandler.InventoryOpen == false)
-                Move();
+        //if (inventoryUIHandler.InventoryOpen == false)
+            Move();
     }
 
     // Inputs for Movement

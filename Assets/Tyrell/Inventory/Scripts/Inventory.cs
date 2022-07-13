@@ -33,7 +33,7 @@ public static Inventory instance;
 
     }
 
-    public void SwitchHotbarInventory(Item item)
+    public void SwitchInventoryToHotBar(Item item)
     {
         //inventory to hotbar, CHECK if we have enaugh space
         foreach (Item i in inventoryItemList)
@@ -68,6 +68,22 @@ public static Inventory instance;
             }
         }
 
+    }
+
+    public void SwitchHotBarToInventory(Item item)
+    {
+        //hotbar to inventory
+        foreach (Item i in GunInventoryItemList)
+        {
+            if (i == item)
+            {
+                GunInventoryItemList.Remove(item);
+                inventoryItemList.Add(item);
+                item.Remove();
+                onItemChange.Invoke();
+                return;
+            }
+        }
     }
 
     public void AddItem(Item item)

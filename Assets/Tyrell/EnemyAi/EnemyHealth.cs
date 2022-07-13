@@ -9,7 +9,9 @@ public class EnemyHealth : MonoBehaviour
     public float MaxHealth;
 
     public EnemyAiController AiController;
-    public EnemyRandomsDropItem randItemDrop;
+
+    //randomItemDrop script
+    //public EnemyRandomsDropItem randItemDrop;
 
     public Slider HealthSlider;
 
@@ -21,8 +23,12 @@ public class EnemyHealth : MonoBehaviour
         {
             //Debug.Log("Enemy Died");
             AiController.DestroyEnemy();
-            randItemDrop.RandomlyDropItem();
+            
             MoneyManager.instance.DropMoney();
+
+            //randomItemDrop script
+            //randItemDrop.RandomlyDropItem();
+
         }
 
         if (Health > MaxHealth)
