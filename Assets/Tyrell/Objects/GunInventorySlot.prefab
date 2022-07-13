@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7177714603859189121}
   - component: {fileID: 6267514005782741355}
   - component: {fileID: 7014650917200386793}
-  - component: {fileID: 8929068615702100269}
   - component: {fileID: 5709810834274622813}
   - component: {fileID: 6543226912268969789}
+  - component: {fileID: -5507582517330810776}
   m_Layer: 5
   m_Name: GunInventorySlot
   m_TagString: Untagged
@@ -70,8 +70,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 3398fe52b4dcd6d41aacd76a00d1b9f8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8929068615702100269}
+      - m_Target: {fileID: -5507582517330810776}
         m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
         m_MethodName: RemoveItem
         m_Mode: 1
@@ -136,20 +136,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8929068615702100269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331081965036376904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f69e5e1c7f0cd4d4b9e286d2efb16339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 6267514005782741355}
-  isBeingDraged: 0
 --- !u!114 &5709810834274622813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +153,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8929068615702100269}
+        - m_Target: {fileID: -5507582517330810776}
           m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
           m_MethodName: OnCursorEnter
           m_Mode: 1
@@ -183,7 +169,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8929068615702100269}
+        - m_Target: {fileID: -5507582517330810776}
           m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
           m_MethodName: OnCursorExit
           m_Mode: 1
@@ -208,3 +194,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previewPrefab: {fileID: 1536721052074975365, guid: ec6d9d7c5589e8e42bc8bedcf5ade131, type: 3}
+--- !u!114 &-5507582517330810776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331081965036376904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4677825bae6df4e44adecf0f0ae90d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 6267514005782741355}
+  isBeingDraged: 0
+  EmptySprite: {fileID: 21300000, guid: 3398fe52b4dcd6d41aacd76a00d1b9f8, type: 3}
