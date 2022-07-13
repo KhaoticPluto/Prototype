@@ -22,12 +22,12 @@ public class _MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("TyrelTest");
     }
 
     public void OptionsGame()
     {
-
+        SceneManager.LoadScene("Controls");
     }
 
     public void QuitGame()
