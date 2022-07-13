@@ -38,20 +38,26 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
-        ItemChoice = GameObject.FindWithTag("ItemChoice");
-        Debug.Log("GameManager found " + ItemChoice);
-        ItemChoice.SetActive(true);
-        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
-        Shop = GameObject.FindWithTag("ShopManager");
-        Shop.SetActive(false);
 
+        
 
 
 
         //find objects if not in slot
-        inventoryTransform = GameObject.FindWithTag("InventoryParent").transform;
-        mainCanvas = GameObject.FindWithTag("InventoryCanvas").transform;
-        GunInventoryTransform = GameObject.FindWithTag("GunInventory").transform;
+        ItemChoice = GameObject.FindWithTag("ItemChoice");
+        Debug.Log("GameManager found " + ItemChoice);
+        ItemChoice.SetActive(true);
+        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
+
+        Shop = GameObject.FindWithTag("ShopManager");
+        Debug.Log("GameManager found " + Shop);
+        Shop.SetActive(false);
+
+        //inventoryTransform = GameObject.FindWithTag("InventoryParent").transform;
+
+        //mainCanvas = GameObject.FindWithTag("InventoryCanvas").transform;
+
+        //GunInventoryTransform = GameObject.FindWithTag("GunInventory").transform;
     }
 
 

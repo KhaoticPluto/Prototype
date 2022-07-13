@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Player Died");
             Analytics.instance.SendAnalytics();
+            Analytics.instance.GameCompletedAnalytics();
             LoadSceneManager.instance.LoadGameOver();
             
         }
