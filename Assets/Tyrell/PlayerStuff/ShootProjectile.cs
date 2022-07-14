@@ -52,7 +52,9 @@ public class ShootProjectile : MonoBehaviour
             bullet.transform.localScale = upgrades.ProjectileSize;
 
             //sends bullet in the direction the bullet is facing, bullet is facing towards cursor when fired
+            
             bullet.transform.LookAt(mousepos.WorldPosition);
+            
             Vector3 ShootDirection = bullet.transform.forward;
             ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
