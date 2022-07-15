@@ -17,6 +17,22 @@ public class PlayerItemUpgradeRemove : MonoBehaviour
 
     public Upgradeables upgrade;
 
+
+    [HideInInspector] public int InventoryItem = 0;
+    [HideInInspector] public int MaxHealthItem = 0;
+    [HideInInspector] public int HealHealthItem = 0;
+    [HideInInspector] public int SpeedItem = 0;
+    [HideInInspector] public int RandomItemItem = 0;
+    [HideInInspector] public int IncreaseMoneyItem= 0;
+    [HideInInspector] public int DashCooldownItem= 0;
+    
+
+
+
+
+
+
+
     private void Start()
     {
         if (GameObject.FindWithTag("Player") != null)
@@ -36,24 +52,31 @@ public class PlayerItemUpgradeRemove : MonoBehaviour
         {
             case DropItemType.ExtraInventorySlot:
                 upgrade.UpgradeGunInventory();
+                InventoryItem++;
                 break;
             case DropItemType.MaxHealth:
                 upgrade.UpgradeMaxHealth(amount);
+                MaxHealthItem++;
                 break;
             case DropItemType.HealHealth:
                 upgrade.HealHealth();
+                HealHealthItem++;
                 break;
             case DropItemType.Speed:
                 upgrade.UpgradeSpeed(amount);
+                SpeedItem++;
                 break;
             case DropItemType.RandomItem:
                 upgrade.RandomItem();
+                RandomItemItem++;
                 break;
             case DropItemType.IncreaseMoneyGain:
                 upgrade.UpgradeMoney(amount);
+                IncreaseMoneyItem++;
                 break;
             case DropItemType.DashCooldown:
                 upgrade.DashCooldown(amount);
+                DashCooldownItem++;
                 break;
 
 

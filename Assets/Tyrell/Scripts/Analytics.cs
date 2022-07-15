@@ -31,6 +31,19 @@ public class Analytics : MonoBehaviour
     string RicochetUpgraded = "Ricochet Upgraded";
     string ExplosionUpgraded = "Explosion Upgraded";
 
+
+    //Items
+    string InventorySizeItem = "InventorySizeItem";
+    string MaxHealthItem = "MaxHealthItem";
+    string HealHealthItem = "HealHealthItem";
+    string SpeedItem = "SpeedItem";
+    string IncreaseMoneyItem = "IncreaseMoneyItem";
+    string RandomItem = "RandomItem";
+    string DashCooldownItem = "DashCooldownItem";
+    
+
+
+
     //Player
     string PlayerMoved = "Player Has Moved";
     string PlayerStill = "Player Is Still";
@@ -57,6 +70,15 @@ public class Analytics : MonoBehaviour
         GameAnalytics.NewDesignEvent(CritChanceUpgraded, Upgradeables.instance.CritChanceUpgraded);
         GameAnalytics.NewDesignEvent(RicochetUpgraded, Upgradeables.instance.RicochetUpgraded);
         GameAnalytics.NewDesignEvent(ExplosionUpgraded, Upgradeables.instance.ExplosionUpgraded);
+
+        //Items Brought
+        GameAnalytics.NewDesignEvent(InventorySizeItem, PlayerItemUpgradeRemove.instance.InventoryItem);
+        GameAnalytics.NewDesignEvent(MaxHealthItem, PlayerItemUpgradeRemove.instance.MaxHealthItem);
+        GameAnalytics.NewDesignEvent(HealHealthItem, PlayerItemUpgradeRemove.instance.HealHealthItem);
+        GameAnalytics.NewDesignEvent(SpeedItem, PlayerItemUpgradeRemove.instance.SpeedItem);
+        GameAnalytics.NewDesignEvent(RandomItem, PlayerItemUpgradeRemove.instance.RandomItemItem);
+        GameAnalytics.NewDesignEvent(IncreaseMoneyItem, PlayerItemUpgradeRemove.instance.IncreaseMoneyItem);
+        GameAnalytics.NewDesignEvent(DashCooldownItem, PlayerItemUpgradeRemove.instance.DashCooldownItem);
 
         //player Movement
         GameAnalytics.NewDesignEvent(PlayerMoved, movement.instance.HowMuchPlayerMoved);

@@ -217,6 +217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumberOfUpgrades: 0
+  ProSpeedUpgraded: 0
+  ProDamageUpgraded: 0
+  FireRateUpgraded: 0
+  ProjectilesNumUpgraded: 0
+  projectileSizeUpgraded: 0
+  PierceUpgraded: 0
+  CritChanceUpgraded: 0
+  RicochetUpgraded: 0
+  ExplosionUpgraded: 0
   projectileSpeed: 50
   projectileDamage: 1
   BaseDamage: 1
@@ -226,7 +235,7 @@ MonoBehaviour:
   NumberOfProjectile: 1
   SpreadFactor: 0.2
   ProjectileSize: {x: 0.5, y: 0.5, z: 0.5}
-  ProjectileLifeTime: 2
+  ProjectileLifeTime: 1
   PierceCountUpgraded: 0
   Ricochet: 0
   ricochetCountUpgraded: 0
@@ -296,9 +305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e5a017aebbdc8409382f21378befb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ground:
-    serializedVersion: 2
-    m_Bits: 512
   controller: {fileID: 9165569769253607155}
   shootProjectile: {fileID: 7926215467572273495}
   _dashCooldown: 0
@@ -306,6 +312,8 @@ MonoBehaviour:
   mousePos: {fileID: 6636662577993940686}
   inventoryUIHandler: {fileID: 0}
   upgrade: {fileID: 6636662577993940681}
+  HowMuchPlayerMoved: 0
+  HowMuchPlayerStill: 0
 --- !u!143 &9165569769253607155
 CharacterController:
   m_ObjectHideFlags: 0

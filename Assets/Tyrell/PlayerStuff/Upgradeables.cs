@@ -12,21 +12,19 @@ public class Upgradeables : MonoBehaviour
             instance = this;
     }
     #endregion
-
     
 
     //upgrade Analytics values
-    [Header("Analytics values")]
-    public int NumberOfUpgrades = 0;
-    public int ProSpeedUpgraded = 0;
-    public int ProDamageUpgraded = 0;
-    public int FireRateUpgraded = 0;
-    public int ProjectilesNumUpgraded = 0;
-    public int projectileSizeUpgraded = 0;
-    public int PierceUpgraded = 0;
-    public int CritChanceUpgraded = 0;
-    public int RicochetUpgraded = 0;
-    public int ExplosionUpgraded = 0;
+    [HideInInspector] public int NumberOfUpgrades = 0;
+    [HideInInspector] public int ProSpeedUpgraded = 0;
+    [HideInInspector] public int ProDamageUpgraded = 0;
+    [HideInInspector] public int FireRateUpgraded = 0;
+    [HideInInspector] public int ProjectilesNumUpgraded = 0;
+    [HideInInspector] public int projectileSizeUpgraded = 0;
+    [HideInInspector] public int PierceUpgraded = 0;
+    [HideInInspector] public int CritChanceUpgraded = 0;
+    [HideInInspector] public int RicochetUpgraded = 0;
+    [HideInInspector] public int ExplosionUpgraded = 0;
 
     //upgrade values
     [Header("Upgrade values")]
