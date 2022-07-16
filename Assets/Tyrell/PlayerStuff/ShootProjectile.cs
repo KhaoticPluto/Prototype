@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootProjectile : MonoBehaviour
 {
 
-    public GameObject _pfBullet;
+    public GameObject[] _pfBullet;
     public Upgradeables upgrades;
 
     public MousePosition mousepos;
@@ -40,7 +40,7 @@ public class ShootProjectile : MonoBehaviour
         for (int i = 0; i < NumberOfProjectiles; i++)
         {
 
-            GameObject bullet = Instantiate(_pfBullet, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(_pfBullet[Random.Range(0,_pfBullet.Length)], transform.position, Quaternion.identity);
 
             //changes value of the bullets before sending it
             bullet.GetComponent<Bullet>().Damage = CalculateDamage();

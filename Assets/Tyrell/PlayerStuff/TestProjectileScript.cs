@@ -46,19 +46,19 @@ public class TestProjectileScript : MonoBehaviour
         {
             collided = true;
 
-            if (trails.Count > 0)
-            {
-                for (int i = 0; i < trails.Count; i++)
-                {
-                    trails[i].transform.parent = null;
-                    var ps = trails[i].GetComponent<ParticleSystem>();
-                    if (ps != null)
-                    {
-                        ps.Stop();
-                        Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                    }
-                }
-            }
+            //if (trails.Count > 0)
+            //{
+            //    for (int i = 0; i < trails.Count; i++)
+            //    {
+            //        trails[i].transform.parent = null;
+            //        var ps = trails[i].GetComponent<ParticleSystem>();
+            //        if (ps != null)
+            //        {
+            //            ps.Stop();
+            //            Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+            //        }
+            //    }
+            //}
 
 
             ContactPoint contact = co.contacts[0];
@@ -79,36 +79,36 @@ public class TestProjectileScript : MonoBehaviour
                     Destroy(hitVFX, ps.main.duration);
             }
 
-            StartCoroutine(DestroyParticle(0f));
+            //StartCoroutine(DestroyParticle(0f));
         }
     }
 
-    public IEnumerator DestroyParticle(float waitTime)
-    {
+    //public IEnumerator DestroyParticle(float waitTime)
+    //{
 
-        if (transform.childCount > 0 && waitTime != 0)
-        {
-            List<Transform> tList = new List<Transform>();
+    //    if (transform.childCount > 0 && waitTime != 0)
+    //    {
+    //        List<Transform> tList = new List<Transform>();
 
-            foreach (Transform t in transform.GetChild(0).transform)
-            {
-                tList.Add(t);
-            }
+    //        foreach (Transform t in transform.GetChild(0).transform)
+    //        {
+    //            tList.Add(t);
+    //        }
 
-            while (transform.GetChild(0).localScale.x > 0)
-            {
-                yield return new WaitForSeconds(0.01f);
-                transform.GetChild(0).localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-                for (int i = 0; i < tList.Count; i++)
-                {
-                    tList[i].localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-                }
-            }
-        }
+    //        while (transform.GetChild(0).localScale.x > 0)
+    //        {
+    //            yield return new WaitForSeconds(0.01f);
+    //            transform.GetChild(0).localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+    //            for (int i = 0; i < tList.Count; i++)
+    //            {
+    //                tList[i].localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+    //            }
+    //        }
+    //    }
 
-        yield return new WaitForSeconds(waitTime);
-        Destroy(gameObject);
-    }
+    //    yield return new WaitForSeconds(waitTime);
+    //    Destroy(gameObject);
+    //}
 
     
 }
