@@ -105,7 +105,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (ricochetCount > Upgradeables.instance.ricochetCountUpgraded)
+        if (ricochetCount > Upgradeables.instance.ricochetCountUpgraded + 1)
         {
             Destroy(gameObject);
             ricochetCount = 0;
