@@ -13,6 +13,8 @@ public class ShopButton : MonoBehaviour
     public ItemDrop item;
     public Image icon;
 
+    
+
     void Start()
     {
         icon.sprite = item.icon;

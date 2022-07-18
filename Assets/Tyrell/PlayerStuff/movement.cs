@@ -47,20 +47,18 @@ public class movement : MonoBehaviour
 
     private void Update()
     {
-        //if (inventoryUIHandler.InventoryOpen == false)
-        //{
-            //Input
-            GatherInput();
-            //Aim
-            Aim();
+        
+        //Input
+        GatherInput();
+        //Aim
+        Aim();
 
-            //Shoots projectile from shootprojectile script
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
+         //Shoots projectile from shootprojectile script
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
                 
-                shootProjectile.ComponentShoot();
-            }
-        //}
+            shootProjectile.ComponentShoot();
+        }
 
         if (transform.position != lastPos)
         {

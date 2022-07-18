@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootProjectile : MonoBehaviour
 {
 
-    public GameObject _pfBullet;
+    public GameObject[] _pfBullet;
     public Upgradeables upgrades;
 
     public MousePosition mousepos;
@@ -40,7 +40,7 @@ public class ShootProjectile : MonoBehaviour
         for (int i = 0; i < NumberOfProjectiles; i++)
         {
 
-            GameObject bullet = Instantiate(_pfBullet, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(_pfBullet[0], transform.position, Quaternion.identity);
 
             //changes value of the bullets before sending it
             bullet.GetComponent<Bullet>().Damage = CalculateDamage();
@@ -52,7 +52,9 @@ public class ShootProjectile : MonoBehaviour
             bullet.transform.localScale = upgrades.ProjectileSize;
 
             //sends bullet in the direction the bullet is facing, bullet is facing towards cursor when fired
+            
             bullet.transform.LookAt(mousepos.WorldPosition);
+            
             Vector3 ShootDirection = bullet.transform.forward;
             ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
