@@ -89,6 +89,10 @@ public class GameManager : MonoBehaviour
     {
         ItemChoice.SetActive(true);
         ItemChoice.GetComponent<ItemChoice>().EndOfWave();
+        if (ShopOpen)
+        {
+            CloseShop();
+        }
     }
 
     public void DestroyItemChoice()

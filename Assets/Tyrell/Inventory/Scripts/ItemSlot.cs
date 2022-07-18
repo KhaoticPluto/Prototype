@@ -11,6 +11,9 @@ public class ItemSlot : MonoBehaviour
 
     public Item Item => item;
 
+    
+
+
     public void AddItem(Item newItem)
     {
         item = newItem;
@@ -26,7 +29,7 @@ public class ItemSlot : MonoBehaviour
     public void RemoveItem()
     {
         Inventory.instance.SwitchHotBarToInventory(item);
-        
+        GameManager.instance.DestroyItemInfo();
     }
 
     public void UseItem()
@@ -34,7 +37,7 @@ public class ItemSlot : MonoBehaviour
         if (item == null || isBeingDraged == true) return;
         
         Inventory.instance.SwitchInventoryToHotBar(item);
-
+        GameManager.instance.DestroyItemInfo();
         
 
         

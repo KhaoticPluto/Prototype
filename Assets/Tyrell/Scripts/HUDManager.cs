@@ -27,7 +27,13 @@ public class HUDManager : MonoBehaviour
 
 
     public Slider dashCoolDown;
-    
+
+
+    //different ui parents
+    public GameObject HudParent;
+    public GameObject SettingsParent;
+    bool isPaused;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +41,8 @@ public class HUDManager : MonoBehaviour
         stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
         EnemySpawn = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawnSystem>();
         playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
-        
+        HudParent.SetActive(true);
+        SettingsParent.SetActive(false);
     }
 
     // Update is called once per frame
@@ -79,6 +86,26 @@ public class HUDManager : MonoBehaviour
             EnemySpawn.NextWaveTimer = EnemySpawn.resetTimer;
         }
 
+
+        //Settings Stuff
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                //close inventory
+                ResumeGame();
+
+            }
+            else
+            {
+                //openInventory
+                PauseGame();
+                
+            }
+        }
+
+
+
     }
 
 
@@ -87,6 +114,34 @@ public class HUDManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         NextWaveText.text = "Next Wave " + string.Format("{1:00}", minutes, seconds);
+    }
+
+    public void QuitGame()
+    {
+        LoadSceneManager.instance.QuitGame();
+
+    }
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        SettingsParent.SetActive(false);
+        HudParent.SetActive(true);
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+
+        SettingsParent?.SetActive(true);
+        HudParent.SetActive(false);
+
+    }
+
+    public void ResetGame()
+    {
+        LoadSceneManager.instance.RestartGame();
     }
 
 }

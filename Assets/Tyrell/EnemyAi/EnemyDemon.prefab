@@ -556,7 +556,6 @@ MonoBehaviour:
   Health: 5
   MaxHealth: 5
   AiController: {fileID: -1426208937223786598}
-  randItemDrop: {fileID: 0}
   HealthSlider: {fileID: 2023155902}
 --- !u!114 &-1426208937223786598
 MonoBehaviour:
@@ -657,6 +656,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4005149016521079836, guid: 5c9bdd4f635b12e43a454f1ca77addb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ee741244fad7564b91bf301014d9835, type: 2}
     - target: {fileID: 5823611493205242617, guid: 5c9bdd4f635b12e43a454f1ca77addb7, type: 3}
       propertyPath: m_Name
       value: BaseballBat
