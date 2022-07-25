@@ -81,8 +81,8 @@ public class Analytics : MonoBehaviour
         GameAnalytics.NewDesignEvent(DashCooldownItem, PlayerItemUpgradeRemove.instance.DashCooldownItem);
 
         //player Movement
-        GameAnalytics.NewDesignEvent(PlayerMoved, movement.instance.HowMuchPlayerMoved);
-        GameAnalytics.NewDesignEvent(PlayerStill, movement.instance.HowMuchPlayerStill);
+        GameAnalytics.NewDesignEvent(PlayerMoved, PlayerControllerTest.instance.HowMuchPlayerMoved);
+        GameAnalytics.NewDesignEvent(PlayerStill, PlayerControllerTest.instance.HowMuchPlayerStill);
 
     }
 

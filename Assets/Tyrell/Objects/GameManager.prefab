@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3972534601552213221}
   - component: {fileID: 1467093714}
   - component: {fileID: 5734234200986776026}
-  - component: {fileID: 7816036095176410321}
   - component: {fileID: 1372721921}
   - component: {fileID: 941961863}
   m_Layer: 0
@@ -125,6 +124,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumberOfPurchases: 0
   upgrade: {fileID: 0}
+  InventoryItem: 0
+  MaxHealthItem: 0
+  HealHealthItem: 0
+  SpeedItem: 0
+  RandomItemItem: 0
+  IncreaseMoneyItem: 0
+  DashCooldownItem: 0
 --- !u!114 &5734234200986776026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,25 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 2800000, guid: f51d88348bda9984bac2ca2caf1d3404, type: 3}
---- !u!114 &7816036095176410321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6612633198863433442}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b32cb82fa5a209641b3b32eaeed40bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 6404949389928579497, guid: dff9de890db91034babd92332f484b8c, type: 3}
-  InventoryCanvas: {fileID: 4548980009996714919, guid: 54707455c663dba41b09599532ca661c, type: 3}
-  EnemySpawner: {fileID: 7699816711054587749, guid: 85fa5c760395afe49b37937d20d1530a, type: 3}
-  Hud: {fileID: 3479037723966399463, guid: eb7eec8dda41c4c48b8ac6f574d53be9, type: 3}
-  Shop: {fileID: 9220581109693778005, guid: e07226586d20be94995eda99960854bd, type: 3}
-  NavMesh: {fileID: 2406480605717007602, guid: 9a222061bfd5a844691b692c8629247a, type: 3}
-  SpawnZones: {fileID: 5918471803410121695, guid: 5a18f76c6662c04498eae9170de70772, type: 3}
 --- !u!114 &1372721921
 MonoBehaviour:
   m_ObjectHideFlags: 0
