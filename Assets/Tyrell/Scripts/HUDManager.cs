@@ -30,7 +30,7 @@ public class HUDManager : MonoBehaviour
     //different ui parents
     public GameObject HudParent;
     public GameObject SettingsParent;
-    bool isPaused;
+    public bool isPaused;
 
 
     // Start is called before the first frame update

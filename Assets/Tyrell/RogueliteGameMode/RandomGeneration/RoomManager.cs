@@ -16,10 +16,12 @@ public class RoomManager : MonoBehaviour
 
     public Transform[] RoomSpawn;
 
+    public List<GameObject> RoomSpawnList = new List<GameObject>();
+
     public GameObject[] UpgradeRooms;
     public List<Transform> Rooms = new List<Transform>();
 
-    public int RoomNumber;
+    public int RoomNumber = 0;
 
     private void Start()
     {
@@ -29,9 +31,9 @@ public class RoomManager : MonoBehaviour
     public void SpawnUpgradeRoom()
     {
         int spawnedRoom = Random.Range(0, UpgradeRooms.Length);
-        Instantiate(UpgradeRooms[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+        Instantiate(RoomSpawnList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
         RoomNumber++;
-        
+        RoomSpawnList.RemoveAt(spawnedRoom);
     }
 
 

@@ -17,6 +17,8 @@ public class EnemySpawnSystem : MonoBehaviour
     [SerializeField]
     private int maxEnemySpawn;
 
+
+
     public bool coroutineRunning;
 
     public Transform EnemyParent;
@@ -33,7 +35,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
 
 
-    public GameManager manager;
+    public WaveGameManager manager;
 
 
     private void Start()
@@ -45,7 +47,7 @@ public class EnemySpawnSystem : MonoBehaviour
         Analytics.instance.GameStartAnalytics();
 
         //find game manager
-        manager = FindObjectOfType<GameManager>();
+        manager = FindObjectOfType<WaveGameManager>();
         manager.GetComponent<GameManager>();
     }
 
@@ -103,7 +105,22 @@ public class EnemySpawnSystem : MonoBehaviour
 
         
     }
- 
+
+
+
+    IEnumerator SpawnEnemiesWait()
+    {
+        
+        Debug.Log("spawned enemy");
+        int spawnNum = Random.Range(0, spawnZones.Length);
+        int enemyNum = Random.Range(0, enemyPrefabs.Length);
+
+        GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.RoomNumber;
+        Enemy.GetComponent<EnemyHealth>().Health += RoomManager.instance.RoomNumber;
+        enemyList.Add(Enemy);
+        yield return new WaitForSeconds(.2f);
+    }
 
     private void SpawnEnemies()
     {

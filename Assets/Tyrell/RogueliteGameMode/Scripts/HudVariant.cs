@@ -12,12 +12,55 @@ public class HudVariant : HUDManager
 
     private void Start()
     {
+        stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+
+        playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
+        HudParent.SetActive(true);
+        SettingsParent.SetActive(false);
+
         EnemySpawn = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawnSystem>();
     }
 
 
     private void Update()
     {
+        //Player Stats Text
+        HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
+        MoneyText.text = "Instant Noodles " + MoneyManager.Money;
+
+        //Gun stats texts
+        DamageText.text = "Damage: " + stats.projectileDamage;
+        ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
+        FireRateText.text = "Fire Rate: " + stats._fireRate;
+        NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
+        CritChance.text = "Crit Chance: " + stats.critChance + "%";
+        PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
+        RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
+
+        //Dashing Text
+        dashCoolDown.value = playermovement._dashCooldown;
+
+
+
+
+
+        //Settings Stuff
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                //close inventory
+                ResumeGame();
+
+            }
+            else
+            {
+                //openInventory
+                PauseGame();
+
+            }
+        }
+
         //Wave Text
         WaveText.text = "Wave : " + EnemySpawn.WaveNumber;
         if (EnemySpawn.nextWave)

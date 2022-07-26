@@ -55,7 +55,7 @@ public class Analytics : MonoBehaviour
 
     public void SendAnalytics()
     {
-        GameAnalytics.NewDesignEvent(WavesCompleted, GameManager.instance.WavesCompleted);
+        GameAnalytics.NewDesignEvent(WavesCompleted, WaveGameManager.instance.WavesCompleted);
         GameAnalytics.NewDesignEvent(UpgradesUsed, ItemUpgradeRemove.instance.NumberOfUpgrades);
         GameAnalytics.NewDesignEvent(ItemsPurchased, PlayerItemUpgradeRemove.instance.NumberOfPurchases);
 
@@ -94,12 +94,12 @@ public class Analytics : MonoBehaviour
 
     public void GameCompletedAnalytics()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, GameCompleted, GameManager.instance.WavesCompleted);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, GameCompleted, WaveGameManager.instance.WavesCompleted);
     }
 
     public void GameQuitAnalytics()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, GameQuit, GameManager.instance.WavesCompleted);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, GameQuit, WaveGameManager.instance.WavesCompleted);
 
     }
 
