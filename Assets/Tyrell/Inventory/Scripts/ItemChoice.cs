@@ -22,6 +22,13 @@ public class ItemChoice : MonoBehaviour
         }
     }
 
+    public void ShowItems()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnItems();
+        }
+    }
 
     void SpawnItems()
     {

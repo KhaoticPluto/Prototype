@@ -23,6 +23,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     public Transform EnemyParent;
 
 
+    public GameObject itemChoice;
 
 
     private void Start()
@@ -45,10 +46,16 @@ public class EnemyRoomSpawn : MonoBehaviour
             enemiesSpawned++;
         }
 
-        enemyList.RemoveAll(GameObject => GameObject == null);
     }
 
-
+    public void RemoveEnemy(GameObject enemy)
+    {
+        enemyList.Remove(enemy);
+        if (enemyList.Count <= 0)
+        {
+            ShowItems.instance.ShowItemChoice();
+        }
+    }
 
 
 
@@ -62,6 +69,7 @@ public class EnemyRoomSpawn : MonoBehaviour
         GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
         Enemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.RoomNumber;
         Enemy.GetComponent<EnemyHealth>().Health += RoomManager.instance.RoomNumber;
+        Enemy.GetComponent<EnemyAiController>().roomspawn = this;
         enemyList.Add(Enemy);
 
 

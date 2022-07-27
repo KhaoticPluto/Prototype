@@ -8,6 +8,8 @@ public class TeleportToRoom : MonoBehaviour
 
     public RoomType roomType;
 
+    [SerializeField]
+    Vector3 pos;
 
     private void OnTriggerStay(Collider other)
     {
@@ -19,10 +21,12 @@ public class TeleportToRoom : MonoBehaviour
 
                 case RoomType.Upgrade:
                     RoomManager.instance.SpawnUpgradeRoom();
+                    
                     break;
 
                 case RoomType.Shop:
-
+                    RoomManager.instance.SpawnShopRoom();
+                    
                     break;
 
                 case RoomType.Loot:
@@ -33,7 +37,7 @@ public class TeleportToRoom : MonoBehaviour
 
             
 
-            Vector3 pos = RoomManager.instance.RoomSpawn[RoomManager.instance.RoomNumber - 1].transform.position;
+            pos = RoomManager.instance.RoomSpawn[RoomManager.instance.RoomNumber - 1].transform.position;
             pos.y = 3;
 
             other.transform.position = pos;

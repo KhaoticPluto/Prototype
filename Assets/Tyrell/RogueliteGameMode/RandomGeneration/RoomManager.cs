@@ -16,10 +16,12 @@ public class RoomManager : MonoBehaviour
 
     public Transform[] RoomSpawn;
 
-    public List<GameObject> RoomSpawnList = new List<GameObject>();
+    //room prefabs
+    public List<GameObject> UpgradeRoomList = new List<GameObject>();
+    public List<GameObject> ShopRoomList = new List<GameObject>();
+    public List<GameObject> ChallengeRoomList = new List<GameObject>();
 
-    public GameObject[] UpgradeRooms;
-    public List<Transform> Rooms = new List<Transform>();
+
 
     public int RoomNumber = 0;
 
@@ -28,14 +30,35 @@ public class RoomManager : MonoBehaviour
         RoomNumber = 0;
     }
 
-    public void SpawnUpgradeRoom()
+    public void Update()
     {
-        int spawnedRoom = Random.Range(0, UpgradeRooms.Length);
-        Instantiate(RoomSpawnList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
-        RoomNumber++;
-        RoomSpawnList.RemoveAt(spawnedRoom);
+        if(RoomNumber >= 2)
+        {
+            RoomNumber = 0;
+        }
     }
 
+    public void SpawnUpgradeRoom()
+    {
+        int spawnedRoom = Random.Range(0, UpgradeRoomList.Count);
+        Instantiate(UpgradeRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+        RoomNumber++;
+        UpgradeRoomList.RemoveAt(spawnedRoom);
+    }
+
+    public void SpawnShopRoom()
+    {
+        int spawnedRoom = Random.Range(0, ShopRoomList.Count);
+        Instantiate(ShopRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+        RoomNumber++;
+        
+
+    }
+
+    public void SpawnChallengeRoom()
+    {
+
+    }
 
 
 }

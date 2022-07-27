@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2766983514429887754}
   - component: {fileID: 2766983514429887753}
   m_Layer: 5
-  m_Name: ItemToChoose
+  m_Name: WaveItemChoose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2766983514429887753}
         m_TargetAssemblyTypeName: ItemChooser, Assembly-CSharp
-        m_MethodName: ClearItems
+        m_MethodName: ClearItemChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

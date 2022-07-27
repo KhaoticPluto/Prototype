@@ -56,8 +56,14 @@ public class ItemChooser : MonoBehaviour
 
     public void ClearItemChoice()
     {
+        
         manager.GetComponent<WaveGameManager>();
         manager.DestroyItemChoice();
+        
     }
-
+    
+    public void ClearItems()
+    {
+        ShowItems.instance.DestroyItemChoice();
+    }
 }
