@@ -7,6 +7,7 @@ public class StoreManager : MonoBehaviour
     #region singleton
     public static StoreManager instance;
 
+
     private void Awake()
     {
         if (instance == null)
@@ -14,12 +15,13 @@ public class StoreManager : MonoBehaviour
     }
     #endregion
 
-
+    public GameObject Shop;
+    public float ShowShopTime = 1.5f;
 
     private void Start()
     {
-        this.gameObject.SetActive(true);
-        Time.timeScale = 0;
+        Shop.SetActive(false);
+        StartCoroutine(ShowShop());
     }
 
     public void Update()
@@ -33,10 +35,15 @@ public class StoreManager : MonoBehaviour
 
     public void CloseShop()
     {
-        this.gameObject.SetActive(false);
+        Shop.SetActive(false);
         GameManager.instance.DestroyItemInfo();
     }
 
-
+    IEnumerator ShowShop()
+    {
+        yield return new WaitForSeconds(ShowShopTime);
+        Shop.SetActive(true);
+        Time.timeScale = 0;
+    }
 
 }

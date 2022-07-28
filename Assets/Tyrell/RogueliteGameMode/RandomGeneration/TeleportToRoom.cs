@@ -11,47 +11,64 @@ public class TeleportToRoom : MonoBehaviour
     [SerializeField]
     Vector3 pos;
 
+    public Animator transition;
+    public float transitionTime = 2;
+
+    GameObject player;
+    public float playerYPos = 1;
+
+    int roomNumber;
+
+    private void Start()
+    {
+        transition = GameObject.FindWithTag("Transition").GetComponent<Animator>();
+    }
+
     private void OnTriggerStay(Collider other)
     {
         
         if (other.gameObject.tag == "Player" && !doorTouched)
         {
+            player = other.gameObject;
+
+            StartCoroutine(RoomTransition());
+
             switch (roomType)
             {
 
                 case RoomType.Upgrade:
                     RoomManager.instance.SpawnUpgradeRoom();
-                    
+
                     break;
 
                 case RoomType.Shop:
                     RoomManager.instance.SpawnShopRoom();
-                    
+
                     break;
 
                 case RoomType.Loot:
 
                     break;
             }
-
-
-            
-
-            pos = RoomManager.instance.RoomSpawn[RoomManager.instance.RoomNumber - 1].transform.position;
-            pos.y = 3;
-
-            other.transform.position = pos;
-            doorTouched = true;
-            DestroyRoom();
-            StartCoroutine(DoorReset());
         }
 
 
     }
 
-    IEnumerator DoorReset()
+    IEnumerator RoomTransition()
     {
-        yield return new WaitForSeconds(5);
+        roomNumber = RoomManager.instance.RoomNumber;
+        transition.SetTrigger("Start");
+        doorTouched = true;
+        yield return new WaitForSeconds(transitionTime);
+
+        pos = RoomManager.instance.RoomSpawn[roomNumber].transform.position;
+        pos.y = playerYPos;
+
+        player.transform.position = pos;
+        
+        DestroyRoom();
+
         doorTouched = false;
         
     }

@@ -29,7 +29,7 @@ public class WaveGameManager : MonoBehaviour
         ItemChoice.GetComponent<ItemChoice>().EndOfWave();
 
         //shop
-        shop = GameObject.FindWithTag("shopmanager");
+        shop = GameObject.FindWithTag("ShopManager");
         Debug.Log("gamemanager found " + shop);
         shop.SetActive(false);
     }
