@@ -8,14 +8,12 @@ public class HUDManager : MonoBehaviour
 {
     //Scripts
     public Upgradeables stats;
-    public EnemySpawnSystem EnemySpawn;
+    
     public movement playermovement;
     
 
     //UI Elements
-    public TextMeshProUGUI HealthText;
-    public TextMeshProUGUI WaveText;
-    public TextMeshProUGUI NextWaveText;
+    public TextMeshProUGUI HealthText;  
     public TextMeshProUGUI DamageText;
     public TextMeshProUGUI ProSpeedText;
     public TextMeshProUGUI FireRateText;
@@ -32,14 +30,14 @@ public class HUDManager : MonoBehaviour
     //different ui parents
     public GameObject HudParent;
     public GameObject SettingsParent;
-    bool isPaused;
+    public bool isPaused;
 
 
     // Start is called before the first frame update
     void Start()
     {
         stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
-        EnemySpawn = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawnSystem>();
+        
         playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
         HudParent.SetActive(true);
         SettingsParent.SetActive(false);
@@ -65,26 +63,7 @@ public class HUDManager : MonoBehaviour
         dashCoolDown.value = playermovement._dashCooldown;
         
 
-        //Wave Text
-        WaveText.text = "Wave : " + EnemySpawn.WaveNumber;
-        if (EnemySpawn.nextWave)
-        {
-
-            EnemySpawn.NextWaveTimer -= Time.deltaTime;
-            NextWaveText.gameObject.SetActive(true);
-            DisplayTime(EnemySpawn.NextWaveTimer);
-            if (EnemySpawn.showItems)
-            {
-                EnemySpawn.ShowItemChooser();
-                EnemySpawn.showItems = false;
-            }
-
-        }
-        else
-        {
-            NextWaveText.gameObject.SetActive(false);
-            EnemySpawn.NextWaveTimer = EnemySpawn.resetTimer;
-        }
+        
 
 
         //Settings Stuff
@@ -109,12 +88,7 @@ public class HUDManager : MonoBehaviour
     }
 
 
-    void DisplayTime(float timeToDisplay)
-    {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        NextWaveText.text = "Next Wave " + string.Format("{1:00}", minutes, seconds);
-    }
+    
 
     public void QuitGame()
     {

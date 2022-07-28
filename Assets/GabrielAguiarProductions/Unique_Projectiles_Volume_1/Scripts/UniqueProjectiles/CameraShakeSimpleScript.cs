@@ -1,20 +1,11 @@
 ﻿//
-//NOTES:
-//This script is used for DEMONSTRATION porpuses of the Projectiles. I recommend everyone to create their own code for their own projects.
-//This is just a basic example.
-//
-
-#pragma warning disable 0168 // variable declared but not used.
-#pragma warning disable 0219 // variable assigned but not used.
-#pragma warning disable 0414 // private field assigned but not used.
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShakeSimpleScript : MonoBehaviour {
 
-	private bool isRunning = false;
+	private bool isFiring = false;
 	private Animation anim;
 
 	void Start () {
@@ -34,7 +25,7 @@ public class CameraShakeSimpleScript : MonoBehaviour {
 	}
 
 	IEnumerator Shake (float amount, float duration){
-		isRunning = true;
+		isFiring = true;
 
 		Vector3 originalPos = transform.localPosition;
 		int counter = 0;
@@ -54,6 +45,6 @@ public class CameraShakeSimpleScript : MonoBehaviour {
 
 		transform.localPosition = originalPos;
 
-		isRunning = false;
+		isFiring = false;
 	}
 }
