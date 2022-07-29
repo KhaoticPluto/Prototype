@@ -95,8 +95,9 @@ public class EnemyAiController : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        Destroy(gameObject);
         roomspawn.RemoveEnemy(this.gameObject);
+        Destroy(this.gameObject);
+        
     }
 
     public virtual void ResetAttack()

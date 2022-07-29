@@ -23,7 +23,6 @@ public class EnemyRoomSpawn : MonoBehaviour
     public Transform EnemyParent;
 
 
-    public GameObject itemChoice;
 
 
     private void Start()

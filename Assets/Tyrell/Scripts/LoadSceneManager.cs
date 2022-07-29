@@ -35,4 +35,15 @@ public class LoadSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+    public void LoadWaveGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadRogueGame()
+    {
+        SceneManager.LoadScene(3);
+    }
+
 }
