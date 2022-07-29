@@ -34,11 +34,13 @@ public class InventoryUIHandler : MonoBehaviour
                 //close inventory
                 CloseInventory();
                 GameManager.instance.DestroyItemInfo();
+                Time.timeScale = 1;
             }
             else
             {
                 //openInventory
                 OpenInventory();
+                Time.timeScale = 0;
             }
         }
     }
