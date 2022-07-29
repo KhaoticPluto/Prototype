@@ -26,6 +26,12 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int RicochetUpgraded = 0;
     [HideInInspector] public int ExplosionUpgraded = 0;
 
+    
+
+    //gets the highest used upgrade the player is using
+    public string UpgradeUsedMost;
+    public int MostUsedUpgrade;
+
     //upgrade values
     [Header("Upgrade values")]
     public float projectileSpeed = 700;
@@ -81,6 +87,35 @@ public class Upgradeables : MonoBehaviour
     {
         gunInventoryController = FindObjectOfType<GunInventoryController>(transform);
     }
+
+
+    //Reset upgrades if lowered past lowest amount
+    private void Update()
+    {
+        MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
+        PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
+  
+
+
+        if (_fireRate <= 0.01f)
+        {
+            _fireRate = 0.1f;
+        }
+
+        if (projectileSpeed >= 160)
+        {
+            projectileSpeed = 150;
+        }
+
+        if(critChance > 50)
+        {
+            critChance = 50;
+        }
+
+    }
+
+
+
     //*------- Gun Upgrades --------*//
 
     //Projectile speed upgrade
@@ -254,20 +289,4 @@ public class Upgradeables : MonoBehaviour
     //*------- Player upgrades --------*//
 
 
-    //Reset upgrades if lowered past lowest amount
-    private void Update()
-    {
-        if(_fireRate <= 0.01f)
-        {
-            _fireRate = 0.1f;
-        }
-
-        if(projectileSpeed >= 700)
-        {
-            projectileSpeed = 600;
-        }
-
-        
-
-    }
 }
