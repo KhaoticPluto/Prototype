@@ -123,25 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &78749764 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6819999051710322940, guid: b363de8fdf666af498c2e9eac91c694e, type: 3}
-  m_PrefabInstance: {fileID: 4971498314758200682}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &78749770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78749764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9786e90e36bf70c40ad3fdb6299e62b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxDamage: 15
-  MinDamage: 10
 --- !u!1 &165089517
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +860,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2140083363}
+    - target: {fileID: 6191976338853823046, guid: b363de8fdf666af498c2e9eac91c694e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191976338853823046, guid: b363de8fdf666af498c2e9eac91c694e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191976338853823046, guid: b363de8fdf666af498c2e9eac91c694e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7318741427902670464, guid: b363de8fdf666af498c2e9eac91c694e, type: 3}
       propertyPath: m_Name
       value: ShieldandWeapon Enemy
