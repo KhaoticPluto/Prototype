@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
 
     public bool isCritical;
     public bool isRicochet;
+    public bool isPierce;
     
 
     public Collider ricochet;
@@ -59,11 +60,12 @@ public class Bullet : MonoBehaviour
 
         }
 
-        //if (collision.gameObject.tag == "Shield")
-        //{
-        //    Debug.Log("Hit");
-        //    Destroy(gameObject);
-        //}
+        if (collision.gameObject.tag == "Shield")
+        {
+            Debug.Log("Hit");
+            Destroy(gameObject);
+            //Vector3 bulletBounce = new Vector3(0, collision.gameObject.transform.position.y + 5, 0);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
