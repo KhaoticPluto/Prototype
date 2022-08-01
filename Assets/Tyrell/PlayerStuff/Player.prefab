@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 2219212401613589745}
   - component: {fileID: 7926215467572273495}
   - component: {fileID: 6636662577993940681}
-  - component: {fileID: 8613827705715989640}
   - component: {fileID: 6636662577993940683}
   - component: {fileID: 6636662577993940687}
   - component: {fileID: 6636662577993940686}
@@ -255,26 +254,6 @@ MonoBehaviour:
   dropchanceincrease: 100
   gunInventoryController: {fileID: 0}
   moneyManager: {fileID: 4563656471038277561}
---- !u!114 &8613827705715989640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404949389928579497}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb2187dd869706438d2de6907b616f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 0}
-  shootProjectile: {fileID: 7926215467572273495}
-  _dashCooldown: 3
-  _isDashing: 0
-  mousePos: {fileID: 6636662577993940686}
-  upgrade: {fileID: 6636662577993940681}
-  HowMuchPlayerMoved: 0
-  HowMuchPlayerStill: 0
 --- !u!114 &6636662577993940683
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,10 +32,7 @@ public class RoomManager : MonoBehaviour
 
     public void Update()
     {
-        if(RoomNumber >= 2)
-        {
-            RoomNumber = 0;
-        }
+        
     }
 
     public void SpawnUpgradeRoom()
@@ -59,6 +56,7 @@ public class RoomManager : MonoBehaviour
     {
 
     }
+
 
 
 }

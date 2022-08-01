@@ -10,7 +10,7 @@ public class HudVariant : HUDManager
     public TextMeshProUGUI NextWaveText;
     public TextMeshProUGUI WaveText;
 
-    private void Start()
+    public override void Start()
     {
         stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
 
@@ -22,7 +22,7 @@ public class HudVariant : HUDManager
     }
 
 
-    private void Update()
+    public override void Update()
     {
         //Player Stats Text
         HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
