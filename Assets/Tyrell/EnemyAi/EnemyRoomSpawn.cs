@@ -69,6 +69,7 @@ public class EnemyRoomSpawn : MonoBehaviour
         Enemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.RoomNumber;
         Enemy.GetComponent<EnemyHealth>().Health += RoomManager.instance.RoomNumber;
         Enemy.GetComponent<EnemyAiController>().roomspawn = this;
+        Enemy.GetComponent<EnemyAiController>().IsRogueLite = true;
         enemyList.Add(Enemy);
 
 

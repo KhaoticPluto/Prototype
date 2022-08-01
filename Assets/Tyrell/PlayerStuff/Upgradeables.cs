@@ -275,7 +275,7 @@ public class Upgradeables : MonoBehaviour
     //Give Random Item
     public void RandomItem()
     {
-        Item newItem = GameManager.instance.itemList[Random.Range(0, GameManager.instance.itemList.Count)];
+        Item newItem = GameManager.instance.WaveitemList[Random.Range(0, GameManager.instance.WaveitemList.Count)];
 
         Inventory.instance.AddItem(Instantiate(newItem));
     }

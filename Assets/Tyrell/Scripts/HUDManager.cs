@@ -34,7 +34,7 @@ public class HUDManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
         
@@ -44,7 +44,7 @@ public class HUDManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         //Player Stats Text
         HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
@@ -88,13 +88,6 @@ public class HUDManager : MonoBehaviour
     }
 
 
-    
-
-    public void QuitGame()
-    {
-        LoadSceneManager.instance.QuitGame();
-
-    }
     public void ResumeGame()
     {
         isPaused = false;
@@ -113,9 +106,5 @@ public class HUDManager : MonoBehaviour
 
     }
 
-    public void ResetGame()
-    {
-        LoadSceneManager.instance.RestartGame();
-    }
 
 }
