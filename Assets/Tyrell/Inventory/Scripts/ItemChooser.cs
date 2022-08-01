@@ -64,6 +64,6 @@ public class ItemChooser : MonoBehaviour
     
     public void ClearItems()
     {
-        ShowItems.instance.DestroyItemChoice();
+        EnemyRoomSpawn.instance.DestroyItemChoice();
     }
 }

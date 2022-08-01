@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class EnemyRoomSpawn : MonoBehaviour
 {
+    #region singleton
+    public static EnemyRoomSpawn instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
+
     [SerializeField]
     private Transform[] spawnZones; // Array filled with spawn zones transform
 
@@ -16,44 +27,42 @@ public class EnemyRoomSpawn : MonoBehaviour
     [SerializeField]
     private int maxEnemySpawn;
 
-
-    [SerializeField]
-    private int enemiesSpawned = 0;
-
     public Transform EnemyParent;
 
 
+    public GameObject itemChoice;
 
 
     private void Start()
     {
-        enemiesSpawned = 0;
+        itemChoice.SetActive(false);
 
-        //send Analytics When game starts
-        Analytics.instance.GameStartAnalytics();
         maxEnemySpawn += RoomManager.instance.RoomNumber;
-        
-        
+
+        RoomStart();
         
     }
 
-    private void Update()
+
+    public void RoomStart()
     {
-        if (enemiesSpawned < maxEnemySpawn)
+        for (int i = 0; i < maxEnemySpawn; i++)
         {
             SpawnEnemies();
-            enemiesSpawned++;
         }
-
     }
 
     public void RemoveEnemy(GameObject enemy)
     {
+        Debug.Log(enemy + "Removed");
         enemyList.Remove(enemy);
+        Debug.Log(enemyList.Count);
         if (enemyList.Count <= 0)
         {
-            ShowItems.instance.ShowItemChoice();
+            
+            ShowItemChoice();
         }
+        
     }
 
 
@@ -73,6 +82,24 @@ public class EnemyRoomSpawn : MonoBehaviour
         enemyList.Add(Enemy);
 
 
+
+    }
+
+    //Show Items After Room cleared
+
+
+
+    public void ShowItemChoice()
+    {
+        itemChoice.SetActive(true);
+        itemChoice.GetComponent<ItemChoice>().ShowItems();
+        
+    }
+
+    public void DestroyItemChoice()
+    {
+        itemChoice.GetComponent<ItemChoice>().DestoryItems();
+        itemChoice.SetActive(false);
 
     }
 }
