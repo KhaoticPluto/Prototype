@@ -17,7 +17,7 @@ public class LoadSceneManager : MonoBehaviour
 
     public void QuitGame()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(0);
     }
 
     // Restarts Game, sends it back to Start Level
@@ -28,11 +28,22 @@ public class LoadSceneManager : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(0);
     }
 
     public void LoadGameOver()
     {
         SceneManager.LoadScene(2);
     }
+
+    public void LoadWaveGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadRogueGame()
+    {
+        SceneManager.LoadScene(3);
+    }
+
 }

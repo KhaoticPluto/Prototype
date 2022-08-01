@@ -11,23 +11,18 @@ public class ItemChooser : MonoBehaviour
 
     public Image image;
 
-    public GameManager manager;
+    public WaveGameManager manager;
     
 
     private void Start()
     {
-        manager = GameObject.FindObjectOfType<GameManager>();
+        manager = GameObject.FindObjectOfType<WaveGameManager>();
         image.GetComponent<Image>();
         Item newItem = itemList[Random.Range(0, itemList.Count)];
         AddItem(newItem);
         
     }
 
-    private void Update()
-    {
-
-        
-    }
 
     public void AddItem(Item newItem)
     {
@@ -61,8 +56,14 @@ public class ItemChooser : MonoBehaviour
 
     public void ClearItemChoice()
     {
-        manager.GetComponent<GameManager>();
+        
+        manager.GetComponent<WaveGameManager>();
         manager.DestroyItemChoice();
+        
     }
-
+    
+    public void ClearItems()
+    {
+        ShowItems.instance.DestroyItemChoice();
+    }
 }

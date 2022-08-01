@@ -53,10 +53,16 @@ public class Bullet : MonoBehaviour
                 Debug.Log("checkingEnemies");
                 CheckForEnemies();
             }
-            
-            
 
 
+            
+
+        }
+
+        if (collision.gameObject.tag == "Shield")
+        {
+            Debug.Log("Hit");
+            Destroy(gameObject);
         }
     }
 
@@ -80,6 +86,8 @@ public class Bullet : MonoBehaviour
 
 
         }
+
+        
     }
 
     void CheckForEnemies()

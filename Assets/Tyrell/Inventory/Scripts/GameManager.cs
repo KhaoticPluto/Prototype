@@ -28,36 +28,15 @@ public class GameManager : MonoBehaviour
     public float moveX;
     public float moveY;
 
-    public GameObject ItemChoice;
+    
 
-    public GameObject Shop;
-    public bool ShopOpen;
-
-    public int WavesCompleted;
+    
 
     private void Start()
     {
         Time.timeScale = 1;
 
         
-
-
-
-        //find objects if not in slot
-        ItemChoice = GameObject.FindWithTag("ItemChoice");
-        Debug.Log("GameManager found " + ItemChoice);
-        ItemChoice.SetActive(true);
-        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
-
-        Shop = GameObject.FindWithTag("ShopManager");
-        Debug.Log("GameManager found " + Shop);
-        Shop.SetActive(false);
-
-        //inventoryTransform = GameObject.FindWithTag("InventoryParent").transform;
-
-        //mainCanvas = GameObject.FindWithTag("InventoryCanvas").transform;
-
-        //GunInventoryTransform = GameObject.FindWithTag("GunInventory").transform;
     }
 
 
@@ -71,36 +50,10 @@ public class GameManager : MonoBehaviour
             Inventory.instance.AddItem(Instantiate(newItem));
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (ShopOpen)
-            {
-                CloseShop();
-            }
-            else
-            {
-                
-                OpenShop();
-            }
-        }
-    }
-
-    public void ShowItemChoice()
-    {
-        ItemChoice.SetActive(true);
-        ItemChoice.GetComponent<ItemChoice>().EndOfWave();
-        if (ShopOpen)
-        {
-            CloseShop();
-        }
-    }
-
-    public void DestroyItemChoice()
-    {
-        ItemChoice.GetComponent<ItemChoice>().DestoryItems();
-        ItemChoice.SetActive(false);
         
     }
+
+    
 
     public void DisplayItemInfo(string itemName, string itemDescription, Vector2 buttonPos)
     {
@@ -124,18 +77,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OpenShop()
-    {
-        ShopOpen = true;
-        Shop.SetActive(true);
-        Time.timeScale = 0.7f;
-    }
     
-    void CloseShop()
-    {
-        ShopOpen = false;
-        Shop.SetActive(false);
-        Time.timeScale = 1;
-        DestroyItemInfo();
-    }
 }

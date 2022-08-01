@@ -4,52 +4,102 @@ using UnityEngine;
 
 public class PlayerControllerTest : MonoBehaviour
 {
+    #region singleton
+    public static PlayerControllerTest instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
     public Rigidbody _rb;
-    [SerializeField] private float _speed = 5;
     
-    private Vector3 _input;
 
     public ShootProjectile shootProjectile;
-    public Upgradeables upgrades;
 
-    public InventoryUIHandler inventoryUIHandler;
+    // Dash
+    public float _dashCooldown;
+    public bool _isDashing;
+
+    // Movement Inputs
+    private Vector3 _moveDirection;
+
+    // Mouse Position
     public MousePosition mousePos;
+
+
+    //Upgradeables
+    public Upgradeables upgrade;
+
+    //analytics stuff
+    Vector3 lastPos;
+    float DetectMovement;
+    public int HowMuchPlayerMoved = 0;
+    public int HowMuchPlayerStill = 0;
+    float Timer = 0;
+    int DelayAmount = 1;
 
     private void Start()
     {
-
+        _rb.GetComponent<Rigidbody>();
 
         shootProjectile.GetComponent<ShootProjectile>();
-        upgrades.GetComponent<Upgradeables>();
+        upgrade.GetComponent<Upgradeables>();
     }
 
     private void Update()
     {
-        if (inventoryUIHandler.InventoryOpen == false)
+        //Input
+        GatherInput();
+        //Aim
+        Aim();
+
+        //Shoots projectile from shootprojectile script
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            GatherInput();
-            Aim();
-            
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                Debug.Log("Shot");
-                shootProjectile.ComponentShoot();
-            }
+
+            shootProjectile.ComponentShoot();
         }
 
-        
+        if (transform.position != lastPos)
+        {
+            //Player has Moved
+            DetectMovement = 1;
+        }
+        else
+        {
+            //Player has not Moved
+            DetectMovement = 0;
+        }
+
+
+
+        Timer += Time.deltaTime;
+
+        if (Timer > DelayAmount)
+        {
+            Timer = 0;
+            if (DetectMovement == 1)
+            {
+                HowMuchPlayerMoved++;
+
+            }
+            if (DetectMovement == 0)
+            {
+                HowMuchPlayerStill++;
+
+            }
+
+        }
+
+
     }
 
     private void Aim()
     {
-        //// Inputs Mouse Position in Game
-        //Vector2 mouseScreenPos = Input.mousePosition;
-
-        //// Distance of the Mouse Cursor in game from Camera
-        //Vector3 mousePos = new Vector3(mouseScreenPos.x, mouseScreenPos.y, 1000);
-
-        //// Transforms mouse world position to game Camera
-        //Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
+        
 
         //// Player looks towards the mouse as it moves
         var direction = mousePos.WorldPosition - transform.position;
@@ -64,22 +114,27 @@ public class PlayerControllerTest : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (inventoryUIHandler.InventoryOpen == false)
-            Move();
+        lastPos = transform.position;
+        //Movement
+        Move();
     }
 
     private void GatherInput()
     {
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
     }
 
     
 
     private void Move()
     {
-        _rb.MovePosition(transform.position + transform.forward * _input.normalized.magnitude * _speed * Time.deltaTime);
+        _rb.MovePosition(transform.position + _moveDirection.ToIso() * upgrade.playerSpeed * Time.deltaTime);
     }
 }
 
 
-
+public static class Helpers
+{
+    private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+    public static Vector3 ToIso(this Vector3 _moveDirection) => _isoMatrix.MultiplyPoint3x4(_moveDirection);
+}

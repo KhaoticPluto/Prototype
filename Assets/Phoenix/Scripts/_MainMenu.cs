@@ -22,7 +22,11 @@ public class _MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("TyrelTest");
+        SceneManager.LoadScene(1);
+    }
+    public void StartRun()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void OptionsGame()

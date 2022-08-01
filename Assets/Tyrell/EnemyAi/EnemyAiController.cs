@@ -28,7 +28,7 @@ public class EnemyAiController : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
 
-
+    public EnemyRoomSpawn roomspawn;
 
 
     void Awake()
@@ -90,24 +90,14 @@ public class EnemyAiController : MonoBehaviour
 
     public virtual void AttackPlayer()
     {
-        ////Make sure enemy doesn't move
-        //agent.SetDestination(transform.position);
-
-        //transform.LookAt(player);
-
-        //if (!alreadyAttacked)
-        //{
-            
-
-        //    alreadyAttacked = true;
-        //    Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        //}
+        
     }
 
     public void DestroyEnemy()
     {
-        Destroy(gameObject);
-
+        roomspawn.RemoveEnemy(this.gameObject);
+        Destroy(this.gameObject);
+        
     }
 
     public virtual void ResetAttack()
