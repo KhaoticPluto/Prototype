@@ -59,11 +59,11 @@ public class Bullet : MonoBehaviour
 
         }
 
-        if (collision.gameObject.tag == "Shield")
-        {
-            Debug.Log("Hit");
-            Destroy(gameObject);
-        }
+        //if (collision.gameObject.tag == "Shield")
+        //{
+        //    Debug.Log("Hit");
+        //    Destroy(gameObject);
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
