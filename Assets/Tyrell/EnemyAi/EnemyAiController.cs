@@ -5,13 +5,15 @@ using UnityEngine.AI;
 
 public class EnemyAiController : MonoBehaviour
 {
+    //nav mesh agent that should be on the enemy
     public NavMeshAgent agent;
 
+    //players transform so enemy knows what to look for
     public Transform player;
 
+    //layermask so the ai knows what is the ground and player
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public EnemySpawnSystem enemySpawn;
 
     //Patroling
     public Vector3 walkPoint;
@@ -28,8 +30,11 @@ public class EnemyAiController : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
 
-    public EnemyRoomSpawn roomspawn;
 
+
+    //Script for the roguelite mode enemy room spawn
+    public EnemyRoomSpawn roomspawn;
+    public bool IsRogueLite = false;
 
     void Awake()
     {
@@ -39,6 +44,7 @@ public class EnemyAiController : MonoBehaviour
 
     private void Start()
     {
+        //this will find the player transform when the enemy is spawned ///very important
         if (GameObject.FindWithTag("Player") != null)
         {
             player = GameObject.FindWithTag("Player").transform;
@@ -53,15 +59,20 @@ public class EnemyAiController : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 
+
+    //patrolling state where enemy can't see player they will walk in between two set walk points
     public virtual void Patroling()
     {
+        //will search for a walk point in an area set in the inspectors walk point range
         if (!walkPointSet) SearchWalkPoint();
 
+        //will set the destination that the enemy will go to
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
@@ -71,6 +82,9 @@ public class EnemyAiController : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
+
+
+    //will look for a walk point set in the inspector
     public virtual void SearchWalkPoint()
     {
         //Calculate random point in range
@@ -83,29 +97,39 @@ public class EnemyAiController : MonoBehaviour
             walkPointSet = true;
     }
 
+    //will chase the player if in sight range
     public virtual void ChasePlayer()
     {
         agent.SetDestination(player.position);
     }
 
+
+    //will attack the player if in attack range
     public virtual void AttackPlayer()
     {
         
     }
 
+
+    //destorys enemy
     public void DestroyEnemy()
     {
-        roomspawn.RemoveEnemy(this.gameObject);
+        //only for the roguelite mode to check if it is the roguelite mode and remove from the room list
+        if(IsRogueLite == true)
+        {
+            roomspawn.RemoveEnemy(this.gameObject);
+        }
         Destroy(this.gameObject);
-        
     }
 
+    //resets the attack when called
     public virtual void ResetAttack()
     {
         alreadyAttacked = false;
     }
 
 
+    //draws gizmos that you can see in the scene view when selecting the enemy
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TAB - Open/Close Inventory
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -205,8 +205,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -394,9 +394,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: ResetGame
+      - m_Target: {fileID: 2008292481486373389}
+        m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
+        m_MethodName: LoadRogueGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1068,8 +1068,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Projectiles
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1203,8 +1203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Instant noodles: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1392,8 +1392,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+      - m_Target: {fileID: 2008292481486373389}
+        m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -1472,8 +1472,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Damge
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1761,8 +1761,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2590,6 +2590,7 @@ GameObject:
   - component: {fileID: 4851991656120314753}
   - component: {fileID: 4851991656120314752}
   - component: {fileID: 3440844263339613690}
+  - component: {fileID: 2008292481486373389}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2707,6 +2708,18 @@ MonoBehaviour:
   HudParent: {fileID: 4851991655266294447}
   SettingsParent: {fileID: 4851991656549694851}
   isPaused: 0
+--- !u!114 &2008292481486373389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851991656120314766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53530146db67e794b98c724ac43433b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4851991656190020830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,8 +2925,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Projetile Speed
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3314,10 +3327,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: ResumeGame
-        m_Mode: 1
+      - m_Target: {fileID: 4851991656549694851}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3579,8 +3592,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4114,8 +4127,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CritChance
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4249,8 +4262,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Health 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8a644bcd5d7254f45a2c16b140013b4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
