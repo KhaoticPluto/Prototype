@@ -1,50 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1921523153759057684
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7551474410668689849}
-  - component: {fileID: 678738255858135782}
-  m_Layer: 0
-  m_Name: RoomManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7551474410668689849
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921523153759057684}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51.473846, y: -80.4724, z: 101.66216}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6752933026155676845}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &678738255858135782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921523153759057684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191dee83a37f2f045a81606010ccffa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemChoice: {fileID: 3601673328858479352}
 --- !u!1 &3096400573521740483
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,12 +171,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5788219710686270721}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25, y: 15, z: 25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6752933026155676845}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8484924812478418785
 MonoBehaviour:
@@ -251,7 +206,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5a5531d7169098f45b240f04ae32e4be, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d63425d12edfe9e4db6370824ea1f29b, type: 2}
 --- !u!1 &7401202810788101246
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +219,7 @@ GameObject:
   m_Layer: 10
   m_Name: ShowerRoomV1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -285,7 +240,6 @@ Transform:
   - {fileID: 5571051448709977878}
   - {fileID: 2935392753120136266}
   - {fileID: 4165776623205252821}
-  - {fileID: 7551474410668689849}
   - {fileID: 625231978485247873}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1148,6 +1102,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: ItemChoice
+      value: 
+      objectReference: {fileID: 3601673328858479352}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
       propertyPath: itemChoice
       value: 
       objectReference: {fileID: 3601673328858479352}
@@ -1288,6 +1246,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}
@@ -1592,6 +1558,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}
       propertyPath: m_Name
       value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4311b8616202e3e46bfcf58d1f8b6940, type: 3}

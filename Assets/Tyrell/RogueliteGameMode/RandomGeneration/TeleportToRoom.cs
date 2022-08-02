@@ -15,7 +15,7 @@ public class TeleportToRoom : MonoBehaviour
     public float transitionTime = 2;
 
     GameObject player;
-    public float playerYPos = 1;
+    float playerYPos = 2;
 
     int roomNumber;
 

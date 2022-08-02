@@ -26,7 +26,7 @@ public class ShowItems : MonoBehaviour
     {
         ItemChoice.SetActive(true);
         ItemChoice.GetComponent<ItemChoice>().ShowItems();
-        
+        Debug.Log("Show Items");
     }
 
     public void DestroyItemChoice()

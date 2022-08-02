@@ -29,7 +29,7 @@ public class EnemyAiController : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-
+    public GameObject Enemy;
 
 
     //Script for the roguelite mode enemy room spawn
@@ -114,12 +114,16 @@ public class EnemyAiController : MonoBehaviour
     //destorys enemy
     public void DestroyEnemy()
     {
-        //only for the roguelite mode to check if it is the roguelite mode and remove from the room list
-        if(IsRogueLite == true)
+        if (IsRogueLite == true)
         {
-            roomspawn.RemoveEnemy(this.gameObject);
+            roomspawn.RemoveEnemy(Enemy);
         }
-        Destroy(this.gameObject);
+
+        Destroy(Enemy);
+        Debug.Log(Enemy + "enemy Destroyed");
+        //only for the roguelite mode to check if it is the roguelite mode and remove from the room list
+        
+
     }
 
     //resets the attack when called
