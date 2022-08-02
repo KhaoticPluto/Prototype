@@ -46,4 +46,8 @@ public class LoadSceneManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void LoadStartingArea()
+    {
+        SceneManager.LoadScene(4);
+    }
 }

@@ -7,32 +7,21 @@ public class LoadLevel : MonoBehaviour
 
     public Animator animator;
 
-    public void LoadWaveGame()
+    public void LoadStartingArea()
     {
-        StartCoroutine(LoadWaveLevel());
+        StartCoroutine(LoadStartingAreaAnimation());
     }
 
-    public void LoadRogueGame()
-    {
-        StartCoroutine (LoadRogueLevel());
-    }
 
-    IEnumerator LoadWaveLevel()
+
+    IEnumerator LoadStartingAreaAnimation()
     {
         animator.SetTrigger("Start");
 
         yield return new WaitForSeconds(1);
 
-        LoadSceneManager.instance.LoadWaveGame();
+        LoadSceneManager.instance.LoadStartingArea();
     }
 
-    IEnumerator LoadRogueLevel()
-    {
-        animator.SetTrigger("Start");
-
-        yield return new WaitForSeconds (1);
-
-        LoadSceneManager.instance.LoadRogueGame();
-    }
 
 }

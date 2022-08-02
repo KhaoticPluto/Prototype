@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ItemChooser : MonoBehaviour
 {
-    public List<Item> itemList = new List<Item>();
+    public ItemChoice itemChoice;
 
     public Item item;
 
@@ -18,7 +18,7 @@ public class ItemChooser : MonoBehaviour
     {
         manager = GameObject.FindObjectOfType<WaveGameManager>();
         image.GetComponent<Image>();
-        Item newItem = itemList[Random.Range(0, itemList.Count)];
+        Item newItem = itemChoice.itemList[Random.Range(0, itemChoice.itemList.Count)];
         AddItem(newItem);
         
     }
@@ -64,6 +64,6 @@ public class ItemChooser : MonoBehaviour
     
     public void ClearItems()
     {
-        EnemyRoomSpawn.instance.DestroyItemChoice();
+        ShowItems.instance.DestroyItemChoice();
     }
 }
