@@ -6,6 +6,8 @@ public class RangedEnemy : EnemyAiController
 {
     public GameObject projectile;
 
+    public float bulletVelocity = 0f;
+
     public override void AttackPlayer()
     {
         
@@ -20,7 +22,7 @@ public class RangedEnemy : EnemyAiController
             ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity).GetComponent<Rigidbody>();
             rb.transform.LookAt(player.transform);
-            rb.velocity = transform.forward * 30f;
+            rb.velocity = transform.forward * bulletVelocity;
             //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
             ///End of attack code
