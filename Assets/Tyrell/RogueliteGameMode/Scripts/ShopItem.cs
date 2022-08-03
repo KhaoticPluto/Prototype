@@ -14,10 +14,13 @@ public class ShopItem : MonoBehaviour
 
     public ItemDrop item;
     public RandomShopItem ChoseItem;
-    // Start is called before the first frame update
-    void Start()
+
+    bool playerInTrigger = false;
+
+    private void Start()
     {
-        item = ChoseItem.ChoseItemList[Random.Range(0, ChoseItem.ChoseItemList.Count)];
+        
+
         ItemCost = item.ItemCost;
 
         CostText.text = ItemCost + "";
@@ -25,14 +28,34 @@ public class ShopItem : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if(other.gameObject.tag == "Player")
+        {
+            ChoseItem.ShowBuyText();
+            playerInTrigger = true;   
+        }
+
+        
+    }
+
+
+    private void Update()
+    {
+        if (playerInTrigger & Input.GetKeyDown(KeyCode.E))
         {
             BuyItem();
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            ChoseItem.HideBuyText();
+            playerInTrigger = false;
+        }
+    }
 
     public void BuyItem()
     {
@@ -40,7 +63,8 @@ public class ShopItem : MonoBehaviour
         {
             MoneyManager.Money -= ItemCost;
             item.Use();
-            ChoseItem.RemoveFromList(item);
+            ChoseItem.HideBuyText();
+            Destroy(this.gameObject);
 
         }
         else

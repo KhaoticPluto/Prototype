@@ -42,8 +42,7 @@ public class ShootProjectile : MonoBehaviour
 
             GameObject bullet = Instantiate(_pfBullet[0], transform.position, Quaternion.identity);
 
-            
-
+            bullet.GetComponent<Bullet>()._upgrades = upgrades;
 
             //changes value of the bullets before sending it
             bullet.GetComponent<Bullet>().Damage = CalculateDamage();

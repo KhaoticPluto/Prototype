@@ -15,6 +15,8 @@ public class ItemDrop : ScriptableObject
     public float amount;
     public int ItemCost;
 
+    
+
     public virtual void Use()
     {
         PlayerItemUpgradeRemove.instance.OnStatItemUse(dropItemType, amount);

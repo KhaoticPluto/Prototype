@@ -44,7 +44,7 @@ public class EnemySpawnSystem : MonoBehaviour
         StartWave();
 
         //send Analytics When game starts
-        Analytics.instance.GameStartAnalytics();
+        //Analytics.instance.GameStartAnalytics();
 
         //find game manager
         manager = FindObjectOfType<WaveGameManager>();

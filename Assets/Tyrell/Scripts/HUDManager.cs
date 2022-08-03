@@ -6,6 +6,9 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
+    
+    
+
     //Scripts
     public Upgradeables stats;
     
@@ -32,35 +35,46 @@ public class HUDManager : MonoBehaviour
     public GameObject SettingsParent;
     public bool isPaused;
 
-
     // Start is called before the first frame update
-    public virtual void Start()
+    public void Start()
     {
-        stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+        if(GameObject.FindWithTag("Player") != null)
+        {
+            stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+        }
+       
+        if(GameObject.FindWithTag("Player") != null)
+        {
+            playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
+        }
         
-        playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
         HudParent.SetActive(true);
         SettingsParent.SetActive(false);
+        
     }
 
     // Update is called once per frame
-    public virtual void Update()
+    public void Update()
     {
-        //Player Stats Text
-        HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
-        MoneyText.text = "Instant Noodles " + MoneyManager.Money;
+        if(stats != null && playermovement != null)
+        {
+            //Player Stats Text
+            HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
+            MoneyText.text = "Instant Noodles " + MoneyManager.Money;
 
-        //Gun stats texts
-        DamageText.text = "Damage: " + stats.projectileDamage;
-        ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
-        FireRateText.text = "Fire Rate: " + stats._fireRate;
-        NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
-        CritChance.text = "Crit Chance: " + stats.critChance + "%";
-        PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
-        RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
+            //Gun stats texts
+            DamageText.text = "Damage: " + stats.projectileDamage;
+            ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
+            FireRateText.text = "Fire Rate: " + stats._fireRate;
+            NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
+            CritChance.text = "Crit Chance: " + stats.critChance + "%";
+            PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
+            RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
 
-        //Dashing Text
-        dashCoolDown.value = playermovement._dashCooldown;
+            //Dashing Text
+            dashCoolDown.value = playermovement._dashCooldown;
+        }
+        
         
 
         
