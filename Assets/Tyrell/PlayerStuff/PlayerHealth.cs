@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player Died");
             //Analytics.instance.SendAnalytics();
             //Analytics.instance.GameCompletedAnalytics();
-            LoadSceneManager.instance.LoadGameOver();
+            LoadSceneManager.instance.LoadStartingArea();
             
         }
 
@@ -39,6 +39,12 @@ public class PlayerHealth : MonoBehaviour
     public void GainHealth(float amount)
     {
         upgrade.Health += amount;
+    }
+
+
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(2);
     }
 
 }

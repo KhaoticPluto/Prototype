@@ -29,23 +29,26 @@ public class EnemyRoomSpawn : MonoBehaviour
 
     public Transform EnemyParent;
 
-
-    public GameObject itemChoice;
-
+    private void FixedUpdate()
+    {
+        enemyList.RemoveAll(GameObject => GameObject == null);
+    }
 
     private void Start()
     {
-        itemChoice.SetActive(false);
+        
 
         maxEnemySpawn += RoomManager.instance.RoomNumber;
 
-        RoomStart();
+        StartCoroutine(WaitForPlayer());
         
     }
 
 
-    public void RoomStart()
+
+    IEnumerator WaitForPlayer()
     {
+        yield return new WaitForSeconds(2);
         for (int i = 0; i < maxEnemySpawn; i++)
         {
             SpawnEnemies();
@@ -60,7 +63,7 @@ public class EnemyRoomSpawn : MonoBehaviour
         if (enemyList.Count <= 0)
         {
             
-            ShowItemChoice();
+            ShowItems.instance.ShowItemChoice();
         }
         
     }
@@ -85,21 +88,5 @@ public class EnemyRoomSpawn : MonoBehaviour
 
     }
 
-    //Show Items After Room cleared
-
-
-
-    public void ShowItemChoice()
-    {
-        itemChoice.SetActive(true);
-        itemChoice.GetComponent<ItemChoice>().ShowItems();
-        
-    }
-
-    public void DestroyItemChoice()
-    {
-        itemChoice.GetComponent<ItemChoice>().DestoryItems();
-        itemChoice.SetActive(false);
-
-    }
+    
 }

@@ -13,6 +13,7 @@ public class ItemDrop : ScriptableObject
 
     public DropItemType dropItemType;
     public float amount;
+    public int ItemCost;
 
     public virtual void Use()
     {

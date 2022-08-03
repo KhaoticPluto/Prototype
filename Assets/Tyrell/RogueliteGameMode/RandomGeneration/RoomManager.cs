@@ -25,9 +25,24 @@ public class RoomManager : MonoBehaviour
 
     public int RoomNumber = 0;
 
+
+    //Sets Player position at start of game
+    public Transform player;
+    Vector3 pos;
+    float playerYPos = 2;
+
     private void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
+
         RoomNumber = 0;
+        
+        pos = RoomSpawn[RoomNumber].transform.position;
+        pos.y = playerYPos;
+
+        player.transform.position = pos;
+
+        SpawnUpgradeRoom();
     }
 
     public void Update()
@@ -57,6 +72,7 @@ public class RoomManager : MonoBehaviour
 
     }
 
+    
 
 
 }

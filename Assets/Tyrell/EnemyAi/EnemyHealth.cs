@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (Health <= 0)
         {
-            //Debug.Log("Enemy Died");
+            
             AiController.DestroyEnemy();
             
             MoneyManager.instance.DropMoney();
@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
     public void EnemyTakeDamage(float amount)
     {
         Health -= amount;
-        //Debug.Log("Enemy took damage " + amount);
+        
     }
 
     public void EnemyGainHealth(float amount)
