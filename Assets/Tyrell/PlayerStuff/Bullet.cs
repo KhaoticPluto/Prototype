@@ -23,13 +23,13 @@ public class Bullet : MonoBehaviour
     public GameObject Explosion;
     float damageSpawn;
 
-
+    public Upgradeables _upgrades;
 
     private void Start()
     {
         ricochet.enabled = isRicochet;
         Pierce.enabled = !isRicochet;
-        
+        _upgrades.GetComponent<Upgradeables>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
             DamagePopUp.Create(enemyPos, Damage, isCritical);
-            if (Upgradeables.instance.explosiveCountUpgraded > 0)
+            if (_upgrades.explosiveCountUpgraded > 0)
             {
                 Debug.Log("checkingEnemies");
                 CheckForEnemies();
@@ -78,7 +78,7 @@ public class Bullet : MonoBehaviour
 
             DamagePopUp.Create(enemyPos, Damage, isCritical);
 
-            if (Upgradeables.instance.explosiveCountUpgraded > 0)
+            if (_upgrades.explosiveCountUpgraded > 0)
             {
                 CheckForEnemies();
             }
@@ -113,12 +113,12 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (ricochetCount > Upgradeables.instance.ricochetCountUpgraded + 1)
+        if (ricochetCount > _upgrades.ricochetCountUpgraded + 1)
         {
             Destroy(gameObject);
             ricochetCount = 0;
         }
-        if (pierceCount > Upgradeables.instance.PierceCountUpgraded)
+        if (pierceCount > _upgrades.PierceCountUpgraded)
         {
             Destroy(gameObject);
             pierceCount = 0;

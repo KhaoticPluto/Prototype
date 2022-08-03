@@ -2,15 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
-public class HudVariant : HUDManager
+public class HudVariant : MonoBehaviour
 {
+
+
+    //Scripts
+    public Upgradeables stats;
+
+    public movement playermovement;
+
     public EnemySpawnSystem EnemySpawn;
+
+
+    //UI Elements
+    public TextMeshProUGUI HealthText;
+    public TextMeshProUGUI DamageText;
+    public TextMeshProUGUI ProSpeedText;
+    public TextMeshProUGUI FireRateText;
+    public TextMeshProUGUI NumOfProjectiles;
+    public TextMeshProUGUI MoneyText;
+    public TextMeshProUGUI PriceCountText;
+    public TextMeshProUGUI RicochetCountText;
+    public TextMeshProUGUI CritChance;
+
+    public Slider dashCoolDown;
+
+    public GameObject PopUpBuyText;
+
+    //different ui parents
+    public GameObject HudParent;
+    public GameObject SettingsParent;
+    public bool isPaused;
+
 
     public TextMeshProUGUI NextWaveText;
     public TextMeshProUGUI WaveText;
 
-    public override void Start()
+    public void Start()
     {
         stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
 
@@ -22,7 +52,7 @@ public class HudVariant : HUDManager
     }
 
 
-    public override void Update()
+    public void Update()
     {
         //Player Stats Text
         HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
@@ -81,6 +111,25 @@ public class HudVariant : HUDManager
             NextWaveText.gameObject.SetActive(false);
             EnemySpawn.NextWaveTimer = EnemySpawn.resetTimer;
         }
+    }
+
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        SettingsParent.SetActive(false);
+        HudParent.SetActive(true);
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+
+        SettingsParent?.SetActive(true);
+        HudParent.SetActive(false);
+
     }
 
     void DisplayTime(float timeToDisplay)

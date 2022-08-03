@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2128188149529391909}
   - component: {fileID: 7366966040589908208}
   - component: {fileID: 665898562121174357}
-  - component: {fileID: 4361177066878068459}
+  - component: {fileID: 6347803058306748519}
   m_Layer: 0
   m_Name: ShopItem
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5085565388122158734}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 3, z: 4.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 6322719234249269860}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &2128188149529391909
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.85, y: 6.29, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4361177066878068459
+--- !u!114 &6347803058306748519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,21 +108,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5085565388122158734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1b391e342e3e745be48b702c75c973, type: 3}
+  m_Script: {fileID: 11500000, guid: 642b0d62da787754987eca4831caff31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemCost: 0
+  ItemCost: 20
   CostText: {fileID: 8563215150875879081}
   ItemNameText: {fileID: 7917383659447840378}
-  item: {fileID: 0}
-  ChoseItem:
-  - {fileID: 11400000, guid: a67a83ca5aa5bda4e91abd1becb87bd6, type: 2}
-  - {fileID: 11400000, guid: c05caf08883161f4389d74e736ebc0df, type: 2}
-  - {fileID: 11400000, guid: 9daea12dc00a6214ca428e98dc65dbe4, type: 2}
-  - {fileID: 11400000, guid: c84417ee8b76fa84d8b4e45508cb4b26, type: 2}
-  - {fileID: 11400000, guid: 910f1e4dd607e4547a45f811f6702410, type: 2}
-  - {fileID: 11400000, guid: 568b741449e75b547a4aa3321f44296c, type: 2}
-  - {fileID: 11400000, guid: 9da463a11ae2be84ba1d116a72e1dae8, type: 2}
+  item: {fileID: 11400000, guid: 9daea12dc00a6214ca428e98dc65dbe4, type: 2}
+  ChoseItem: {fileID: 0}
 --- !u!1 &6741604506385264774
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'item cost
-
-'
+  m_text: 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -320,7 +311,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.25
+  m_fontSize: 1.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -428,9 +419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Item
-
-'
+  m_text: Heal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
