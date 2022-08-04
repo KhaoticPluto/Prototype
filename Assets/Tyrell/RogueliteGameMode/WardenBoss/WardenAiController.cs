@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAiController : MonoBehaviour
+public class WardenAiController : MonoBehaviour
 {
     //nav mesh agent that should be on the enemy
     public NavMeshAgent agent;
@@ -11,9 +11,9 @@ public class EnemyAiController : MonoBehaviour
     //players transform so enemy knows what to look for
     public Transform player;
 
+
     //layermask so the ai knows what is the ground and player
     public LayerMask whatIsGround, whatIsPlayer;
-
 
     //Patroling
     public Vector3 walkPoint;
@@ -23,24 +23,30 @@ public class EnemyAiController : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
-    
 
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange, attackRange, ChargeRange;
+    public bool playerInSightRange, playerInAttackRange, playerInChargeRange;
 
-    public GameObject Enemy;
+    bool ChargeReady = false;
+    public float TimeToCharge = 15;
+    public float NextCharge;
 
+    //AnimationPlayer
+    public WardenBossAnimation _animator;
 
-    //Script for the roguelite mode enemy room spawn
-    public EnemyRoomSpawn roomspawn;
-    public bool IsRogueLite = false;
+    //sets the animation states
+    public bool AnimationStarted = false;
+    public bool AnimationFinished = true;
+    Vector3 Lastpos;
+
 
     void Awake()
     {
-        
+
         agent = GetComponent<NavMeshAgent>();
     }
+
 
     private void Start()
     {
@@ -49,32 +55,44 @@ public class EnemyAiController : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player").transform;
         }
-        StartCoroutine(WaitBeforeAttack());
-        
+        _animator.GetComponent<WardenBossAnimation>();
+
     }
 
-    IEnumerator WaitBeforeAttack()
-    {
-        alreadyAttacked = true;
-        yield return new WaitForSeconds(1.5f);
-        alreadyAttacked = false;
-    }
 
     private void Update()
     {
+
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInChargeRange = Physics.CheckSphere(transform.position, ChargeRange, whatIsPlayer);
 
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (playerInAttackRange && playerInSightRange) WeaponSlam();
+
+        if(ChargeReady == false)
+        {
+            if (Time.time > NextCharge && TimeToCharge > 0)
+            {
+                NextCharge = Time.time + TimeToCharge;
+                ChargeReady = true;
+            }
+        }
+
+
+
+        //if (playerInChargeRange && ChargeReady)
+        //{
+        //    ChargeAttack();
+        //}
+
     }
 
 
-    //patrolling state where enemy can't see player they will walk in between two set walk points
-    public virtual void Patroling()
+    void Patroling()
     {
         //will search for a walk point in an area set in the inspectors walk point range
         if (!walkPointSet) SearchWalkPoint();
@@ -90,9 +108,7 @@ public class EnemyAiController : MonoBehaviour
             walkPointSet = false;
     }
 
-
-    //will look for a walk point set in the inspector
-    public virtual void SearchWalkPoint()
+    void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -104,41 +120,63 @@ public class EnemyAiController : MonoBehaviour
             walkPointSet = true;
     }
 
+
     //will chase the player if in sight range
-    public virtual void ChasePlayer()
+    void ChasePlayer()
     {
+        transform.LookAt(player);
         agent.SetDestination(player.position);
+
     }
 
 
-    //will attack the player if in attack range
-    public virtual void AttackPlayer()
+    void ChargeAttack()
     {
-        
-    }
-
-
-    //destorys enemy
-    public void DestroyEnemy()
-    {
-        if (IsRogueLite == true)
+        agent.SetDestination(transform.position);
+        if (!alreadyAttacked)
         {
-            roomspawn.RemoveEnemy(Enemy);
-        }
+            transform.LookAt(player);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+            
+            
 
-        Destroy(Enemy);
-        Debug.Log(Enemy + "enemy Destroyed");
-        //only for the roguelite mode to check if it is the roguelite mode and remove from the room list
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
         
+        
+    }
+
+    void WeaponSlam()
+    {
+        agent.SetDestination(transform.position);
+        if (!alreadyAttacked)
+        {
+            transform.LookAt(player);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+            
+
+
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
 
     }
 
     //resets the attack when called
-    public virtual void ResetAttack()
+    void ResetAttack()
     {
         alreadyAttacked = false;
+        
     }
 
+    public void animationFinished()
+    {
+        Lastpos = transform.position;
+        AnimationFinished = true;
+    }
+     
+ 
 
     //draws gizmos that you can see in the scene view when selecting the enemy
     private void OnDrawGizmosSelected()
@@ -147,6 +185,8 @@ public class EnemyAiController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, ChargeRange);
     }
 
 }

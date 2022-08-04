@@ -19,7 +19,10 @@ public class ShopItem : MonoBehaviour
 
     private void Start()
     {
-        
+        if(FindObjectOfType<RandomShopItem>() != null)
+        {
+            ChoseItem = FindObjectOfType<RandomShopItem>();
+        }
 
         ItemCost = item.ItemCost;
 
