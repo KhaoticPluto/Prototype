@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class WardenAiController : MonoBehaviour
 {
     //nav mesh agent that should be on the enemy
@@ -33,7 +34,8 @@ public class WardenAiController : MonoBehaviour
     public float NextCharge;
 
     //AnimationPlayer
-    public WardenBossAnimation _animator;
+    public Animator _animator;
+    public Collider MeleeWeaponCollider;
 
     //sets the animation states
     public bool AnimationStarted = false;
@@ -152,13 +154,18 @@ public class WardenAiController : MonoBehaviour
         agent.SetDestination(transform.position);
         if (!alreadyAttacked)
         {
-            transform.LookAt(player);
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             
+                ///Attack code here
+                _animator.SetTrigger("isAttacking");
 
 
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                ///End of attack code
+
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+
+
+
         }
 
     }

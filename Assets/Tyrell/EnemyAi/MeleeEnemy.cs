@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class MeleeEnemy : EnemyAiController
 {
-    public GameObject projectile;
+    
     public Animator animator;
-    public Collider MeleeWeaponCollider;
+    
 
     
 

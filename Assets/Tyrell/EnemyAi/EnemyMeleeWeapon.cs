@@ -33,6 +33,6 @@ public class EnemyMeleeWeapon : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         alreadyDamaged = false;
-        Debug.Log(alreadyDamaged);
+        
     }
 }
