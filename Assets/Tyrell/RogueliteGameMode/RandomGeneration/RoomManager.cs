@@ -31,6 +31,9 @@ public class RoomManager : MonoBehaviour
     Vector3 pos;
     float playerYPos = 2;
 
+
+    public GameObject BossRoom;
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -43,6 +46,7 @@ public class RoomManager : MonoBehaviour
         player.transform.position = pos;
 
         SpawnUpgradeRoom();
+        
     }
 
     public void Update()
@@ -52,18 +56,38 @@ public class RoomManager : MonoBehaviour
 
     public void SpawnUpgradeRoom()
     {
-        int spawnedRoom = Random.Range(0, UpgradeRoomList.Count);
-        Instantiate(UpgradeRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
-        RoomNumber++;
-        UpgradeRoomList.RemoveAt(spawnedRoom);
+        
+        if (RoomNumber <= 10)
+        {
+            int spawnedRoom = Random.Range(0, 3);
+            Instantiate(UpgradeRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+            RoomNumber++;
+            ///will remove spawned room so that it wil not spawn again
+            //UpgradeRoomList.RemoveAt(spawnedRoom);
+        }
+        else
+        {
+            SpawnBossRoom();
+        }
+        
     }
 
     public void SpawnShopRoom()
     {
-        int spawnedRoom = Random.Range(0, ShopRoomList.Count);
-        Instantiate(ShopRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
-        RoomNumber++;
-        
+        if (RoomNumber <= 10)
+        {
+            int spawnedRoom = Random.Range(0, ShopRoomList.Count);
+            Instantiate(ShopRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+            RoomNumber++;
+        }
+        else
+        {
+            SpawnBossRoom();
+
+        }
+            
+
+
 
     }
 
@@ -72,7 +96,17 @@ public class RoomManager : MonoBehaviour
 
     }
 
-    
+    public void SpawnBossRoom()
+    {
+
+        pos = RoomSpawn[RoomNumber].transform.position;
+        pos.y = playerYPos;
+
+        player.transform.position = pos;
+
+        Instantiate(BossRoom, RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+
+    }
 
 
 }

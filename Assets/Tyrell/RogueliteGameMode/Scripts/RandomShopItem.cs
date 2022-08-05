@@ -14,8 +14,11 @@ public class RandomShopItem : MonoBehaviour
 
     public GameObject PopUpBuyText;
 
+    public RandomShopItem thisScript;
+
     void Start()
     {
+        
         HideBuyText();
         for (int i = 0; i < totalCount; i++)
         {
@@ -30,10 +33,18 @@ public class RandomShopItem : MonoBehaviour
         ItemDrop newItem = ChoseItemList[Random.Range(0, ChoseItemList.Count)];
         
         Instantiate(shopItem, ShopItemSpawn[shopSpawn].transform.position, Quaternion.Euler(0,-90,0), transform.parent);
-        
+
+        Debug.Log(shopSpawn);
+
         shopSpawn++;
         shopItem.GetComponent<ShopItem>().ChoseItem = this;
+        
         shopItem.GetComponent<ShopItem>().item = newItem;
+
+        Debug.Log(shopItem.GetComponent<ShopItem>().ChoseItem);
+        Debug.Log(shopItem.GetComponent<ShopItem>().item);
+        
+
         RemoveFromList(newItem);
         
     }
