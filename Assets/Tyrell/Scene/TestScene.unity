@@ -261,6 +261,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2447511628999968622, guid: dff9de890db91034babd92332f484b8c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 4563656471038277561, guid: dff9de890db91034babd92332f484b8c, type: 3}
       propertyPath: maxAmount
       value: 5
@@ -893,6 +897,7 @@ MonoBehaviour:
   ChallengeRoomList: []
   RoomNumber: 0
   player: {fileID: 0}
+  BossRoom: {fileID: 0}
 --- !u!4 &1178534567
 Transform:
   m_ObjectHideFlags: 0
@@ -1847,6 +1852,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8521032582678749582, guid: bbb070cd338f4be42bf5ef758179cfd9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8521032583213061861, guid: bbb070cd338f4be42bf5ef758179cfd9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
