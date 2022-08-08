@@ -84,15 +84,22 @@ public class WardenAiController : MonoBehaviour
             }
         }
 
+        if (alreadyAttacked)
+        {
+            BossPause();
+        }
 
-
-        //if (playerInChargeRange && ChargeReady)
+        //if (playerInChargeRange && ChargeReady && !alreadyAttacked)
         //{
         //    ChargeAttack();
         //}
 
     }
 
+    void BossPause()
+    {
+        gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+    }
 
     void Patroling()
     {
@@ -126,7 +133,10 @@ public class WardenAiController : MonoBehaviour
     //will chase the player if in sight range
     void ChasePlayer()
     {
-        transform.LookAt(player);
+        if (!alreadyAttacked)
+        {
+            transform.LookAt(player);
+        }
         agent.SetDestination(player.position);
 
     }
@@ -152,10 +162,12 @@ public class WardenAiController : MonoBehaviour
     void WeaponSlam()
     {
         agent.SetDestination(transform.position);
+        
         if (!alreadyAttacked)
         {
             
                 ///Attack code here
+                transform.LookAt(player);
                 _animator.SetTrigger("isAttacking");
 
 
@@ -174,15 +186,10 @@ public class WardenAiController : MonoBehaviour
     void ResetAttack()
     {
         alreadyAttacked = false;
-        
+        gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+
     }
 
-    public void animationFinished()
-    {
-        Lastpos = transform.position;
-        AnimationFinished = true;
-    }
-     
  
 
     //draws gizmos that you can see in the scene view when selecting the enemy

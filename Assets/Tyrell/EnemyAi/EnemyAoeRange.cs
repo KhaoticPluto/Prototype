@@ -7,12 +7,17 @@ public class EnemyAoeRange : EnemyAiController
     public GameObject projectile;
     int ProjectilesFired = 10;
 
+    Vector3 position = new Vector3();
+    float t = 0f;
+
     public override void AttackPlayer()
     {
-
+        Vector3 offsetPlayer = player.transform.position - transform.position;
+        Vector3 dir = Vector3.Cross(offsetPlayer, Vector3.up);
+        agent.SetDestination(transform.position + dir);
 
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        //agent.SetDestination(transform.position);
 
         transform.LookAt(player);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
@@ -38,6 +43,15 @@ public class EnemyAoeRange : EnemyAiController
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 
+    }
+
+    
+
+    public override void ChasePlayer()
+    {
+        agent.SetDestination(player.position);
+        
+        
     }
 
 
