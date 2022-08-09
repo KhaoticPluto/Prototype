@@ -34,7 +34,7 @@ public class HudVariant : MonoBehaviour
     //different ui parents
     public GameObject HudParent;
     public GameObject SettingsParent;
-    public bool isPaused;
+    
 
 
     public TextMeshProUGUI NextWaveText;
@@ -77,7 +77,7 @@ public class HudVariant : MonoBehaviour
         //Settings Stuff
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (HUDManager.isPaused)
             {
                 //close inventory
                 ResumeGame();
@@ -87,6 +87,8 @@ public class HudVariant : MonoBehaviour
             {
                 //openInventory
                 PauseGame();
+                InventoryUIHandler.instance.CloseInventory();
+                WaveGameManager.instance.CloseShop();
 
             }
         }
@@ -116,7 +118,7 @@ public class HudVariant : MonoBehaviour
 
     public void ResumeGame()
     {
-        isPaused = false;
+        HUDManager.isPaused = false;
         Time.timeScale = 1;
         SettingsParent.SetActive(false);
         HudParent.SetActive(true);
@@ -124,7 +126,7 @@ public class HudVariant : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
+        HUDManager.isPaused = true;
         Time.timeScale = 0;
 
         SettingsParent?.SetActive(true);

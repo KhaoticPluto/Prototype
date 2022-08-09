@@ -153,7 +153,7 @@ public class movement : MonoBehaviour
 
         while (Time.time < startTime + upgrade._dashTime)
         {
-            controller.Move(_moveDirection * upgrade._dashSpeed * Time.deltaTime);
+            controller.Move(_moveDirection.ToIso() * upgrade._dashSpeed * Time.deltaTime);
             _dashCooldown = upgrade._dashCooldownTime;
             _isDashing = false;
             yield return null;

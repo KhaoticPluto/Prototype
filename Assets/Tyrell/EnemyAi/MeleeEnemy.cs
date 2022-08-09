@@ -65,12 +65,12 @@ public class MeleeEnemy : EnemyAiController
         Vector3 zigZagDisplacementLocal;
         if (zigZagDistance >= 25)
         {
-            Debug.Log("Vector right");
+            
             zigZagDisplacementLocal = Vector3.right * t;
         }
         else
         {
-            Debug.Log("Vector left");
+            
             zigZagDisplacementLocal = Vector3.left * t;
         }
         

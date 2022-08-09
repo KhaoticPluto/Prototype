@@ -20,6 +20,8 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> UpgradeRoomList = new List<GameObject>();
     public List<GameObject> ShopRoomList = new List<GameObject>();
     public List<GameObject> ChallengeRoomList = new List<GameObject>();
+    public List<GameObject> HallWay = new List<GameObject>();
+    public GameObject HallWayToBoss;
 
 
 
@@ -33,6 +35,7 @@ public class RoomManager : MonoBehaviour
 
 
     public GameObject BossRoom;
+    public int BossRoomNumber;
 
     private void Start()
     {
@@ -49,47 +52,46 @@ public class RoomManager : MonoBehaviour
         
     }
 
-    public void Update()
+
+    public void SpawnHallWay()
     {
-        
+        if (RoomNumber <= BossRoomNumber)
+        {
+            int spawnedRoom = Random.Range(0, HallWay.Count - 1);
+            Instantiate(HallWay[0], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+            RoomNumber++;
+        }
+        else
+        {
+            Instantiate(HallWayToBoss, RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+            RoomNumber++;
+        }
+
     }
+
 
     public void SpawnUpgradeRoom()
     {
         
-        if (RoomNumber <= 10)
-        {
-            int spawnedRoom = Random.Range(0, 3);
+            int spawnedRoom = Random.Range(0, UpgradeRoomList.Count);
             Instantiate(UpgradeRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
             RoomNumber++;
             ///will remove spawned room so that it wil not spawn again
             //UpgradeRoomList.RemoveAt(spawnedRoom);
-        }
-        else
-        {
-            SpawnBossRoom();
-        }
+        
         
     }
 
     public void SpawnShopRoom()
     {
-        if (RoomNumber <= 10)
-        {
+
             int spawnedRoom = Random.Range(0, ShopRoomList.Count);
             Instantiate(ShopRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
             RoomNumber++;
-        }
-        else
-        {
-            SpawnBossRoom();
-
-        }
             
 
-
-
     }
+
 
     public void SpawnChallengeRoom()
     {

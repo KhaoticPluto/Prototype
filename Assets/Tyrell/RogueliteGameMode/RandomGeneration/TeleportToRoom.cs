@@ -12,7 +12,7 @@ public class TeleportToRoom : MonoBehaviour
     Vector3 pos;
 
     public Animator transition;
-    public float transitionTime = 2;
+    public float transitionTime = 1;
 
     GameObject player;
     float playerYPos = 2;
