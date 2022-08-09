@@ -7,13 +7,13 @@ public class EnemyAoeRange : EnemyAiController
     public GameObject projectile;
     int ProjectilesFired = 10;
 
-    Vector3 position = new Vector3();
-    float t = 0f;
+    
 
     public override void AttackPlayer()
     {
         Vector3 offsetPlayer = player.transform.position - transform.position;
-        Vector3 dir = Vector3.Cross(offsetPlayer, Vector3.up);
+
+        Vector3 dir = Vector3.Cross(offsetPlayer, Vector3.down);
         agent.SetDestination(transform.position + dir);
 
         //Make sure enemy doesn't move
