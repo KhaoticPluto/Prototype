@@ -7,9 +7,26 @@ public class MeleeEnemy : EnemyAiController
 {
     
     public Animator animator;
-    
 
-    
+    [SerializeField]
+    private Transform agentTransform;
+
+    private float zigZagDelta = 2;
+
+    private float zigZagDistance = 30;
+
+    private void Start()
+    {
+        //this will find the player transform when the enemy is spawned ///very important
+        if (GameObject.FindWithTag("Player") != null)
+        {
+            player = GameObject.FindWithTag("Player").transform;
+        }
+        zigZagDelta = Random.Range(2, 8);
+        zigZagDistance = Random.Range(10, 40);
+
+        StartCoroutine(WaitBeforeAttack());
+    }
 
     public override void AttackPlayer()
     {
@@ -30,24 +47,33 @@ public class MeleeEnemy : EnemyAiController
              Invoke(nameof(ResetAttack), timeBetweenAttacks);
 
             
-            
+
 
         }
     }
 
-    [SerializeField]
-    private Transform agentTransform;
-
-    private float zigZagDelta = 2;
-
-    private float zigZagDistance = 30;
+    
 
     Vector3 ZigZagStrafe()
     {
+        
+
         // using sinus to generate zigzag between -1 and 1 , multiplying with some magnitude
         float t = Mathf.Sin(zigZagDelta) * zigZagDistance;
+
         // this is in local space
-        Vector3 zigZagDisplacementLocal = Vector3.right * t;
+        Vector3 zigZagDisplacementLocal;
+        if (zigZagDistance >= 25)
+        {
+            Debug.Log("Vector right");
+            zigZagDisplacementLocal = Vector3.right * t;
+        }
+        else
+        {
+            Debug.Log("Vector left");
+            zigZagDisplacementLocal = Vector3.left * t;
+        }
+        
         // this is now in world space
         Vector3 zigZagDisplacementWorld = agentTransform.TransformDirection(zigZagDisplacementLocal);
 

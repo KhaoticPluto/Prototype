@@ -53,7 +53,7 @@ public class EnemyAiController : MonoBehaviour
         
     }
 
-    IEnumerator WaitBeforeAttack()
+    public IEnumerator WaitBeforeAttack()
     {
         alreadyAttacked = true;
         yield return new WaitForSeconds(1.5f);
