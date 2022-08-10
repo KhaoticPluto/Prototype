@@ -13,6 +13,7 @@ public class EnemyMeleeWeapon : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("Wareden Hits");
             if (!alreadyDamaged)
             {
                 Damage = Random.Range(MinDamage, MaxDamage);
@@ -20,6 +21,7 @@ public class EnemyMeleeWeapon : MonoBehaviour
             }
             else
             {
+                Debug.Log("alreadyDamage");
                 alreadyDamaged = true;
                 StartCoroutine(AlreadyAttacked());
             }
@@ -33,6 +35,6 @@ public class EnemyMeleeWeapon : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         alreadyDamaged = false;
-        Debug.Log(alreadyDamaged);
+        
     }
 }

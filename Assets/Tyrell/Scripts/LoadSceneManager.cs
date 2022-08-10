@@ -17,7 +17,7 @@ public class LoadSceneManager : MonoBehaviour
 
     public void QuitGame()
     {
-        SceneManager.LoadScene(0);
+        Application.Quit();
     }
 
     // Restarts Game, sends it back to Start Level

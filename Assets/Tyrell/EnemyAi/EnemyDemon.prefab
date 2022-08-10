@@ -112,7 +112,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.45
-  m_Speed: 6
+  m_Speed: 8
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -165,15 +165,14 @@ MonoBehaviour:
   timeBetweenAttacks: 0.2
   alreadyAttacked: 0
   sightRange: 300
-  attackRange: 3
+  attackRange: 4
   playerInSightRange: 0
   playerInAttackRange: 0
   Enemy: {fileID: 3307521731157396062}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
-  projectile: {fileID: 6671229746167309813, guid: 88908d3e6dc3ee244b51a5d3f53dbdd4, type: 3}
   animator: {fileID: 389708015718118801}
-  MeleeWeaponCollider: {fileID: 6450384699256801205}
+  agentTransform: {fileID: 3307521731157396057}
 --- !u!1001 &4930390762244077946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,11 +374,6 @@ PrefabInstance:
 --- !u!95 &389708015718118801 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5574054629753715239, guid: 5c9bdd4f635b12e43a454f1ca77addb7, type: 3}
-  m_PrefabInstance: {fileID: 5202643037344714678}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &6450384699256801205 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 1276734151449790467, guid: 5c9bdd4f635b12e43a454f1ca77addb7, type: 3}
   m_PrefabInstance: {fileID: 5202643037344714678}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7373572319436353140 stripped

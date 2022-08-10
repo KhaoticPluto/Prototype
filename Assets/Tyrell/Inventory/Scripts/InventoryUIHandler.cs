@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class InventoryUIHandler : MonoBehaviour
 {
+    #region singleton
+    public static InventoryUIHandler instance;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
     public bool inventoryOpen = false;
     public bool InventoryOpen => inventoryOpen;
     public GameObject inventoryParent;
@@ -14,6 +23,7 @@ public class InventoryUIHandler : MonoBehaviour
     public GameObject inventorySlotPrefab;
     
     public Transform invetoryItemTransform;
+
 
 
     private void Start()
@@ -29,6 +39,7 @@ public class InventoryUIHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            //checks if game is paused or not before allowing the inventory to open
             if (inventoryOpen)
             {
                 //close inventory
@@ -38,9 +49,13 @@ public class InventoryUIHandler : MonoBehaviour
             }
             else
             {
-                //openInventory
-                OpenInventory();
-                Time.timeScale = 0;
+                if(HUDManager.isPaused == false)
+                {
+                    //openInventory
+                    OpenInventory();
+                    Time.timeScale = 0;
+                }
+                
             }
         }
     }
@@ -91,7 +106,7 @@ public class InventoryUIHandler : MonoBehaviour
         GunInventory.SetActive(true);
     }
 
-    private void CloseInventory()
+    public void CloseInventory()
     {
         inventoryOpen = false;
         inventoryParent.SetActive(false);

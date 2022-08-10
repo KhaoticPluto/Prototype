@@ -20,6 +20,8 @@ public class Bullet : MonoBehaviour
     public Collider Pierce;
 
     [SerializeField] private LayerMask WhatIsEnemy;
+    [SerializeField] private LayerMask WhatisWall;
+
 
     public GameObject Explosion;
     float damageSpawn;
@@ -35,10 +37,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        pierceCount++;
+
+
         if (collision.gameObject.tag == "Boss")
         {
             damageSpawn = Random.Range(0, 3);
-            pierceCount++;
+            
             collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
@@ -56,7 +61,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             damageSpawn = Random.Range(0, 3);
-            pierceCount++;
+            
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
@@ -72,18 +77,16 @@ public class Bullet : MonoBehaviour
 
         }
 
-        if (collision.gameObject.tag == "Shield")
+        if (pierceCount >= _upgrades.PierceCountUpgraded && collision.gameObject.tag == "Shield" || pierceCount >= _upgrades.PierceCountUpgraded && collision.gameObject.layer == WhatisWall)
         {
-            Debug.Log("Hit");
             Destroy(gameObject);
-            //Vector3 bulletBounce = new Vector3(0, collision.gameObject.transform.position.y + 5, 0);
         }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         ricochetCount++;
-        //Debug.Log(ricochetCount);
         if (collision.gameObject.tag == "Enemy")
         {
             damageSpawn = Random.Range(0, 3);

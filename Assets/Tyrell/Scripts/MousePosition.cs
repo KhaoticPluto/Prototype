@@ -8,7 +8,7 @@ public class MousePosition : MonoBehaviour
 
     public Vector3 ScreenPosition;
     public Vector3 WorldPosition;
-    
+    public LayerMask WhatIsGround;
 
     // Update is called once per frame
     void Update()
@@ -17,7 +17,7 @@ public class MousePosition : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(ScreenPosition);
 
-        if(Physics.Raycast(ray, out RaycastHit hitData, 1000))
+        if(Physics.Raycast(ray, out RaycastHit hitData, 1000, WhatIsGround))
         {
             WorldPosition = hitData.point;
         }

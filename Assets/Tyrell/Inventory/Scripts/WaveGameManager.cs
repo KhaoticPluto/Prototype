@@ -44,7 +44,7 @@ public class WaveGameManager : MonoBehaviour
             }
             else
             {
-
+                if(InventoryUIHandler.instance.inventoryOpen == false & HUDManager.isPaused == false)
                 OpenShop();
             }
         }
@@ -75,7 +75,7 @@ public class WaveGameManager : MonoBehaviour
         Time.timeScale = 0.7f;
     }
 
-    void CloseShop()
+    public void CloseShop()
     {
         ShopOpen = false;
         shop.SetActive(false);

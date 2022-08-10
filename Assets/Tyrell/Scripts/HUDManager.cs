@@ -33,7 +33,7 @@ public class HUDManager : MonoBehaviour
     //different ui parents
     public GameObject HudParent;
     public GameObject SettingsParent;
-    public bool isPaused;
+    public static bool isPaused = false;
 
     // Start is called before the first frame update
     public void Start()
@@ -93,7 +93,8 @@ public class HUDManager : MonoBehaviour
             {
                 //openInventory
                 PauseGame();
-                
+                ///closes inventory if player presses pause while inventory open
+                InventoryUIHandler.instance.CloseInventory();
             }
         }
 
