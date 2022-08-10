@@ -28,7 +28,7 @@ public class EnemyAiController : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-    bool isFrozen = false;
+    public bool isFrozen = false;
 
     public GameObject Enemy;
 
@@ -54,6 +54,20 @@ public class EnemyAiController : MonoBehaviour
         
     }
 
+
+    private void Update()
+    {
+        //Check for sight and attack range
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+        //if any of theese are true it will set the enemies state
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange && !isFrozen) AttackPlayer();
+    }
+
+    ///freeze
     public void StartFrozen(float freezeTime)
     {
         StartCoroutine(SetFrozen(freezeTime));
@@ -73,7 +87,7 @@ public class EnemyAiController : MonoBehaviour
         GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
         GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
     }
-
+    ///freeze
 
     public IEnumerator WaitBeforeAttack()
     {
@@ -81,19 +95,6 @@ public class EnemyAiController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         alreadyAttacked = false;
     }
-
-    private void Update()
-    {
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        //if any of theese are true it will set the enemies state
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange && !isFrozen) AttackPlayer();
-    }
-
 
     //patrolling state where enemy can't see player they will walk in between two set walk points
     public virtual void Patroling()

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6108678524001457307}
   - component: {fileID: 5778171210850632371}
   - component: {fileID: 5590010941385473712}
+  - component: {fileID: 8044279996421710539}
+  - component: {fileID: 249575007298253982}
   m_Layer: 10
   m_Name: Hole Wall
   m_TagString: Untagged
@@ -97,3 +99,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 25, z: 2}
   m_Center: {x: 0, y: 12.5, z: -24}
+--- !u!65 &8044279996421710539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440157404474544793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.87, y: 14.3, z: 2.0000005}
+  m_Center: {x: 2.8, y: 4.8, z: -23.26}
+--- !u!114 &249575007298253982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440157404474544793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4e84bb0db64f14da5ce46153b7f1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorTouched: 0
+  pos: {x: 0, y: 0, z: 0}
+  transition: {fileID: 0}
+  transitionTime: 1
