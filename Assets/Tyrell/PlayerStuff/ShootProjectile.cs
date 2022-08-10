@@ -41,14 +41,22 @@ public class ShootProjectile : MonoBehaviour
         {
 
             GameObject bullet = Instantiate(_pfBullet[0], transform.position, Quaternion.identity);
-
-            bullet.GetComponent<Bullet>()._upgrades = upgrades;
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript._upgrades = upgrades;
 
             //changes value of the bullets before sending it
-            bullet.GetComponent<Bullet>().Damage = CalculateDamage();
-            bullet.GetComponent<Bullet>().isCritical = isCriticalHit;
-            bullet.GetComponent<Bullet>().isRicochet = upgrades.Ricochet;
-            bullet.GetComponent<Bullet>().explosiveArea = upgrades.ExplosionArea;
+            bulletScript.Damage = CalculateDamage();
+            bulletScript.isCritical = isCriticalHit;
+            bulletScript.isRicochet = upgrades.Ricochet;
+            bulletScript.explosiveArea = upgrades.ExplosionArea;
+            bulletScript.freezeTime = upgrades.FreezeTime;
+
+
+            ///another way i got the upgrades, still teting new way to see if it works and is better.
+            //bullet.GetComponent<Bullet>().Damage = CalculateDamage();
+            //bullet.GetComponent<Bullet>().isCritical = isCriticalHit;
+            //bullet.GetComponent<Bullet>().isRicochet = upgrades.Ricochet;
+            //bullet.GetComponent<Bullet>().explosiveArea = upgrades.ExplosionArea;
             
 
             bullet.transform.localScale = upgrades.ProjectileSize;

@@ -28,6 +28,7 @@ public class EnemyAiController : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    bool isFrozen = false;
 
     public GameObject Enemy;
 
@@ -53,6 +54,27 @@ public class EnemyAiController : MonoBehaviour
         
     }
 
+    public void StartFrozen(float freezeTime)
+    {
+        StartCoroutine(SetFrozen(freezeTime));
+    }
+
+    IEnumerator SetFrozen(float FreezeTime)
+    {
+        Color customColor = new Color(0, 0.9556165f, 1, 1);
+        Debug.Log("isFrozen");
+        gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+        GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
+        GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
+        isFrozen = true;
+        yield return new WaitForSeconds(FreezeTime);
+        isFrozen = true;
+        gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+        GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
+        GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
+    }
+
+
     public IEnumerator WaitBeforeAttack()
     {
         alreadyAttacked = true;
@@ -69,7 +91,7 @@ public class EnemyAiController : MonoBehaviour
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (playerInAttackRange && playerInSightRange && !isFrozen) AttackPlayer();
     }
 
 
@@ -138,6 +160,8 @@ public class EnemyAiController : MonoBehaviour
     {
         alreadyAttacked = false;
     }
+
+
 
 
     //draws gizmos that you can see in the scene view when selecting the enemy

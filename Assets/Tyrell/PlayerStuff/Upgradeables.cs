@@ -25,6 +25,7 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int CritChanceUpgraded = 0;
     [HideInInspector] public int RicochetUpgraded = 0;
     [HideInInspector] public int ExplosionUpgraded = 0;
+    [HideInInspector] public int FreezeUpgraded = 0;
 
     
 
@@ -60,6 +61,7 @@ public class Upgradeables : MonoBehaviour
     public float ExplosionArea = 0;
     public int explosiveCountUpgraded = 0;
 
+    public float FreezeTime = 0;
 
     //Player values
 
@@ -233,7 +235,17 @@ public class Upgradeables : MonoBehaviour
         explosiveCountUpgraded--;
     }
 
-
+    //freeze
+    public void UpgradeFreezeProjectiles(float amount)
+    {
+        FreezeTime += amount;
+        FreezeUpgraded++;
+    }
+    public void RemoveFreezeProjectiles(float amount)
+    {
+        FreezeTime -= amount;
+        FreezeUpgraded--;
+    }
 
     //*------- Gun Upgrades --------*//
 

@@ -70,6 +70,10 @@ public class ItemUpgradeRemove : MonoBehaviour
                 upgrade.UpgradeImpactExpolosion(amount);
                 break;
 
+            case ItemType.Freeze:
+                upgrade.UpgradeFreezeProjectiles(amount);
+                break;
+
         }
     }
 
@@ -116,6 +120,9 @@ public class ItemUpgradeRemove : MonoBehaviour
                 upgrade.RemoveImpactExplosion(amount);
                 break;
 
+            case ItemType.Freeze:
+                upgrade.RemoveFreezeProjectiles(amount);
+                break;
         }
     }
 }

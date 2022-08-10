@@ -49,6 +49,8 @@ public enum ItemType
     ProjectilePierce,
     CritChance,
     ImpactExplosion,
+    Freeze, 
+
 
 
 }
