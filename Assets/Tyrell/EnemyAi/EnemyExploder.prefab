@@ -113,8 +113,8 @@ NavMeshAgent:
   m_Radius: 2.45
   m_Speed: 8
   m_Acceleration: 12
-  avoidancePriority: 50
-  m_AngularSpeed: 120
+  avoidancePriority: 10
+  m_AngularSpeed: 180
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 5
   MaxHealth: 5
-  AiController: {fileID: 0}
+  AiController: {fileID: 3850542442741390902}
   HealthSlider: {fileID: 1074902124127939698}
 --- !u!114 &3850542442741390902
 MonoBehaviour:
@@ -151,6 +151,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58c73f6248cecb4b81e181cdb29e6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 3307521731157396061}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  timeBetweenAttacks: 10
+  alreadyAttacked: 0
+  sightRange: 300
+  attackRange: 50
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  isFrozen: 0
+  Enemy: {fileID: 3307521731157396062}
+  roomspawn: {fileID: 0}
+  IsRogueLite: 0
+  Explosion: {fileID: 3802423153891719707, guid: 44704e05c2f49374c95bd881a7185710, type: 3}
+  explosiveArea: 10
+  explosionDamage: 20
 --- !u!1001 &4930390762244077946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,11 +219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1785815108360590979, guid: d82abdf0f0955fe47a30ce217cac7ac0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1785815108360590979, guid: d82abdf0f0955fe47a30ce217cac7ac0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1785815108360590979, guid: d82abdf0f0955fe47a30ce217cac7ac0, type: 3}
       propertyPath: m_LocalPosition.x
