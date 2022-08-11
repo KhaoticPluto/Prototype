@@ -6,12 +6,30 @@ using UnityEngine.UI;
 
 public class PerkCounter : MonoBehaviour
 {
-    public TextMeshProUGUI perkIncrease;
+    #region Waffles
+    public static PerkCounter instance;
 
-    int perks = 0;
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
+    //Script
+    public PlayerItemUpgradeRemove playerPerk;
+    //Text
+    public TextMeshProUGUI perkIncrease;
+    //Perk
+    int perks;
 
     private void Start()
     {
+        perkIncrease.text = perks.ToString();
+    }
+
+    public void AddScore()
+    {
+        //When Player gets a perk the counter increases by one
+        perks += 1;
         perkIncrease.text = perks.ToString();
     }
 }
