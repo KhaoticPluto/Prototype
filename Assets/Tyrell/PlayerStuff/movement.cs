@@ -91,7 +91,11 @@ public class movement : MonoBehaviour
 
         }
 
-        
+        lastPos = transform.position;
+        //Movement
+        //if (inventoryUIHandler.InventoryOpen == false)
+        Move();
+
     }
 
     private void Start()
@@ -103,10 +107,10 @@ public class movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lastPos = transform.position;
-        //Movement
-        //if (inventoryUIHandler.InventoryOpen == false)
-            Move();
+        //lastPos = transform.position;
+        ////Movement
+        ////if (inventoryUIHandler.InventoryOpen == false)
+        //    Move();
     }
 
     // Inputs for Movement

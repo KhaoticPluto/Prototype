@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyAoeRange : EnemyAiController
 {
     public GameObject projectile;
-    int ProjectilesFired = 10;
+    int ProjectilesFired = 5;
 
-    
+    public float projectilesSpeed;
 
     public override void AttackPlayer()
     {
@@ -21,6 +21,7 @@ public class EnemyAoeRange : EnemyAiController
 
         transform.LookAt(player);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        float projectilespread = -0.5f;
         if (!alreadyAttacked)
         {
             ///Attack code here
@@ -28,13 +29,17 @@ public class EnemyAoeRange : EnemyAiController
             {
                 Rigidbody rb = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity).GetComponent<Rigidbody>();
 
-                Vector3 ShootDirection = transform.forward;
-                ShootDirection.x += Random.Range(-0.5f, 0.5f);
-                ShootDirection.z += Random.Range(-0.5f, 0.5f);
                 
+
+                Vector3 ShootDirection = transform.forward;
+                ShootDirection.x += projectilespread;
+                ShootDirection.z += projectilespread;
+
+                projectilespread += 0.2f;
+
                 rb.transform.LookAt(player.transform);
-                rb.velocity = ShootDirection * 30f ;
-                //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+                rb.velocity = ShootDirection * projectilesSpeed;
+                
             }
 
             ///End of attack code

@@ -22,7 +22,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     private GameObject[] enemyPrefabs; // All available enemy prefabs stored here
 
     [SerializeField]
-    private List<GameObject> enemyList = new List<GameObject>();
+    public List<GameObject> enemyList = new List<GameObject>();
 
     [SerializeField]
     private int maxEnemySpawn;

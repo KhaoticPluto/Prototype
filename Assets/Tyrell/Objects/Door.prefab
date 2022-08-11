@@ -153,15 +153,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1acca09896c764a40b470a31947955dd, type: 2}
+  m_sharedMaterial: {fileID: -1474209435395526644, guid: 1acca09896c764a40b470a31947955dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278228223
+  m_fontColor: {r: 1, g: 0.5820617, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.5
+  m_fontSize: 19.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -497,6 +497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6270308445318647211}
   - component: {fileID: 7763358582845553974}
+  - component: {fileID: 553614617}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -513,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 7054372585005677979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5399967887170439883}
@@ -536,3 +537,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.370026, y: 12.508675, z: 1}
   m_Center: {x: -0.031639814, y: 5.7543373, z: 0}
+--- !u!114 &553614617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054372585005677979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d6e84d868232049ad0a7c5b8321863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
