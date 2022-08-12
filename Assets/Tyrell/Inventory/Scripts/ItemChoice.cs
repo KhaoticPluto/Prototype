@@ -15,6 +15,7 @@ public class ItemChoice : MonoBehaviour
     int totalCount = 3;
     int completedCount = 0;
 
+
     private void Start()
     {
         //closes inventory when items show
@@ -43,6 +44,7 @@ public class ItemChoice : MonoBehaviour
 
     public void ShowItems()
     {
+        
         for (int i = 0; i < totalCount ; i++)
         {
             SpawnItems();

@@ -64,6 +64,7 @@ public class ItemChooser : MonoBehaviour
     
     public void ClearItems()
     {
+
         ShowItems.instance.DestroyItemChoice();
     }
 }

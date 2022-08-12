@@ -47,7 +47,7 @@ public class TeleportToRoom : MonoBehaviour
                     break;
 
                 case RoomType.Challenge:
-
+                    RoomManager.instance.SpawnChallengeRoom();
                     break;
             }
         }

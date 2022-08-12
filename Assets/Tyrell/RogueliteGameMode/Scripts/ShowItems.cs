@@ -14,11 +14,11 @@ public class ShowItems : MonoBehaviour
     #endregion
 
     public GameObject ItemChoice;
+    
 
     private void Start()
     {
-        ItemChoice = GameObject.FindWithTag("ItemChoice");
-        Debug.Log("ShowItems found " + ItemChoice);
+        
         ItemChoice.SetActive(false);
     }
 
@@ -29,11 +29,11 @@ public class ShowItems : MonoBehaviour
         Debug.Log("Show Items");
     }
 
+
     public void DestroyItemChoice()
     {
         ItemChoice.GetComponent<ItemChoice>().DestoryItems();
         ItemChoice.SetActive(false);
-
     }
 
 }

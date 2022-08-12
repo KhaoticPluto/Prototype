@@ -95,7 +95,9 @@ public class RoomManager : MonoBehaviour
 
     public void SpawnChallengeRoom()
     {
-
+        int spawnedRoom = Random.Range(0, ChallengeRoomList.Count);
+        Instantiate(ChallengeRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+        RoomNumber++;
     }
 
     public void SpawnBossRoom()

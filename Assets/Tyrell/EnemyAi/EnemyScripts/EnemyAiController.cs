@@ -82,7 +82,7 @@ public class EnemyAiController : MonoBehaviour
         GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
         isFrozen = true;
         yield return new WaitForSeconds(FreezeTime);
-        isFrozen = true;
+        isFrozen = false;
         gameObject.GetComponent<NavMeshAgent>().isStopped = false;
         GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
         GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
@@ -144,10 +144,11 @@ public class EnemyAiController : MonoBehaviour
     //destorys enemy
     public void DestroyEnemy()
     {
-        if (IsRogueLite == true)
+        if (IsRogueLite == true )
         {
             roomspawn.RemoveEnemy(Enemy);
         }
+        
 
         Destroy(Enemy);
         Debug.Log(Enemy + "enemy Destroyed");

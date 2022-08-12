@@ -68,7 +68,7 @@ public class ShootProjectile : MonoBehaviour
             Vector3 ShootDirection = bullet.transform.forward;
             ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
-            bullet.GetComponent<Rigidbody>().velocity = ShootDirection * upgrades.projectileSpeed;
+            bullet.GetComponent<Rigidbody>().AddForce(ShootDirection * upgrades.projectileSpeed, ForceMode.VelocityChange) ;
 
 
             //destorys bulet after its lifetime has passed
