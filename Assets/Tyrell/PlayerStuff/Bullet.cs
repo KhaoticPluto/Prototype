@@ -18,12 +18,13 @@ public class Bullet : MonoBehaviour
     public bool isCritical;
     public bool isRicochet;
     public bool isPierce;
+    public bool isArmorPiercer;
 
     public Collider ricochet;
     public Collider Pierce;
 
     [SerializeField] private LayerMask WhatIsEnemy;
-    [SerializeField] private LayerMask WhatisWall;
+    public LayerMask WhatisWall;
 
 
     public GameObject Explosion;
@@ -32,7 +33,7 @@ public class Bullet : MonoBehaviour
 
     public Upgradeables _upgrades;
 
-    private void Start()
+    void Start()
     {
         ricochet.enabled = isRicochet;
         Pierce.enabled = !isRicochet;
@@ -40,7 +41,7 @@ public class Bullet : MonoBehaviour
     }
 
 
-    private void Update()
+     void Update()
     {
         if (ricochetCount > _upgrades.ricochetCountUpgraded + 1)
         {
@@ -56,7 +57,7 @@ public class Bullet : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         pierceCount++;
 
@@ -101,14 +102,19 @@ public class Bullet : MonoBehaviour
 
         }
 
-        if (pierceCount >= _upgrades.PierceCountUpgraded && collision.gameObject.tag == "Shield" || pierceCount >= _upgrades.PierceCountUpgraded && collision.gameObject.layer == WhatisWall)
+
+
+        if ((WhatisWall.value & 1 << collision.gameObject.layer) != 0 && isArmorPiercer == false
+            || collision.gameObject.tag == "Shield" && isArmorPiercer == false) //== 1<<collision.gameObject.layer)
         {
+            
             Destroy(gameObject);
         }
-        
+
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         ricochetCount++;
         if (collision.gameObject.tag == "Enemy")

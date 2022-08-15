@@ -27,7 +27,11 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int ExplosionUpgraded = 0;
     [HideInInspector] public int FreezeUpgraded = 0;
 
-    
+
+    //Set bonuses
+    public bool ArmorPiercer;
+    public bool MegaRicochet;
+
 
     //gets the highest used upgrade the player is using
     public string UpgradeUsedMost;
@@ -47,11 +51,11 @@ public class Upgradeables : MonoBehaviour
 
     public int NumberOfProjectile = 1;
 
-    public float SpreadFactor = 0.2f;
+    public float SpreadFactor = 0;
 
     public Vector3 ProjectileSize = new Vector3(0.5f,0.5f,0.5f);
 
-    public float ProjectileLifeTime = 1;
+    public float ProjectileLifeTime = 5;
 
     public float PierceCountUpgraded = 0;
 
@@ -94,8 +98,8 @@ public class Upgradeables : MonoBehaviour
     //Reset upgrades if lowered past lowest amount
     private void Update()
     {
-        MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
-        PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
+        //MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
+        //PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
   
 
 

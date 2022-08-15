@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 2219212401613589745}
   - component: {fileID: 7926215467572273495}
   - component: {fileID: 6636662577993940681}
+  - component: {fileID: 1687473700966785908}
+  - component: {fileID: 6360955258470857794}
   - component: {fileID: 6636662577993940683}
   - component: {fileID: 6636662577993940687}
   - component: {fileID: 6636662577993940686}
@@ -204,6 +206,7 @@ MonoBehaviour:
   _pfBullet:
   - {fileID: 5072560294769514290, guid: 43792ad4e1b00054d847868028802d6c, type: 3}
   upgrades: {fileID: 6636662577993940681}
+  baseSpread: 15
   mousepos: {fileID: 6636662577993940686}
 --- !u!114 &6636662577993940681
 MonoBehaviour:
@@ -228,6 +231,8 @@ MonoBehaviour:
   RicochetUpgraded: 0
   ExplosionUpgraded: 0
   FreezeUpgraded: 0
+  ArmorPiercer: 0
+  MegaRicochet: 0
   UpgradeUsedMost: 
   MostUsedUpgrade: 0
   projectileSpeed: 50
@@ -239,7 +244,7 @@ MonoBehaviour:
   NumberOfProjectile: 1
   SpreadFactor: 0.2
   ProjectileSize: {x: 0.5, y: 0.5, z: 0.5}
-  ProjectileLifeTime: 1
+  ProjectileLifeTime: 5
   PierceCountUpgraded: 0
   Ricochet: 0
   ricochetCountUpgraded: 0
@@ -256,6 +261,34 @@ MonoBehaviour:
   dropchanceincrease: 100
   gunInventoryController: {fileID: 0}
   moneyManager: {fileID: 4563656471038277561}
+--- !u!114 &1687473700966785908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6404949389928579497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5394bf2029e56db43a94e767fc61c107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrade: {fileID: 6636662577993940681}
+--- !u!114 &6360955258470857794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6404949389928579497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7b1b61ca36f31418f0e1687dcdf1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades: {fileID: 6636662577993940681}
+  _ArmorPiercer: {fileID: 11400000, guid: 242ecd0f4926aea4c876fa5a7b3fcfa6, type: 2}
+  _MegaRicochet: {fileID: 11400000, guid: bb32397167d954c469f997b29d20864b, type: 2}
 --- !u!114 &6636662577993940683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,5 +385,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fda21ce44f06d44a12a52ef661e2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmount: 3
-  minAmount: 1
+  maxAmount: 5
+  minAmount: 3

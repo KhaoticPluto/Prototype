@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 5
-  MaxHealth: 5
+  Health: 2
+  MaxHealth: 2
   AiController: {fileID: -5195344680530814690}
   HealthSlider: {fileID: 2988675735950677438}
 --- !u!114 &-5195344680530814690
@@ -167,6 +167,7 @@ MonoBehaviour:
   attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
+  isFrozen: 0
   Enemy: {fileID: 3307521731157396062}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
