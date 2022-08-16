@@ -6,8 +6,11 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
-    
-    
+
+    //Player Upgrade
+    //public TextMeshProUGUI moneyCounter;
+    //public TextMeshProUGUI healthCounter;
+    //public TextMeshProUGUI speedCounter;
 
     //Scripts
     public Upgradeables stats;
@@ -16,18 +19,19 @@ public class HUDManager : MonoBehaviour
     
 
     //UI Elements
-    public TextMeshProUGUI HealthText;  
-    public TextMeshProUGUI DamageText;
-    public TextMeshProUGUI ProSpeedText;
-    public TextMeshProUGUI FireRateText;
-    public TextMeshProUGUI NumOfProjectiles;
+    //public TextMeshProUGUI HealthText;  
+    //public TextMeshProUGUI DamageText;
+    //public TextMeshProUGUI ProSpeedText;
+    //public TextMeshProUGUI FireRateText;
+    //public TextMeshProUGUI NumOfProjectiles;
     public TextMeshProUGUI MoneyText;
     public TextMeshProUGUI PriceCountText;
-    public TextMeshProUGUI RicochetCountText;
-    public TextMeshProUGUI CritChance;
+    //public TextMeshProUGUI RicochetCountText;
+    //public TextMeshProUGUI CritChance;
 
 
     public Slider dashCoolDown;
+    public Slider healthBar;
 
 
     //different ui parents
@@ -59,17 +63,22 @@ public class HUDManager : MonoBehaviour
         if(stats != null && playermovement != null)
         {
             //Player Stats Text
-            HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
-            MoneyText.text = "Instant Noodles " + MoneyManager.Money;
+            //HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
+            healthBar.value = stats.Health;
+            MoneyText.text = " " + MoneyManager.Money;
+
+            //healthCounter.text = "" + stats.MaxHealth;
+            //moneyCounter.text = ;
+            //speedCounter.text = "" + stats.playerSpeed;
 
             //Gun stats texts
-            DamageText.text = "Damage: " + stats.projectileDamage;
-            ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
-            FireRateText.text = "Fire Rate: " + stats._fireRate;
-            NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
-            CritChance.text = "Crit Chance: " + stats.critChance + "%";
-            PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
-            RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
+            //DamageText.text = "Damage: " + stats.projectileDamage;
+            //ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
+            //FireRateText.text = "Fire Rate: " + stats._fireRate;
+            //NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
+            //CritChance.text = "Crit Chance: " + stats.critChance + "%";
+            //PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
+            //RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
 
             //Dashing Text
             dashCoolDown.value = playermovement._dashCooldown;
