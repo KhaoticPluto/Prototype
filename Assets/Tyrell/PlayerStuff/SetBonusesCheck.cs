@@ -11,7 +11,8 @@ public class SetBonusesCheck : MonoBehaviour
     bool _armorPierceSet = false;
     public SetBonuses _MegaRicochet;
     bool _megaRicochetSet = false;
-
+    public SetBonuses _ExplosionMagnet;
+    bool _explosionMagnetSet = false;
 
     private void Update()
     {
@@ -41,6 +42,17 @@ public class SetBonusesCheck : MonoBehaviour
             _megaRicochetSet = false;
         }
 
+        //Explosion Magnet set bonus
+        if (upgrades.ExplosionUpgraded >= 2 &&  _explosionMagnetSet == false)
+        {
+            _ExplosionMagnet.setComplete();
+            _explosionMagnetSet = true;
+        }
+        else if (upgrades.ExplosionUpgraded < 2 && _explosionMagnetSet == true)
+        {
+            _ExplosionMagnet.setRemoved();
+            _explosionMagnetSet = false;
+        }
     }
 
 

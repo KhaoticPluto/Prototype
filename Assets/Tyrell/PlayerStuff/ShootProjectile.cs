@@ -53,6 +53,7 @@ public class ShootProjectile : MonoBehaviour
 
             //changes value of the bullets before sending it
             bulletScript.Damage = CalculateDamage();
+            bulletScript.Speed = upgrades.projectileSpeed;
             bulletScript.isCritical = isCriticalHit;
             bulletScript.isRicochet = upgrades.Ricochet;
             bulletScript.explosiveArea = upgrades.ExplosionArea;
@@ -60,7 +61,8 @@ public class ShootProjectile : MonoBehaviour
 
             //set bonus bools
             bulletScript.isArmorPiercer = upgrades.ArmorPiercer;
-
+            bulletScript.isMegaRicochet = upgrades.MegaRicochet;
+            bulletScript.isExplosionMagnet = upgrades.ExplosionMagnet;
 
             bullet.transform.localScale = upgrades.ProjectileSize;
 

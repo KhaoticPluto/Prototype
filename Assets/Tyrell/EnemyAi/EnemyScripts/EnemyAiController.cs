@@ -163,7 +163,12 @@ public class EnemyAiController : MonoBehaviour
         alreadyAttacked = false;
     }
 
+    public IEnumerator BeingPulled()
+    {
+        yield return new WaitForSeconds(2);
+        Debug.Log("Being Pulled");
 
+    }
 
 
     //draws gizmos that you can see in the scene view when selecting the enemy

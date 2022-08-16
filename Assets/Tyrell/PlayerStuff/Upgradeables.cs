@@ -27,15 +27,16 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int ExplosionUpgraded = 0;
     [HideInInspector] public int FreezeUpgraded = 0;
 
-
+    [Header("SetBonuses")]
     //Set bonuses
     public bool ArmorPiercer;
     public bool MegaRicochet;
+    public bool ExplosionMagnet;
 
 
     //gets the highest used upgrade the player is using
-    public string UpgradeUsedMost;
-    public int MostUsedUpgrade;
+    [HideInInspector] public string UpgradeUsedMost;
+    [HideInInspector] public int MostUsedUpgrade;
 
     //upgrade values
     [Header("Upgrade values")]

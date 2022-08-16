@@ -5,8 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float Damage;
+    public float Speed;
 
     public float explosiveArea = 0;
+    public GameObject explosiveRemnants;
     public float freezeTime = 0;
 
 
@@ -18,7 +20,12 @@ public class Bullet : MonoBehaviour
     public bool isCritical;
     public bool isRicochet;
     public bool isPierce;
+
+    //set bonuses
     public bool isArmorPiercer;
+    public bool isMegaRicochet;
+    public bool isExplosionMagnet;
+
 
     public Collider ricochet;
     public Collider Pierce;
@@ -33,6 +40,8 @@ public class Bullet : MonoBehaviour
 
     public Upgradeables _upgrades;
 
+    public Rigidbody rb;
+
     void Start()
     {
         ricochet.enabled = isRicochet;
@@ -43,7 +52,7 @@ public class Bullet : MonoBehaviour
 
      void Update()
     {
-        if (ricochetCount > _upgrades.ricochetCountUpgraded + 1)
+        if (ricochetCount > _upgrades.ricochetCountUpgraded)
         {
             Destroy(gameObject);
             ricochetCount = 0;
@@ -54,6 +63,9 @@ public class Bullet : MonoBehaviour
             pierceCount = 0;
 
         }
+
+       
+
     }
 
 
@@ -117,6 +129,16 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         ricochetCount++;
+        transform.forward = rb.velocity;
+
+        ///Mega Ricochet set bonus
+        if (isMegaRicochet)
+        {
+            Damage += 1;
+            rb.AddForce(rb.velocity / 5 , ForceMode.VelocityChange);
+        }
+        ///
+
         if (collision.gameObject.tag == "Enemy")
         {
             damageSpawn = Random.Range(0, 3);
@@ -134,7 +156,7 @@ public class Bullet : MonoBehaviour
                 collision.gameObject.GetComponent<EnemyAiController>().StartFrozen(freezeTime);
             }
 
-
+            Destroy(this.gameObject);
 
         }
 
@@ -150,7 +172,7 @@ public class Bullet : MonoBehaviour
             {
                 CheckForEnemies();
             }
-            
+            Destroy(this.gameObject);
         }
         
     }
@@ -170,6 +192,16 @@ public class Bullet : MonoBehaviour
                 damageSpawn = Random.Range(0, 4);
                 GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
                 explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
+
+                ///Explosion Magnet set bonus
+                if (isExplosionMagnet)
+                {
+                    GameObject remnants = Instantiate(explosiveRemnants, transform.position, transform.localRotation);
+                    remnants.transform.localScale = new Vector3(explosiveArea, 1, explosiveArea);
+                    Destroy(remnants, 5);
+
+                }
+                //
                 collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
                 Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
 
@@ -193,7 +225,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
+    
 
 
 }

@@ -29,6 +29,10 @@ public class SetBonusesActive : MonoBehaviour
             case BonusType.MegaRicochet:
                 MegaRicochet(amount);
                 break;
+
+            case BonusType.ExplosiveMagnet:
+                ExplosionMagnet(amount);
+                break;
         }
         
     }
@@ -43,6 +47,10 @@ public class SetBonusesActive : MonoBehaviour
 
             case BonusType.MegaRicochet:
                 RemoveMegaRicochet(amount);
+                break;
+
+            case BonusType.ExplosiveMagnet:
+                RemoveExplosionMagnet(amount);
                 break;
         }
 
@@ -68,8 +76,21 @@ public class SetBonusesActive : MonoBehaviour
     public void RemoveMegaRicochet(float amount)
     {
         Debug.Log("Mega Ricochet Removed");
-        upgrade.MegaRicochet = true;
+        upgrade.MegaRicochet = false;
         upgrade.ricochetCountUpgraded -= (int)amount;
+    }
+
+    public void ExplosionMagnet(float amount)
+    {
+        Debug.Log("Explosive Magnet");
+        upgrade.ExplosionMagnet = true;
+        upgrade.ExplosionArea += (int)amount;
+    }
+    public void RemoveExplosionMagnet(float amount)
+    {
+        Debug.Log("Explosive Magnet Removed");
+        upgrade.ExplosionMagnet = false;
+        upgrade.ExplosionArea -= (int)amount;
     }
 
 }
