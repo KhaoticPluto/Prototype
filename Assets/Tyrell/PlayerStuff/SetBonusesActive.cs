@@ -33,6 +33,10 @@ public class SetBonusesActive : MonoBehaviour
             case BonusType.ExplosiveMagnet:
                 ExplosionMagnet(amount);
                 break;
+
+            case BonusType.Seeking:
+                Seeking();
+                break;
         }
         
     }
@@ -51,6 +55,10 @@ public class SetBonusesActive : MonoBehaviour
 
             case BonusType.ExplosiveMagnet:
                 RemoveExplosionMagnet(amount);
+                break;
+
+            case BonusType.Seeking:
+                RemoveSeeking();
                 break;
         }
 
@@ -92,5 +100,17 @@ public class SetBonusesActive : MonoBehaviour
         upgrade.ExplosionMagnet = false;
         upgrade.ExplosionArea -= (int)amount;
     }
+
+    public void Seeking()
+    {
+        Debug.Log("Seeking");
+        upgrade.Seeking = true;
+    }
+    public void RemoveSeeking()
+    {
+        Debug.Log("Removed Seeking");
+        upgrade.Seeking = false;
+    }
+
 
 }

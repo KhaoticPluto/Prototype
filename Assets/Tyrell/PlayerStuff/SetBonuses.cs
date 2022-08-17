@@ -38,6 +38,8 @@ public enum BonusType
     ArmorPiercer,
     MegaRicochet,
     ExplosiveMagnet,
+    Seeking,
+
 
 
 

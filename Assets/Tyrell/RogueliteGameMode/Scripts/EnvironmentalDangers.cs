@@ -5,45 +5,38 @@ using UnityEngine;
 public class EnvironmentalDangers : MonoBehaviour
 {
     public float Damage = 1;
+    public float radius = 1;
 
-    GameObject collided;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        InvokeRepeating("DamageOverTime", 1, 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private void OnTriggerEnter(Collider other)
+    void DamageOverTime()
     {
-        collided = other.gameObject;
-        if(other.gameObject.tag == "Enemy")
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+
+        foreach (Collider col in hitColliders)
         {
-            other.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
-        }
-    }
+            if (col.gameObject.tag == "Enemy")
+            {
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            StartCoroutine(DamageOverTime());
+                col.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
+                Vector3 enemyPos = new Vector3(col.gameObject.transform.position.x, 
+                    col.gameObject.transform.position.y + 5, col.gameObject.transform.position.z);
+                DamagePopUp.Create(enemyPos, Damage, false);
+            }
         }
 
-
     }
 
-    IEnumerator DamageOverTime()
+
+    private void OnDrawGizmosSelected()
     {
-
-        yield return new WaitForSeconds(1);
-        collided.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, radius);
     }
-
 }

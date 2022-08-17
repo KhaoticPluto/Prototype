@@ -9,6 +9,7 @@ public class ShootProjectile : MonoBehaviour
     public Upgradeables upgrades;
 
     public float baseSpread = 15;
+    public float spreadFactor;
 
     public MousePosition mousepos;
 
@@ -40,9 +41,14 @@ public class ShootProjectile : MonoBehaviour
 
     void Shoot(int numberOfProjectiles)
     {
-        if(numberOfProjectiles > 1)
+        spreadFactor = upgrades.SpreadFactor;
+        if(numberOfProjectiles >= 2)
         {
-            upgrades.SpreadFactor -= (numberOfProjectiles / 2) * baseSpread;
+            upgrades.SpreadFactor -= ((numberOfProjectiles / 2) + 1) * spreadFactor;
+        }
+        else
+        {
+            upgrades.SpreadFactor = 0;
         }
         for (int i = 0; i < numberOfProjectiles; i++)
         {
@@ -63,6 +69,7 @@ public class ShootProjectile : MonoBehaviour
             bulletScript.isArmorPiercer = upgrades.ArmorPiercer;
             bulletScript.isMegaRicochet = upgrades.MegaRicochet;
             bulletScript.isExplosionMagnet = upgrades.ExplosionMagnet;
+            bulletScript.isSeeking = upgrades.Seeking;
 
             bullet.transform.localScale = upgrades.ProjectileSize;
 
@@ -74,61 +81,16 @@ public class ShootProjectile : MonoBehaviour
             bullet.transform.Rotate(0, upgrades.SpreadFactor, 0);
 
             Vector3 ShootDirection = bullet.transform.forward;
-            //ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
-            //ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
             bullet.GetComponent<Rigidbody>().AddForce(ShootDirection * upgrades.projectileSpeed, ForceMode.VelocityChange);
 
-            upgrades.SpreadFactor += baseSpread;
+            upgrades.SpreadFactor += spreadFactor;
 
             //destorys bulet after its lifetime has passed
             Destroy(bullet, upgrades.ProjectileLifeTime);
             
         }
-        upgrades.SpreadFactor = 0;
+        upgrades.SpreadFactor = spreadFactor;
     }
-
-
-    //IEnumerator ShootProjectiles(int NumberOfProjectiles)
-    //{
-    //    for (int i = 0; i < NumberOfProjectiles; i++)
-    //    {
-
-    //        GameObject bullet = Instantiate(_pfBullet[0], transform.position, Quaternion.identity);
-    //        Bullet bulletScript = bullet.GetComponent<Bullet>();
-    //        bulletScript._upgrades = upgrades;
-
-    //        //changes value of the bullets before sending it
-    //        bulletScript.Damage = CalculateDamage();
-    //        bulletScript.isCritical = isCriticalHit;
-    //        bulletScript.isRicochet = upgrades.Ricochet;
-    //        bulletScript.explosiveArea = upgrades.ExplosionArea;
-    //        bulletScript.freezeTime = upgrades.FreezeTime;
-
-
-    //        //another way i got the upgrades, still teting new way to see if it works and is better.
-    //        bullet.GetComponent<Bullet>().Damage = CalculateDamage();
-    //        bullet.GetComponent<Bullet>().isCritical = isCriticalHit;
-    //        bullet.GetComponent<Bullet>().isRicochet = upgrades.Ricochet;
-    //        bullet.GetComponent<Bullet>().explosiveArea = upgrades.ExplosionArea;
-
-
-    //        bullet.transform.localScale = upgrades.ProjectileSize;
-
-    //        //sends bullet in the direction the bullet is facing, bullet is facing towards cursor when fired
-
-    //        bullet.transform.LookAt(mousepos.WorldPosition);
-
-    //        Vector3 ShootDirection = bullet.transform.forward;
-    //        ShootDirection.x += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
-    //        ShootDirection.z += Random.Range(-upgrades.SpreadFactor, upgrades.SpreadFactor);
-    //        bullet.GetComponent<Rigidbody>().AddForce(ShootDirection * upgrades.projectileSpeed, ForceMode.VelocityChange);
-
-
-    //        //destorys bulet after its lifetime has passed
-    //        Destroy(bullet, upgrades.ProjectileLifeTime);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //}
 
 
     private float CalculateDamage()

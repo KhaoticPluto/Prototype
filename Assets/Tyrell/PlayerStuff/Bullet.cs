@@ -25,12 +25,13 @@ public class Bullet : MonoBehaviour
     public bool isArmorPiercer;
     public bool isMegaRicochet;
     public bool isExplosionMagnet;
+    public bool isSeeking;
 
 
     public Collider ricochet;
     public Collider Pierce;
 
-    [SerializeField] private LayerMask WhatIsEnemy;
+    public LayerMask WhatIsEnemy;
     public LayerMask WhatisWall;
 
 
@@ -64,8 +65,43 @@ public class Bullet : MonoBehaviour
 
         }
 
+        if (isSeeking)
+        {
+            Collider[] enemies = Physics.OverlapSphere(transform.position, explosiveArea * 10, WhatIsEnemy);
+                Collider bestTarget = null;
+                float closestDistanceSqr = Mathf.Infinity;
+                Vector3 currentPosition = transform.position;
+                foreach (Collider potentialTarget in enemies)
+                {
+                    Vector3 directionToTargets = potentialTarget.gameObject.transform.position - currentPosition;
+                    float dSqrToTarget = directionToTargets.sqrMagnitude;
+                    if (dSqrToTarget < closestDistanceSqr)
+                    {
+                        closestDistanceSqr = dSqrToTarget;
+                        bestTarget = potentialTarget;
+                    }
+
+
+                }
+
+            if(bestTarget != null)
+            {
+                SeekToTarget(bestTarget);
+            }
+            
+        }
        
 
+    }
+
+    void SeekToTarget(Collider Target)
+    {
+        Vector3 directionToTarget = Target.transform.position - transform.position;
+        Vector3 currentDirection = transform.forward;
+        float maxTurnSpeed = 360f; // degrees per second
+        Vector3 resultingDirection = Vector3.RotateTowards(currentDirection, directionToTarget, maxTurnSpeed * Mathf.Deg2Rad * Time.deltaTime, 1f);
+        transform.rotation = Quaternion.LookRotation(resultingDirection);
+        rb.velocity = resultingDirection * Speed;
     }
 
 
@@ -196,13 +232,18 @@ public class Bullet : MonoBehaviour
                 ///Explosion Magnet set bonus
                 if (isExplosionMagnet)
                 {
-                    GameObject remnants = Instantiate(explosiveRemnants, transform.position, transform.localRotation);
-                    remnants.transform.localScale = new Vector3(explosiveArea, 1, explosiveArea);
+                    GameObject remnants = Instantiate(explosiveRemnants, transform.position, Quaternion.Euler(-90, 0,0));
+                    ParticleSystem ps = remnants.GetComponent<ParticleSystem>();
+                    var sh = ps.shape;
+                    sh.radius = explosiveArea / 2;
+                    SphereCollider sphere = remnants.GetComponent<SphereCollider>();
+                    sphere.radius = explosiveArea / 2;
+                    remnants.GetComponent<EnvironmentalDangers>().radius = explosiveArea / 2;
                     Destroy(remnants, 5);
 
                 }
                 //
-                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
+                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage / 2);
                 Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
 
                 
@@ -214,7 +255,7 @@ public class Bullet : MonoBehaviour
                 damageSpawn = Random.Range(0, 4);
                 GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
                 explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
-                collider.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage);
+                collider.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage / 2);
                 Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
 
 

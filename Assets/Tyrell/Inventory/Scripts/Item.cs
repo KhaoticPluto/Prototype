@@ -43,13 +43,15 @@ public enum ItemType
     NumOfProjectiles,
     ProjectileSize,
     Ricochet,
-    SpreadFactor,
     DoubleDamage,
     SeekingProjectiles,
     ProjectilePierce,
     CritChance,
     ImpactExplosion,
-    Freeze, 
+    Freeze,
+    IncreaseSpread,
+    DecreaseSpreaad,
+
 
 
 

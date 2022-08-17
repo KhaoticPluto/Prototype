@@ -13,6 +13,9 @@ public class SetBonusesCheck : MonoBehaviour
     bool _megaRicochetSet = false;
     public SetBonuses _ExplosionMagnet;
     bool _explosionMagnetSet = false;
+    public SetBonuses _Seeking;
+    bool _seekingSet = false;
+
 
     private void Update()
     {
@@ -43,16 +46,30 @@ public class SetBonusesCheck : MonoBehaviour
         }
 
         //Explosion Magnet set bonus
-        if (upgrades.ExplosionUpgraded >= 2 &&  _explosionMagnetSet == false)
+        if (upgrades.ExplosionUpgraded >= 4 &&  _explosionMagnetSet == false)
         {
             _ExplosionMagnet.setComplete();
             _explosionMagnetSet = true;
         }
-        else if (upgrades.ExplosionUpgraded < 2 && _explosionMagnetSet == true)
+        else if (upgrades.ExplosionUpgraded < 4 && _explosionMagnetSet == true)
         {
             _ExplosionMagnet.setRemoved();
             _explosionMagnetSet = false;
         }
+
+        //Seeking Set Bonus
+        if(upgrades.ExplosionUpgraded >= 1 && upgrades.ProSpeedUpgraded >= 2 && _seekingSet == false)
+        {
+            _Seeking.setComplete();
+            _seekingSet = true;
+        }
+        else if(upgrades.ExplosionUpgraded < 1 && upgrades.ProSpeedUpgraded < 2 && _seekingSet == true)
+        {
+            _Seeking.setRemoved();
+            _seekingSet = false;
+        }
+
+
     }
 
 

@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4030ba7acef034b408c0ada41b9fcba9, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   - {fileID: 5072560294769514290, guid: 43792ad4e1b00054d847868028802d6c, type: 3}
   upgrades: {fileID: 6636662577993940681}
   baseSpread: 15
+  spreadFactor: 0
   mousepos: {fileID: 6636662577993940686}
 --- !u!114 &6636662577993940681
 MonoBehaviour:
@@ -231,9 +232,11 @@ MonoBehaviour:
   RicochetUpgraded: 0
   ExplosionUpgraded: 0
   FreezeUpgraded: 0
+  SpreadUpgraded: 0
   ArmorPiercer: 0
   MegaRicochet: 0
   ExplosionMagnet: 0
+  Seeking: 0
   UpgradeUsedMost: 
   MostUsedUpgrade: 0
   projectileSpeed: 50
@@ -243,7 +246,6 @@ MonoBehaviour:
   _fireRate: 1
   _nextFire: 0
   NumberOfProjectile: 1
-  SpreadFactor: 0.2
   ProjectileSize: {x: 0.5, y: 0.5, z: 0.5}
   ProjectileLifeTime: 5
   PierceCountUpgraded: 0
@@ -252,6 +254,7 @@ MonoBehaviour:
   ExplosionArea: 0
   explosiveCountUpgraded: 0
   FreezeTime: 0
+  SpreadFactor: 15
   Health: 100
   MaxHealth: 100
   playerSpeed: 15
@@ -291,6 +294,7 @@ MonoBehaviour:
   _ArmorPiercer: {fileID: 11400000, guid: 242ecd0f4926aea4c876fa5a7b3fcfa6, type: 2}
   _MegaRicochet: {fileID: 11400000, guid: bb32397167d954c469f997b29d20864b, type: 2}
   _ExplosionMagnet: {fileID: 11400000, guid: f224b7cb06a6cb14b89d3d0bc6528c89, type: 2}
+  _Seeking: {fileID: 11400000, guid: c8a0cef863fa80e4e9d376860bd11035, type: 2}
 --- !u!114 &6636662577993940683
 MonoBehaviour:
   m_ObjectHideFlags: 0

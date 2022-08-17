@@ -26,13 +26,14 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int RicochetUpgraded = 0;
     [HideInInspector] public int ExplosionUpgraded = 0;
     [HideInInspector] public int FreezeUpgraded = 0;
+    [HideInInspector] public int SpreadUpgraded = 0;
 
     [Header("SetBonuses")]
     //Set bonuses
     public bool ArmorPiercer;
     public bool MegaRicochet;
     public bool ExplosionMagnet;
-
+    public bool Seeking;
 
     //gets the highest used upgrade the player is using
     [HideInInspector] public string UpgradeUsedMost;
@@ -52,8 +53,6 @@ public class Upgradeables : MonoBehaviour
 
     public int NumberOfProjectile = 1;
 
-    public float SpreadFactor = 0;
-
     public Vector3 ProjectileSize = new Vector3(0.5f,0.5f,0.5f);
 
     public float ProjectileLifeTime = 5;
@@ -67,6 +66,8 @@ public class Upgradeables : MonoBehaviour
     public int explosiveCountUpgraded = 0;
 
     public float FreezeTime = 0;
+
+    public float SpreadFactor = 15;
 
     //Player values
 
@@ -251,6 +252,19 @@ public class Upgradeables : MonoBehaviour
         FreezeTime -= amount;
         FreezeUpgraded--;
     }
+
+    //Spread Factor
+    public void UpgradesSpreadFactor(float amount)
+    {
+        SpreadUpgraded++;
+        SpreadFactor += amount;
+    }
+    public void RemoveSpreadFactor(float amount)
+    {
+        SpreadUpgraded--;
+        SpreadFactor -= amount;
+    }
+
 
     //*------- Gun Upgrades --------*//
 
