@@ -8,9 +8,10 @@ public class HUDManager : MonoBehaviour
 {
 
     //Player Upgrade
-    //public TextMeshProUGUI moneyCounter;
-    //public TextMeshProUGUI healthCounter;
-    //public TextMeshProUGUI speedCounter;
+    public TextMeshProUGUI moneyCounter;
+    public TextMeshProUGUI healthCounter;
+    public TextMeshProUGUI speedCounter;
+    //public TextMeshProUGUI inventoryCounter;
 
     //Scripts
     public Upgradeables stats;
@@ -67,23 +68,15 @@ public class HUDManager : MonoBehaviour
             healthBar.value = stats.Health;
             MoneyText.text = " " + MoneyManager.Money;
 
-            //healthCounter.text = "" + stats.MaxHealth;
-            //moneyCounter.text = ;
-            //speedCounter.text = "" + stats.playerSpeed;
-
-            //Gun stats texts
-            //DamageText.text = "Damage: " + stats.projectileDamage;
-            //ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
-            //FireRateText.text = "Fire Rate: " + stats._fireRate;
-            //NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
-            //CritChance.text = "Crit Chance: " + stats.critChance + "%";
-            //PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
-            //RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
+            healthCounter.text = " " + PlayerItemUpgradeRemove.instance.MaxHealthItem;
+            moneyCounter.text = " " + PlayerItemUpgradeRemove.instance.IncreaseMoneyItem;
+            speedCounter.text = " " + PlayerItemUpgradeRemove.instance.SpeedItem;
+            //inventoryCounter.text = " " + PlayerItemUpgradeRemove.instance.InventoryItem;
 
             //Dashing Text
             dashCoolDown.value = playermovement._dashCooldown;
         }
-        
+
         
 
         

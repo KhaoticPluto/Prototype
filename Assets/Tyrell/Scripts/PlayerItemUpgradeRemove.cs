@@ -23,7 +23,7 @@ public class PlayerItemUpgradeRemove : MonoBehaviour
     [HideInInspector] public int HealHealthItem = 0;
     [HideInInspector] public int SpeedItem = 0;
     [HideInInspector] public int RandomItemItem = 0;
-    [HideInInspector] public int IncreaseMoneyItem= 0;
+    [HideInInspector] public int IncreaseMoneyItem = 0;
     [HideInInspector] public int DashCooldownItem= 0;
     
 
