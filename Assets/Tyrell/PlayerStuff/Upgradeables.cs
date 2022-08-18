@@ -26,12 +26,20 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int RicochetUpgraded = 0;
     [HideInInspector] public int ExplosionUpgraded = 0;
     [HideInInspector] public int FreezeUpgraded = 0;
+    [HideInInspector] public int SpreadUpgraded = 0;
 
-    
+    [Header("SetBonuses")]
+    //Set bonuses
+    public bool ArmorPiercer;
+    public bool MegaRicochet;
+    public bool ExplosionMagnet;
+    public bool Seeking;
+    public bool LifeSteal;
+    public bool UltraFreeze;
 
     //gets the highest used upgrade the player is using
-    public string UpgradeUsedMost;
-    public int MostUsedUpgrade;
+    [HideInInspector] public string UpgradeUsedMost;
+    [HideInInspector] public int MostUsedUpgrade;
 
     //upgrade values
     [Header("Upgrade values")]
@@ -47,11 +55,9 @@ public class Upgradeables : MonoBehaviour
 
     public int NumberOfProjectile = 1;
 
-    public float SpreadFactor = 0.2f;
-
     public Vector3 ProjectileSize = new Vector3(0.5f,0.5f,0.5f);
 
-    public float ProjectileLifeTime = 1;
+    public float ProjectileLifeTime = 5;
 
     public float PierceCountUpgraded = 0;
 
@@ -62,6 +68,8 @@ public class Upgradeables : MonoBehaviour
     public int explosiveCountUpgraded = 0;
 
     public float FreezeTime = 0;
+
+    public float SpreadFactor = 15;
 
     //Player values
 
@@ -84,6 +92,7 @@ public class Upgradeables : MonoBehaviour
     [Header("Script Refrences")]
     public GunInventoryController gunInventoryController;
     public MoneyManager moneyManager;
+    public PlayerHealth pHealth;
 
     private void Start()
     {
@@ -94,8 +103,8 @@ public class Upgradeables : MonoBehaviour
     //Reset upgrades if lowered past lowest amount
     private void Update()
     {
-        MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
-        PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
+        //MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
+        //PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
   
 
 
@@ -246,6 +255,19 @@ public class Upgradeables : MonoBehaviour
         FreezeTime -= amount;
         FreezeUpgraded--;
     }
+
+    //Spread Factor
+    public void UpgradesSpreadFactor(float amount)
+    {
+        SpreadUpgraded++;
+        SpreadFactor += amount;
+    }
+    public void RemoveSpreadFactor(float amount)
+    {
+        SpreadUpgraded--;
+        SpreadFactor -= amount;
+    }
+
 
     //*------- Gun Upgrades --------*//
 

@@ -36,7 +36,7 @@ public class EnemyExploder : EnemyAiController
         //}
         nextFlash += Time.deltaTime;
 
-        if (playerInAttackRange)
+        if (playerInAttackRange && !isFrozen)
         {
             if(nextFlash > flashinTimer)
             {

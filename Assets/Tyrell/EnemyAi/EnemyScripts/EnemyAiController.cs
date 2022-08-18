@@ -76,7 +76,6 @@ public class EnemyAiController : MonoBehaviour
     IEnumerator SetFrozen(float FreezeTime)
     {
         Color customColor = new Color(0, 0.9556165f, 1, 1);
-        Debug.Log("isFrozen");
         gameObject.GetComponent<NavMeshAgent>().isStopped = true;
         GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
         GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
@@ -163,7 +162,12 @@ public class EnemyAiController : MonoBehaviour
         alreadyAttacked = false;
     }
 
+    public IEnumerator BeingPulled()
+    {
+        yield return new WaitForSeconds(2);
+        Debug.Log("Being Pulled");
 
+    }
 
 
     //draws gizmos that you can see in the scene view when selecting the enemy
