@@ -18,8 +18,10 @@ public class ItemChooser : MonoBehaviour
     {
         manager = GameObject.FindObjectOfType<WaveGameManager>();
         image.GetComponent<Image>();
-        Item newItem = itemChoice.itemList[Random.Range(0, itemChoice.itemList.Count)];
-        AddItem(newItem);
+
+        
+
+        
         
     }
 

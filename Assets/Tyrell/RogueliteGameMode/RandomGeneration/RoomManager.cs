@@ -57,7 +57,6 @@ public class RoomManager : MonoBehaviour
     {
         if (RoomNumber <= BossRoomNumber)
         {
-            int spawnedRoom = Random.Range(0, HallWay.Count - 1);
             Instantiate(HallWay[0], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
             RoomNumber++;
         }

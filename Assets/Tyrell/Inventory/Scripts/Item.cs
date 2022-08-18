@@ -13,6 +13,7 @@ public class Item : ScriptableObject
 
     public ItemType itemType;
     public float amount;
+    public float Rarity;
 
     public virtual void Use()
     {
