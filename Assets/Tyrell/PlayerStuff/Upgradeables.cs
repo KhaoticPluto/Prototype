@@ -34,6 +34,8 @@ public class Upgradeables : MonoBehaviour
     public bool MegaRicochet;
     public bool ExplosionMagnet;
     public bool Seeking;
+    public bool LifeSteal;
+    public bool UltraFreeze;
 
     //gets the highest used upgrade the player is using
     [HideInInspector] public string UpgradeUsedMost;
@@ -90,6 +92,7 @@ public class Upgradeables : MonoBehaviour
     [Header("Script Refrences")]
     public GunInventoryController gunInventoryController;
     public MoneyManager moneyManager;
+    public PlayerHealth pHealth;
 
     private void Start()
     {

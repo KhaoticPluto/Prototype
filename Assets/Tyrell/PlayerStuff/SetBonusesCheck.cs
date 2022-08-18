@@ -15,7 +15,10 @@ public class SetBonusesCheck : MonoBehaviour
     bool _explosionMagnetSet = false;
     public SetBonuses _Seeking;
     bool _seekingSet = false;
-
+    public SetBonuses _LifeSteal;
+    bool _lifeStealSet = false;
+    public SetBonuses _UltraFreeze;
+    bool _ultraFreezeSet = false;
 
     private void Update()
     {
@@ -63,10 +66,36 @@ public class SetBonusesCheck : MonoBehaviour
             _Seeking.setComplete();
             _seekingSet = true;
         }
-        else if(upgrades.ExplosionUpgraded < 1 && upgrades.ProSpeedUpgraded < 2 && _seekingSet == true)
+        else if((upgrades.ExplosionUpgraded < 1 || upgrades.ProSpeedUpgraded < 2) && _seekingSet == true)
         {
             _Seeking.setRemoved();
             _seekingSet = false;
+        }
+
+        //LifeSteal Set bonus
+        if(upgrades.ProDamageUpgraded >= 3 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceCountUpgraded >= 2
+             && _lifeStealSet == false)
+        {
+            _LifeSteal.setComplete();
+            _lifeStealSet = true;
+        }
+        else if ((upgrades.ProDamageUpgraded < 3 || upgrades.ProjectilesNumUpgraded < 2 || upgrades.PierceCountUpgraded < 2)
+           && _lifeStealSet == true)
+        {
+            _LifeSteal.setRemoved();
+            _lifeStealSet = false;
+        }
+
+        //UltraFreeze
+        if (upgrades.ExplosionUpgraded >= 2 && upgrades.FreezeUpgraded >= 2 && _ultraFreezeSet == false)
+        {
+            _UltraFreeze.setComplete();
+            _ultraFreezeSet = true;
+        }
+        else if ((upgrades.ExplosionUpgraded < 2 || upgrades.FreezeUpgraded < 2) && _ultraFreezeSet == true)
+        {
+            _UltraFreeze.setRemoved();
+            _ultraFreezeSet = false;
         }
 
 

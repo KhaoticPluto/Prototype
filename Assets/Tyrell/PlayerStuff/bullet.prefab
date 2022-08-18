@@ -110,6 +110,9 @@ MonoBehaviour:
   isArmorPiercer: 0
   isMegaRicochet: 0
   isExplosionMagnet: 0
+  isSeeking: 0
+  isLifeSteal: 0
+  isUltraFreeze: 0
   ricochet: {fileID: 4069234190582742969}
   Pierce: {fileID: -552768996964659963}
   WhatIsEnemy:
@@ -119,7 +122,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 17408
   Explosion: {fileID: 3802423153891719707, guid: 44704e05c2f49374c95bd881a7185710, type: 3}
+  FreezeExplosion: {fileID: 3802423153891719707, guid: fe74f912e85873545858f82d235f41a2, type: 3}
   _upgrades: {fileID: 0}
+  _playerHealth: {fileID: 0}
   rb: {fileID: -7997453344690166918}
 --- !u!54 &-7997453344690166918
 Rigidbody:

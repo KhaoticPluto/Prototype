@@ -39,6 +39,10 @@ public enum BonusType
     MegaRicochet,
     ExplosiveMagnet,
     Seeking,
+    LifeSteal,
+    UltraFreeze,
+
+
 
 
 

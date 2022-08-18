@@ -37,6 +37,14 @@ public class SetBonusesActive : MonoBehaviour
             case BonusType.Seeking:
                 Seeking();
                 break;
+
+            case BonusType.LifeSteal:
+                LifeSteal();
+                break;
+
+            case BonusType.UltraFreeze:
+                UltraFreeze(amount);
+                break;
         }
         
     }
@@ -59,6 +67,14 @@ public class SetBonusesActive : MonoBehaviour
 
             case BonusType.Seeking:
                 RemoveSeeking();
+                break;
+
+            case BonusType.LifeSteal:
+                RemoveLifeSteal();
+                break;
+
+            case BonusType.UltraFreeze:
+                RemoveUltraFreeze(amount);
                 break;
         }
 
@@ -110,6 +126,30 @@ public class SetBonusesActive : MonoBehaviour
     {
         Debug.Log("Removed Seeking");
         upgrade.Seeking = false;
+    }
+
+    public void LifeSteal()
+    {
+        Debug.Log("Life Steal");
+        upgrade.LifeSteal = true;
+    }
+    public void RemoveLifeSteal()
+    {
+        Debug.Log("Remove Life Steal");
+        upgrade.LifeSteal = false;
+    }
+
+    public void UltraFreeze(float amount)
+    {
+        Debug.Log("Ultra freeze");
+        upgrade.UltraFreeze = true;
+        upgrade.FreezeTime += amount;
+    }
+    public void RemoveUltraFreeze(float amount)
+    {
+        Debug.Log("Remove Ultra freeze");
+        upgrade.UltraFreeze = false;
+        upgrade.FreezeTime -= amount;
     }
 
 

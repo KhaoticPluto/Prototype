@@ -64,12 +64,15 @@ public class ShootProjectile : MonoBehaviour
             bulletScript.isRicochet = upgrades.Ricochet;
             bulletScript.explosiveArea = upgrades.ExplosionArea;
             bulletScript.freezeTime = upgrades.FreezeTime;
+            bulletScript._playerHealth = upgrades.pHealth;
 
             //set bonus bools
             bulletScript.isArmorPiercer = upgrades.ArmorPiercer;
             bulletScript.isMegaRicochet = upgrades.MegaRicochet;
             bulletScript.isExplosionMagnet = upgrades.ExplosionMagnet;
             bulletScript.isSeeking = upgrades.Seeking;
+            bulletScript.isLifeSteal = upgrades.LifeSteal;
+            bulletScript.isUltraFreeze = upgrades.UltraFreeze;
 
             bullet.transform.localScale = upgrades.ProjectileSize;
 

@@ -76,7 +76,6 @@ public class EnemyAiController : MonoBehaviour
     IEnumerator SetFrozen(float FreezeTime)
     {
         Color customColor = new Color(0, 0.9556165f, 1, 1);
-        Debug.Log("isFrozen");
         gameObject.GetComponent<NavMeshAgent>().isStopped = true;
         GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
         GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);

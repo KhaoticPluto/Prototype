@@ -26,6 +26,8 @@ public class Bullet : MonoBehaviour
     public bool isMegaRicochet;
     public bool isExplosionMagnet;
     public bool isSeeking;
+    public bool isLifeSteal;
+    public bool isUltraFreeze;
 
 
     public Collider ricochet;
@@ -36,11 +38,12 @@ public class Bullet : MonoBehaviour
 
 
     public GameObject Explosion;
+    public GameObject FreezeExplosion;
     //damage spawn is the where the damage popup will spawn
     float damageSpawn;
 
     public Upgradeables _upgrades;
-
+    public PlayerHealth _playerHealth;
     public Rigidbody rb;
 
     void Start()
@@ -67,31 +70,36 @@ public class Bullet : MonoBehaviour
 
         if (isSeeking)
         {
-            Collider[] enemies = Physics.OverlapSphere(transform.position, explosiveArea * 10, WhatIsEnemy);
-                Collider bestTarget = null;
-                float closestDistanceSqr = Mathf.Infinity;
-                Vector3 currentPosition = transform.position;
-                foreach (Collider potentialTarget in enemies)
-                {
-                    Vector3 directionToTargets = potentialTarget.gameObject.transform.position - currentPosition;
-                    float dSqrToTarget = directionToTargets.sqrMagnitude;
-                    if (dSqrToTarget < closestDistanceSqr)
-                    {
-                        closestDistanceSqr = dSqrToTarget;
-                        bestTarget = potentialTarget;
-                    }
-
-
-                }
-
-            if(bestTarget != null)
-            {
-                SeekToTarget(bestTarget);
-            }
+            SearchTarget();
             
         }
        
 
+    }
+
+    void SearchTarget()
+    {
+        Collider[] enemies = Physics.OverlapSphere(transform.position, explosiveArea * 10, WhatIsEnemy);
+        Collider bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach (Collider potentialTarget in enemies)
+        {
+            Vector3 directionToTargets = potentialTarget.gameObject.transform.position - currentPosition;
+            float dSqrToTarget = directionToTargets.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget;
+            }
+
+
+        }
+
+        if (bestTarget != null)
+        {
+            SeekToTarget(bestTarget);
+        }
     }
 
     void SeekToTarget(Collider Target)
@@ -102,6 +110,13 @@ public class Bullet : MonoBehaviour
         Vector3 resultingDirection = Vector3.RotateTowards(currentDirection, directionToTarget, maxTurnSpeed * Mathf.Deg2Rad * Time.deltaTime, 1f);
         transform.rotation = Quaternion.LookRotation(resultingDirection);
         rb.velocity = resultingDirection * Speed;
+    }
+
+    void StealLife()
+    {
+        int lifeStolen = (int)Damage;
+        Debug.Log(lifeStolen);
+        _playerHealth.GetComponent<PlayerHealth>().GainHealth(lifeStolen);
     }
 
 
@@ -117,13 +132,18 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
-            DamagePopUp.Create(enemyPos, Damage, isCritical);
+            if (isLifeSteal)
+            {
+                StealLife();
+            }
+            
             if (_upgrades.explosiveCountUpgraded > 0)
             {
                 
                 CheckForEnemies();
             }
-            
+
+            SpawnDamagePopUp(enemyPos);
         }
 
 
@@ -135,18 +155,20 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
-            DamagePopUp.Create(enemyPos, Damage, isCritical);
             if (_upgrades.explosiveCountUpgraded > 0)
             {
-                Debug.Log("checkingEnemies");
+                
                 CheckForEnemies();
             }
             if (freezeTime > 0)
             {
                 collision.gameObject.GetComponent<EnemyAiController>().StartFrozen(freezeTime);
             }
-            
-           
+            if (isLifeSteal)
+            {
+                StealLife();
+            }
+            SpawnDamagePopUp(enemyPos);
 
         }
 
@@ -181,7 +203,7 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
-            DamagePopUp.Create(enemyPos, Damage, isCritical);
+            SpawnDamagePopUp(enemyPos);
 
             if (_upgrades.explosiveCountUpgraded > 0)
             {
@@ -191,7 +213,10 @@ public class Bullet : MonoBehaviour
             {
                 collision.gameObject.GetComponent<EnemyAiController>().StartFrozen(freezeTime);
             }
-
+            if (isLifeSteal)
+            {
+                StealLife();
+            }
             Destroy(this.gameObject);
 
         }
@@ -202,8 +227,11 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
-            DamagePopUp.Create(enemyPos, Damage, isCritical);
-
+            SpawnDamagePopUp(enemyPos);
+            if (isLifeSteal)
+            {
+                StealLife();
+            }
             if (_upgrades.explosiveCountUpgraded > 0)
             {
                 CheckForEnemies();
@@ -226,46 +254,79 @@ public class Bullet : MonoBehaviour
             if(collider.gameObject.tag == "Enemy" )
             {
                 damageSpawn = Random.Range(0, 4);
-                GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
-                explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
+                SpawnExplosion();
+                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage / 2);
+                Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
+
+                DamagePopUp.Create(enemyPos, Damage / 2, isCritical);
 
                 ///Explosion Magnet set bonus
                 if (isExplosionMagnet)
                 {
-                    GameObject remnants = Instantiate(explosiveRemnants, transform.position, Quaternion.Euler(-90, 0,0));
-                    ParticleSystem ps = remnants.GetComponent<ParticleSystem>();
-                    var sh = ps.shape;
-                    sh.radius = explosiveArea / 2;
-                    SphereCollider sphere = remnants.GetComponent<SphereCollider>();
-                    sphere.radius = explosiveArea / 2;
-                    remnants.GetComponent<EnvironmentalDangers>().radius = explosiveArea / 2;
-                    Destroy(remnants, 5);
+                    FireRemnants();
 
                 }
-                //
-                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage / 2);
-                Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
+                ///ultraFreeze
+                if (isUltraFreeze)
+                {
+                    SpawnFreezeExplosion();
+                    collider.gameObject.GetComponent<EnemyAiController>().StartFrozen(freezeTime / 2);
 
-                
-                DamagePopUp.Create(enemyPos, Damage / 2, isCritical);
-                Destroy(explosion, 1.5f);
+                }
             }
             else if(collider.gameObject.tag == "Boss")
             {
                 damageSpawn = Random.Range(0, 4);
-                GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
-                explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
+                SpawnExplosion();
                 collider.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage / 2);
                 Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
 
-
                 DamagePopUp.Create(enemyPos, Damage / 2, isCritical);
-                Destroy(explosion, 1.5f);
+
+                if (isExplosionMagnet)
+                {
+                    FireRemnants();
+
+                }
+
             }
 
         }
     }
 
+    void SpawnFreezeExplosion()
+    {
+        GameObject explosion = Instantiate(FreezeExplosion, transform.position, Quaternion.identity);
+        explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
+        Destroy(explosion, 1.5f);
+    }
+
+
+    void SpawnExplosion()
+    {
+        GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
+        explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
+        Destroy(explosion, 1.5f);
+    }
+
+
+    void SpawnDamagePopUp(Vector3 pos)
+    {
+        DamagePopUp.Create(pos, Damage, isCritical);
+    }
+
+
+    void FireRemnants()
+    {
+        GameObject remnants = Instantiate(explosiveRemnants, transform.position, Quaternion.Euler(-90, 0, 0));
+        ParticleSystem ps = remnants.GetComponent<ParticleSystem>();
+        var sh = ps.shape;
+        sh.radius = explosiveArea / 2;
+        SphereCollider sphere = remnants.GetComponent<SphereCollider>();
+        sphere.radius = explosiveArea / 2;
+        remnants.GetComponent<EnvironmentalDangers>().radius = explosiveArea / 2;
+        Destroy(remnants, 5);
+    }
     
 
 
