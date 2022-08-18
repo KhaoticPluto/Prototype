@@ -34,15 +34,10 @@ public class RandomShopItem : MonoBehaviour
         
         Instantiate(shopItem, ShopItemSpawn[shopSpawn].transform.position, Quaternion.Euler(0,-90,0), transform);
 
-        Debug.Log(newItem);
-
         shopSpawn++;
         shopItem.GetComponent<ShopItem>().ChoseItem = this;
         
         shopItem.GetComponent<ShopItem>().item = newItem;
-
-        Debug.Log(shopItem.GetComponent<ShopItem>().ChoseItem);
-        Debug.Log(shopItem.GetComponent<ShopItem>().item);
         
 
         RemoveFromList(newItem);

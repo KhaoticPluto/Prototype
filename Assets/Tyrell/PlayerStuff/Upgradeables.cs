@@ -18,7 +18,7 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int NumberOfUpgrades = 0;
     [HideInInspector] public int ProSpeedUpgraded = 0;
     [HideInInspector] public int ProDamageUpgraded = 0;
-    [HideInInspector] public int FireRateUpgraded = 0;
+    /*[HideInInspector] */public int FireRateUpgraded = 0;
     [HideInInspector] public int ProjectilesNumUpgraded = 0;
     [HideInInspector] public int projectileSizeUpgraded = 0;
     [HideInInspector] public int PierceUpgraded = 0;
@@ -88,6 +88,7 @@ public class Upgradeables : MonoBehaviour
     public int dropchanceincrease = 100;
 
 
+
     //scripts
     [Header("Script Refrences")]
     public GunInventoryController gunInventoryController;
@@ -105,23 +106,7 @@ public class Upgradeables : MonoBehaviour
     {
         //MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
         //PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
-  
-
-
-        if (_fireRate <= 0.01f)
-        {
-            _fireRate = 0.1f;
-        }
-
-        if (projectileSpeed >= 160)
-        {
-            projectileSpeed = 150;
-        }
-
-        if(critChance > 50)
-        {
-            critChance = 50;
-        }
+ 
 
     }
 
@@ -158,13 +143,22 @@ public class Upgradeables : MonoBehaviour
     //Fire Rate upgrades
     public void UpgradeFireRate(float amount)
     {
+        
+        if(FireRateUpgraded <= 4)
+        {
+            _fireRate -= amount;
+        }
         FireRateUpgraded++;
-        _fireRate -= amount;
     }
     public void RemoveUpgradeFireRate(float amount)
     {
+        
+        if(FireRateUpgraded <= 5)
+        {
+            _fireRate += amount;
+        }
         FireRateUpgraded--;
-        _fireRate += amount;
+
     }
 
     //increase amount of Projectiles upgrade
@@ -207,13 +201,19 @@ public class Upgradeables : MonoBehaviour
     //Crit Chance
     public void UpgradeCritChance(float amount)
     {
+       
+        if (CritChanceUpgraded <= 4)
+            critChance += amount;
+
         CritChanceUpgraded++;
-        critChance += amount;
     }
     public void RemoveCritChance(float amount)
     {
+
+        if (CritChanceUpgraded <= 5)
+            critChance -= amount;
+        
         CritChanceUpgraded--;
-        critChance -= amount;
     }
 
     //Ricochet

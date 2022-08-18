@@ -77,11 +77,34 @@ public class ItemChoice : MonoBehaviour
         ItemChooser itemchooser = Instantiate(Items, this.transform.transform);
         itemChoiceList.Add(itemchooser);
         Item newitem = itemList[Random.Range(0, itemList.Count)];
-        itemchooser.item = newitem;
+        itemchooser.AddItem(newitem);
         itemchooser.itemChoice = this;
         //remove item from list so that it cannot be chosen again;
         RemoveFromList(newitem);
     }
+
+    //void CheckRarity()
+    //{
+    //    int RarityCheck = Random.Range(1, 4);
+    //    switch (RarityCheck)
+    //    {
+    //        case 1:
+
+    //            break;
+
+    //        case 2:
+
+    //            break;
+
+    //        case 3:
+
+    //            break;
+
+    //        case 4:
+
+    //            break;
+    //    }
+    //}
 
    public void DestoryItems()
     {
