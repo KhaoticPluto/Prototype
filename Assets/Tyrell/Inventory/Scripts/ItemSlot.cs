@@ -43,8 +43,6 @@ public class ItemSlot : MonoBehaviour
         
     }
 
-
-
     public void DestroySlot()
     {
         Destroy(gameObject);
@@ -57,7 +55,6 @@ public class ItemSlot : MonoBehaviour
             Inventory.instance.RemoveItem(item);
         }
     }
-
 
     public void OnCursorEnter()
     {
