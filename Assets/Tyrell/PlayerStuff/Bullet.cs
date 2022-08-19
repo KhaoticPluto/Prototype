@@ -46,6 +46,8 @@ public class Bullet : MonoBehaviour
     public PlayerHealth _playerHealth;
     public Rigidbody rb;
 
+    public GameObject _bulletHitParticles;
+
     void Start()
     {
         ricochet.enabled = isRicochet;
@@ -123,7 +125,8 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         pierceCount++;
-
+        GameObject _particle = Instantiate(_bulletHitParticles, transform.position, Quaternion.identity);
+        Destroy(_particle, 1f);
 
         if (collision.gameObject.tag == "Boss")
         {
@@ -188,7 +191,8 @@ public class Bullet : MonoBehaviour
     {
         ricochetCount++;
         transform.forward = rb.velocity;
-
+        GameObject _particle = Instantiate(_bulletHitParticles, transform.position, Quaternion.identity);
+        Destroy(_particle, 1f);
         ///Mega Ricochet set bonus
         if (isMegaRicochet)
         {
