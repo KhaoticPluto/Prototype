@@ -153,6 +153,10 @@ public class Upgradeables : MonoBehaviour
 
         _fireRate = _fireRate + (_fireRate * amount);
         FireRateUpgraded--;
+        if(FireRateUpgraded <= 0)
+        {
+            _fireRate = 1;
+        }
 
     }
 
