@@ -27,9 +27,6 @@ public class EnemyHealth : MonoBehaviour
             
             MoneyManager.instance.DropMoney();
 
-            //randomItemDrop script
-            //randItemDrop.RandomlyDropItem();
-
         }
 
         if (Health > MaxHealth)
@@ -38,10 +35,13 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void EnemyTakeDamage(float amount)
+    public void EnemyTakeDamage(float amount, bool isCrit)
     {
         Health -= amount;
-        
+        float damageSpawn = Random.Range(0, 4);
+        Vector3 enemyPos = new Vector3(transform.position.x + damageSpawn, transform.position.y + 5, transform.position.z);
+
+        DamagePopUp.Create(enemyPos, amount, isCrit);
     }
 
     public void EnemyGainHealth(float amount)

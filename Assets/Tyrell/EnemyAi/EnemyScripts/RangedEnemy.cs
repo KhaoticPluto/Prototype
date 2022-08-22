@@ -14,9 +14,6 @@ public class RangedEnemy : EnemyAiController
         Vector3 dir = Vector3.Cross(offsetPlayer, Vector3.up);
         agent.SetDestination(transform.position + dir);
 
-        //Make sure enemy doesn't move
-        //agent.SetDestination(transform.position);
-
         transform.LookAt(player);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         if (!alreadyAttacked)

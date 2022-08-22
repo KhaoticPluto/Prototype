@@ -132,9 +132,8 @@ public class Bullet : MonoBehaviour
         {
             damageSpawn = Random.Range(0, 3);
             
-            collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage);
-            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
-
+            collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage, isCritical);
+            
             if (isLifeSteal)
             {
                 StealLife();
@@ -146,7 +145,6 @@ public class Bullet : MonoBehaviour
                 CheckForEnemies();
             }
 
-            SpawnDamagePopUp(enemyPos);
         }
 
 
@@ -155,7 +153,7 @@ public class Bullet : MonoBehaviour
         {
             damageSpawn = Random.Range(0, 3);
             
-            collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
+            collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, isCritical);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
             if (_upgrades.explosiveCountUpgraded > 0)
@@ -171,7 +169,7 @@ public class Bullet : MonoBehaviour
             {
                 StealLife();
             }
-            SpawnDamagePopUp(enemyPos);
+
 
         }
 
@@ -204,10 +202,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             damageSpawn = Random.Range(0, 3);
-            collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
-            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
-
-            SpawnDamagePopUp(enemyPos);
+            collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, isCritical);
 
             if (_upgrades.explosiveCountUpgraded > 0)
             {
@@ -228,10 +223,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Boss")
         {
             damageSpawn = Random.Range(0, 3);
-            collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage);
-            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
-
-            SpawnDamagePopUp(enemyPos);
+            collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage, isCritical);
             if (isLifeSteal)
             {
                 StealLife();
@@ -259,10 +251,7 @@ public class Bullet : MonoBehaviour
             {
                 damageSpawn = Random.Range(0, 4);
                 SpawnExplosion();
-                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage / 2);
-                Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
-
-                DamagePopUp.Create(enemyPos, Damage / 2, isCritical);
+                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage / 2, isCritical);
 
                 ///Explosion Magnet set bonus
                 if (isExplosionMagnet)
@@ -282,10 +271,7 @@ public class Bullet : MonoBehaviour
             {
                 damageSpawn = Random.Range(0, 4);
                 SpawnExplosion();
-                collider.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage / 2);
-                Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
-
-                DamagePopUp.Create(enemyPos, Damage / 2, isCritical);
+                collider.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage / 2, isCritical);
 
                 if (isExplosionMagnet)
                 {
@@ -311,12 +297,6 @@ public class Bullet : MonoBehaviour
         GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
         explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
         Destroy(explosion, 1.5f);
-    }
-
-
-    void SpawnDamagePopUp(Vector3 pos)
-    {
-        DamagePopUp.Create(pos, Damage, isCritical);
     }
 
 

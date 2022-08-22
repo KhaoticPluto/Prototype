@@ -12,7 +12,7 @@ public class EnemyAiController : MonoBehaviour
     public Transform player;
 
     //layermask so the ai knows what is the ground and player
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer, whatIsntPlayer;
 
 
     //Patroling
@@ -29,6 +29,7 @@ public class EnemyAiController : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     public bool isFrozen = false;
+    public bool playerInSight = false;
 
     public GameObject Enemy;
 
@@ -61,10 +62,20 @@ public class EnemyAiController : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        if (Physics.Linecast(transform.position, player.position, whatIsntPlayer))
+        {
+            playerInSight = false;
+        }
+        else
+        {
+            playerInSight = true;
+        }
+
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange && !isFrozen) AttackPlayer();
+        if (playerInSightRange && (!playerInAttackRange || playerInAttackRange) && !playerInSight) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange && !isFrozen && playerInSight) AttackPlayer();
+        
     }
 
     ///freeze

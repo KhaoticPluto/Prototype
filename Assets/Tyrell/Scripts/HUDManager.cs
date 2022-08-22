@@ -20,15 +20,8 @@ public class HUDManager : MonoBehaviour
     
 
     //UI Elements
-    //public TextMeshProUGUI HealthText;  
-    //public TextMeshProUGUI DamageText;
-    //public TextMeshProUGUI ProSpeedText;
-    //public TextMeshProUGUI FireRateText;
-    //public TextMeshProUGUI NumOfProjectiles;
     public TextMeshProUGUI MoneyText;
     public TextMeshProUGUI PriceCountText;
-    //public TextMeshProUGUI RicochetCountText;
-    //public TextMeshProUGUI CritChance;
 
 
     public Slider dashCoolDown;
@@ -55,7 +48,8 @@ public class HUDManager : MonoBehaviour
         
         HudParent.SetActive(true);
         SettingsParent.SetActive(false);
-        
+
+        isPaused = false;
     }
 
     // Update is called once per frame

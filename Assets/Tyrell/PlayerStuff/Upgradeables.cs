@@ -144,19 +144,14 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeFireRate(float amount)
     {
         
-        if(FireRateUpgraded <= 4)
-        {
-            _fireRate -= amount;
-        }
+        _fireRate = _fireRate - (_fireRate * amount);
         FireRateUpgraded++;
     }
     public void RemoveUpgradeFireRate(float amount)
     {
         
-        if(FireRateUpgraded <= 5)
-        {
-            _fireRate += amount;
-        }
+
+        _fireRate = _fireRate + (_fireRate * amount);
         FireRateUpgraded--;
 
     }
@@ -309,7 +304,7 @@ public class Upgradeables : MonoBehaviour
     //Give Random Item
     public void RandomItem()
     {
-        Item newItem = GameManager.instance.WaveitemList[Random.Range(0, GameManager.instance.WaveitemList.Count)];
+        Item newItem = GameManager.instance.GunItemList[Random.Range(0, GameManager.instance.GunItemList.Count)];
 
         Inventory.instance.AddItem(Instantiate(newItem));
     }
