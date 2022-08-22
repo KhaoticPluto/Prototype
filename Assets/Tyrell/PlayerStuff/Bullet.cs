@@ -139,11 +139,6 @@ public class Bullet : MonoBehaviour
                 StealLife();
             }
             
-            if (_upgrades.explosiveCountUpgraded > 0)
-            {
-                
-                CheckForEnemies();
-            }
 
         }
 
@@ -156,11 +151,6 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, isCritical);
             Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
 
-            if (_upgrades.explosiveCountUpgraded > 0)
-            {
-                
-                CheckForEnemies();
-            }
             if (freezeTime > 0)
             {
                 collision.gameObject.GetComponent<EnemyAiController>().StartFrozen(freezeTime);
@@ -182,6 +172,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (_upgrades.explosiveCountUpgraded > 0)
+        {
+            CheckForEnemies();
+        }
 
     }
 
@@ -204,10 +198,6 @@ public class Bullet : MonoBehaviour
             damageSpawn = Random.Range(0, 3);
             collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, isCritical);
 
-            if (_upgrades.explosiveCountUpgraded > 0)
-            {
-                CheckForEnemies();
-            }
             if (freezeTime > 0)
             {
                 collision.gameObject.GetComponent<EnemyAiController>().StartFrozen(freezeTime);
@@ -228,13 +218,15 @@ public class Bullet : MonoBehaviour
             {
                 StealLife();
             }
-            if (_upgrades.explosiveCountUpgraded > 0)
-            {
-                CheckForEnemies();
-            }
+            
             Destroy(this.gameObject);
         }
-        
+
+        if (_upgrades.explosiveCountUpgraded > 0)
+        {
+            CheckForEnemies();
+        }
+
     }
 
     /// <summary>
