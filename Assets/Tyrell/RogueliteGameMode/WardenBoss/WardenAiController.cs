@@ -57,7 +57,7 @@ public class WardenAiController : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player").transform;
         }
-        _animator.GetComponent<WardenBossAnimation>();
+        
 
     }
 
@@ -144,7 +144,7 @@ public class WardenAiController : MonoBehaviour
 
     void ChargeAttack()
     {
-        agent.SetDestination(transform.position);
+        
         if (!alreadyAttacked)
         {
             transform.LookAt(player);

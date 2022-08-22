@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2335938246087001997}
   - component: {fileID: 3307574508864208962}
   - component: {fileID: 2538738175124552878}
+  - component: {fileID: 6590595760293011376}
   m_Layer: 10
   m_Name: End Food Holder
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b5b00f55ab289d4ebc909409ed5d223, type: 2}
+  - {fileID: 2100000, guid: a761c4cac8aaee0448ace58592062b81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 36, y: 23, z: 18}
   m_Center: {x: 0, y: 11.5, z: 0}
+--- !u!208 &6590595760293011376
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264774394979956251}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 18, y: 11.500001, z: 9}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 11.500001, z: 0}
+  m_TimeToStationary: 0.5

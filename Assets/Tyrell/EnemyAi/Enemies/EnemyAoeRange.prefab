@@ -143,6 +143,9 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  whatIsntPlayer:
+    serializedVersion: 2
+    m_Bits: 65463
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
   timeBetweenAttacks: 5
@@ -152,6 +155,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
+  playerInSight: 0
   Enemy: {fileID: 3307521731157396062}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
@@ -172,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 5
-  MaxHealth: 5
+  Health: 2
+  MaxHealth: 2
   AiController: {fileID: 4607736777158792646}
   HealthSlider: {fileID: 859034187618417230}
 --- !u!1001 &4714550300976934726

@@ -32,17 +32,12 @@ public class RandomShopItem : MonoBehaviour
     {
         ItemDrop newItem = ChoseItemList[Random.Range(0, ChoseItemList.Count)];
         
-        Instantiate(shopItem, ShopItemSpawn[shopSpawn].transform.position, Quaternion.Euler(0,-90,0), transform);
-
-        Debug.Log(newItem);
+        GameObject _shopItem = Instantiate(shopItem, ShopItemSpawn[shopSpawn].transform.position, Quaternion.Euler(0,-90,0), transform);
 
         shopSpawn++;
-        shopItem.GetComponent<ShopItem>().ChoseItem = this;
+        _shopItem.GetComponent<ShopItem>().ChoseItem = this;
         
-        shopItem.GetComponent<ShopItem>().item = newItem;
-
-        Debug.Log(shopItem.GetComponent<ShopItem>().ChoseItem);
-        Debug.Log(shopItem.GetComponent<ShopItem>().item);
+        _shopItem.GetComponent<ShopItem>().item = newItem;
         
 
         RemoveFromList(newItem);

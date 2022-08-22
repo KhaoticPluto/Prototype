@@ -13,6 +13,7 @@ public class Item : ScriptableObject
 
     public ItemType itemType;
     public float amount;
+    public float Rarity;
 
     public virtual void Use()
     {
@@ -43,13 +44,15 @@ public enum ItemType
     NumOfProjectiles,
     ProjectileSize,
     Ricochet,
-    SpreadFactor,
     DoubleDamage,
     SeekingProjectiles,
     ProjectilePierce,
     CritChance,
     ImpactExplosion,
-    Freeze, 
+    Freeze,
+    IncreaseSpread,
+    DecreaseSpreaad,
+
 
 
 

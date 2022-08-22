@@ -18,7 +18,7 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int NumberOfUpgrades = 0;
     [HideInInspector] public int ProSpeedUpgraded = 0;
     [HideInInspector] public int ProDamageUpgraded = 0;
-    [HideInInspector] public int FireRateUpgraded = 0;
+    /*[HideInInspector] */public int FireRateUpgraded = 0;
     [HideInInspector] public int ProjectilesNumUpgraded = 0;
     [HideInInspector] public int projectileSizeUpgraded = 0;
     [HideInInspector] public int PierceUpgraded = 0;
@@ -26,12 +26,20 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int RicochetUpgraded = 0;
     [HideInInspector] public int ExplosionUpgraded = 0;
     [HideInInspector] public int FreezeUpgraded = 0;
+    [HideInInspector] public int SpreadUpgraded = 0;
 
-    
+    [Header("SetBonuses")]
+    //Set bonuses
+    public bool ArmorPiercer;
+    public bool MegaRicochet;
+    public bool ExplosionMagnet;
+    public bool Seeking;
+    public bool LifeSteal;
+    public bool UltraFreeze;
 
     //gets the highest used upgrade the player is using
-    public string UpgradeUsedMost;
-    public int MostUsedUpgrade;
+    [HideInInspector] public string UpgradeUsedMost;
+    [HideInInspector] public int MostUsedUpgrade;
 
     //upgrade values
     [Header("Upgrade values")]
@@ -47,11 +55,9 @@ public class Upgradeables : MonoBehaviour
 
     public int NumberOfProjectile = 1;
 
-    public float SpreadFactor = 0.2f;
-
     public Vector3 ProjectileSize = new Vector3(0.5f,0.5f,0.5f);
 
-    public float ProjectileLifeTime = 1;
+    public float ProjectileLifeTime = 5;
 
     public float PierceCountUpgraded = 0;
 
@@ -62,6 +68,8 @@ public class Upgradeables : MonoBehaviour
     public int explosiveCountUpgraded = 0;
 
     public float FreezeTime = 0;
+
+    public float SpreadFactor = 15;
 
     //Player values
 
@@ -80,10 +88,12 @@ public class Upgradeables : MonoBehaviour
     public int dropchanceincrease = 100;
 
 
+
     //scripts
     [Header("Script Refrences")]
     public GunInventoryController gunInventoryController;
     public MoneyManager moneyManager;
+    public PlayerHealth pHealth;
 
     private void Start()
     {
@@ -94,25 +104,9 @@ public class Upgradeables : MonoBehaviour
     //Reset upgrades if lowered past lowest amount
     private void Update()
     {
-        MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
-        PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
-  
-
-
-        if (_fireRate <= 0.01f)
-        {
-            _fireRate = 0.1f;
-        }
-
-        if (projectileSpeed >= 160)
-        {
-            projectileSpeed = 150;
-        }
-
-        if(critChance > 50)
-        {
-            critChance = 50;
-        }
+        //MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
+        //PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
+ 
 
     }
 
@@ -149,13 +143,21 @@ public class Upgradeables : MonoBehaviour
     //Fire Rate upgrades
     public void UpgradeFireRate(float amount)
     {
+        
+        _fireRate = _fireRate - (_fireRate * amount);
         FireRateUpgraded++;
-        _fireRate -= amount;
     }
     public void RemoveUpgradeFireRate(float amount)
     {
+        
+
+        _fireRate = _fireRate + (_fireRate * amount);
         FireRateUpgraded--;
-        _fireRate += amount;
+        if(FireRateUpgraded <= 0)
+        {
+            _fireRate = 1;
+        }
+
     }
 
     //increase amount of Projectiles upgrade
@@ -198,13 +200,19 @@ public class Upgradeables : MonoBehaviour
     //Crit Chance
     public void UpgradeCritChance(float amount)
     {
+       
+        if (CritChanceUpgraded <= 4)
+            critChance += amount;
+
         CritChanceUpgraded++;
-        critChance += amount;
     }
     public void RemoveCritChance(float amount)
     {
+
+        if (CritChanceUpgraded <= 5)
+            critChance -= amount;
+        
         CritChanceUpgraded--;
-        critChance -= amount;
     }
 
     //Ricochet
@@ -247,6 +255,19 @@ public class Upgradeables : MonoBehaviour
         FreezeUpgraded--;
     }
 
+    //Spread Factor
+    public void UpgradesSpreadFactor(float amount)
+    {
+        SpreadUpgraded++;
+        SpreadFactor += amount;
+    }
+    public void RemoveSpreadFactor(float amount)
+    {
+        SpreadUpgraded--;
+        SpreadFactor -= amount;
+    }
+
+
     //*------- Gun Upgrades --------*//
 
 
@@ -287,7 +308,7 @@ public class Upgradeables : MonoBehaviour
     //Give Random Item
     public void RandomItem()
     {
-        Item newItem = GameManager.instance.WaveitemList[Random.Range(0, GameManager.instance.WaveitemList.Count)];
+        Item newItem = GameManager.instance.GunItemList[Random.Range(0, GameManager.instance.GunItemList.Count)];
 
         Inventory.instance.AddItem(Instantiate(newItem));
     }

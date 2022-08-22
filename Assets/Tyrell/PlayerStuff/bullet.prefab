@@ -100,11 +100,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
+  Speed: 0
   explosiveArea: 0
+  explosiveRemnants: {fileID: 2421481130086203441, guid: f974f723a9e33b641b374ab71b6d1d55, type: 3}
   freezeTime: 0
   isCritical: 0
   isRicochet: 0
   isPierce: 0
+  isArmorPiercer: 0
+  isMegaRicochet: 0
+  isExplosionMagnet: 0
+  isSeeking: 0
+  isLifeSteal: 0
+  isUltraFreeze: 0
   ricochet: {fileID: 4069234190582742969}
   Pierce: {fileID: -552768996964659963}
   WhatIsEnemy:
@@ -112,9 +120,13 @@ MonoBehaviour:
     m_Bits: 256
   WhatisWall:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 17408
   Explosion: {fileID: 3802423153891719707, guid: 44704e05c2f49374c95bd881a7185710, type: 3}
+  FreezeExplosion: {fileID: 3802423153891719707, guid: fe74f912e85873545858f82d235f41a2, type: 3}
   _upgrades: {fileID: 0}
+  _playerHealth: {fileID: 0}
+  rb: {fileID: -7997453344690166918}
+  _bulletHitParticles: {fileID: 4375630869897488018, guid: d2842431584fc4c45ac9ed06c2adc089, type: 3}
 --- !u!54 &-7997453344690166918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,7 +142,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 4
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &-552768996964659963
 SphereCollider:
   m_ObjectHideFlags: 0

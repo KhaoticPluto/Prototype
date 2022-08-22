@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
 {
     //Scripts
     public Upgradeables stats;
+    public SetBonusesCheck SetBonuses;
 
     //UI Elements
     public TextMeshProUGUI DamageText;
@@ -17,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI PriceCountText;
     public TextMeshProUGUI RicochetCountText;
     public TextMeshProUGUI CritChance;
+    public TextMeshProUGUI FreezeText;
+    public TextMeshProUGUI BulletSpreadText;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class PlayerStats : MonoBehaviour
         if (GameObject.FindWithTag("Player") != null)
         {
             stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+            SetBonuses = GameObject.FindWithTag("Player").GetComponent<SetBonusesCheck>();
         }
     }
 
@@ -41,6 +45,13 @@ public class PlayerStats : MonoBehaviour
             CritChance.text = "Crit Chance: " + stats.critChance + "%";
             PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;
             RicochetCountText.text = "Ricochet Count: " + stats.ricochetCountUpgraded;
+            FreezeText.text = "Freeze Time: " + stats.FreezeTime;
+            BulletSpreadText.text = "Bullet Spread: " + stats.SpreadFactor;
+
         }
+
+        
+
+
     }
 }

@@ -31,7 +31,7 @@ public class ItemUpgradeRemove : MonoBehaviour
     {
         NumberOfUpgrades++;
         upgrade.GetComponent<Upgradeables>();
-        Debug.Log("Upgrade" + itemType + " by " + amount);
+        Debug.Log("Upgrade " + itemType + " by " + amount);
         switch (itemType)
         {
             case ItemType.FireRate:
@@ -74,6 +74,9 @@ public class ItemUpgradeRemove : MonoBehaviour
                 upgrade.UpgradeFreezeProjectiles(amount);
                 break;
 
+            case ItemType.IncreaseSpread:
+                upgrade.UpgradesSpreadFactor(amount);
+                break;
         }
     }
 
@@ -122,6 +125,10 @@ public class ItemUpgradeRemove : MonoBehaviour
 
             case ItemType.Freeze:
                 upgrade.RemoveFreezeProjectiles(amount);
+                break;
+
+            case ItemType.IncreaseSpread:
+                upgrade.RemoveSpreadFactor(amount);
                 break;
         }
     }

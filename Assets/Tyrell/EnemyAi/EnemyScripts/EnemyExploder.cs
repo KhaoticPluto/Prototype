@@ -36,7 +36,7 @@ public class EnemyExploder : EnemyAiController
         //}
         nextFlash += Time.deltaTime;
 
-        if (playerInAttackRange)
+        if (playerInAttackRange && !isFrozen)
         {
             if(nextFlash > flashinTimer)
             {
@@ -123,7 +123,7 @@ public class EnemyExploder : EnemyAiController
             {
                 float damageSpawn = Random.Range(0, 4);
                 
-                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(explosionDamage);
+                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(explosionDamage, false);
                 Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
 
 
