@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5085565388122158734}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 6932728135020553720, guid: beb6e3922e049c140872887ee2dcd8f9, type: 3}
 --- !u!23 &7366966040589908208
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b471f05738a6d64d97628288a5541f4, type: 2}
+  - {fileID: 2100000, guid: 8633711207a22fd4c909971b9a052a13, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,6 +116,11 @@ MonoBehaviour:
   ItemNameText: {fileID: 7917383659447840378}
   item: {fileID: 0}
   ChoseItem: {fileID: 0}
+  foodMeshes:
+  - {fileID: 2374429145335764724, guid: 30c821dd0835d9d4fbd6995eb75fd998, type: 3}
+  - {fileID: 6932728135020553720, guid: beb6e3922e049c140872887ee2dcd8f9, type: 3}
+  - {fileID: 2364439783755109383, guid: 1aade2a4b6f277244bda89b7c71c7fab, type: 3}
+  - {fileID: -8259610273922631639, guid: 7ba0645bcd8296e41b7c0376157391de, type: 3}
 --- !u!1 &6741604506385264774
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +147,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6741604506385264774}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.2705976, y: 0.6532817, z: -0.2705976, w: 0.6532817}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -151,11 +156,11 @@ RectTransform:
   - {fileID: 1030963817678738444}
   m_Father: {fileID: 8455316417447550769}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3}
-  m_SizeDelta: {x: 5.1387, y: 5.15}
+  m_AnchoredPosition: {x: 0, y: 9}
+  m_SizeDelta: {x: 6.9579, y: 5.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6626986298160766033
 Canvas:

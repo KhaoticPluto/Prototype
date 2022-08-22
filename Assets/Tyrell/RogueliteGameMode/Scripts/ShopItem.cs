@@ -17,6 +17,8 @@ public class ShopItem : MonoBehaviour
 
     bool playerInTrigger = false;
 
+    public List<Mesh> foodMeshes = new List<Mesh>();
+
     private void Start()
     {
         if(FindObjectOfType<RandomShopItem>() != null)
@@ -28,6 +30,8 @@ public class ShopItem : MonoBehaviour
 
         CostText.text = ItemCost + "";
         ItemNameText.text = item.name;
+        int randomfood = Random.Range(0, foodMeshes.Count);
+        GetComponent<MeshFilter>().mesh = foodMeshes[randomfood]; 
     }
 
 
