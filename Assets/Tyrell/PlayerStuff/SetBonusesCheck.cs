@@ -8,17 +8,17 @@ public class SetBonusesCheck : MonoBehaviour
 
     [Header("Set Bonuses")]
     public SetBonuses _ArmorPiercer;
-    bool _armorPierceSet = false;
+    public bool _armorPierceSet = false;
     public SetBonuses _MegaRicochet;
-    bool _megaRicochetSet = false;
+    public bool _megaRicochetSet = false;
     public SetBonuses _ExplosionMagnet;
-    bool _explosionMagnetSet = false;
+    public bool _explosionMagnetSet = false;
     public SetBonuses _Seeking;
-    bool _seekingSet = false;
+    public bool _seekingSet = false;
     public SetBonuses _LifeSteal;
-    bool _lifeStealSet = false;
+    public bool _lifeStealSet = false;
     public SetBonuses _UltraFreeze;
-    bool _ultraFreezeSet = false;
+    public bool _ultraFreezeSet = false;
 
     private void Update()
     {
@@ -73,13 +73,13 @@ public class SetBonusesCheck : MonoBehaviour
         }
 
         //LifeSteal Set bonus
-        if(upgrades.ProDamageUpgraded >= 3 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceCountUpgraded >= 2
+        if(upgrades.ProDamageUpgraded >= 3 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceUpgraded >= 2
              && _lifeStealSet == false)
         {
             _LifeSteal.setComplete();
             _lifeStealSet = true;
         }
-        else if ((upgrades.ProDamageUpgraded < 3 || upgrades.ProjectilesNumUpgraded < 2 || upgrades.PierceCountUpgraded < 2)
+        else if ((upgrades.ProDamageUpgraded < 3 || upgrades.ProjectilesNumUpgraded < 2 || upgrades.PierceUpgraded < 2)
            && _lifeStealSet == true)
         {
             _LifeSteal.setRemoved();
