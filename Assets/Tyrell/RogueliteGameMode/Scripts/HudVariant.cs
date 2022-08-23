@@ -56,7 +56,7 @@ public class HudVariant : MonoBehaviour
     {
         //Player Stats Text
         HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
-        MoneyText.text = "Instant Noodles " + MoneyManager.Money;
+        MoneyText.text =  MoneyManager.Money;
 
         //Gun stats texts
         DamageText.text = "Damage: " + stats.projectileDamage;
