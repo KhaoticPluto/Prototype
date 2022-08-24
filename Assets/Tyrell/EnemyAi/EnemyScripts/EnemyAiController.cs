@@ -73,7 +73,7 @@ public class EnemyAiController : MonoBehaviour
 
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && (!playerInAttackRange || playerInAttackRange) && !playerInSight) ChasePlayer();
+        if (playerInSightRange  && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange && !isFrozen && playerInSight) AttackPlayer();
         
     }

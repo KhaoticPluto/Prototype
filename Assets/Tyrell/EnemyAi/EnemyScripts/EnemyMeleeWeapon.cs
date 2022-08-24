@@ -9,6 +9,19 @@ public class EnemyMeleeWeapon : MonoBehaviour
     public int MinDamage;
     bool alreadyDamaged;
 
+    public BoxCollider box;
+    void TurnOnCollider()
+    {
+        
+        box.GetComponent<BoxCollider>().enabled = true;
+    }
+
+    void TurnOffCollider()
+    {
+        
+        box.GetComponent<BoxCollider>().enabled = false;
+    }
+
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")

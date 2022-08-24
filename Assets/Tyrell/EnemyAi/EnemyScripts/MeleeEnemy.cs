@@ -22,7 +22,7 @@ public class MeleeEnemy : EnemyAiController
         {
             player = GameObject.FindWithTag("Player").transform;
         }
-        zigZagDelta = Random.Range(2, 8);
+        zigZagDelta = Random.Range(10, 20);
         zigZagDistance = Random.Range(10, 40);
 
         StartCoroutine(WaitBeforeAttack());

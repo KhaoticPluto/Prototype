@@ -89,13 +89,18 @@ public class EnemyExploder : EnemyAiController
     { 
         
         yield return new WaitForSeconds(5);
-        CheckForPlayer();
+        if (!playerInExplodeRange)
+        {
+            CheckForPlayer();
+
+            DestroyEnemy();
+        }
         
-        DestroyEnemy();
     }
 
     void PlayerInRangeExplodeEnemy()
     {
+
         CheckForPlayer();
 
         DestroyEnemy();
@@ -124,10 +129,7 @@ public class EnemyExploder : EnemyAiController
                 float damageSpawn = Random.Range(0, 4);
                 
                 collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(explosionDamage, false);
-                Vector3 enemyPos = new Vector3(collider.gameObject.transform.position.x + damageSpawn, collider.gameObject.transform.position.y + 5, collider.gameObject.transform.position.z);
-
-
-                DamagePopUp.Create(enemyPos, explosionDamage, false);
+                
             }
         }
     }

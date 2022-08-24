@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     //Player Upgrade
     public TextMeshProUGUI moneyCounter;
     public TextMeshProUGUI healthCounter;
+    
     public TextMeshProUGUI speedCounter;
     //public TextMeshProUGUI inventoryCounter;
 
@@ -22,7 +23,7 @@ public class HUDManager : MonoBehaviour
     //UI Elements
     public TextMeshProUGUI MoneyText;
     public TextMeshProUGUI PriceCountText;
-
+    public TextMeshProUGUI healthText;
 
     public Slider dashCoolDown;
     public Slider healthBar;
@@ -60,6 +61,7 @@ public class HUDManager : MonoBehaviour
             //Player Stats Text
             //HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
             healthBar.value = stats.Health;
+            healthText.text = stats.Health + "";
             MoneyText.text = " " + MoneyManager.Money;
 
             healthCounter.text = " " + PlayerItemUpgradeRemove.instance.MaxHealthItem;
