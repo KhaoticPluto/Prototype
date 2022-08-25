@@ -22,12 +22,15 @@ public class EnvironmentalDangers : MonoBehaviour
         foreach (Collider col in hitColliders)
         {
             if (col.gameObject.tag == "Enemy")
-            {
+            {       
 
-                col.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage);
-                Vector3 enemyPos = new Vector3(col.gameObject.transform.position.x, 
-                    col.gameObject.transform.position.y + 5, col.gameObject.transform.position.z);
-                DamagePopUp.Create(enemyPos, Damage, false);
+                col.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, false);
+
+            }
+            if (col.gameObject.tag == "Player")
+            {
+                col.GetComponent<PlayerHealth>().TakeDamage(Damage);
+                
             }
         }
 

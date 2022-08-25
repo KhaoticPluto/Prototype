@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class GameManager : MonoBehaviour
 
     
 
-    public List<Item> WaveitemList = new List<Item>();
-    public List<Item> RogueItemList = new List<Item>();
+    
+    public List<Item> GunItemList = new List<Item>();
     
     
     public GameObject itemInfoPrefab;
@@ -46,15 +47,20 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Item newItem = WaveitemList[Random.Range(0, WaveitemList.Count)];
+            Item newItem = GunItemList[Random.Range(0, GunItemList.Count)];
 
             Inventory.instance.AddItem(Instantiate(newItem));
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Item newItem = RogueItemList[Random.Range(0, RogueItemList.Count)];
+            Item newItem = GunItemList[Random.Range(0, GunItemList.Count)];
 
             Inventory.instance.AddItem(Instantiate(newItem));
+        }
+
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            TakeScreenshot();
         }
 
     }
@@ -83,5 +89,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private string directoryName = "Screenshots";
+    private string fileName = "TestImage.png";
+
+    public void TakeScreenshot()
+    {
+        DirectoryInfo screenshotDirectory = Directory.CreateDirectory(directoryName);
+        string fullPath = Path.Combine(screenshotDirectory.FullName, fileName);
+
+        ScreenCapture.CaptureScreenshot(fullPath);
+    }
+
 }

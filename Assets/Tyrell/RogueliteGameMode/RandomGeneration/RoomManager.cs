@@ -76,7 +76,7 @@ public class RoomManager : MonoBehaviour
             Instantiate(UpgradeRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
             RoomNumber++;
             ///will remove spawned room so that it wil not spawn again
-            //UpgradeRoomList.RemoveAt(spawnedRoom);
+            UpgradeRoomList.RemoveAt(spawnedRoom);
         
         
     }

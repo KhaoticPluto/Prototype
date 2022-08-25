@@ -35,7 +35,10 @@ public class WardenAiController : MonoBehaviour
 
     //AnimationPlayer
     public Animator _animator;
-    public Collider MeleeWeaponCollider;
+
+
+    public GameObject GroundBreak;
+    public Transform Weapon;
 
     //sets the animation states
     public bool AnimationStarted = false;
@@ -57,10 +60,15 @@ public class WardenAiController : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player").transform;
         }
-        _animator.GetComponent<WardenBossAnimation>();
+        
 
     }
 
+    public void GroundBreakSpawn()
+    {
+        GameObject particle = Instantiate(GroundBreak, Weapon.position, Quaternion.Euler(-90, 0, 0));
+        Destroy(particle, 4);
+    }
 
     private void Update()
     {
@@ -89,10 +97,6 @@ public class WardenAiController : MonoBehaviour
             BossPause();
         }
 
-        //if (playerInChargeRange && ChargeReady && !alreadyAttacked)
-        //{
-        //    ChargeAttack();
-        //}
 
     }
 
@@ -135,6 +139,7 @@ public class WardenAiController : MonoBehaviour
     {
         if (!alreadyAttacked)
         {
+            _animator.SetBool("isWalking", true);
             transform.LookAt(player);
         }
         agent.SetDestination(player.position);
@@ -144,7 +149,7 @@ public class WardenAiController : MonoBehaviour
 
     void ChargeAttack()
     {
-        agent.SetDestination(transform.position);
+        
         if (!alreadyAttacked)
         {
             transform.LookAt(player);
@@ -168,6 +173,7 @@ public class WardenAiController : MonoBehaviour
             
                 ///Attack code here
                 transform.LookAt(player);
+            transform.Rotate(0, -15, 0);
                 _animator.SetTrigger("isAttacking");
 
 
