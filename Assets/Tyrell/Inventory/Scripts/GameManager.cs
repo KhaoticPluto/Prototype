@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -57,6 +58,11 @@ public class GameManager : MonoBehaviour
             Inventory.instance.AddItem(Instantiate(newItem));
         }
 
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            TakeScreenshot();
+        }
+
     }
 
     
@@ -83,5 +89,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private string directoryName = "Screenshots";
+    private string fileName = "TestImage.png";
+
+    public void TakeScreenshot()
+    {
+        DirectoryInfo screenshotDirectory = Directory.CreateDirectory(directoryName);
+        string fullPath = Path.Combine(screenshotDirectory.FullName, fileName);
+
+        ScreenCapture.CaptureScreenshot(fullPath);
+    }
+
 }

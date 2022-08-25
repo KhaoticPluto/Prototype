@@ -144,19 +144,16 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeFireRate(float amount)
     {
         
-        _fireRate = _fireRate - (_fireRate * amount);
+        _fireRate = _fireRate / amount;
         FireRateUpgraded++;
     }
     public void RemoveUpgradeFireRate(float amount)
     {
         
 
-        _fireRate = _fireRate + (_fireRate * amount);
+        _fireRate = _fireRate * amount;
         FireRateUpgraded--;
-        if(FireRateUpgraded <= 0)
-        {
-            _fireRate = 1;
-        }
+
 
     }
 
