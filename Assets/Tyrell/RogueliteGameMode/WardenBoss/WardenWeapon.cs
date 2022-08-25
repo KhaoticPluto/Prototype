@@ -8,6 +8,7 @@ public class WardenWeapon : MonoBehaviour
     float Damage;
     public int MaxDamage;
     public int MinDamage;
+    bool alreadyAttacked = false;
 
     public SphereCollider SphereCollider;
 
@@ -17,16 +18,16 @@ public class WardenWeapon : MonoBehaviour
     }
     IEnumerator TurnOffCollider()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.1f);
         SphereCollider.GetComponent<SphereCollider>().enabled = false;
+        alreadyAttacked = false ;
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && !alreadyAttacked)
         {
-            Debug.Log("Wareden Hits");
-
+            alreadyAttacked = true;
             Damage = Random.Range(MinDamage, MaxDamage);
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(Damage);
 

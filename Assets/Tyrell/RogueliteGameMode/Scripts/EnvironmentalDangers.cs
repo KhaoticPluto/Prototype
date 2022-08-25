@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnvironmentalDangers : MonoBehaviour
 {
+
+
     public float Damage = 1;
     public float radius = 1;
 
-
     private void Start()
     {
-        InvokeRepeating("DamageOverTime", 1, 1);
+        InvokeRepeating("DamageOverTime", 0, 1);
     }
-
 
     void DamageOverTime()
     {
@@ -35,6 +35,8 @@ public class EnvironmentalDangers : MonoBehaviour
         }
 
     }
+
+
 
 
     private void OnDrawGizmosSelected()

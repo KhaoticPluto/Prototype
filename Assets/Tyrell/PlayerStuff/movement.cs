@@ -164,7 +164,10 @@ public class movement : MonoBehaviour
         }
     }
 
-
+    public void Knockback(float amount)
+    {
+        controller.Move(transform.forward * -amount * Time.deltaTime);
+    }
     
 
 }

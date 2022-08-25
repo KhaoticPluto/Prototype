@@ -293,7 +293,7 @@ public class Upgradeables : MonoBehaviour
     //Speed
     public void UpgradeSpeed(float amount)
     {
-        playerSpeed += amount;
+        playerSpeed = playerSpeed * amount;
     }
 
     //money Gain

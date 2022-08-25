@@ -30,21 +30,24 @@ public class WardenAiController : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange, playerInChargeRange;
 
     bool ChargeReady = false;
-    public float TimeToCharge = 15;
-    public float NextCharge;
+    float TimeToCharge = 15;
+    float NextCharge;
+    
+    public GameObject ChargeCollider;
 
     //AnimationPlayer
     public Animator _animator;
 
 
     public GameObject GroundBreak;
+    public GameObject particleFart;
     public Transform Weapon;
 
     //sets the animation states
     public bool AnimationStarted = false;
     public bool AnimationFinished = true;
     Vector3 Lastpos;
-
+    public Transform Root;
 
     void Awake()
     {
@@ -60,7 +63,7 @@ public class WardenAiController : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player").transform;
         }
-        
+        InvokeRepeating("TriggerFart", 5, 10);
 
     }
 
@@ -70,18 +73,32 @@ public class WardenAiController : MonoBehaviour
         Destroy(particle, 4);
     }
 
+    void TriggerFart()
+    {
+        _animator.SetTrigger("canFart");
+    }
+
+    public void Fart()
+    {
+        GameObject particle = Instantiate(particleFart, transform.position, Quaternion.Euler(90, 0, 0));
+        Destroy(particle, 10);
+    }
+
+
     private void Update()
     {
-
+        
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInChargeRange = Physics.CheckSphere(transform.position, ChargeRange, whatIsPlayer);
 
+
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) WeaponSlam();
+        if (playerInChargeRange && ChargeReady) ChargeAttack();
 
         if(ChargeReady == false)
         {
@@ -145,24 +162,40 @@ public class WardenAiController : MonoBehaviour
         agent.SetDestination(player.position);
 
     }
-
+    
 
     void ChargeAttack()
     {
         
-        if (!alreadyAttacked)
-        {
-            transform.LookAt(player);
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-            
-            
+         transform.LookAt(player);
+         _animator.SetTrigger("ChargeAttack");
+        ChargeReady = false;
+    }
 
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
+    IEnumerator IsChargingFalsed()
+    {
+        yield return new WaitForSeconds(2);
+        ChargeCollider.SetActive(false);
+    }
+    void IsChargingTrue()
+    {
         
+        ChargeCollider.SetActive(true);
+    }
+
+    void GetPosition()
+    {
+        Lastpos = Root.position;
+        Invoke("SetPosition", 0.01f);
+    }
+
+    void SetPosition()
+    {
+        transform.position = Lastpos;
         
     }
+
+    
 
     void WeaponSlam()
     {
