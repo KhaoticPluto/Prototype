@@ -126,12 +126,27 @@ public class EnemyExploder : EnemyAiController
 
             if (collider.gameObject.tag == "Enemy")
             {
-                float damageSpawn = Random.Range(0, 4);
+                
                 
                 collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(explosionDamage, false);
                 
             }
         }
+    }
+
+
+    public override void DestroyEnemy()
+    {
+        if (IsRogueLite == true)
+        {
+            roomspawn.RemoveEnemy(Enemy);
+        }
+
+
+        Destroy(Enemy);
+        
+        //only for the roguelite mode to check if it is the roguelite mode and remove from the room list
+
     }
 
     private void OnDrawGizmosSelected()

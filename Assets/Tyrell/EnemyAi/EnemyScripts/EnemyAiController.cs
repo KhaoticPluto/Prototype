@@ -152,7 +152,7 @@ public class EnemyAiController : MonoBehaviour
 
 
     //destorys enemy
-    public void DestroyEnemy()
+    public virtual void DestroyEnemy()
     {
         if (IsRogueLite == true )
         {
@@ -161,7 +161,7 @@ public class EnemyAiController : MonoBehaviour
         
 
         Destroy(Enemy);
-        Debug.Log(Enemy + "enemy Destroyed");
+        
         //only for the roguelite mode to check if it is the roguelite mode and remove from the room list
         
 
