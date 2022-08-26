@@ -15,6 +15,13 @@ public class EnemySpawnSystem : MonoBehaviour
     private List<GameObject> enemyList = new List<GameObject>();
 
     [SerializeField]
+    private GameObject[] ElitePrefabs;
+    
+    [SerializeField]
+    private GameObject BossPrefabs;
+
+
+    [SerializeField]
     private int maxEnemySpawn;
 
 
@@ -32,7 +39,7 @@ public class EnemySpawnSystem : MonoBehaviour
     public float NextWaveTimer = 5;
     public float resetTimer = 5;
 
-
+    int EliteWave = 1;
 
 
     public WaveGameManager manager;
@@ -48,15 +55,13 @@ public class EnemySpawnSystem : MonoBehaviour
 
         //find game manager
         manager = FindObjectOfType<WaveGameManager>();
-        manager.GetComponent<GameManager>();
+        manager.GetComponent<WaveGameManager>();
     }
 
     private void Update()
     {
         manager.WavesCompleted = WaveNumber - 1;
 
-
-        
 
         if(enemyList.Count == 0 && StartedWaves == true)
         {
@@ -98,29 +103,26 @@ public class EnemySpawnSystem : MonoBehaviour
         maxEnemySpawn = maxEnemySpawn + 2 + WaveNumber;
         StartedWaves = true;
         nextWave = false;
-            for (int i = 0; i < maxEnemySpawn; i++)
-            {
+        for (int i = 0; i < maxEnemySpawn; i++)
+        {
                 SpawnEnemies();
+        }
+        if(WaveNumber % 5 == 0)
+        {
+            for (int i = 0; i < EliteWave; i++)
+            {
+                SpawnElites();
             }
+            EliteWave++;
 
+        }
+        if(WaveNumber % 10 == 0)
+        {
+            SpawnBoss();
+        }
         
     }
 
-
-
-    IEnumerator SpawnEnemiesWait()
-    {
-        
-        Debug.Log("spawned enemy");
-        int spawnNum = Random.Range(0, spawnZones.Length);
-        int enemyNum = Random.Range(0, enemyPrefabs.Length);
-
-        GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
-        Enemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.RoomNumber;
-        Enemy.GetComponent<EnemyHealth>().Health += RoomManager.instance.RoomNumber;
-        enemyList.Add(Enemy);
-        yield return new WaitForSeconds(.2f);
-    }
 
     private void SpawnEnemies()
     {
@@ -138,7 +140,26 @@ public class EnemySpawnSystem : MonoBehaviour
 
     }
 
-    
+    public void SpawnElites()
+    {
+        int spawnNum = Random.Range(0, spawnZones.Length);
+        int enemyNum = Random.Range(0, ElitePrefabs.Length);
 
+        GameObject Enemy = Instantiate(ElitePrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += WaveNumber;
+        Enemy.GetComponent<EnemyHealth>().Health += WaveNumber;
+        enemyList.Add(Enemy);
+    }
+
+    public void SpawnBoss()
+    {
+        int spawnNum = Random.Range(0, spawnZones.Length);
+
+
+        GameObject Enemy = Instantiate(BossPrefabs, spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += WaveNumber;
+        Enemy.GetComponent<EnemyHealth>().Health += WaveNumber;
+        enemyList.Add(Enemy);
+    }
 
 }
