@@ -40,20 +40,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1162451613971029908, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162451613971029908, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1162451613971029908, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5341010190451919587}
+      objectReference: {fileID: 2714685249523489475}
     - target: {fileID: 1162451613971029908, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: ResumeGame
       objectReference: {fileID: 0}
     - target: {fileID: 1162451613971029908, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: HudVariant, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162451613971029908, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1454815393065124431, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
       propertyPath: m_fontAsset
@@ -81,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 98351092474632337}
     - target: {fileID: 1704893408538704128, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadWaveGame
+      value: LoadStartingArea
       objectReference: {fileID: 0}
     - target: {fileID: 1704893408538704128, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -737,11 +745,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
---- !u!1 &5341010190451919587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8522843302434393738, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
+--- !u!114 &2714685249523489475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1870211495642308266, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
   m_PrefabInstance: {fileID: 4348274556302754921}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5381762036857920393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b3f51e2f9714534b8ca86372b063705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5381762036857920393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8572585005888495584, guid: ab8edb67d6ff88d41af28ca442f86129, type: 3}
