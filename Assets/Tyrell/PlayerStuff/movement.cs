@@ -26,6 +26,7 @@ public class movement : MonoBehaviour
 
     // Movement Inputs
     private Vector3 _moveDirection;
+    public Rigidbody rb;
 
     // Mouse Position
     public MousePosition mousePos;
@@ -93,13 +94,13 @@ public class movement : MonoBehaviour
 
         lastPos = transform.position;
         //Movement
-        //if (inventoryUIHandler.InventoryOpen == false)
         Move();
 
     }
 
     private void Start()
     {
+        rb.GetComponent<Rigidbody>();
         inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
 
         
@@ -107,10 +108,7 @@ public class movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //lastPos = transform.position;
-        ////Movement
-        ////if (inventoryUIHandler.InventoryOpen == false)
-        //    Move();
+        
     }
 
     // Inputs for Movement
@@ -166,7 +164,12 @@ public class movement : MonoBehaviour
 
     public void Knockback(float amount)
     {
-        controller.Move(transform.forward * -amount * Time.deltaTime);
+        float startTime = Time.time;
+        float Knockback = 2;
+        while (Time.time < startTime + Knockback)
+        {
+            rb.AddForce(transform.forward * 100, ForceMode.VelocityChange);
+        }
     }
     
 
