@@ -54,9 +54,7 @@ public class EnemyRoomSpawn : MonoBehaviour
 
     public void RemoveEnemy(GameObject enemy)
     {
-        Debug.Log(enemy + "Removed");
         enemyList.Remove(enemy);
-        Debug.Log(enemyList.Count);
         if (enemyList.Count <= 0)
         {
 

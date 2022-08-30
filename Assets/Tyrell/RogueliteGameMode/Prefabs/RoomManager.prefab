@@ -320,6 +320,7 @@ MonoBehaviour:
   - {fileID: 1586385548613035816}
   - {fileID: 1586385549109683195}
   - {fileID: 1586385548051876764}
+  - {fileID: 3744713157724517892}
   UpgradeRoomList:
   - {fileID: 7401202810788101246, guid: b2427f4845ae2a541ad6c30f3bc7bdb4, type: 3}
   - {fileID: 7401202810788101246, guid: 28c1da959ad11474b9a10599e019040a, type: 3}
@@ -634,6 +635,7 @@ Transform:
   - {fileID: 1586385548613035816}
   - {fileID: 1586385549109683195}
   - {fileID: 1586385548051876764}
+  - {fileID: 3744713157724517892}
   m_Father: {fileID: 1586385547536900369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1009,6 +1011,37 @@ Transform:
   m_Father: {fileID: 1586385548383751203}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8612532749832796970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3744713157724517892}
+  m_Layer: 0
+  m_Name: Room (25)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &3744713157724517892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612532749832796970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4800}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1586385548383751203}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1586385547391369287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1106,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3147502767702374931, guid: 2f310936905869040b52f3ed7b55f517, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3147502767702374931, guid: 2f310936905869040b52f3ed7b55f517, type: 3}
       propertyPath: m_StaticEditorFlags
