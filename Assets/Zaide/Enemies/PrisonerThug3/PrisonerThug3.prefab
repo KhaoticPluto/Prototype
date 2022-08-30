@@ -9,6 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2662972525489935561}
+  - component: {fileID: 3889383391297132525}
+  - component: {fileID: 3747747868420987010}
+  - component: {fileID: 4154526955370033720}
+  - component: {fileID: 3340178845195880897}
   m_Layer: 8
   m_Name: PrisonerThug3
   m_TagString: Enemy
@@ -37,6 +41,99 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &3889383391297132525
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390932973366077067}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 25
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 102
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!65 &3747747868420987010
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390932973366077067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40, y: 100, z: 33}
+  m_Center: {x: 0, y: 50, z: 2}
+--- !u!95 &4154526955370033720
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390932973366077067}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e19dc3396ef97e4d8a769cb2a85e13c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3340178845195880897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390932973366077067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3d1a54af6354b44acff965617bf509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 3889383391297132525}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1536
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsntPlayer:
+    serializedVersion: 2
+    m_Bits: 65463
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 40
+  timeBetweenAttacks: 1
+  alreadyAttacked: 0
+  sightRange: 300
+  attackRange: 4.5
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  isFrozen: 0
+  playerInSight: 0
+  Enemy: {fileID: 3390932973366077067}
+  roomspawn: {fileID: 0}
+  IsRogueLite: 0
+  animator: {fileID: 4154526955370033720}
+  agentTransform: {fileID: 2662972525489935561}
 --- !u!1001 &693797985107464024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47,10 +144,6 @@ PrefabInstance:
     - target: {fileID: 3994713328690021334, guid: 87038990ff3b65f4ea6c251b5c8e7e24, type: 3}
       propertyPath: m_Name
       value: PT3 LFoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994713328690021334, guid: 87038990ff3b65f4ea6c251b5c8e7e24, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4340276207693470060, guid: 87038990ff3b65f4ea6c251b5c8e7e24, type: 3}
       propertyPath: m_RootOrder
@@ -114,10 +207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2662972525489935561}
     m_Modifications:
-    - target: {fileID: 1973911288837215026, guid: 8cf0aefcddcf93f43a0ec2aca9760692, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5397a9deeaee69c4d96613d6f57e1655, type: 2}
     - target: {fileID: 3064576988619365487, guid: 8cf0aefcddcf93f43a0ec2aca9760692, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -125,10 +214,6 @@ PrefabInstance:
     - target: {fileID: 6271925935459345590, guid: 8cf0aefcddcf93f43a0ec2aca9760692, type: 3}
       propertyPath: m_Name
       value: PT3 RHand
-      objectReference: {fileID: 0}
-    - target: {fileID: 6271925935459345590, guid: 8cf0aefcddcf93f43a0ec2aca9760692, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6647748199344602636, guid: 8cf0aefcddcf93f43a0ec2aca9760692, type: 3}
       propertyPath: m_RootOrder
@@ -236,10 +321,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PT3 RFoot
       objectReference: {fileID: 0}
-    - target: {fileID: 2890693907745882116, guid: ee0c6be6c1d605741aada71b3d097c50, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6165433573931694301, guid: ee0c6be6c1d605741aada71b3d097c50, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -309,10 +390,6 @@ PrefabInstance:
     - target: {fileID: 9182860211123451518, guid: b1520f8ed848c8248b90b06e4a07a172, type: 3}
       propertyPath: m_Name
       value: PT3 Body
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182860211123451518, guid: b1520f8ed848c8248b90b06e4a07a172, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1520f8ed848c8248b90b06e4a07a172, type: 3}
@@ -398,10 +475,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 4022777078160404458, guid: 4377a2838d8aa514a9b5114391f0b1f4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5397a9deeaee69c4d96613d6f57e1655, type: 2}
     - target: {fileID: 4781879835700419078, guid: 4377a2838d8aa514a9b5114391f0b1f4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -449,10 +522,6 @@ PrefabInstance:
     - target: {fileID: 5266808910449639612, guid: 4377a2838d8aa514a9b5114391f0b1f4, type: 3}
       propertyPath: m_Name
       value: PT3 LHand
-      objectReference: {fileID: 0}
-    - target: {fileID: 5266808910449639612, guid: 4377a2838d8aa514a9b5114391f0b1f4, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4377a2838d8aa514a9b5114391f0b1f4, type: 3}
