@@ -85,9 +85,9 @@ public class MeleeEnemy : EnemyAiController
         zigZagDelta += Time.deltaTime;
 
         Vector3 movementPos = player.position;
-        movementPos += ZigZagStrafe(); // add the offset from the zigzag
-        transform.LookAt(player);
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        //movementPos += ZigZagStrafe(); // add the offset from the zigzag
+        //transform.LookAt(player);
+        //transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         agent.SetDestination(movementPos);
     }
 

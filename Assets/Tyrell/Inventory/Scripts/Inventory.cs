@@ -92,6 +92,24 @@ public static Inventory instance;
         onItemChange.Invoke();
     }
 
+    public void AddItemToGun(Item item)
+    {
+        
+        if (GunInventoryItemList.Count >= gunInventoryController.GunInventorySlotSize)
+        {
+            AddItem(item);
+        }
+        else
+        {
+            GunInventoryItemList.Add(item);
+            item.Use();
+            onItemChange.Invoke();
+            
+        }
+        
+    }
+
+
     public void RemoveItem(Item item)
     {
         if (inventoryItemList.Contains(item))

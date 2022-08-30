@@ -23,7 +23,7 @@ public class TeleportToBossRoom : MonoBehaviour
         transition = GameObject.FindWithTag("Transition").GetComponent<Animator>();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.tag == "Player" && !doorTouched)

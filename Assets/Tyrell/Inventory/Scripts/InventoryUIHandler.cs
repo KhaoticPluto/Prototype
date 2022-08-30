@@ -33,8 +33,15 @@ public class InventoryUIHandler : MonoBehaviour
     {
         Inventory.instance.onItemChange += UpdateInventoryUI;
         UpdateInventoryUI();
-        
 
+        OpenInventory();
+        StartCoroutine(CloseTheInventory());
+    }
+
+    IEnumerator CloseTheInventory()
+    {
+        yield return new WaitForSeconds(.2f);
+        CloseInventory();
     }
 
     // Update is called once per frame
