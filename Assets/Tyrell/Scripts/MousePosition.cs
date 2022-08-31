@@ -10,6 +10,8 @@ public class MousePosition : MonoBehaviour
     public Vector3 WorldPosition;
     public LayerMask WhatIsGround;
 
+    public bool isGameObject = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +25,8 @@ public class MousePosition : MonoBehaviour
         }
 
         
-        
     }
+
+
+
 }

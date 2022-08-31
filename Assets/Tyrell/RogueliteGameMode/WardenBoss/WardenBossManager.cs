@@ -9,7 +9,6 @@ using TMPro;
 public class WardenBossManager : MonoBehaviour
 {
 
-    bool PhaseOne;
     public bool PhaseTwo;
 
 
@@ -23,12 +22,14 @@ public class WardenBossManager : MonoBehaviour
     public List<GameObject> enemyList = new List<GameObject>();
     //****************
 
+    public GameObject _switch;
 
-
+    public int boilerDestroyed = 0;
 
     private void Start()
     {
         StartCoroutine(SpawnEnemiesOverTime());
+        PhaseTwo = false;
     }
 
     private void Update()
@@ -42,6 +43,15 @@ public class WardenBossManager : MonoBehaviour
             SpawnedEnemies = 0;
         }
         //enemy Spawning
+
+        if(_switch.GetComponent<Switch>().leverSwitched &&
+            boilerDestroyed >= 2)
+        {
+            PhaseTwo = true;
+        }
+
+        
+
     }
 
 
