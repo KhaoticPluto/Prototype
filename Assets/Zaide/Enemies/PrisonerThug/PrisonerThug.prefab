@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4014593309151738539}
   - component: {fileID: 7255712957341698011}
   - component: {fileID: 2021187917377633160}
-  - component: {fileID: 383256782206461430}
   - component: {fileID: 6644459444893265850}
   m_Layer: 8
   m_Name: PrisonerThug
@@ -137,22 +136,6 @@ MonoBehaviour:
   IsRogueLite: 0
   animator: {fileID: 42037275192111966}
   agentTransform: {fileID: 3209897115468554673}
---- !u!114 &383256782206461430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7478370305448864161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 0
-  MaxHealth: 0
-  AiController: {fileID: 2021187917377633160}
-  HealthSlider: {fileID: 2297107732019659606}
 --- !u!114 &6644459444893265850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,10 +159,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
-    - target: {fileID: 1656411223050243112, guid: e8b39724bf35f254da13afdb326ea508, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5397a9deeaee69c4d96613d6f57e1655, type: 2}
     - target: {fileID: 2718919773908219820, guid: e8b39724bf35f254da13afdb326ea508, type: 3}
       propertyPath: m_Name
       value: Thug RHand
@@ -308,10 +287,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thug Body
       objectReference: {fileID: 0}
-    - target: {fileID: 6085784223295157463, guid: 37204aa2357730541914d7aabf6018ab, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6863164969125375597, guid: 37204aa2357730541914d7aabf6018ab, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -373,10 +348,6 @@ PrefabInstance:
     - target: {fileID: 504178780123990311, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
       propertyPath: m_Name
       value: Thug LFoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 504178780123990311, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 987664088729703325, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
       propertyPath: m_RootOrder
@@ -536,6 +507,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1297851815659803639, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4393486439037895639, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_Name
       value: EliteEnemyHealthBar
@@ -627,10 +602,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
-    - target: {fileID: 2118126408444920904, guid: c310b41e48d885a4faec73463f632b53, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2694359507083242515, guid: c310b41e48d885a4faec73463f632b53, type: 3}
       propertyPath: m_Name
       value: Thug LHand
