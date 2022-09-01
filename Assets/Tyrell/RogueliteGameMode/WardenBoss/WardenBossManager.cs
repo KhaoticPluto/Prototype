@@ -15,7 +15,9 @@ public class WardenBossManager : MonoBehaviour
     public Transform Player;
     public Transform playerNewPos;
     public GameObject[] CloseWalls;
-
+    public GameObject WardenBoss;
+    public GameObject IdleBoss;
+    public Transform WardenBossSpawn;
 
     //*************** Enemy Spawn variables
     [Header("Enemy Variables")]
@@ -73,6 +75,8 @@ public class WardenBossManager : MonoBehaviour
         {
             wall.SetActive(true);
         }
+        Instantiate(WardenBoss, WardenBossSpawn.position, Quaternion.identity);
+        Destroy(IdleBoss);
     }
 
 
