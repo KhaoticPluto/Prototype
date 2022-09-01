@@ -8,11 +8,17 @@ using TMPro;
 
 public class WardenBossManager : MonoBehaviour
 {
-
+    [Header("Phase Two Change")]
     public bool PhaseTwo;
+    public GameObject _switch;
+    public int boilerDestroyed = 0;
+    public Transform Player;
+    public Transform playerNewPos;
+    public GameObject[] CloseWalls;
 
 
     //*************** Enemy Spawn variables
+    [Header("Enemy Variables")]
     float SpawnDelay = 5;
     public int SpawnedEnemies = 0;
     int NumberOfEnemiesToSpawn = 100;
@@ -22,14 +28,17 @@ public class WardenBossManager : MonoBehaviour
     public List<GameObject> enemyList = new List<GameObject>();
     //****************
 
-    public GameObject _switch;
-
-    public int boilerDestroyed = 0;
+    
 
     private void Start()
     {
         StartCoroutine(SpawnEnemiesOverTime());
         PhaseTwo = false;
+        Player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        foreach (GameObject wall in CloseWalls)
+        {
+            wall.SetActive(false);
+        }
     }
 
     private void Update()
@@ -45,9 +54,10 @@ public class WardenBossManager : MonoBehaviour
         //enemy Spawning
 
         if(_switch.GetComponent<Switch>().leverSwitched &&
-            boilerDestroyed >= 2)
+            boilerDestroyed >= 2 && !PhaseTwo)
         {
             PhaseTwo = true;
+            BossPhaseTwo();
         }
 
         
@@ -56,7 +66,14 @@ public class WardenBossManager : MonoBehaviour
 
 
 
-
+    void BossPhaseTwo()
+    {
+        Player.position = playerNewPos.position;
+        foreach(GameObject wall in CloseWalls)
+        {
+            wall.SetActive(true);
+        }
+    }
 
 
 
@@ -76,16 +93,9 @@ public class WardenBossManager : MonoBehaviour
 
         while (SpawnedEnemies < NumberOfEnemiesToSpawn)
         {
-
-            SpawnRandomEnemy();
-
-            SpawnedEnemies++;
-
-            EnemyHealthAdd++;
-
             if (PhaseTwo)
             {
-                foreach(GameObject enemy in enemyList)
+                foreach (GameObject enemy in enemyList)
                 {
                     Destroy(enemy);
                 }
@@ -93,7 +103,17 @@ public class WardenBossManager : MonoBehaviour
 
             }
 
-            yield return Wait;
+            SpawnRandomEnemy();
+
+            SpawnedEnemies++;
+
+            EnemyHealthAdd++;
+
+            if (!PhaseTwo)
+            {
+                yield return Wait;
+            }
+            
 
         }
         
