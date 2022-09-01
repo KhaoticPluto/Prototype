@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeleportToBossRoom : MonoBehaviour
 {
-    public bool doorTouched;
+    public bool doorTouched = false;
 
 
     [SerializeField]
