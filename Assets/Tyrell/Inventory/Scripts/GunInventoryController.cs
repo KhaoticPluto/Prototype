@@ -20,7 +20,7 @@ public class GunInventoryController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            GunInventorySlots.Add(Instantiate(InventorySlot, this.transform));
+            AddGunInventorySlot();
         }
     }
 

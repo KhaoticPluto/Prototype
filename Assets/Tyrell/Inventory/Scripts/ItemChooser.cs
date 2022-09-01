@@ -16,12 +16,9 @@ public class ItemChooser : MonoBehaviour
 
     private void Start()
     {
-        manager = GameObject.FindObjectOfType<WaveGameManager>();
+        manager = FindObjectOfType<WaveGameManager>();
         image.GetComponent<Image>();
 
-        
-
-        
         
     }
 
@@ -52,7 +49,7 @@ public class ItemChooser : MonoBehaviour
 
     public void PutInInventory()
     {
-        Inventory.instance.AddItem(Instantiate(item));
+        Inventory.instance.AddItemToGun(Instantiate(item));
         
     }
 
