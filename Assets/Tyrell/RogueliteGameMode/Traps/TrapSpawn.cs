@@ -14,7 +14,7 @@ public class TrapSpawn : MonoBehaviour
         foreach(Transform spawn in trapsSpawn)
         {
             int trap = Random.Range(0, Traps.Length);
-            Instantiate(Traps[trap], spawn.position, Quaternion.identity);
+            Instantiate(Traps[trap], spawn.position, Quaternion.identity, transform);
             
 
         }

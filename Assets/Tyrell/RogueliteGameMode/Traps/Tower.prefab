@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8099682798298857298
 Transform:
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7471913003439283309}
   - component: {fileID: 1509557124059177576}
   - component: {fileID: 4063894542796199003}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8336625109208567653}
-  m_Mesh: {fileID: 4300000, guid: c170f914defe6914db4b7c33d445e522, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f51c80eef2f767b448cb9c91005f5fea, type: 2}
 --- !u!23 &4063894542796199003
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -178,7 +178,9 @@ GameObject:
   - component: {fileID: 6712634599364405205}
   - component: {fileID: 7237941478983882492}
   - component: {fileID: 6511988851953245642}
-  m_Layer: 0
+  - component: {fileID: 8700994265059313275}
+  - component: {fileID: 5048596099779654522}
+  m_Layer: 15
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,3 +253,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8700994265059313275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9016064535789211703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170e2bbc230cd5a45b47ed481010eda1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &5048596099779654522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9016064535789211703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 12, z: 150.1}
+  m_Center: {x: 0, y: 6, z: 0}
