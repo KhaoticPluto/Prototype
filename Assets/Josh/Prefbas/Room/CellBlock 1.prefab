@@ -803,6 +803,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HallHalf
       objectReference: {fileID: 0}
+    - target: {fileID: 4435513256188320615, guid: e03cd8f406209d245ae397c19e866a5e, type: 3}
+      propertyPath: m_Center.x
+      value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435513256188320615, guid: e03cd8f406209d245ae397c19e866a5e, type: 3}
+      propertyPath: m_Center.y
+      value: 12.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6309912852284143914, guid: e03cd8f406209d245ae397c19e866a5e, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -817,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6309912852284143914, guid: e03cd8f406209d245ae397c19e866a5e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40
+      value: -51.55
       objectReference: {fileID: 0}
     - target: {fileID: 6309912852284143914, guid: e03cd8f406209d245ae397c19e866a5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -850,7 +858,7 @@ PrefabInstance:
     - target: {fileID: 7334518515489253751, guid: e03cd8f406209d245ae397c19e866a5e, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: e14c69814aa51064da94ddb0802076b2, type: 2}
+      objectReference: {fileID: 4300000, guid: ebe85288488f23e429f48b17ece8da28, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e03cd8f406209d245ae397c19e866a5e, type: 3}
 --- !u!4 &5780663073029070842 stripped
@@ -1907,36 +1915,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
       propertyPath: spawnZones.Array.size
-      value: 21
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
-      propertyPath: spawnZones.Array.data[13]
+      propertyPath: spawnZones.Array.data[0]
       value: 
       objectReference: {fileID: 821040962967132610}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
-      propertyPath: spawnZones.Array.data[14]
+      propertyPath: spawnZones.Array.data[1]
       value: 
       objectReference: {fileID: 7695551758431694431}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
-      propertyPath: spawnZones.Array.data[15]
+      propertyPath: spawnZones.Array.data[2]
       value: 
       objectReference: {fileID: 4425087782827935424}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
-      propertyPath: spawnZones.Array.data[16]
+      propertyPath: spawnZones.Array.data[3]
       value: 
       objectReference: {fileID: 8943736649497483037}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
-      propertyPath: spawnZones.Array.data[17]
+      propertyPath: spawnZones.Array.data[4]
       value: 
       objectReference: {fileID: 4171964837740215220}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
-      propertyPath: spawnZones.Array.data[18]
+      propertyPath: spawnZones.Array.data[5]
       value: 
       objectReference: {fileID: 145688389988641918}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
-      propertyPath: spawnZones.Array.data[19]
+      propertyPath: spawnZones.Array.data[6]
       value: 
       objectReference: {fileID: 6669432988922857988}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[7]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[8]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[9]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[10]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[11]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[12]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[13]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[14]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[15]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[16]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[17]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[18]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
+    - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
+      propertyPath: spawnZones.Array.data[19]
+      value: 
+      objectReference: {fileID: 7080586251374422280}
     - target: {fileID: 4402741620579993110, guid: 24ab65ec8cad4414ab32f59f87ad0f89, type: 3}
       propertyPath: spawnZones.Array.data[20]
       value: 
