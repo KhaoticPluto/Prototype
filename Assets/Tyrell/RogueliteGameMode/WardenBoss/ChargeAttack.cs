@@ -6,6 +6,8 @@ public class ChargeAttack : MonoBehaviour
 {
 
     public float ChargeDamage = 20;
+    public float ChargeForce = 100;
+
 
     bool alreadyAttacked = false;
 
@@ -17,7 +19,7 @@ public class ChargeAttack : MonoBehaviour
 
             Debug.Log("warden charge hit");
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(ChargeDamage);
-            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 100, ForceMode.VelocityChange);
+            other.gameObject.GetComponent<movement>().Knockback(transform.forward);
             StartCoroutine(ResetAttack());
 
         }

@@ -8,12 +8,19 @@ using TMPro;
 
 public class WardenBossManager : MonoBehaviour
 {
-
-    bool PhaseOne;
+    [Header("Phase Two Change")]
     public bool PhaseTwo;
-
+    public GameObject _switch;
+    public int boilerDestroyed = 0;
+    public Transform Player;
+    public Transform playerNewPos;
+    public GameObject[] CloseWalls;
+    public GameObject WardenBoss;
+    public GameObject IdleBoss;
+    public Transform WardenBossSpawn;
 
     //*************** Enemy Spawn variables
+    [Header("Enemy Variables")]
     float SpawnDelay = 5;
     public int SpawnedEnemies = 0;
     int NumberOfEnemiesToSpawn = 100;
@@ -23,12 +30,17 @@ public class WardenBossManager : MonoBehaviour
     public List<GameObject> enemyList = new List<GameObject>();
     //****************
 
-
-
+    
 
     private void Start()
     {
         StartCoroutine(SpawnEnemiesOverTime());
+        PhaseTwo = false;
+        Player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        foreach (GameObject wall in CloseWalls)
+        {
+            wall.SetActive(false);
+        }
     }
 
     private void Update()
@@ -42,11 +54,30 @@ public class WardenBossManager : MonoBehaviour
             SpawnedEnemies = 0;
         }
         //enemy Spawning
+
+        if(_switch.GetComponent<Switch>().leverSwitched &&
+            boilerDestroyed >= 2 && !PhaseTwo)
+        {
+            PhaseTwo = true;
+            BossPhaseTwo();
+        }
+
+        
+
     }
 
 
 
-
+    void BossPhaseTwo()
+    {
+        Player.position = playerNewPos.position;
+        foreach(GameObject wall in CloseWalls)
+        {
+            wall.SetActive(true);
+        }
+        Instantiate(WardenBoss, WardenBossSpawn.position, Quaternion.identity);
+        Destroy(IdleBoss);
+    }
 
 
 
@@ -66,16 +97,9 @@ public class WardenBossManager : MonoBehaviour
 
         while (SpawnedEnemies < NumberOfEnemiesToSpawn)
         {
-
-            SpawnRandomEnemy();
-
-            SpawnedEnemies++;
-
-            EnemyHealthAdd++;
-
             if (PhaseTwo)
             {
-                foreach(GameObject enemy in enemyList)
+                foreach (GameObject enemy in enemyList)
                 {
                     Destroy(enemy);
                 }
@@ -83,7 +107,17 @@ public class WardenBossManager : MonoBehaviour
 
             }
 
-            yield return Wait;
+            SpawnRandomEnemy();
+
+            SpawnedEnemies++;
+
+            EnemyHealthAdd++;
+
+            if (!PhaseTwo)
+            {
+                yield return Wait;
+            }
+            
 
         }
         

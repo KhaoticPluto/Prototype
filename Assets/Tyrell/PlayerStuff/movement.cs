@@ -27,6 +27,9 @@ public class movement : MonoBehaviour
     // Movement Inputs
     private Vector3 _moveDirection;
 
+    bool KnockBacked;
+    Vector3 knockbackDir;
+
     // Mouse Position
     public MousePosition mousePos;
 
@@ -45,6 +48,14 @@ public class movement : MonoBehaviour
     float Timer = 0;
     int DelayAmount = 1;
 
+
+    private void Start()
+    {
+        inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
+
+
+    }
+
     private void Update()
     {
         
@@ -52,8 +63,11 @@ public class movement : MonoBehaviour
         GatherInput();
         //Aim
         Aim();
+        //Move
+        Move();
 
-         //Shoots projectile from shootprojectile script
+
+        //Shoots projectile from shootprojectile script
         if (Input.GetKey(KeyCode.Mouse0))
         {
                 
@@ -71,6 +85,10 @@ public class movement : MonoBehaviour
             DetectMovement = 0;
         }
 
+        if (KnockBacked)
+        {
+            StartCoroutine(IsKnockBacked());
+        }
         
 
         Timer += Time.deltaTime;
@@ -92,25 +110,15 @@ public class movement : MonoBehaviour
         }
 
         lastPos = transform.position;
-        //Movement
-        //if (inventoryUIHandler.InventoryOpen == false)
-        Move();
-
-    }
-
-    private void Start()
-    {
-        inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
-
         
+        
+
     }
+
 
     private void FixedUpdate()
     {
-        //lastPos = transform.position;
-        ////Movement
-        ////if (inventoryUIHandler.InventoryOpen == false)
-        //    Move();
+        
     }
 
     // Inputs for Movement
@@ -148,6 +156,7 @@ public class movement : MonoBehaviour
 
     private void Move()
     {
+
         controller.Move(_moveDirection.ToIso() * upgrade.playerSpeed * Time.deltaTime);
     }
 
@@ -158,19 +167,40 @@ public class movement : MonoBehaviour
         while (Time.time < startTime + upgrade._dashTime)
         {
             controller.Move(_moveDirection.ToIso() * upgrade._dashSpeed * Time.deltaTime);
+            
             _dashCooldown = upgrade._dashCooldownTime;
             _isDashing = false;
             yield return null;
         }
     }
 
-    public void Knockback(float amount)
+    public void Knockback(Vector3 forward)
     {
-        controller.Move(transform.forward * -amount * Time.deltaTime);
+        KnockBacked = true;
+        knockbackDir = forward;
+
     }
     
+    IEnumerator IsKnockBacked()
+    {
+        
+        float startTime = .5f;
+        float KnockbackDistance = 200;
+
+        controller.Move(knockbackDir * KnockbackDistance * Time.deltaTime);
+
+        yield return new WaitForSeconds(startTime);
+        Vector3 pos = gameObject.transform.position;
+        pos.y = 2;
+        gameObject.transform.position = pos; 
+        KnockBacked = false;
+    }
 
 }
 
 
-
+public static class Helpers
+{
+    private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+    public static Vector3 ToIso(this Vector3 _moveDirection) => _isoMatrix.MultiplyPoint3x4(_moveDirection);
+}
