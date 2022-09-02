@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public Upgradeables upgrade;
 
+    bool Invincibility;
+
     private void Start()
     {
         upgrade.GetComponent<Upgradeables>();
@@ -31,9 +33,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        upgrade.Health -= amount;
-        Debug.Log("Player took damage " + amount);
-        DamagePopUp.Create(transform.position + Vector3.up, amount, false);
+        if (!Invincibility)
+        {
+            upgrade.Health -= amount;
+            Debug.Log("Player took damage " + amount);
+            DamagePopUp.Create(transform.position + Vector3.up, amount, false);
+        }
+        
+        StartCoroutine(Invincible(0.5f));
     }
 
     public void GainHealth(float amount)
@@ -41,6 +48,12 @@ public class PlayerHealth : MonoBehaviour
         upgrade.Health += amount;
     }
 
+    IEnumerator Invincible(float length)
+    {
+        Invincibility = true;
+        yield return new WaitForSeconds(length);
+        Invincibility = false;
+    }
 
     IEnumerator Death()
     {
