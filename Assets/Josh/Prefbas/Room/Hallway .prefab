@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876685955288688363, guid: f7393e582b70be54b9694c52ea896d39, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7876685955288688363, guid: f7393e582b70be54b9694c52ea896d39, type: 3}
       propertyPath: m_LocalPosition.z
@@ -219,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9067605743480962174, guid: 5576f233231ea254faa2a1c5dcf51d2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9067605743480962174, guid: 5576f233231ea254faa2a1c5dcf51d2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -315,7 +315,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7583587447400374006, guid: ce6787fde7b63504ea5d3085c91acbaf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce6787fde7b63504ea5d3085c91acbaf, type: 3}
 --- !u!4 &5609624825564323259 stripped
 Transform:
@@ -445,41 +446,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6621db04c18b10b4885e4926be7de242, type: 3}
---- !u!1 &7451127652372413784 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5395768066778563121, guid: 6621db04c18b10b4885e4926be7de242, type: 3}
-  m_PrefabInstance: {fileID: 3280352709454397289}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &751112981107886595
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7451127652372413784}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 15.7, y: 9.8, z: 2.1}
-  m_Center: {x: 0, y: 5.5, z: -22.1}
---- !u!114 &9082600414921755944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7451127652372413784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b29f5cd1de4224a88af22578ad66c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorTouched: 0
-  roomType: 1
-  pos: {x: 0, y: 0, z: 0}
-  transition: {fileID: 0}
-  transitionTime: 1
 --- !u!4 &7451127652372413791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5395768066778563126, guid: 6621db04c18b10b4885e4926be7de242, type: 3}
@@ -568,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876685955288688363, guid: f7393e582b70be54b9694c52ea896d39, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7876685955288688363, guid: f7393e582b70be54b9694c52ea896d39, type: 3}
       propertyPath: m_LocalPosition.z
@@ -666,41 +632,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e44357d5f88fb74093f5c820efd0411, type: 3}
---- !u!1 &8080302890754787477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2170946947591709624, guid: 1e44357d5f88fb74093f5c820efd0411, type: 3}
-  m_PrefabInstance: {fileID: 7927390969227143981}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &6543385604395722566
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8080302890754787477}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 15.7, y: 9.8, z: 2.1}
-  m_Center: {x: 0, y: 5.5, z: -22.1}
---- !u!114 &6162876397744887535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8080302890754787477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b29f5cd1de4224a88af22578ad66c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorTouched: 0
-  roomType: 2
-  pos: {x: 0, y: 0, z: 0}
-  transition: {fileID: 0}
-  transitionTime: 1
 --- !u!4 &8080302890754787481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2170946947591709620, guid: 1e44357d5f88fb74093f5c820efd0411, type: 3}

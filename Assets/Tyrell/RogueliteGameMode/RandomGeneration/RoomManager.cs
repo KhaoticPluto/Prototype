@@ -23,7 +23,7 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> HallWay = new List<GameObject>();
     public GameObject HallWayToBoss;
 
-
+    int hallwayNum;
 
     public int RoomNumber = 0;
 
@@ -55,17 +55,28 @@ public class RoomManager : MonoBehaviour
 
     public void SpawnHallWay()
     {
+        hallwayNum++;
+        
         if (RoomNumber <= BossRoomNumber)
         {
-            Instantiate(HallWay[0], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
-            RoomNumber++;
+            if(hallwayNum % 3 == 0)
+            {
+                Instantiate(HallWay[0], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+            }
+            else
+            {
+                int hall = Random.Range(0, HallWay.Count);
+                Instantiate(HallWay[hall], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
+                
+            }
+            
         }
         else
         {
             Instantiate(HallWayToBoss, RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
-            RoomNumber++;
+            
         }
-
+        RoomNumber++;
     }
 
 

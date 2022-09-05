@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7334518515489253751}
   - component: {fileID: 222214506782488358}
   - component: {fileID: 4435513256188320615}
+  - component: {fileID: 4652079158223116817}
   m_Layer: 10
   m_Name: HallHalf
   m_TagString: Untagged
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 139319569726063894}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,3 +99,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25.000006, y: 25, z: 3.0000007}
   m_Center: {x: -12.500003, y: 13.5, z: -23.500006}
+--- !u!114 &4652079158223116817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292161710346659335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a6ed971bc104448a61ea2c53b6ee65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NormalWall: {fileID: 4300000, guid: ebe85288488f23e429f48b17ece8da28, type: 2}
+  _WallHole: {fileID: 4300000, guid: e14c69814aa51064da94ddb0802076b2, type: 2}
+  _wallBreakParticles: {fileID: 8879408669832174122, guid: 210bc84a19a62664e9bec7661ec9523a, type: 3}
+  _particleSpawn: {fileID: 139319569726063894}
+  roomspawn: {fileID: 0}
+--- !u!1 &7855453857367038099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139319569726063894}
+  m_Layer: 10
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &139319569726063894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855453857367038099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.9, y: 7.26, z: -23.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6309912852284143914}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

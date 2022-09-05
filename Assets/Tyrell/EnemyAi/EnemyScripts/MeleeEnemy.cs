@@ -40,13 +40,12 @@ public class MeleeEnemy : EnemyAiController
             ///Attack code here
             animator.SetTrigger("isAttacking");
             
-            
             ///End of attack code
             
              alreadyAttacked = true;
              Invoke(nameof(ResetAttack), timeBetweenAttacks);
 
-            
+
 
 
         }

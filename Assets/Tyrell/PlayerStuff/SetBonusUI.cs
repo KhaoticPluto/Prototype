@@ -7,6 +7,7 @@ public class SetBonusUI : MonoBehaviour
 {
     #region singleton
     public static SetBonusUI instance;
+
     private void Awake()
     {
         if (instance == null)
