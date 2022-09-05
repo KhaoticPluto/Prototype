@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class dashTest : MonoBehaviour
 {
-    movement _script;
+    public PlayerControllerTest _script;
 
     //Dash Terms
 
@@ -14,7 +14,7 @@ public class dashTest : MonoBehaviour
 
     private void Start()
     {
-        _script = GetComponent<movement>();
+        _script.GetComponent<PlayerControllerTest>();
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class dashTest : MonoBehaviour
 
         while (Time.time < startTime + _dashTime)
         {
-            _script.controller.Move(_script._moveDirection * _dashSpeed * Time.deltaTime);
+            _script._rb.AddForce(_script.transform.forward * _dashSpeed);
             _dashCooldown = 3;
 
             yield return null;
