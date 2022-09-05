@@ -49,6 +49,11 @@ public class movement : MonoBehaviour
     int DelayAmount = 1;
 
 
+    //Animation
+    public Animator _animator;
+    bool isShooting = false;
+    bool isWalking = false;
+
     private void Start()
     {
         inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
@@ -70,19 +75,44 @@ public class movement : MonoBehaviour
         //Shoots projectile from shootprojectile script
         if (Input.GetKey(KeyCode.Mouse0))
         {
-                
+            isShooting = true;
             shootProjectile.ComponentShoot();
+            _animator.SetBool("isWalkOrShooting", true);
+
         }
+        else
+        {
+            isShooting = false;
+            _animator.SetBool("isWalkOrShooting", false);
+        }
+
+        if(isShooting && isWalking) _animator.SetFloat("Blend", 0.5f);
+        if (isShooting && !isWalking) _animator.SetFloat("Blend", 0);
+        if(!isShooting && isWalking) _animator.SetFloat("Blend", 1);
+
+
 
         if (transform.position != lastPos)
         {
             //Player has Moved
             DetectMovement = 1;
+            _animator.SetBool("isWalkOrShooting", true);
+            _animator.SetBool("isIdle", false);
+            isWalking = true;
+            
         }
         else
         {
             //Player has not Moved
             DetectMovement = 0;
+            _animator.SetBool("isIdle", true);
+            if (!isShooting)
+            {
+                _animator.SetBool("isWalkOrShooting", false);
+            }
+            
+            isWalking = false;
+
         }
 
         if (KnockBacked)
@@ -109,7 +139,7 @@ public class movement : MonoBehaviour
 
         }
 
-        lastPos = transform.position;
+        
         
         
 
@@ -118,7 +148,8 @@ public class movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        lastPos = transform.position;
+
     }
 
     // Inputs for Movement
@@ -130,8 +161,11 @@ public class movement : MonoBehaviour
         {
             if (_dashCooldown <= 0)
             {
+                _animator.SetTrigger("isDashing");
+                
                 StartCoroutine(Dash());
                 _isDashing = true;
+                
             }
         }
 
@@ -158,6 +192,7 @@ public class movement : MonoBehaviour
     {
 
         controller.Move(_moveDirection.ToIso() * upgrade.playerSpeed * Time.deltaTime);
+        
     }
 
     IEnumerator Dash()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour
 {
-
+    public Transform GunPoint;
     public GameObject[] _pfBullet;
     public Upgradeables upgrades;
 
@@ -53,7 +53,7 @@ public class ShootProjectile : MonoBehaviour
         for (int i = 0; i < numberOfProjectiles; i++)
         {
 
-            GameObject bullet = Instantiate(_pfBullet[0], transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(_pfBullet[0], GunPoint.position, Quaternion.identity);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript._upgrades = upgrades;
 
