@@ -19,6 +19,7 @@ public class InventoryUIHandler : MonoBehaviour
     public GameObject GunInventory;
     public GameObject playerStats;
     public GameObject SetBonus;
+    public GameObject Border;
     
 
     private List<ItemSlot> itemSlotList = new List<ItemSlot>();
@@ -116,6 +117,7 @@ public class InventoryUIHandler : MonoBehaviour
         GunInventory.SetActive(true);
         playerStats.SetActive(true);
         SetBonus.SetActive(true);
+        Border.SetActive(true);
     }
 
     public void CloseInventory()
@@ -124,6 +126,7 @@ public class InventoryUIHandler : MonoBehaviour
         inventoryParent.SetActive(false);
         GunInventory.SetActive(false);
         playerStats.SetActive(false);
+        Border.SetActive(false);
         SetBonus.SetActive(false);
     }
 
