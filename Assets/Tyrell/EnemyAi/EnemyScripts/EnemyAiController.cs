@@ -33,6 +33,7 @@ public class EnemyAiController : MonoBehaviour
 
     public GameObject Enemy;
 
+    public Renderer[] RendMaterials;
 
     //Script for the roguelite mode enemy room spawn
     public EnemyRoomSpawn roomspawn;
@@ -88,14 +89,22 @@ public class EnemyAiController : MonoBehaviour
     {
         Color customColor = new Color(0, 0.9556165f, 1, 1);
         gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-        GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
-        GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
+        foreach(Renderer mats in RendMaterials)
+        {
+            mats.GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
+            mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
+        }
+        
         isFrozen = true;
         yield return new WaitForSeconds(FreezeTime);
         isFrozen = false;
         gameObject.GetComponent<NavMeshAgent>().isStopped = false;
-        GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
-        GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
+        foreach (Renderer mats in RendMaterials)
+        {
+            mats.GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
+            mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
+        }
+        
     }
     ///freeze
 

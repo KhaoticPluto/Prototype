@@ -61,7 +61,7 @@ public class HUDManager : MonoBehaviour
             //Player Stats Text
             //HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
             healthBar.value = stats.Health;
-            healthText.text = stats.Health + "";
+            healthText.text = stats.Health + " / " + stats.MaxHealth;
             MoneyText.text = " " + MoneyManager.Money;
 
             healthCounter.text = " " + PlayerItemUpgradeRemove.instance.MaxHealthItem;

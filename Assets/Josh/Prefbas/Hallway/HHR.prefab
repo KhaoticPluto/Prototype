@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2170946947591709621}
   - component: {fileID: 2170946947591709626}
   - component: {fileID: 2170946947591709627}
+  - component: {fileID: 6543385604395722566}
+  - component: {fileID: 6162876397744887535}
   m_Layer: 10
   m_Name: HHR
   m_TagString: Untagged
@@ -99,6 +101,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 25, z: 2}
   m_Center: {x: 0, y: 12.5, z: -24}
+--- !u!65 &6543385604395722566
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2170946947591709624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.7, y: 9.8, z: 2.1}
+  m_Center: {x: 0, y: 5.5, z: -22.1}
+--- !u!114 &6162876397744887535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2170946947591709624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b29f5cd1de4224a88af22578ad66c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorTouched: 0
+  roomType: 2
+  pos: {x: 0, y: 0, z: 0}
+  transition: {fileID: 0}
+  transitionTime: 1
 --- !u!1001 &2355823949183613926
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class ChargeAttack : MonoBehaviour
 
             Debug.Log("warden charge hit");
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(ChargeDamage);
-            other.gameObject.GetComponent<movement>().Knockback(100);
+            other.gameObject.GetComponent<movement>().Knockback(transform.forward);
             StartCoroutine(ResetAttack());
 
         }
