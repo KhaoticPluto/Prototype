@@ -18,18 +18,23 @@ public class BreakHoleInWall : MonoBehaviour
     private void Start()
     {
         GetComponent<MeshFilter>().mesh = _NormalWall;
-        roomspawn = GameObject.FindWithTag("RoomSpawn").GetComponent<EnemyRoomSpawn>();
+        if (FindObjectOfType<EnemyRoomSpawn>() == null)
+        {
+            roomspawn = GameObject.FindWithTag("RoomSpawn").GetComponent<EnemyRoomSpawn>();
+
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PlayerBullet")
+        if (other.CompareTag("PlayerBullet"))
         {
             Debug.Log(alreadyBroken);
             Debug.Log(roomspawn.enemyList.Count);   
         }
 
-        if (other.gameObject.tag == "PlayerBullet" && !alreadyBroken && roomspawn.enemyList.Count <= 0)
+        if (other.CompareTag("PlayerBullet") && !alreadyBroken && roomspawn.enemyList.Count <= 0)
         {
             Debug.Log("Broke Wall");
             alreadyBroken = true;
