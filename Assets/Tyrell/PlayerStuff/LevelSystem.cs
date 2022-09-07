@@ -19,7 +19,7 @@ public class LevelSystem : MonoBehaviour
     public float powerMultiplier = 20f;
     [Range(7f, 14f)]
     public float divisionMultiplier = 7f;
-    public GameObject levelUpEffect;
+    //public GameObject levelUpEffect;
 
     [Header("UI")]
     public Image frontXpBar;
@@ -126,7 +126,7 @@ public class LevelSystem : MonoBehaviour
 
         XpText.text = Mathf.Round(currentXp) + "/" + nextLevelXp;
         levelText.text = "Level " + level;
-        Instantiate(levelUpEffect, transform.position, Quaternion.identity);
+        //Instantiate(levelUpEffect, transform.position, Quaternion.identity);
         //source.PlayOneShot(levelUpSound);
     }
 
