@@ -113,7 +113,7 @@ public class HUDManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
-
+        ES3AutoSaveMgr.Current.Save();
         SettingsParent?.SetActive(true);
         HudParent.SetActive(false);
 
