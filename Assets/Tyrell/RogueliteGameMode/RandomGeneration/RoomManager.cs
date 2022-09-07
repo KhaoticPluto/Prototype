@@ -31,7 +31,7 @@ public class RoomManager : MonoBehaviour
     //Sets Player position at start of game
     public Transform player;
     Vector3 pos;
-    float playerYPos = 2;
+    float playerYPos = 1;
 
 
     public GameObject BossRoom;

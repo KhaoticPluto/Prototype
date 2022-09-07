@@ -41,7 +41,7 @@ public class InventoryUIHandler : MonoBehaviour
 
     IEnumerator CloseTheInventory()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.05f);
         CloseInventory();
     }
 
