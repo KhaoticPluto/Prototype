@@ -16,6 +16,10 @@ public class ShowItems : MonoBehaviour
     public GameObject ItemChoice;
     public bool ItemChoiceDestryoed = false;
 
+    bool tutorial = false;
+
+    
+
     private void Start()
     {
         
@@ -36,6 +40,7 @@ public class ShowItems : MonoBehaviour
         ItemChoiceDestryoed = true;
         ItemChoice.GetComponent<ItemChoice>().DestoryItems();
         ItemChoice.SetActive(false);
+        
     }
 
 }

@@ -6,24 +6,23 @@ using UnityEngine.Events;
 
 public class _MainMenu : MonoBehaviour
 {
-    public UnityEvent interactEVNT;
+
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        if (PlayerData.TutorialComplete == true)
+        {
+
+            SceneManager.LoadScene(3);
+        }
+        else
+        {
+            StartTutorial();
+        }
     }
-    public void StartRun()
+    public void StartTutorial()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
-    public void OptionsGame()
-    {
-        SceneManager.LoadScene("Controls");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }

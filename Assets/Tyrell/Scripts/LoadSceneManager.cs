@@ -43,10 +43,15 @@ public class LoadSceneManager : MonoBehaviour
 
     public void LoadRogueGame()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 
     public void LoadStartingArea()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void LoadTutorial()
     {
         SceneManager.LoadScene(4);
     }

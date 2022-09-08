@@ -17,6 +17,8 @@ public class BreakHole : MonoBehaviour
 
     public bool ChangeScene = false;
 
+    public Target _target;
+
     private void Start()
     {
         GetComponent<MeshFilter>().mesh = _NormalWall;
@@ -26,19 +28,38 @@ public class BreakHole : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-
+        
         if (other.CompareTag("PlayerBullet") && !alreadyBroken)
         {
-            Debug.Log("Broke Wall");
-            alreadyBroken = true;
-            GetComponent<MeshFilter>().mesh = _WallHole;
-
-            _boxCollider.GetComponent<BoxCollider>().enabled = false;
-            GameObject wallbreak = Instantiate(_wallBreakParticles, _particleSpawn.position, Quaternion.identity);
-            Destroy(wallbreak, 4f);
-
+            if (_target == null)
+            {
+                BreakWall();
+            }
+            else if (_target.GetComponent<Target>().TargetBroken)
+            {
+                BreakWall();
+            }
         }
 
+        
 
+        if (other.CompareTag("Player") && ChangeScene)
+        {
+
+            LoadSceneManager.instance.LoadStartingArea();
+            PlayerData.TutorialComplete = true;
+        }
+
+    }
+
+    void BreakWall()
+    {
+        Debug.Log("Broke Wall");
+        alreadyBroken = true;
+        GetComponent<MeshFilter>().mesh = _WallHole;
+
+        _boxCollider.enabled = false;
+        GameObject wallbreak = Instantiate(_wallBreakParticles, _particleSpawn.position, Quaternion.identity);
+        Destroy(wallbreak, 4f);
     }
 }

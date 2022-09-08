@@ -18,11 +18,9 @@ public class BreakHoleInWall : MonoBehaviour
     private void Start()
     {
         GetComponent<MeshFilter>().mesh = _NormalWall;
-        if (FindObjectOfType<EnemyRoomSpawn>() == null)
-        {
-            roomspawn = GameObject.FindWithTag("RoomSpawn").GetComponent<EnemyRoomSpawn>();
 
-        }
+        roomspawn = GameObject.FindWithTag("RoomSpawn").GetComponent<EnemyRoomSpawn>();
+
         
     }
 

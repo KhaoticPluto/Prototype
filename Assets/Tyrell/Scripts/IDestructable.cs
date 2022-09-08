@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartingArea : MonoBehaviour
+public class IDestructable : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
