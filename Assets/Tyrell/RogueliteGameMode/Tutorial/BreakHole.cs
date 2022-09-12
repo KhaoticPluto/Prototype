@@ -45,9 +45,8 @@ public class BreakHole : MonoBehaviour
 
         if (other.CompareTag("Player") && ChangeScene)
         {
-
-            LoadSceneManager.instance.LoadStartingArea();
-            PlayerData.TutorialComplete = true;
+            TutorialManager.instance.TutorialComplete();
+            
         }
 
     }

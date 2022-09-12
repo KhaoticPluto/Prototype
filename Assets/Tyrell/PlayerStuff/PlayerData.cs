@@ -9,8 +9,19 @@ public class PlayerData : MonoBehaviour
     public Upgradeables _upgradeables;
 
     //Saved variables
-    public static bool TutorialComplete = false;
 
+
+    public static int TutorialComplete = 0;
+    int tutorialDefault = 0;
+
+    public void Start()
+    {
+       TutorialComplete = ES3.Load("TutorialComplete", tutorialDefault);
+
+
+
+
+    }
 
 
 }

@@ -16,7 +16,6 @@ public class ShowItems : MonoBehaviour
     public GameObject ItemChoice;
     public bool ItemChoiceDestryoed = false;
 
-    bool tutorial = false;
 
     
 
