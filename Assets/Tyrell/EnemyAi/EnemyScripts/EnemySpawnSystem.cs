@@ -5,6 +5,10 @@ using TMPro;
 
 public class EnemySpawnSystem : MonoBehaviour
 {
+    [Header("Enemy Variables")]
+    float SpawnDelay = .2f;
+    public int SpawnedEnemies = 0;
+
     [SerializeField]
     private Transform[] spawnZones; // Array filled with spawn zones transform
 
@@ -44,6 +48,14 @@ public class EnemySpawnSystem : MonoBehaviour
 
     public WaveGameManager manager;
 
+    [Header("Multipliers")]
+    [Range(1f, 300f)]
+    public float additionMultiplier;
+    [Range(2f, 4f)]
+    public float powerMultiplier = 20f;
+    [Range(7f, 14f)]
+    public float divisionMultiplier = 7f;
+
 
     private void Start()
     {
@@ -67,7 +79,7 @@ public class EnemySpawnSystem : MonoBehaviour
         {
             nextWave = true;
             showItems = true;
-            Invoke("NextWave", 5);
+            StartCoroutine(SpawnEnemiesOverTime());
             
             StartedWaves = false;
         }
@@ -97,31 +109,46 @@ public class EnemySpawnSystem : MonoBehaviour
 
     }
 
-    void NextWave()
+    /*******///enemy spawning code
+    IEnumerator SpawnEnemiesOverTime()
     {
+        yield return new WaitForSeconds(5);
+        bool bossSpawned = false;
+
         WaveNumber++;
+        SpawnedEnemies = 0;
         maxEnemySpawn = maxEnemySpawn + 2 + WaveNumber;
         StartedWaves = true;
         nextWave = false;
-        for (int i = 0; i < maxEnemySpawn; i++)
-        {
-                SpawnEnemies();
-        }
-        if(WaveNumber % 5 == 0)
-        {
-            for (int i = 0; i < EliteWave; i++)
-            {
-                SpawnElites();
-            }
-            EliteWave++;
+        WaitForSeconds Wait = new WaitForSeconds(SpawnDelay);
 
-        }
-        if(WaveNumber % 10 == 0)
+        while (SpawnedEnemies < maxEnemySpawn)
         {
-            SpawnBoss();
+            SpawnEnemies();
+
+            SpawnedEnemies++;
+
+            if (WaveNumber % 5 == 0)
+            {
+                for (int i = 0; i < EliteWave; i++)
+                {
+                    SpawnElites();
+                    SpawnedEnemies++;
+                }
+                EliteWave++;
+
+            }
+            if (WaveNumber % 10 == 0 && !bossSpawned)
+            {
+                SpawnBoss();
+                SpawnedEnemies++;
+                bossSpawned = true;
+            }
+            yield return Wait;
         }
-        
+
     }
+
 
 
     private void SpawnEnemies()
@@ -132,8 +159,8 @@ public class EnemySpawnSystem : MonoBehaviour
         int enemyNum = Random.Range(0, enemyPrefabs.Length);
 
         GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
-        Enemy.GetComponent<EnemyHealth>().MaxHealth += WaveNumber;
-        Enemy.GetComponent<EnemyHealth>().Health += WaveNumber;
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
         enemyList.Add(Enemy);
         
 
@@ -146,8 +173,8 @@ public class EnemySpawnSystem : MonoBehaviour
         int enemyNum = Random.Range(0, ElitePrefabs.Length);
 
         GameObject Enemy = Instantiate(ElitePrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
-        Enemy.GetComponent<EnemyHealth>().MaxHealth += WaveNumber;
-        Enemy.GetComponent<EnemyHealth>().Health += WaveNumber;
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
         enemyList.Add(Enemy);
     }
 
@@ -157,9 +184,19 @@ public class EnemySpawnSystem : MonoBehaviour
 
 
         GameObject Enemy = Instantiate(BossPrefabs, spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
-        Enemy.GetComponent<EnemyHealth>().MaxHealth += WaveNumber;
-        Enemy.GetComponent<EnemyHealth>().Health += WaveNumber;
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
         enemyList.Add(Enemy);
     }
 
+
+    public int CalculateEnemyHealthScaler()
+    {
+        int solveForHealth = 0;
+        for (int WaveCycle = 1; WaveCycle <= WaveNumber; WaveCycle++)
+        {
+            solveForHealth += (int)Mathf.Floor(WaveCycle + additionMultiplier * Mathf.Pow(powerMultiplier, WaveCycle / divisionMultiplier));
+        }
+        return solveForHealth / 4;
+    }
 }

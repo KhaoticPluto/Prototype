@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float Health;
-    public float MaxHealth;
+    public float Health = 35;
+    public float MaxHealth = 35;
 
     public EnemyAiController AiController;
 

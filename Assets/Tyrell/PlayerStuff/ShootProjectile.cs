@@ -106,7 +106,6 @@ public class ShootProjectile : MonoBehaviour
         }
         else
         {
-            upgrades.projectileDamage = upgrades.BaseDamage;
             isCriticalHit = false;
         }
             
