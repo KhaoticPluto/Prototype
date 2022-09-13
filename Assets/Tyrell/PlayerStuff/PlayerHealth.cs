@@ -18,8 +18,7 @@ public class PlayerHealth : MonoBehaviour
         if (upgrade.Health <= 0)
         {
             Debug.Log("Player Died");
-            //Analytics.instance.SendAnalytics();
-            //Analytics.instance.GameCompletedAnalytics();
+  
             LoadSceneManager.instance.LoadStartingArea();
             
         }
@@ -37,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         {
             upgrade.Health -= amount;
             Debug.Log("Player took damage " + amount);
-            DamagePopUp.Create(transform.position + Vector3.up, amount, false);
+            DamagePopUp.Create(transform.position + (Vector3.up * 4), amount, false);
         }
         
         StartCoroutine(Invincible(0.5f));
