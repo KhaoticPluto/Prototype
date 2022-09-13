@@ -15,18 +15,19 @@ public class ShowItems : MonoBehaviour
 
     public GameObject ItemChoice;
     public bool ItemChoiceDestryoed = false;
-
+    public GameObject Border;
 
     
 
     private void Start()
     {
-        
+        Border.SetActive(false);
         ItemChoice.SetActive(false);
     }
 
     public void ShowItemChoice()
     {
+        Border.SetActive(true);
         ItemChoiceDestryoed = false;
         ItemChoice.SetActive(true);
         ItemChoice.GetComponent<ItemChoice>().ShowItems();
@@ -39,7 +40,7 @@ public class ShowItems : MonoBehaviour
         ItemChoiceDestryoed = true;
         ItemChoice.GetComponent<ItemChoice>().DestoryItems();
         ItemChoice.SetActive(false);
-        
+        Border.SetActive(false);
     }
 
 }
