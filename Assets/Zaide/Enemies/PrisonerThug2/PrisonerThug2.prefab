@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 240282476735349761}
   - component: {fileID: 6224209706304648407}
-  - component: {fileID: 7948454311301880141}
   - component: {fileID: 3572810805014757642}
   - component: {fileID: 4118921638397744508}
   - component: {fileID: 3288870255047906444}
+  - component: {fileID: 1224078962060304986}
   m_Layer: 8
   m_Name: PrisonerThug2
   m_TagString: Enemy
@@ -65,19 +65,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &7948454311301880141
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5110083538416064819}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 40, y: 100, z: 33}
-  m_Center: {x: 0, y: 50, z: 2}
 --- !u!114 &3572810805014757642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,17 +87,19 @@ MonoBehaviour:
     m_Bits: 64
   whatIsntPlayer:
     serializedVersion: 2
-    m_Bits: 65463
+    m_Bits: 131007
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 40
   timeBetweenAttacks: 1
   alreadyAttacked: 0
   sightRange: 300
-  attackRange: 4.5
+  attackRange: 8
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  playerInSight: 0
   Enemy: {fileID: 5110083538416064819}
   RendMaterials:
   - {fileID: 7832232717858142289}
@@ -155,10 +144,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
-  MaxHealth: 2
+  Health: 50
+  MaxHealth: 50
   AiController: {fileID: 3572810805014757642}
   HealthSlider: {fileID: 752311950354401494}
+--- !u!136 &1224078962060304986
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110083538416064819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 33.11
+  m_Height: 106.28912
+  m_Direction: 1
+  m_Center: {x: 0.9899998, y: 50.444557, z: 0}
 --- !u!1001 &2711664943755395581
 PrefabInstance:
   m_ObjectHideFlags: 0

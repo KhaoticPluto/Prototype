@@ -295,6 +295,11 @@ Transform:
   m_Father: {fileID: 1178534567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &222466429 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6103595814678948612, guid: 4071140a3c63ea04ca5e92a77e8c8cec, type: 3}
+  m_PrefabInstance: {fileID: 830893572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &226843975
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,10 +992,14 @@ PrefabInstance:
     - target: {fileID: 5790293180226544255, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 222466429}
     - target: {fileID: 5790293180226544255, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
       propertyPath: m_LookAt
       value: 
+      objectReference: {fileID: 222466429}
+    - target: {fileID: 5790293180226544255, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.784522
       objectReference: {fileID: 0}
     - target: {fileID: 5790293181443565268, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1550,6 +1559,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3959409741258128470, guid: 0a200ee05fd756c42b01339ec7fad8a7, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6752933026155676845, guid: 0a200ee05fd756c42b01339ec7fad8a7, type: 3}
       propertyPath: m_RootOrder
       value: 13

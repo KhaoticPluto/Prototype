@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8999869483944587479}
-  - component: {fileID: 1307863157785621290}
   - component: {fileID: 531038327019007956}
   - component: {fileID: 4079243760424777929}
   - component: {fileID: 2281739892711679283}
   - component: {fileID: 2680384995536139010}
+  - component: {fileID: 4921325471014319012}
   m_Layer: 8
   m_Name: PrisonerMelee
   m_TagString: Enemy
@@ -43,19 +43,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1307863157785621290
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285963492731193792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 75, y: 90, z: 33}
-  m_Center: {x: 0, y: 45, z: 2.8}
 --- !u!195 &531038327019007956
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -100,17 +87,19 @@ MonoBehaviour:
     m_Bits: 64
   whatIsntPlayer:
     serializedVersion: 2
-    m_Bits: 65463
+    m_Bits: 131007
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 40
   timeBetweenAttacks: 1
   alreadyAttacked: 0
   sightRange: 300
-  attackRange: 4.5
+  attackRange: 8
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  playerInSight: 0
   Enemy: {fileID: 1285963492731193792}
   RendMaterials:
   - {fileID: 2405016807303304370}
@@ -155,10 +144,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
-  MaxHealth: 2
+  Health: 35
+  MaxHealth: 35
   AiController: {fileID: 4079243760424777929}
   HealthSlider: {fileID: 1509800693109064642}
+--- !u!136 &4921325471014319012
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285963492731193792}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 33.11
+  m_Height: 85.836296
+  m_Direction: 1
+  m_Center: {x: 0.9899998, y: 41.746387, z: 0}
 --- !u!1001 &4785070527791166841
 PrefabInstance:
   m_ObjectHideFlags: 0

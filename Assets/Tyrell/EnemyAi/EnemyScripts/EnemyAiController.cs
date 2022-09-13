@@ -12,7 +12,7 @@ public class EnemyAiController : MonoBehaviour
     public Transform player;
 
     //layermask so the ai knows what is the ground and player
-    public LayerMask whatIsGround, whatIsPlayer, whatIsntPlayer;
+    public LayerMask whatIsGround, whatIsPlayer, whatIsntPlayer, whatIsBullet;
 
 
     //Patroling
@@ -29,12 +29,14 @@ public class EnemyAiController : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     public bool isFrozen = false;
-    public bool playerInSight = false;
 
     public GameObject Enemy;
 
     public Renderer[] RendMaterials;
 
+    //Evade bullet
+    bool bulletInRange;
+    
     //Script for the roguelite mode enemy room spawn
     public EnemyRoomSpawn roomspawn;
     public bool IsRogueLite = false;
@@ -62,21 +64,54 @@ public class EnemyAiController : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        if (Physics.Linecast(transform.position, player.position, whatIsntPlayer))
-        {
-            playerInSight = false;
-        }
-        else
-        {
-            playerInSight = true;
-        }
+        bulletInRange = Physics.CheckSphere(transform.position, attackRange, whatIsBullet);
+        
 
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange  && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange && !isFrozen && playerInSight) AttackPlayer();
+        if (playerInAttackRange && playerInSightRange && !isFrozen && CanSeeTarget()) AttackPlayer();
+        if (!playerInAttackRange && playerInSightRange && bulletInRange) EvadeBullet();
+
         
+
+    }
+
+
+    bool CanSeeTarget()
+    {
+        RaycastHit raycastInfo;
+        //calculate a ray to the target from the agent
+        Vector3 rayToTarget = player.transform.position - this.transform.position;
+        //perform a raycast to determine if there's anything between the agent and the target
+        
+        if (Physics.Raycast(this.transform.position, rayToTarget, out raycastInfo, sightRange , whatIsPlayer))
+        {
+            //ray will hit the target if no other colliders in the way
+            if (raycastInfo.transform.gameObject.tag == "Player")
+                return true;
+        }
+        return false;
+    }
+
+
+    public void EvadeBullet()
+    {
+
+        Vector3 Dodgepos;
+
+        int rand = Random.Range(0, 1);
+
+        
+        if(rand == 1)
+            Dodgepos = Vector3.right;
+        else
+            Dodgepos = Vector3.left;
+
+        transform.LookAt(player);
+        agent.Move(Dodgepos * 5 * Time.deltaTime);
+        
+
     }
 
     ///freeze
@@ -108,12 +143,15 @@ public class EnemyAiController : MonoBehaviour
     }
     ///freeze
 
+    // so enemy cant attack as soon as spawned
     public IEnumerator WaitBeforeAttack()
     {
         alreadyAttacked = true;
         yield return new WaitForSeconds(1.5f);
         alreadyAttacked = false;
     }
+    //
+
 
     //patrolling state where enemy can't see player they will walk in between two set walk points
     public virtual void Patroling()
@@ -150,6 +188,7 @@ public class EnemyAiController : MonoBehaviour
     public virtual void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        
     }
 
 
@@ -180,13 +219,6 @@ public class EnemyAiController : MonoBehaviour
     public virtual void ResetAttack()
     {
         alreadyAttacked = false;
-    }
-
-    public IEnumerator BeingPulled()
-    {
-        yield return new WaitForSeconds(2);
-        Debug.Log("Being Pulled");
-
     }
 
 
