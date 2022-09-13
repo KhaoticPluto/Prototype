@@ -22,18 +22,15 @@ public class NPCDialouge : MonoBehaviour
         dialogueSystem = FindObjectOfType<DialougeSystem>();
     }
 
-    void Update()
+
+    public void OnTriggerStay(Collider other)
     {
         Vector3 Pos = Camera.main.WorldToScreenPoint(NPCCharacter.position);
         Pos.y += 175;
         ChatBackGround.position = Pos;
-    }
-
-    public void OnTriggerStay(Collider other)
-    {
         this.gameObject.GetComponent<NPCDialouge>().enabled = true;
-        //FindObjectOfType<DialougeSystem>().EnterRangeOfNPC();
-        if ((other.gameObject.tag == "Player")) // && Input.GetKeyDown(KeyCode.F))
+
+        if ((other.gameObject.tag == "Player")) 
         {
             this.gameObject.GetComponent<NPCDialouge>().enabled = true;
             dialogueSystem.Names = Name;

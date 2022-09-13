@@ -16,7 +16,16 @@ public class RoomManager : MonoBehaviour
 
     public Transform[] RoomSpawn;
 
+    [Header("Multipliers")]
+    [Range(1f, 300f)]
+    public float additionMultiplier;
+    [Range(2f, 4f)]
+    public float powerMultiplier = 20f;
+    [Range(7f, 14f)]
+    public float divisionMultiplier = 7f;
+
     //room prefabs
+    [Header("RoomPrefabs")]
     public List<GameObject> UpgradeRoomList = new List<GameObject>();
     public List<GameObject> ShopRoomList = new List<GameObject>();
     public List<GameObject> ChallengeRoomList = new List<GameObject>();
@@ -24,7 +33,6 @@ public class RoomManager : MonoBehaviour
     public GameObject HallWayToBoss;
 
     int hallwayNum;
-
     public int RoomNumber = 0;
 
 
@@ -122,6 +130,16 @@ public class RoomManager : MonoBehaviour
 
     }
 
+
+    public int CalculateEnemyHealthScaler()
+    {
+            int solveForHealth = 0;
+            for (int RoomCycle = 1; RoomCycle <= RoomNumber; RoomCycle++)
+            {
+                solveForHealth += (int)Mathf.Floor(RoomCycle + additionMultiplier * Mathf.Pow(powerMultiplier, RoomCycle / divisionMultiplier));
+            }
+            return solveForHealth / 4;
+    }
 
 }
 

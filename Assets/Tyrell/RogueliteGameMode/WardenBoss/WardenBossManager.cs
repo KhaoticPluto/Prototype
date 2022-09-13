@@ -111,7 +111,7 @@ public class WardenBossManager : MonoBehaviour
 
             SpawnedEnemies++;
 
-            EnemyHealthAdd++;
+            EnemyHealthAdd += 5;
 
             if (!PhaseTwo)
             {

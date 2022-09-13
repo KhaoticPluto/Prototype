@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("level", "maxLevel", "currentXp", "nextLevelXp", "additionMultiplier", "powerMultiplier", "divisionMultiplier", "levelUpEffect", "frontXpBar", "backXpBar", "levelText", "XpText")]
+	[ES3PropertiesAttribute("level", "maxLevel", "currentXp", "nextLevelXp", "additionMultiplier", "powerMultiplier", "divisionMultiplier")]
 	public class ES3UserType_LevelSystem : ES3ComponentType
 	{
 		public static ES3Type Instance = null;
@@ -23,11 +23,6 @@ namespace ES3Types
 			writer.WriteProperty("additionMultiplier", instance.additionMultiplier, ES3Type_float.Instance);
 			writer.WriteProperty("powerMultiplier", instance.powerMultiplier, ES3Type_float.Instance);
 			writer.WriteProperty("divisionMultiplier", instance.divisionMultiplier, ES3Type_float.Instance);
-			writer.WritePropertyByRef("levelUpEffect", instance.levelUpEffect);
-			writer.WritePropertyByRef("frontXpBar", instance.frontXpBar);
-			writer.WritePropertyByRef("backXpBar", instance.backXpBar);
-			writer.WritePropertyByRef("levelText", instance.levelText);
-			writer.WritePropertyByRef("XpText", instance.XpText);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
@@ -58,21 +53,6 @@ namespace ES3Types
 						break;
 					case "divisionMultiplier":
 						instance.divisionMultiplier = reader.Read<System.Single>(ES3Type_float.Instance);
-						break;
-					case "levelUpEffect":
-						instance.levelUpEffect = reader.Read<UnityEngine.GameObject>(ES3Type_GameObject.Instance);
-						break;
-					case "frontXpBar":
-						instance.frontXpBar = reader.Read<UnityEngine.UI.Image>(ES3Type_Image.Instance);
-						break;
-					case "backXpBar":
-						instance.backXpBar = reader.Read<UnityEngine.UI.Image>(ES3Type_Image.Instance);
-						break;
-					case "levelText":
-						instance.levelText = reader.Read<TMPro.TextMeshProUGUI>();
-						break;
-					case "XpText":
-						instance.XpText = reader.Read<TMPro.TextMeshProUGUI>();
 						break;
 					default:
 						reader.Skip();

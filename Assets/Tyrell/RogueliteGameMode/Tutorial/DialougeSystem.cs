@@ -9,7 +9,6 @@ public class DialougeSystem : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
-    //public GameObject dialogueGUI;
     public Transform dialogueBoxGUI;
 
     public float letterDelay = 0.1f;
@@ -36,29 +35,18 @@ public class DialougeSystem : MonoBehaviour
         dialogueBoxGUI.gameObject.SetActive(false);
     }
 
-    //public void EnterRangeOfNPC()
-    //{
-    //    outOfRange = false;
-    //    dialogueGUI.SetActive(true);
-    //    if (dialogueActive == true)
-    //    {
-    //        dialogueGUI.SetActive(false);
-    //    }
-    //}
 
     public void NPCName()
     {
         outOfRange = false;
         dialogueBoxGUI.gameObject.SetActive(true);
         nameText.text = Names;
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
             if (!dialogueActive)
             {
                 dialogueActive = true;
                 StartCoroutine(StartDialogue());
             }
-        //f}
+
         StartDialogue();
     }
 
@@ -118,13 +106,12 @@ public class DialougeSystem : MonoBehaviour
                     {
                         yield return new WaitForSeconds(letterDelay * letterMultiplier);
 
-                        if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
                     }
                     else
                     {
                         yield return new WaitForSeconds(letterDelay);
 
-                        if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
+
                     }
                 }
                 else
@@ -149,7 +136,6 @@ public class DialougeSystem : MonoBehaviour
 
     public void DropDialogue()
     {
-        //dialogueGUI.SetActive(false);
         dialogueBoxGUI.gameObject.SetActive(false);
     }
 
@@ -161,7 +147,6 @@ public class DialougeSystem : MonoBehaviour
             letterIsMultiplied = false;
             dialogueActive = false;
             StopAllCoroutines();
-            //dialogueGUI.SetActive(false);
             dialogueBoxGUI.gameObject.SetActive(false);
         }
     }

@@ -37,15 +37,9 @@ public class HUDManager : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        if(GameObject.FindWithTag("Player") != null)
-        {
+
             stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
-        }
-       
-        if(GameObject.FindWithTag("Player") != null)
-        {
             playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
-        }
         
         HudParent.SetActive(true);
         SettingsParent.SetActive(false);

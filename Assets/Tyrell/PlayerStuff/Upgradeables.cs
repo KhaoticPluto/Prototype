@@ -18,7 +18,7 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int NumberOfUpgrades = 0;
     [HideInInspector] public int ProSpeedUpgraded = 0;
     [HideInInspector] public int ProDamageUpgraded = 0;
-    /*[HideInInspector] */public int FireRateUpgraded = 0;
+    [HideInInspector] public int FireRateUpgraded = 0;
     [HideInInspector] public int ProjectilesNumUpgraded = 0;
     [HideInInspector] public int projectileSizeUpgraded = 0;
     [HideInInspector] public int PierceUpgraded = 0;
@@ -30,12 +30,12 @@ public class Upgradeables : MonoBehaviour
 
     [Header("SetBonuses")]
     //Set bonuses
-    public bool ArmorPiercer;
-    public bool MegaRicochet;
-    public bool ExplosionMagnet;
-    public bool Seeking;
-    public bool LifeSteal;
-    public bool UltraFreeze;
+    [HideInInspector] public bool ArmorPiercer;
+    [HideInInspector] public bool MegaRicochet;
+    [HideInInspector] public bool ExplosionMagnet;
+    [HideInInspector] public bool Seeking;
+    [HideInInspector] public bool LifeSteal;
+    [HideInInspector] public bool UltraFreeze;
 
     //gets the highest used upgrade the player is using
     [HideInInspector] public string UpgradeUsedMost;
@@ -45,8 +45,8 @@ public class Upgradeables : MonoBehaviour
     [Header("Upgrade values")]
     public float projectileSpeed = 700;
 
-    public float projectileDamage = 1;
-    public float BaseDamage = 1;
+    public int projectileDamage = 10;
+
     public float critChance = 0;
 
     public float _fireRate = 1;
@@ -130,14 +130,14 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeProjectileDamage(float amount)
     {
         ProDamageUpgraded++;
-        projectileDamage += amount;
-        BaseDamage += amount;
+        projectileDamage = Mathf.RoundToInt( projectileDamage * amount);
+
     }
     public void RemoveUpgradeProjectileDamage(float amount)
     {
         ProDamageUpgraded--;
-        projectileDamage -= amount;
-        BaseDamage -= amount;
+        projectileDamage = Mathf.RoundToInt(projectileDamage / amount);
+
     }
     
     //Fire Rate upgrades
@@ -149,11 +149,8 @@ public class Upgradeables : MonoBehaviour
     }
     public void RemoveUpgradeFireRate(float amount)
     {
-        
-
         _fireRate = _fireRate * amount;
         FireRateUpgraded--;
-
 
     }
 

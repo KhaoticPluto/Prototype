@@ -14,6 +14,9 @@ public class ShowItems : MonoBehaviour
     #endregion
 
     public GameObject ItemChoice;
+    public bool ItemChoiceDestryoed = false;
+
+
     
 
     private void Start()
@@ -24,6 +27,7 @@ public class ShowItems : MonoBehaviour
 
     public void ShowItemChoice()
     {
+        ItemChoiceDestryoed = false;
         ItemChoice.SetActive(true);
         ItemChoice.GetComponent<ItemChoice>().ShowItems();
         Debug.Log("Show Items");
@@ -32,8 +36,10 @@ public class ShowItems : MonoBehaviour
 
     public void DestroyItemChoice()
     {
+        ItemChoiceDestryoed = true;
         ItemChoice.GetComponent<ItemChoice>().DestoryItems();
         ItemChoice.SetActive(false);
+        
     }
 
 }
