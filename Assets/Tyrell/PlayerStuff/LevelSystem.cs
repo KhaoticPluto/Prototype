@@ -36,6 +36,9 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
+        level = PlayerData.lastlevel;
+        currentXp = PlayerData.currentXp;
+
         levelText.text = "Level " + level;
         XpText.text = Mathf.Round(currentXp) + "/" + Mathf.Round(nextLevelXp);
         frontXpBar.fillAmount = currentXp / nextLevelXp;
@@ -62,10 +65,6 @@ public class LevelSystem : MonoBehaviour
             backXpBar.fillAmount = currentXp / nextLevelXp;
         }
 
-        if (Input.GetKeyDown(KeyCode.Equals))
-        {
-            GainExperienceFlatRate(10);
-        }
 
     }
     private void UpdateXpUI() 

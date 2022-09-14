@@ -111,12 +111,10 @@ MonoBehaviour:
   whatIsBullet:
     serializedVersion: 2
     m_Bits: 128
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 40
   timeBetweenAttacks: 1
   alreadyAttacked: 0
-  sightRange: 300
-  attackRange: 8
+  sightRange: 50
+  attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
@@ -169,6 +167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 1656411223050243112, guid: e8b39724bf35f254da13afdb326ea508, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 2718919773908219820, guid: e8b39724bf35f254da13afdb326ea508, type: 3}
       propertyPath: m_Name
       value: Thug RHand
@@ -236,6 +238,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 428742989023297899, guid: 3aca8a50339d7b04987fd89031a487da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 464035640603234872, guid: 3aca8a50339d7b04987fd89031a487da, type: 3}
       propertyPath: m_Name
       value: Thug Head
@@ -303,6 +309,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 891128788655484417, guid: 37204aa2357730541914d7aabf6018ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 6085784223295157463, guid: 37204aa2357730541914d7aabf6018ab, type: 3}
       propertyPath: m_Name
       value: Thug Body
@@ -418,6 +428,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003878549217377822, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
 --- !u!23 &717025445831287073 stripped
@@ -606,6 +620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003878549217377822, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
 --- !u!4 &4965114063454375784 stripped
@@ -625,6 +643,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 1977214032438484902, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 19.373562
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 19.373562
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 19.373562
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 75.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2694359507083242515, guid: c310b41e48d885a4faec73463f632b53, type: 3}
       propertyPath: m_Name
       value: Thug LHand
@@ -673,6 +711,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3709234063454467023, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c310b41e48d885a4faec73463f632b53, type: 3}
 --- !u!4 &4720223192919032899 stripped

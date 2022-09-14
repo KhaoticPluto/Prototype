@@ -9,7 +9,10 @@ public class PlayerData : MonoBehaviour
     public Upgradeables _upgradeables;
 
     //Saved variables
-
+    public static int lastlevel;
+    int DefaultLevel = 0;
+    public static float currentXp;
+    float DefaultCurrentXp = 0;
 
     public static int TutorialComplete = 0;
     int tutorialDefault = 0;

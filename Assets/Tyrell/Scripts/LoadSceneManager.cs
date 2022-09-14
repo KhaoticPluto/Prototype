@@ -17,6 +17,9 @@ public class LoadSceneManager : MonoBehaviour
 
     public void QuitGame()
     {
+        ES3.Save("LastLevel", PlayerData.lastlevel);
+        ES3.Save("CurrentXp", PlayerData.currentXp);
+
         Application.Quit();
     }
 

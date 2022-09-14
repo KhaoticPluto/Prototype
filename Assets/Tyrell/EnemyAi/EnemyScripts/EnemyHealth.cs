@@ -42,6 +42,8 @@ public class EnemyHealth : MonoBehaviour
         Vector3 enemyPos = new Vector3(transform.position.x + damageSpawn, transform.position.y + 5, transform.position.z);
 
         DamagePopUp.Create(enemyPos, amount, isCrit);
+
+        AiController.IncreaseSightRange();
     }
 
     public void EnemyGainHealth(float amount)
