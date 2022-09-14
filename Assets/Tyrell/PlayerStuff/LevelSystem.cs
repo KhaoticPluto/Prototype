@@ -7,17 +7,19 @@ using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
-    [ES3Serializable]public int level;
+    public int level;
     public float maxLevel;
-    [ES3Serializable] public float currentXp;
-    public int nextLevelXp = 100;
+    public float currentXp;
+    int nextLevelXp = 100;
+    public float EXPpoints;
     [Header("Multipliers")]
     [Range(1f, 300f)]
-    public float additionMultiplier;
+    public float additionMultiplier = 2;
     [Range(2f, 4f)]
-    public float powerMultiplier = 20f;
+    public float powerMultiplier = 2f;
     [Range(7f, 14f)]
     public float divisionMultiplier = 7f;
+
     //public GameObject levelUpEffect;
 
     [Header("UI")]
@@ -36,8 +38,6 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
-        level = PlayerData.lastlevel;
-        currentXp = PlayerData.currentXp;
 
         levelText.text = "Level " + level;
         XpText.text = Mathf.Round(currentXp) + "/" + Mathf.Round(nextLevelXp);
@@ -64,7 +64,10 @@ public class LevelSystem : MonoBehaviour
             frontXpBar.fillAmount = currentXp / nextLevelXp;
             backXpBar.fillAmount = currentXp / nextLevelXp;
         }
-
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GainExperienceScalable(10, level);
+        }
 
     }
     private void UpdateXpUI() 
@@ -124,13 +127,14 @@ public class LevelSystem : MonoBehaviour
 
         XpText.text = Mathf.Round(currentXp) + "/" + nextLevelXp;
         levelText.text = "Level " + level;
+        EXPpoints++;
         //Instantiate(levelUpEffect, transform.position, Quaternion.identity);
         //source.PlayOneShot(levelUpSound);
     }
 
     private int CalculateNextLevelXp() 
     {
-        int solveForRequiredXp = 0;
+        int solveForRequiredXp = 500;
         for (int levelCycle = 1; levelCycle <= level; levelCycle++)
         {
             solveForRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, levelCycle / divisionMultiplier));
