@@ -7,10 +7,21 @@ using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
+    #region singleton
+    public static LevelSystem instance;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
+
+
     public int level;
     public float maxLevel;
     public float currentXp;
-    int nextLevelXp = 100;
+    public int nextLevelXp = 100;
     public float EXPpoints;
     [Header("Multipliers")]
     [Range(1f, 300f)]
@@ -38,6 +49,8 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
+        
+
 
         levelText.text = "Level " + level;
         XpText.text = Mathf.Round(currentXp) + "/" + Mathf.Round(nextLevelXp);

@@ -18,8 +18,8 @@ public class PlayerHealth : MonoBehaviour
         if (upgrade.Health <= 0)
         {
             Debug.Log("Player Died");
-  
-            LoadSceneManager.instance.LoadStartingArea();
+            PlayerDied();
+            
             
         }
 
@@ -53,6 +53,13 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(length);
         Invincibility = false;
     }
+
+    public void PlayerDied()
+    {
+        PlayerData.instance.SaveData();
+        LoadSceneManager.instance.LoadStartingArea();
+    }
+
 
     IEnumerator Death()
     {

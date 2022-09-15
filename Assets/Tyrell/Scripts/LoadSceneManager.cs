@@ -17,7 +17,7 @@ public class LoadSceneManager : MonoBehaviour
 
     public void QuitGame()
     {
-        ES3AutoSaveMgr.Current.Save();
+        PlayerData.instance.SaveData();
 
         Application.Quit();
     }
@@ -25,11 +25,13 @@ public class LoadSceneManager : MonoBehaviour
     // Restarts Game, sends it back to Start Level
     public void RestartGame()
     {
+        PlayerData.instance.SaveData();
         SceneManager.LoadScene(1);
     }
 
     public void LoadMenu()
     {
+        PlayerData.instance.SaveData();
         SceneManager.LoadScene(0);
     }
 
@@ -40,21 +42,25 @@ public class LoadSceneManager : MonoBehaviour
 
     public void LoadWaveGame()
     {
+        PlayerData.instance.SaveData();
         SceneManager.LoadScene(1);
     }
 
     public void LoadRogueGame()
     {
+        PlayerData.instance.SaveData();
         SceneManager.LoadScene(2);
     }
 
     public void LoadStartingArea()
     {
+        PlayerData.instance.SaveData();
         SceneManager.LoadScene(3);
     }
 
     public void LoadTutorial()
     {
+        PlayerData.instance.SaveData();
         SceneManager.LoadScene(4);
     }
 }

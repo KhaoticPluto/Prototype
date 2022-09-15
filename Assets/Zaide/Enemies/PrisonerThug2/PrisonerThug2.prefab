@@ -53,8 +53,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 25
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 20
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
     m_Bits: 128
   timeBetweenAttacks: 1
   alreadyAttacked: 0
-  sightRange: 50
+  sightRange: 200
   attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   MaxHealth: 50
+  XpGiven: 5
   AiController: {fileID: 3572810805014757642}
   HealthSlider: {fileID: 752311950354401494}
 --- !u!136 &1224078962060304986
