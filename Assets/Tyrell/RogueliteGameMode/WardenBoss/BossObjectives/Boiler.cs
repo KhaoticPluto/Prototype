@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boiler : MonoBehaviour
 {
-    float health = 20;
+    float health = 100;
 
     public GameObject explosion;
     public Animator animator;

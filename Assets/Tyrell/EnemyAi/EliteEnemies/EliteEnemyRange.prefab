@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5397a9deeaee69c4d96613d6f57e1655, type: 2}
+  - {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   MaxHealth: 50
+  XpGiven: 10
   AiController: {fileID: -5195344680530814690}
   HealthSlider: {fileID: 8005942974425858749}
 --- !u!114 &-5195344680530814690
@@ -162,16 +163,16 @@ MonoBehaviour:
   whatIsntPlayer:
     serializedVersion: 2
     m_Bits: 17671
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
   timeBetweenAttacks: 5
   alreadyAttacked: 0
-  sightRange: 300
+  sightRange: 50
   attackRange: 80
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  playerInSight: 0
   Enemy: {fileID: 3307521731157396062}
   RendMaterials:
   - {fileID: 3307521731157396059}

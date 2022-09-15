@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3536746655796360762}
   - component: {fileID: 8037492574666956859}
-  - component: {fileID: 5469000357145964006}
   - component: {fileID: 1826889070624264319}
   - component: {fileID: 5550468584393097726}
   - component: {fileID: 3464704194355135794}
+  - component: {fileID: 5217773152367355571}
   m_Layer: 8
   m_Name: Prisoner3Melee
   m_TagString: Enemy
@@ -65,19 +65,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &5469000357145964006
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5358434572988660450}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 72, y: 85, z: 29}
-  m_Center: {x: 2.4, y: 42, z: 0.9}
 --- !u!95 &1826889070624264319
 Animator:
   serializedVersion: 4
@@ -120,17 +107,17 @@ MonoBehaviour:
     m_Bits: 64
   whatIsntPlayer:
     serializedVersion: 2
-    m_Bits: 65207
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 40
+    m_Bits: 131007
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
   timeBetweenAttacks: 1
   alreadyAttacked: 0
-  sightRange: 300
-  attackRange: 4
+  sightRange: 200
+  attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  playerInSight: 0
   Enemy: {fileID: 5358434572988660450}
   RendMaterials:
   - {fileID: 1564639816295668425}
@@ -155,10 +142,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
-  MaxHealth: 2
+  Health: 35
+  MaxHealth: 35
+  XpGiven: 5
   AiController: {fileID: 5550468584393097726}
   HealthSlider: {fileID: 2596098435794995098}
+--- !u!136 &5217773152367355571
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5358434572988660450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 33.11
+  m_Height: 85.836296
+  m_Direction: 1
+  m_Center: {x: 0.9899998, y: 39.3, z: 0}
 --- !u!1001 &49620510176310134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,6 +212,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1628423400871801817, guid: 6b2259e5fdf476449b79f2ec9f881d9e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
+    - target: {fileID: 1903073762732434810, guid: 6b2259e5fdf476449b79f2ec9f881d9e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 2193159956470562039, guid: 6b2259e5fdf476449b79f2ec9f881d9e, type: 3}
       propertyPath: m_Size.x
       value: 7.6471972
@@ -333,6 +343,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6955182524552732587, guid: 9559d9189b3d5c14d960ca039b6f51da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9559d9189b3d5c14d960ca039b6f51da, type: 3}
 --- !u!4 &6576169224115866786 stripped
@@ -400,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P3 RFoot
       objectReference: {fileID: 0}
+    - target: {fileID: 8560225279244967745, guid: 79c8b68705b347543841fa7bd5e93a37, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79c8b68705b347543841fa7bd5e93a37, type: 3}
 --- !u!4 &2910932949581224579 stripped
@@ -419,6 +437,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3536746655796360762}
     m_Modifications:
+    - target: {fileID: 2401653309103238090, guid: 748268da076717146805ba82cc2d185d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 2620149126122309355, guid: 748268da076717146805ba82cc2d185d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -486,6 +508,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3536746655796360762}
     m_Modifications:
+    - target: {fileID: 100673206160922738, guid: e72850d55f3f9074bb48dbe4fdb20637, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 6149860290485926486, guid: e72850d55f3f9074bb48dbe4fdb20637, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -557,6 +583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P3 Head
       objectReference: {fileID: 0}
+    - target: {fileID: 4889666917237798385, guid: 6bb81f6af0c833e4d9e9fd3657ffa6fb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 9172146353387115579, guid: 6bb81f6af0c833e4d9e9fd3657ffa6fb, type: 3}
       propertyPath: m_RootOrder
       value: 0

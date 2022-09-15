@@ -107,7 +107,7 @@ public class HUDManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
-        ES3AutoSaveMgr.Current.Save();
+        PlayerData.instance.SaveData();
         SettingsParent?.SetActive(true);
         HudParent.SetActive(false);
 

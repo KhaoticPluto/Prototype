@@ -12,7 +12,8 @@ public class Upgradeables : MonoBehaviour
             instance = this;
     }
     #endregion
-    
+
+    #region KeepsTrackOfUpgrades
 
     //upgrade Analytics values
     [HideInInspector] public int NumberOfUpgrades = 0;
@@ -28,6 +29,11 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int FreezeUpgraded = 0;
     [HideInInspector] public int SpreadUpgraded = 0;
 
+    #endregion
+
+
+    #region SetBonus
+
     [Header("SetBonuses")]
     //Set bonuses
     [HideInInspector] public bool ArmorPiercer;
@@ -37,15 +43,21 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public bool LifeSteal;
     [HideInInspector] public bool UltraFreeze;
 
+    #endregion
+
+
     //gets the highest used upgrade the player is using
     [HideInInspector] public string UpgradeUsedMost;
     [HideInInspector] public int MostUsedUpgrade;
+
+    #region UpgradeValues
 
     //upgrade values
     [Header("Upgrade values")]
     public float projectileSpeed = 700;
 
     public int projectileDamage = 10;
+    public int projectileBaseDamage = 10;
 
     public float critChance = 0;
 
@@ -55,7 +67,7 @@ public class Upgradeables : MonoBehaviour
 
     public int NumberOfProjectile = 1;
 
-    public Vector3 ProjectileSize = new Vector3(0.5f,0.5f,0.5f);
+    public Vector3 ProjectileSize = new Vector3(0.5f, 0.5f, 0.5f);
 
     public float ProjectileLifeTime = 5;
 
@@ -71,6 +83,10 @@ public class Upgradeables : MonoBehaviour
 
     public float SpreadFactor = 15;
 
+    #endregion
+
+    #region PlayerValues
+
     //Player values
 
     [Header("Player values")]
@@ -85,7 +101,8 @@ public class Upgradeables : MonoBehaviour
     public float _dashCooldownTime = 3;
 
     public float ItemDropChance = 10;
-    public int dropchanceincrease = 100;
+    public int dropchanceincrease = 100; 
+    #endregion
 
 
 
@@ -101,15 +118,7 @@ public class Upgradeables : MonoBehaviour
     }
 
 
-    //Reset upgrades if lowered past lowest amount
-    private void Update()
-    {
-        //MostUsedUpgrade = Mathf.Max(ProSpeedUpgraded, ProDamageUpgraded, FireRateUpgraded, ProjectilesNumUpgraded, projectileSizeUpgraded,
-        //PierceUpgraded, CritChanceUpgraded, RicochetUpgraded, ExplosionUpgraded);
- 
-
-    }
-
+    #region GunUpgrades
 
 
     //*------- Gun Upgrades --------*//
@@ -130,20 +139,21 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeProjectileDamage(float amount)
     {
         ProDamageUpgraded++;
-        projectileDamage = Mathf.RoundToInt( projectileDamage * amount);
+        projectileDamage = Mathf.RoundToInt(projectileDamage * amount);
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * amount);
 
     }
     public void RemoveUpgradeProjectileDamage(float amount)
     {
         ProDamageUpgraded--;
         projectileDamage = Mathf.RoundToInt(projectileDamage / amount);
-
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / amount);
     }
-    
+
     //Fire Rate upgrades
     public void UpgradeFireRate(float amount)
     {
-        
+
         _fireRate = _fireRate / amount;
         FireRateUpgraded++;
     }
@@ -170,12 +180,12 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeProjectileSize(float amount)
     {
         projectileSizeUpgraded++;
-        ProjectileSize += new Vector3(amount,amount,amount);
+        ProjectileSize += new Vector3(amount, amount, amount);
     }
     public void RemoveProjectileSize(float amount)
     {
         projectileSizeUpgraded--;
-        ProjectileSize -= new Vector3(amount,amount,amount);
+        ProjectileSize -= new Vector3(amount, amount, amount);
     }
 
     //Upgrade Pierce
@@ -194,7 +204,7 @@ public class Upgradeables : MonoBehaviour
     //Crit Chance
     public void UpgradeCritChance(float amount)
     {
-       
+
         if (CritChanceUpgraded <= 4)
             critChance += amount;
 
@@ -205,7 +215,7 @@ public class Upgradeables : MonoBehaviour
 
         if (CritChanceUpgraded <= 5)
             critChance -= amount;
-        
+
         CritChanceUpgraded--;
     }
 
@@ -265,6 +275,9 @@ public class Upgradeables : MonoBehaviour
     //*------- Gun Upgrades --------*//
 
 
+    #endregion
+
+    #region PlayerUpgrades
 
     //*------- Player upgrades --------*//
 
@@ -313,7 +326,8 @@ public class Upgradeables : MonoBehaviour
         _dashCooldownTime -= amount;
     }
 
-    //*------- Player upgrades --------*//
+    //*------- Player upgrades --------*// 
+    #endregion
 
 
 }

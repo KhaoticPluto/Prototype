@@ -8,11 +8,9 @@ public class EnemyHealth : MonoBehaviour
 {
     public float Health = 35;
     public float MaxHealth = 35;
+    public float XpGiven = 10;
 
     public EnemyAiController AiController;
-
-    //randomItemDrop script
-    //public EnemyRandomsDropItem randItemDrop;
 
     public Slider HealthSlider;
 
@@ -22,11 +20,11 @@ public class EnemyHealth : MonoBehaviour
 
         if (Health <= 0)
         {
-            
-            AiController.DestroyEnemy();
-            
-            MoneyManager.instance.DropMoney();
 
+
+            LevelSystem.instance.GainExperienceFlatRate(XpGiven);
+            MoneyManager.instance.DropMoney();
+            AiController.DestroyEnemy();
         }
 
         if (Health > MaxHealth)
@@ -42,6 +40,8 @@ public class EnemyHealth : MonoBehaviour
         Vector3 enemyPos = new Vector3(transform.position.x + damageSpawn, transform.position.y + 5, transform.position.z);
 
         DamagePopUp.Create(enemyPos, amount, isCrit);
+
+        AiController.IncreaseSightRange();
     }
 
     public void EnemyGainHealth(float amount)

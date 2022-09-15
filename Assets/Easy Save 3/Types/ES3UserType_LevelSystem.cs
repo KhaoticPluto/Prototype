@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ES3Types
 {
 	[UnityEngine.Scripting.Preserve]
-	[ES3PropertiesAttribute("level", "maxLevel", "currentXp", "nextLevelXp", "additionMultiplier", "powerMultiplier", "divisionMultiplier")]
+	[ES3PropertiesAttribute("level", "currentXp", "EXPpoints", "additionMultiplier", "powerMultiplier", "divisionMultiplier")]
 	public class ES3UserType_LevelSystem : ES3ComponentType
 	{
 		public static ES3Type Instance = null;
@@ -17,9 +17,8 @@ namespace ES3Types
 			var instance = (LevelSystem)obj;
 			
 			writer.WriteProperty("level", instance.level, ES3Type_int.Instance);
-			writer.WriteProperty("maxLevel", instance.maxLevel, ES3Type_float.Instance);
 			writer.WriteProperty("currentXp", instance.currentXp, ES3Type_float.Instance);
-			writer.WriteProperty("nextLevelXp", instance.nextLevelXp, ES3Type_int.Instance);
+			writer.WriteProperty("EXPpoints", instance.EXPpoints, ES3Type_float.Instance);
 			writer.WriteProperty("additionMultiplier", instance.additionMultiplier, ES3Type_float.Instance);
 			writer.WriteProperty("powerMultiplier", instance.powerMultiplier, ES3Type_float.Instance);
 			writer.WriteProperty("divisionMultiplier", instance.divisionMultiplier, ES3Type_float.Instance);
@@ -36,14 +35,11 @@ namespace ES3Types
 					case "level":
 						instance.level = reader.Read<System.Int32>(ES3Type_int.Instance);
 						break;
-					case "maxLevel":
-						instance.maxLevel = reader.Read<System.Single>(ES3Type_float.Instance);
-						break;
 					case "currentXp":
 						instance.currentXp = reader.Read<System.Single>(ES3Type_float.Instance);
 						break;
-					case "nextLevelXp":
-						instance.nextLevelXp = reader.Read<System.Int32>(ES3Type_int.Instance);
+					case "EXPpoints":
+						instance.EXPpoints = reader.Read<System.Single>(ES3Type_float.Instance);
 						break;
 					case "additionMultiplier":
 						instance.additionMultiplier = reader.Read<System.Single>(ES3Type_float.Instance);

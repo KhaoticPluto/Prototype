@@ -26,7 +26,7 @@ public class EnemyExploder : EnemyAiController
         playerInExplodeRange = Physics.CheckSphere(transform.position, explodeRange, whatIsPlayer);
 
         //if any of theese are true it will set the enemies state
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (!playerInSightRange && !playerInAttackRange) Wander();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange && !isFrozen) AttackPlayer();
         if (playerInExplodeRange) PlayerInRangeExplodeEnemy();

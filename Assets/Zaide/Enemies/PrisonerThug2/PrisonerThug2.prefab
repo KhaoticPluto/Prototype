@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 240282476735349761}
   - component: {fileID: 6224209706304648407}
-  - component: {fileID: 7948454311301880141}
   - component: {fileID: 3572810805014757642}
   - component: {fileID: 4118921638397744508}
   - component: {fileID: 3288870255047906444}
+  - component: {fileID: 1224078962060304986}
   m_Layer: 8
   m_Name: PrisonerThug2
   m_TagString: Enemy
@@ -53,8 +53,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 25
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 20
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -65,19 +65,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &7948454311301880141
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5110083538416064819}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 40, y: 100, z: 33}
-  m_Center: {x: 0, y: 50, z: 2}
 --- !u!114 &3572810805014757642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,17 +87,17 @@ MonoBehaviour:
     m_Bits: 64
   whatIsntPlayer:
     serializedVersion: 2
-    m_Bits: 65463
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 40
+    m_Bits: 131007
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
   timeBetweenAttacks: 1
   alreadyAttacked: 0
-  sightRange: 300
-  attackRange: 4.5
+  sightRange: 200
+  attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  playerInSight: 0
   Enemy: {fileID: 5110083538416064819}
   RendMaterials:
   - {fileID: 7832232717858142289}
@@ -155,10 +142,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
-  MaxHealth: 2
+  Health: 50
+  MaxHealth: 50
+  XpGiven: 5
   AiController: {fileID: 3572810805014757642}
   HealthSlider: {fileID: 752311950354401494}
+--- !u!136 &1224078962060304986
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110083538416064819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 33.11
+  m_Height: 106.28912
+  m_Direction: 1
+  m_Center: {x: 0.9899998, y: 50.444557, z: 0}
 --- !u!1001 &2711664943755395581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,6 +216,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7484763114636079696, guid: 2c33ce510f0ff284a983955f08ae7d9b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c33ce510f0ff284a983955f08ae7d9b, type: 3}
 --- !u!4 &3107482042844855931 stripped
@@ -281,6 +287,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2624551671056421225, guid: 257dff9734d7a8942a1802d950915033, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 257dff9734d7a8942a1802d950915033, type: 3}
 --- !u!23 &631591123249457830 stripped
@@ -304,6 +314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PT2 Head
       objectReference: {fileID: 0}
+    - target: {fileID: 2721745339993416533, guid: d43fd6b3b85f1e04f8031ab426f8ee42, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 3020222004998232362, guid: d43fd6b3b85f1e04f8031ab426f8ee42, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -367,6 +381,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 240282476735349761}
     m_Modifications:
+    - target: {fileID: 617328661249386007, guid: 99a7cff48bc114f46a102f73e4b31148, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 1900385787499281172, guid: 99a7cff48bc114f46a102f73e4b31148, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -603,6 +621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PT2 LFoot
       objectReference: {fileID: 0}
+    - target: {fileID: 3744462582684482442, guid: 550e5e73decabda4cb90cceee7c0c69f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550e5e73decabda4cb90cceee7c0c69f, type: 3}
 --- !u!23 &6136973726852408303 stripped
@@ -646,6 +668,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5762714437884184000, guid: 81a6d17baf7885b4e815a31a5abaf5f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
+    - target: {fileID: 6588738924268474827, guid: 81a6d17baf7885b4e815a31a5abaf5f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 8475001951645787370, guid: 81a6d17baf7885b4e815a31a5abaf5f5, type: 3}
       propertyPath: m_Name
       value: PT2 Left Hand

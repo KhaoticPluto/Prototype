@@ -20,7 +20,7 @@ public class InventoryUIHandler : MonoBehaviour
     public GameObject playerStats;
     public GameObject SetBonus;
     public GameObject Border;
-    public GameObject BG;
+    public GameObject HUD;
     
 
     private List<ItemSlot> itemSlotList = new List<ItemSlot>();
@@ -33,6 +33,8 @@ public class InventoryUIHandler : MonoBehaviour
 
     private void Start()
     {
+        HUD = FindObjectOfType<HUDManager>().gameObject;
+
         Inventory.instance.onItemChange += UpdateInventoryUI;
         UpdateInventoryUI();
 
@@ -120,6 +122,8 @@ public class InventoryUIHandler : MonoBehaviour
         playerStats.SetActive(true);
         SetBonus.SetActive(true);
         Border.SetActive(true);
+
+        HUD.SetActive(false);
     }
 
     public void CloseInventory()
@@ -131,6 +135,8 @@ public class InventoryUIHandler : MonoBehaviour
         playerStats.SetActive(false);
         Border.SetActive(false);
         SetBonus.SetActive(false);
+
+        HUD.SetActive(true);
     }
 
 
