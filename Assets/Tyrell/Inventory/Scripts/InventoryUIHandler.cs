@@ -21,7 +21,8 @@ public class InventoryUIHandler : MonoBehaviour
     public GameObject SetBonus;
     public GameObject Border;
     public GameObject HUD;
-    
+    public GameObject BG;
+
 
     private List<ItemSlot> itemSlotList = new List<ItemSlot>();
 
