@@ -22,7 +22,6 @@ public class HUDManager : MonoBehaviour
 
     //UI Elements
     public TextMeshProUGUI MoneyText;
-    public TextMeshProUGUI PriceCountText;
     public TextMeshProUGUI healthText;
 
     public Slider dashCoolDown;
@@ -54,7 +53,7 @@ public class HUDManager : MonoBehaviour
         {
             //Player Stats Text
             //HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
-            healthBar.value = stats.Health;
+            healthBar.value = stats.sliderHealthVal;
             healthText.text = stats.Health + " / " + stats.MaxHealth;
             MoneyText.text = " " + MoneyManager.Money;
 

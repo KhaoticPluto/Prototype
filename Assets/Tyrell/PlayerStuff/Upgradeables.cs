@@ -92,7 +92,7 @@ public class Upgradeables : MonoBehaviour
     [Header("Player values")]
     public float Health = 100;
     public float MaxHealth = 100;
-
+    public float sliderHealthVal;
 
     public float playerSpeed = 15;
 
@@ -102,6 +102,7 @@ public class Upgradeables : MonoBehaviour
 
     public float ItemDropChance = 10;
     public int dropchanceincrease = 100; 
+
     #endregion
 
 
@@ -115,6 +116,16 @@ public class Upgradeables : MonoBehaviour
     private void Start()
     {
         gunInventoryController = FindObjectOfType<GunInventoryController>(transform);
+    }
+
+    private void Update()
+    {
+        sliderHealthVal = CalculateHealth();
+    }
+
+    float CalculateHealth()
+    {
+        return Health / MaxHealth;
     }
 
 
