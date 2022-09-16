@@ -800,6 +800,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1068486273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5010686181621605781, guid: 4071140a3c63ea04ca5e92a77e8c8cec, type: 3}
+  m_PrefabInstance: {fileID: 830893572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1072040400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -978,6 +983,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 445391835, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220079320, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220079322, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_Targets.Array.data[0].target
+      value: 
+      objectReference: {fileID: 222466429}
+    - target: {fileID: 1220079322, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_Targets.Array.data[1].target
+      value: 
+      objectReference: {fileID: 1524707530}
     - target: {fileID: 773404306744795021, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
       propertyPath: m_Name
       value: Camera
@@ -1029,11 +1050,23 @@ PrefabInstance:
     - target: {fileID: 5790293180226544255, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 222466429}
+      objectReference: {fileID: 1068486273}
     - target: {fileID: 5790293180226544255, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 222466429}
+      objectReference: {fileID: 1068486273}
+    - target: {fileID: 5790293181443565268, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.230083
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790293181443565268, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 30.516853
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790293181443565268, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -56.728363
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24019c670c2e5964caff514b2964d6c1, type: 3}
 --- !u!1 &1178534565
@@ -1522,6 +1555,11 @@ Transform:
   m_Father: {fileID: 197472149}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1524707530 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6752933026155676845, guid: 0a200ee05fd756c42b01339ec7fad8a7, type: 3}
+  m_PrefabInstance: {fileID: 1647203869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1578675900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,6 +1629,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1803772092052027376, guid: 0a200ee05fd756c42b01339ec7fad8a7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1474209435395526644, guid: 1acca09896c764a40b470a31947955dd, type: 2}
+    - target: {fileID: 1803772092052027376, guid: 0a200ee05fd756c42b01339ec7fad8a7, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803772093014772554, guid: 0a200ee05fd756c42b01339ec7fad8a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6752933026155676845, guid: 0a200ee05fd756c42b01339ec7fad8a7, type: 3}
       propertyPath: m_RootOrder
       value: 13
