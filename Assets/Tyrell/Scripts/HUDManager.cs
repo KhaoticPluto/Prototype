@@ -7,13 +7,7 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
 
-    //Player Upgrade
-    public TextMeshProUGUI moneyCounter;
-    public TextMeshProUGUI healthCounter;
     
-    public TextMeshProUGUI speedCounter;
-    //public TextMeshProUGUI inventoryCounter;
-
     //Scripts
     public Upgradeables stats;
     
@@ -57,11 +51,6 @@ public class HUDManager : MonoBehaviour
             healthBar.value = stats.Health;
             healthText.text = stats.Health + " / " + stats.MaxHealth;
             MoneyText.text = " " + MoneyManager.Money;
-
-            healthCounter.text = " " + PlayerItemUpgradeRemove.instance.MaxHealthItem;
-            moneyCounter.text = " " + PlayerItemUpgradeRemove.instance.IncreaseMoneyItem;
-            speedCounter.text = " " + PlayerItemUpgradeRemove.instance.SpeedItem;
-            //inventoryCounter.text = " " + PlayerItemUpgradeRemove.instance.InventoryItem;
 
             //Dashing Text
             dashCoolDown.value = playermovement._dashCooldown;
