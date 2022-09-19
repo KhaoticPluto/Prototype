@@ -27,7 +27,7 @@ public class PlayerData : MonoBehaviour
     int DefaultNextLevelXp;
 
     public static int TutorialComplete = 0;
-    //int tutorialDefault = 0;
+    int tutorialDefault = 0;
 
     public void Start()
     {
@@ -49,7 +49,7 @@ public class PlayerData : MonoBehaviour
     }
     public void LoadData()
     {
-        //TutorialComplete = ES3.Load("TutorialComplete", tutorialDefault);
+        TutorialComplete = ES3.Load("TutorialComplete", tutorialDefault);
         _Level = ES3.Load("SavedLevel", DefaultLevel);
         _currentXP = ES3.Load("SavedXp", DefaultCurrentXp);
         _nextLevelXp = ES3.Load("NextLevelXp", DefaultNextLevelXp);
