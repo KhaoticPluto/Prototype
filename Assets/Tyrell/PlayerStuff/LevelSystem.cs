@@ -77,10 +77,7 @@ public class LevelSystem : MonoBehaviour
             frontXpBar.fillAmount = currentXp / nextLevelXp;
             backXpBar.fillAmount = currentXp / nextLevelXp;
         }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            GainExperienceScalable(10, level);
-        }
+        
 
     }
     private void UpdateXpUI() 

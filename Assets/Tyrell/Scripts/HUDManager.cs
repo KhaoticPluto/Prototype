@@ -7,16 +7,18 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
 
+    //Player Upgrade
     
+
     //Scripts
     public Upgradeables stats;
+    public LevelSystem levelStats;
     
     public movement playermovement;
     
 
     //UI Elements
     public TextMeshProUGUI MoneyText;
-    public TextMeshProUGUI PriceCountText;
     public TextMeshProUGUI healthText;
 
     public Slider dashCoolDown;
@@ -34,7 +36,8 @@ public class HUDManager : MonoBehaviour
 
             stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
             playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
-        
+        levelStats = GameObject.FindWithTag("Player").GetComponent<LevelSystem>();
+
         HudParent.SetActive(true);
         SettingsParent.SetActive(false);
 
@@ -48,9 +51,11 @@ public class HUDManager : MonoBehaviour
         {
             //Player Stats Text
             //HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
-            healthBar.value = stats.Health;
+            healthBar.value = stats.sliderHealthVal;
             healthText.text = stats.Health + " / " + stats.MaxHealth;
             MoneyText.text = " " + MoneyManager.Money;
+
+            
 
             //Dashing Text
             dashCoolDown.value = playermovement._dashCooldown;

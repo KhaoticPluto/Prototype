@@ -27,7 +27,7 @@ public class PlayerData : MonoBehaviour
     int DefaultNextLevelXp;
 
     public static int TutorialComplete = 0;
-    int tutorialDefault = 0;
+    //int tutorialDefault = 0;
 
     public void Start()
     {
