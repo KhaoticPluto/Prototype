@@ -34,7 +34,7 @@ public class InventoryUIHandler : MonoBehaviour
 
     private void Start()
     {
-        HUD = FindObjectOfType<HUDManager>().gameObject;
+        HUD = GameObject.FindWithTag("HUD"); 
 
         Inventory.instance.onItemChange += UpdateInventoryUI;
         UpdateInventoryUI();
@@ -118,11 +118,11 @@ public class InventoryUIHandler : MonoBehaviour
     {
         inventoryOpen = true;
         BG.SetActive(true);
-        inventoryParent.SetActive(true);
-        GunInventory.SetActive(true);
-        playerStats.SetActive(true);
-        SetBonus.SetActive(true);
-        Border.SetActive(true);
+        //inventoryParent.SetActive(true);
+        //GunInventory.SetActive(true);
+        //playerStats.SetActive(true);
+        //SetBonus.SetActive(true);
+        //Border.SetActive(true);
 
         HUD.SetActive(false);
     }
@@ -131,11 +131,11 @@ public class InventoryUIHandler : MonoBehaviour
     {
         inventoryOpen = false;
         BG.SetActive(false);
-        inventoryParent.SetActive(false);
-        GunInventory.SetActive(false);
-        playerStats.SetActive(false);
-        Border.SetActive(false);
-        SetBonus.SetActive(false);
+        //inventoryParent.SetActive(false);
+        //GunInventory.SetActive(false);
+        //playerStats.SetActive(false);
+        //Border.SetActive(false);
+        //SetBonus.SetActive(false);
 
         HUD.SetActive(true);
     }
