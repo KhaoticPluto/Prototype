@@ -27,7 +27,7 @@ public class ItemUpgradeRemove : MonoBehaviour
 
     }
 
-    public void OnStatItemUse(ItemType itemType, float amount)
+    public void OnStatItemUse(ItemType itemType, float amount, float upgradeAmount)
     {
         NumberOfUpgrades++;
         upgrade.GetComponent<Upgradeables>();
@@ -35,15 +35,15 @@ public class ItemUpgradeRemove : MonoBehaviour
         switch (itemType)
         {
             case ItemType.FireRate:
-                upgrade.UpgradeFireRate(amount);
+                upgrade.UpgradeFireRate(amount, upgradeAmount);
                 break;
 
             case ItemType.Damage:
-                upgrade.UpgradeProjectileDamage(amount);
+                upgrade.UpgradeProjectileDamage(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSpeed:
-                upgrade.UpgradeProjectileSpeed(amount);
+                upgrade.UpgradeProjectileSpeed(amount, upgradeAmount);
                 break;
 
             case ItemType.NumOfProjectiles:
@@ -67,7 +67,7 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.ImpactExplosion:
-                upgrade.UpgradeImpactExpolosion(amount);
+                upgrade.UpgradeImpactExpolosion(amount, upgradeAmount);
                 break;
 
             case ItemType.Freeze:
@@ -80,7 +80,7 @@ public class ItemUpgradeRemove : MonoBehaviour
         }
     }
 
-    public void OnStatItemRemove(ItemType itemType, float amount)
+    public void OnStatItemRemove(ItemType itemType, float amount, float upgradeAmount)
     {
         NumberOfUpgrades--;
         upgrade.GetComponent<Upgradeables>();
@@ -88,15 +88,15 @@ public class ItemUpgradeRemove : MonoBehaviour
         switch (itemType)
         {
             case ItemType.FireRate:
-                upgrade.RemoveUpgradeFireRate(amount);
+                upgrade.RemoveUpgradeFireRate(amount, upgradeAmount);
                 break;
 
             case ItemType.Damage:
-                upgrade.RemoveUpgradeProjectileDamage(amount);
+                upgrade.RemoveUpgradeProjectileDamage(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSpeed:
-                upgrade.RemoveUpgradeProjectileSpeed(amount);
+                upgrade.RemoveUpgradeProjectileSpeed(amount, upgradeAmount);
                 break;
 
             case ItemType.NumOfProjectiles:
@@ -120,7 +120,7 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.ImpactExplosion:
-                upgrade.RemoveImpactExplosion(amount);
+                upgrade.RemoveImpactExplosion(amount, upgradeAmount);
                 break;
 
             case ItemType.Freeze:

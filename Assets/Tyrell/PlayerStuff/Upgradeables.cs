@@ -121,6 +121,8 @@ public class Upgradeables : MonoBehaviour
     private void Update()
     {
         sliderHealthVal = CalculateHealth();
+        if (FireRateUpgraded == 0)
+            _fireRate = 1;
     }
 
     float CalculateHealth()
@@ -135,42 +137,45 @@ public class Upgradeables : MonoBehaviour
     //*------- Gun Upgrades --------*//
 
     //Projectile speed upgrade
-    public void UpgradeProjectileSpeed(float amount)
+    public void UpgradeProjectileSpeed(float amount, float upgradeamount)
     {
         ProSpeedUpgraded++;
         projectileSpeed += amount;
+
+        //projectileDamage = Mathf.RoundToInt(projectileDamage * upgradeamount);
+        //projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * upgradeamount);
     }
-    public void RemoveUpgradeProjectileSpeed(float amount)
+    public void RemoveUpgradeProjectileSpeed(float amount, float upgradeamount)
     {
         ProSpeedUpgraded--;
         projectileSpeed -= amount;
     }
 
     //Projectile Damage upgrade
-    public void UpgradeProjectileDamage(float amount)
+    public void UpgradeProjectileDamage(float amount, float upgradeAmount)
     {
         ProDamageUpgraded++;
-        projectileDamage = Mathf.RoundToInt(projectileDamage * amount);
-        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * amount);
+        projectileDamage = Mathf.RoundToInt(projectileDamage * (amount + upgradeAmount));
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * (amount + upgradeAmount));
 
     }
-    public void RemoveUpgradeProjectileDamage(float amount)
+    public void RemoveUpgradeProjectileDamage(float amount, float upgradeAmount)
     {
         ProDamageUpgraded--;
-        projectileDamage = Mathf.RoundToInt(projectileDamage / amount);
-        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / amount);
+        projectileDamage = Mathf.RoundToInt(projectileDamage / (amount + upgradeAmount));
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (amount + upgradeAmount));
     }
 
     //Fire Rate upgrades
-    public void UpgradeFireRate(float amount)
+    public void UpgradeFireRate(float amount, float upgradeAmount)
     {
 
-        _fireRate = _fireRate / amount;
+        _fireRate = _fireRate / (amount + upgradeAmount);
         FireRateUpgraded++;
     }
-    public void RemoveUpgradeFireRate(float amount)
+    public void RemoveUpgradeFireRate(float amount, float upgradeAmount)
     {
-        _fireRate = _fireRate * amount;
+        _fireRate = _fireRate * (amount + upgradeAmount);
         FireRateUpgraded--;
 
     }
@@ -245,16 +250,19 @@ public class Upgradeables : MonoBehaviour
     }
 
     //Impact Explosion
-    public void UpgradeImpactExpolosion(float amount)
+    public void UpgradeImpactExpolosion(float amount, float upgradeamount)
     {
         ExplosionUpgraded++;
-        ExplosionArea += amount;
+        ExplosionArea++;
+        ExplosionArea = ExplosionArea * (amount + upgradeamount);
         explosiveCountUpgraded++;
     }
-    public void RemoveImpactExplosion(float amount)
+    public void RemoveImpactExplosion(float amount, float upgradeamount)
     {
         ExplosionUpgraded--;
-        ExplosionArea -= amount;
+        
+        ExplosionArea = ExplosionArea / (amount + upgradeamount);
+        ExplosionArea--;
         explosiveCountUpgraded--;
     }
 

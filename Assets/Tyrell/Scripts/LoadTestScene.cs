@@ -9,7 +9,7 @@ public class LoadTestScene : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(4);
+            LoadSceneManager.instance.LoadTutorial();
         }
     }
 }

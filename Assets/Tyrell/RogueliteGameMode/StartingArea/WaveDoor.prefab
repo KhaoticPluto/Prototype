@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203505942288541513}
   - component: {fileID: 3173867272104744916}
-  - component: {fileID: 5777268356466781169}
+  - component: {fileID: 819524782549043594}
   m_Layer: 0
   m_Name: WaveDoor
   m_TagString: Untagged
@@ -193,7 +193,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2760988551732778873}
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 50.02, y: -1, z: 49.84}
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
@@ -210,12 +210,12 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2760988551732778873}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 15, y: 30, z: 5}
   m_Center: {x: 6, y: 17, z: 1.3}
---- !u!114 &5777268356466781169
+--- !u!114 &819524782549043594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2760988551732778873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51d6e84d868232049ad0a7c5b8321863, type: 3}
+  m_Script: {fileID: 11500000, guid: 734259d808ba8f447b642bb055edad03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8668771877223786087
