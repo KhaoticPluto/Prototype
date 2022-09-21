@@ -19,6 +19,8 @@ public class EnemyAiController : MonoBehaviour
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
 
+    //Tracking the amount of Deaths
+    float killValue = 1;
 
     //States
     public float sightRange, attackRange;
@@ -196,6 +198,7 @@ public class EnemyAiController : MonoBehaviour
     {
         if (IsRogueLite == true )
         {
+            GameStats.score += killValue;
             roomspawn.RemoveEnemy(Enemy);
         }
         

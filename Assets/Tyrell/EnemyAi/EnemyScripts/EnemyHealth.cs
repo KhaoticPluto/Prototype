@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     public float MaxHealth = 35;
     public float XpGiven = 10;
 
+    float scoreValue = 1;
+
     public EnemyAiController AiController;
 
     public Slider HealthSlider;
@@ -20,8 +22,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (Health <= 0)
         {
-
-
+            
             LevelSystem.instance.GainExperienceFlatRate(XpGiven);
             MoneyManager.instance.DropMoney();
             AiController.DestroyEnemy();

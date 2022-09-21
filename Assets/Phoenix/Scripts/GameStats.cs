@@ -7,7 +7,21 @@ using TMPro;
 public class GameStats : MonoBehaviour
 {
 
-    //Game Stats
+    #region singleton
+    public static GameStats instance;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
+    #region Variables
+    //script ref
+    public EnemyHealth enemy;
+    public Upgradeables upgrades;
+
+    //Stat Trackers
     public TextMeshProUGUI killStats;
     public TextMeshProUGUI longestRunStats;
     public TextMeshProUGUI LifeStats;
@@ -16,27 +30,31 @@ public class GameStats : MonoBehaviour
     public TextMeshProUGUI moneyCollected;
     public TextMeshProUGUI damageDealtStats;
     public TextMeshProUGUI damageTakenStats;
-    
     //UI Parents
     public GameObject textparents;
     public GameObject BG;
     public GameObject Title;
+    //Adds points
+    public static float score;
+    public static float time;
+    public static float life;
+    public static float money;
 
     public static bool isPaused = false;
+    #endregion
 
     private void Start()
     {
         textparents.SetActive(true);
         BG.SetActive(true);
         Title.SetActive(true);
-
         isPaused = false;
+        score = 0;
     }
 
     // Update is called once per frame
     public void Update()
     {
-
         //press button/key opens game stats overall
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -47,6 +65,8 @@ public class GameStats : MonoBehaviour
         {
             CloseStats();
         }
+
+        
     }
 
     //Open Stats for the Player
