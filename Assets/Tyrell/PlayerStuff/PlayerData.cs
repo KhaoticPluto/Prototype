@@ -32,9 +32,10 @@ public class PlayerData : MonoBehaviour
     //upgrades
     int DefaultUpgradeLevel = 0;
 
+    #region Items
     public Item explosion;
     public int _explosionLevel;
-    
+
 
     public Item Damage;
     public int _damageLevel;
@@ -42,9 +43,30 @@ public class PlayerData : MonoBehaviour
     public Item fireRate;
     public int _fireRateLevel;
 
+    public Item Ricochet;
+    public int _ricochetLevel;
 
+    public Item SpeedUp;
+    public int _speedLevel;
 
+    public Item Duplicate;
+    public int _duplicateLevel;
 
+    public Item Crit;
+    public int _critLevel;
+
+    public Item Spread;
+    public int _spreadLevel;
+
+    public Item Freeze;
+    public int _freezeLevel;
+
+    public Item Big;
+    public int _bigLevel;
+
+    public Item Pierce;
+    public int _pierceLevel; 
+    #endregion
 
     public static int TutorialComplete = 0;
     int tutorialDefault = 0;
@@ -60,6 +82,7 @@ public class PlayerData : MonoBehaviour
         _levelSystem.EXPpoints = _xpPoints;
 
         //Upgrades
+        #region ItemLoad
         explosion.level = _explosionLevel;
         explosion.UpgradeAmount = 0;
         explosion.baselevel = 0;
@@ -74,6 +97,47 @@ public class PlayerData : MonoBehaviour
         fireRate.UpgradeAmount = 0;
         fireRate.baselevel = 0;
         fireRate.UpdateUpgrade();
+
+        Ricochet.level = _fireRateLevel;
+        Ricochet.UpgradeAmount = 0;
+        Ricochet.baselevel = 0;
+        Ricochet.UpdateUpgrade();
+
+        SpeedUp.level = _fireRateLevel;
+        SpeedUp.UpgradeAmount = 0;
+        SpeedUp.baselevel = 0;
+        SpeedUp.UpdateUpgrade();
+
+        Duplicate.level = _fireRateLevel;
+        Duplicate.UpgradeAmount = 0;
+        Duplicate.baselevel = 0;
+        Duplicate.UpdateUpgrade();
+
+        Crit.level = _fireRateLevel;
+        Crit.UpgradeAmount = 0;
+        Crit.baselevel = 0;
+        Crit.UpdateUpgrade();
+
+        Spread.level = _fireRateLevel;
+        Spread.UpgradeAmount = 0;
+        Spread.baselevel = 0;
+        Spread.UpdateUpgrade();
+
+        Freeze.level = _fireRateLevel;
+        Freeze.UpgradeAmount = 0;
+        Freeze.baselevel = 0;
+        Freeze.UpdateUpgrade();
+
+        Big.level = _fireRateLevel;
+        Big.UpgradeAmount = 0;
+        Big.baselevel = 0;
+        Big.UpdateUpgrade();
+
+        Pierce.level = _fireRateLevel;
+        Pierce.UpgradeAmount = 0;
+        Pierce.baselevel = 0;
+        Pierce.UpdateUpgrade(); 
+        #endregion
     }
 
     private void Update()
@@ -85,6 +149,14 @@ public class PlayerData : MonoBehaviour
         _explosionLevel = explosion.level;
         _damageLevel = Damage.level;
         _fireRateLevel = fireRate.level;
+        _ricochetLevel = Ricochet.level;
+        _speedLevel = SpeedUp.level;
+        _duplicateLevel = Duplicate.level;
+        _critLevel = Crit.level;
+        _spreadLevel = Spread.level;
+        _freezeLevel = Freeze.level;
+        _bigLevel = Big.level;
+        _pierceLevel = Pierce.level;
     }
     public void LoadData()
     {
@@ -93,9 +165,20 @@ public class PlayerData : MonoBehaviour
         _currentXP = ES3.Load("SavedXp", DefaultCurrentXp);
         _nextLevelXp = ES3.Load("NextLevelXp", DefaultNextLevelXp);
         _xpPoints = ES3.Load("XPPoints", DefaultXpPoints);
+
+        #region ItemSaves
         _explosionLevel = ES3.Load("ExplosionUpgradeLevel", DefaultUpgradeLevel);
         _damageLevel = ES3.Load("DamageUpgradeLevel", DefaultUpgradeLevel);
         _fireRateLevel = ES3.Load("FireRateUpgradeLevel", DefaultUpgradeLevel);
+        _ricochetLevel = ES3.Load("RicochetUpgradeLevel", DefaultUpgradeLevel);
+        _speedLevel = ES3.Load("SpeedUpgradeLevel", DefaultUpgradeLevel);
+        _duplicateLevel = ES3.Load("DuplicateUpgradeLevel", DefaultUpgradeLevel);
+        _critLevel = ES3.Load("CritUpgradeLevel", DefaultUpgradeLevel);
+        _spreadLevel = ES3.Load("SpreadUpgradeLevel", DefaultUpgradeLevel);
+        _freezeLevel = ES3.Load("FreezeUpgradeLevel", DefaultUpgradeLevel);
+        _bigLevel = ES3.Load("BigUpgradeLevel", DefaultUpgradeLevel);
+        _pierceLevel = ES3.Load("PierceUpgradeLevel", DefaultUpgradeLevel); 
+        #endregion
     }
 
     public void SaveData()
@@ -104,9 +187,21 @@ public class PlayerData : MonoBehaviour
         ES3.Save("SavedXp", _currentXP);
         ES3.Save("NextLevelXp", _nextLevelXp);
         ES3.Save("XPPoints", _xpPoints);
+
+        #region ItemSave
         ES3.Save("ExplosionUpgradeLevel", _explosionLevel);
         ES3.Save("DamageUpgradeLevel", _damageLevel);
         ES3.Save("FireRateUpgradeLevel", _fireRateLevel);
+        ES3.Save("RicochetUpgradeLevel", _ricochetLevel);
+        ES3.Save("SpeedUpgradeLevel", _speedLevel);
+        ES3.Save("DuplicateUpgradeLevel", _duplicateLevel);
+        ES3.Save("CritUpgradeLevel", _critLevel);
+        ES3.Save("SpreadUpgradeLevel", _spreadLevel);
+        ES3.Save("FreezeUpgradeLevel", _freezeLevel);
+        ES3.Save("BigUpgradeLevel", _bigLevel);
+        ES3.Save("PierceUpgradeLevel", _pierceLevel); 
+        #endregion
+
     }
 
 

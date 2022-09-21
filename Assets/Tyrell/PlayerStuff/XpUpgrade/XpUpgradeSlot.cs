@@ -7,18 +7,27 @@ public class XpUpgradeSlot : ItemSlot
 {
     public LevelSystem levelStats;
     public GameObject CantAffordText;
+    public TextMeshProUGUI Cost;
+    public TextMeshProUGUI Level;
 
     private void Start()
     {
         levelStats = FindObjectOfType<LevelSystem>();
     }
+
+    private void Update()
+    {
+        Cost.text = "Cost: " + item.Cost;
+        Level.text = item.level + " / " + item.maxLevel;
+    }
+
     public void UpgradeItem()
     {
-        if(levelStats.EXPpoints > 0 && item.level < item.maxLevel)
+        if(levelStats.EXPpoints >= item.Cost && item.level < item.maxLevel)
         {
             Item.Upgrade();
             Item.UpdateUpgrade();
-            levelStats.EXPpoints--;
+            levelStats.EXPpoints -= item.Cost;
         }
         else if(item.level == item.maxLevel)
         {

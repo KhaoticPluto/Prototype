@@ -21,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI FreezeText;
     public TextMeshProUGUI BulletSpreadText;
     public TextMeshProUGUI ExplosionRadiusText;
+    public TextMeshProUGUI CritDMGText;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class PlayerStats : MonoBehaviour
             FreezeText.text = "Freeze Time: " + stats.FreezeTime;
             BulletSpreadText.text = "Bullet Spread: " + stats.SpreadFactor;
             ExplosionRadiusText.text = "Explosion Radius: " + stats.ExplosionArea;
+            CritDMGText.text = "Critical DMG : X" + stats.critDamage;
         }
 
         

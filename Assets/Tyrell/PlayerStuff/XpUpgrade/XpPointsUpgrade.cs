@@ -42,6 +42,7 @@ public class XpPointsUpgrade : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _canvas.SetActive(false);
+            GameManager.instance.DestroyItemInfo();
         }
     }
 

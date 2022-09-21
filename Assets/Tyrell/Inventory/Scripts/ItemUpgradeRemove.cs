@@ -47,23 +47,23 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.NumOfProjectiles:
-                upgrade.UpgradeNumOfProjectiles(amount);
+                upgrade.UpgradeNumOfProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSize:
-                upgrade.UpgradeProjectileSize(amount);
+                upgrade.UpgradeProjectileSize(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectilePierce:
-                upgrade.UpgradePierceCount(amount);
+                upgrade.UpgradePierceCount(amount, upgradeAmount);
                 break;
 
             case ItemType.CritChance:
-                upgrade.UpgradeCritChance(amount);
+                upgrade.UpgradeCritChance(amount, upgradeAmount);
                 break;
 
             case ItemType.Ricochet:
-                upgrade.UpgradeRicochet(amount);
+                upgrade.UpgradeRicochet(amount, upgradeAmount);
                 break;
 
             case ItemType.ImpactExplosion:
@@ -71,11 +71,11 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.Freeze:
-                upgrade.UpgradeFreezeProjectiles(amount);
+                upgrade.UpgradeFreezeProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.IncreaseSpread:
-                upgrade.UpgradesSpreadFactor(amount);
+                upgrade.UpgradesSpreadFactor(amount, upgradeAmount);
                 break;
         }
     }
@@ -100,23 +100,23 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.NumOfProjectiles:
-                upgrade.RemoveUpgradeNumOfProjectiles(amount);
+                upgrade.RemoveUpgradeNumOfProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSize:
-                upgrade.RemoveProjectileSize(amount);
+                upgrade.RemoveProjectileSize(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectilePierce:
-                upgrade.RemovePierceCount(amount);
+                upgrade.RemovePierceCount(amount, upgradeAmount);
                 break;
 
             case ItemType.CritChance:
-                upgrade.RemoveCritChance(amount);
+                upgrade.RemoveCritChance(amount, upgradeAmount);
                 break;
 
             case ItemType.Ricochet:
-                upgrade.RemoveRicochet(amount);
+                upgrade.RemoveRicochet(amount, upgradeAmount);
                 break;
 
             case ItemType.ImpactExplosion:
@@ -124,11 +124,11 @@ public class ItemUpgradeRemove : MonoBehaviour
                 break;
 
             case ItemType.Freeze:
-                upgrade.RemoveFreezeProjectiles(amount);
+                upgrade.RemoveFreezeProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.IncreaseSpread:
-                upgrade.RemoveSpreadFactor(amount);
+                upgrade.RemoveSpreadFactor(amount, upgradeAmount);
                 break;
         }
     }

@@ -20,6 +20,7 @@ public class Item : ScriptableObject
     public float baselevel = 0;
     public int level;
     public int maxLevel;
+    public int Cost;
 
    public void Upgrade()
     {
@@ -62,7 +63,7 @@ public class Item : ScriptableObject
 
     public virtual string GetItemUpgradeDescription()
     {
-        return itemUpgradeDescription;
+        return itemUpgradeDescription + Cost;
     }
 
 }

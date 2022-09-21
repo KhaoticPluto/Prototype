@@ -60,6 +60,7 @@ public class Upgradeables : MonoBehaviour
     public int projectileBaseDamage = 10;
 
     public float critChance = 0;
+    public float critDamage = 2;
 
     public float _fireRate = 1;
 
@@ -121,8 +122,8 @@ public class Upgradeables : MonoBehaviour
     private void Update()
     {
         sliderHealthVal = CalculateHealth();
-        if (FireRateUpgraded == 0)
-            _fireRate = 1;
+        
+
     }
 
     float CalculateHealth()
@@ -137,18 +138,21 @@ public class Upgradeables : MonoBehaviour
     //*------- Gun Upgrades --------*//
 
     //Projectile speed upgrade
-    public void UpgradeProjectileSpeed(float amount, float upgradeamount)
+    public void UpgradeProjectileSpeed(float amount, float upgradeAmount)
     {
         ProSpeedUpgraded++;
-        projectileSpeed += amount;
+        projectileSpeed = projectileSpeed * (amount + upgradeAmount);
 
-        //projectileDamage = Mathf.RoundToInt(projectileDamage * upgradeamount);
-        //projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * upgradeamount);
+        projectileDamage = Mathf.RoundToInt(projectileDamage * (1 +upgradeAmount));
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * (1 + upgradeAmount));
     }
-    public void RemoveUpgradeProjectileSpeed(float amount, float upgradeamount)
+    public void RemoveUpgradeProjectileSpeed(float amount, float upgradeAmount)
     {
         ProSpeedUpgraded--;
-        projectileSpeed -= amount;
+        projectileSpeed = projectileSpeed / (amount + upgradeAmount);
+
+        projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (1 + upgradeAmount));
     }
 
     //Projectile Damage upgrade
@@ -171,6 +175,7 @@ public class Upgradeables : MonoBehaviour
     {
 
         _fireRate = _fireRate / (amount + upgradeAmount);
+
         FireRateUpgraded++;
     }
     public void RemoveUpgradeFireRate(float amount, float upgradeAmount)
@@ -181,72 +186,84 @@ public class Upgradeables : MonoBehaviour
     }
 
     //increase amount of Projectiles upgrade
-    public void UpgradeNumOfProjectiles(float amount)
+    public void UpgradeNumOfProjectiles(float amount, float upgradeAmount)
     {
         ProjectilesNumUpgraded++;
-        NumberOfProjectile += (int)amount;
+        NumberOfProjectile += (int)(amount + upgradeAmount);
     }
-    public void RemoveUpgradeNumOfProjectiles(float amount)
+    public void RemoveUpgradeNumOfProjectiles(float amount, float upgradeAmount)
     {
         ProjectilesNumUpgraded--;
-        NumberOfProjectile -= (int)amount;
+        NumberOfProjectile -= (int)(amount + upgradeAmount);
     }
 
     //ProjectileSize upgrades
-    public void UpgradeProjectileSize(float amount)
+    public void UpgradeProjectileSize(float amount, float upgradeAmount)
     {
         projectileSizeUpgraded++;
-        ProjectileSize += new Vector3(amount, amount, amount);
+        ProjectileSize = new Vector3(ProjectileSize.x + (amount + upgradeAmount),
+            ProjectileSize.y + (amount + upgradeAmount), ProjectileSize.z + (amount + upgradeAmount));
+
+        projectileDamage = Mathf.RoundToInt(projectileDamage * (1 + upgradeAmount));
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * (1 + upgradeAmount));
+
     }
-    public void RemoveProjectileSize(float amount)
+    public void RemoveProjectileSize(float amount, float upgradeAmount)
     {
         projectileSizeUpgraded--;
-        ProjectileSize -= new Vector3(amount, amount, amount);
+        ProjectileSize = new Vector3(ProjectileSize.x - (amount + upgradeAmount),
+            ProjectileSize.y - (amount + upgradeAmount), ProjectileSize.z - (amount + upgradeAmount));
+
+        projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
+        projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (1 + upgradeAmount));
     }
 
     //Upgrade Pierce
-    public void UpgradePierceCount(float amount)
+    public void UpgradePierceCount(float amount, float upgradeAmount)
     {
         PierceUpgraded++;
-        PierceCountUpgraded += amount;
+        PierceCountUpgraded += (int)(amount + upgradeAmount);
     }
-    public void RemovePierceCount(float amount)
+    public void RemovePierceCount(float amount, float upgradeAmount)
     {
         PierceUpgraded--;
-        PierceCountUpgraded -= amount;
+        PierceCountUpgraded -= (int)(amount + upgradeAmount);
     }
 
 
     //Crit Chance
-    public void UpgradeCritChance(float amount)
+    public void UpgradeCritChance(float amount, float upgradeAmount)
     {
 
         if (CritChanceUpgraded <= 4)
             critChance += amount;
 
+
+        critDamage = critDamage * (1 + upgradeAmount);
         CritChanceUpgraded++;
     }
-    public void RemoveCritChance(float amount)
+    public void RemoveCritChance(float amount, float upgradeAmount)
     {
 
         if (CritChanceUpgraded <= 5)
             critChance -= amount;
 
+        critDamage = critDamage / (1 + upgradeAmount);
         CritChanceUpgraded--;
     }
 
     //Ricochet
-    public void UpgradeRicochet(float amount)
+    public void UpgradeRicochet(float amount, float upgradeAmount)
     {
         RicochetUpgraded++;
         Ricochet = true;
-        ricochetCountUpgraded += (int)amount;
+        ricochetCountUpgraded += (int)(amount + upgradeAmount);
     }
-    public void RemoveRicochet(float amount)
+    public void RemoveRicochet(float amount, float upgradeAmount)
     {
         RicochetUpgraded--;
         Ricochet = false;
-        ricochetCountUpgraded -= (int)amount;
+        ricochetCountUpgraded -= (int)(amount + upgradeAmount);
     }
 
     //Impact Explosion
@@ -267,27 +284,41 @@ public class Upgradeables : MonoBehaviour
     }
 
     //freeze
-    public void UpgradeFreezeProjectiles(float amount)
+    public void UpgradeFreezeProjectiles(float amount, float upgradeAmount)
     {
-        FreezeTime += amount;
+        FreezeTime += amount + upgradeAmount;
         FreezeUpgraded++;
     }
-    public void RemoveFreezeProjectiles(float amount)
+    public void RemoveFreezeProjectiles(float amount, float upgradeAmount)
     {
-        FreezeTime -= amount;
+        FreezeTime -= amount + upgradeAmount;
         FreezeUpgraded--;
     }
 
     //Spread Factor
-    public void UpgradesSpreadFactor(float amount)
+    public void UpgradesSpreadFactor(float amount, float upgradeAmount)
     {
         SpreadUpgraded++;
         SpreadFactor += amount;
+
+        projectileDamage = Mathf.RoundToInt(projectileDamage * (1 + upgradeAmount));
+        projectileSpeed = projectileSpeed * (1 + upgradeAmount);
+        _fireRate = _fireRate / (1 + upgradeAmount);
+        ProjectileSize = new Vector3(ProjectileSize.x * (1 + upgradeAmount), ProjectileSize.y * (1 + upgradeAmount)
+            , ProjectileSize.z * (1 + upgradeAmount));
+
+
     }
-    public void RemoveSpreadFactor(float amount)
+    public void RemoveSpreadFactor(float amount, float upgradeAmount)
     {
         SpreadUpgraded--;
         SpreadFactor -= amount;
+
+        projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
+        projectileSpeed = projectileSpeed / (1 + upgradeAmount);
+        _fireRate = _fireRate * (1 + upgradeAmount);
+        ProjectileSize = new Vector3(ProjectileSize.x / (1 + upgradeAmount), ProjectileSize.y / (1 + upgradeAmount)
+            , ProjectileSize.z / (1 + upgradeAmount));
     }
 
 

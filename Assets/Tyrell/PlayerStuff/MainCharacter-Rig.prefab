@@ -682,6 +682,7 @@ MonoBehaviour:
   projectileDamage: 10
   projectileBaseDamage: 10
   critChance: 0
+  critDamage: 2
   _fireRate: 1
   _nextFire: 0
   NumberOfProjectile: 1
@@ -803,8 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fda21ce44f06d44a12a52ef661e2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmount: 5
-  minAmount: 3
+  maxAmount: 2
+  minAmount: 1
 --- !u!114 &9106102149235899697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,6 +891,22 @@ MonoBehaviour:
   _damageLevel: 0
   fireRate: {fileID: 11400000, guid: a7d19fef60157504c871e08bfd2efb64, type: 2}
   _fireRateLevel: 0
+  Ricochet: {fileID: 11400000, guid: 7b9d542421b8bfc4cb09bf45a5720289, type: 2}
+  _ricochetLevel: 0
+  SpeedUp: {fileID: 11400000, guid: b83b677535b954740bb634e5dd8b254a, type: 2}
+  _speedLevel: 0
+  Duplicate: {fileID: 11400000, guid: 3b5254922ad1e454fb3c5533acb93cfb, type: 2}
+  _duplicateLevel: 0
+  Crit: {fileID: 11400000, guid: 304bcc4682d408740ab6dad008fc1377, type: 2}
+  _critLevel: 0
+  Spread: {fileID: 11400000, guid: 3c6e423d053281c4dadfd62126b5e6dc, type: 2}
+  _spreadLevel: 0
+  Freeze: {fileID: 11400000, guid: 1027abaf4c9f3684a9a5e7bf80bdf117, type: 2}
+  _freezeLevel: 0
+  Big: {fileID: 11400000, guid: ad112da7a0d71714daf3fff243520432, type: 2}
+  _bigLevel: 0
+  Pierce: {fileID: 11400000, guid: 13659492000685441a23a87891b3b353, type: 2}
+  _pierceLevel: 0
 --- !u!136 &103582408
 CapsuleCollider:
   m_ObjectHideFlags: 0
