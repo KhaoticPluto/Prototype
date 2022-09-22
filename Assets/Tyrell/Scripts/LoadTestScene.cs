@@ -5,11 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class LoadTestScene : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public GameObject Text;
+    bool inTrigger;
+
+    private void Update()
     {
-        if(other.gameObject.tag == "Player")
+        if (inTrigger)
         {
-            LoadSceneManager.instance.LoadTutorial();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                LoadSceneManager.instance.LoadTutorial();
+            }
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Text.SetActive(true);
+            inTrigger = true;
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Text.SetActive(false);
+            inTrigger = false;
+        }
+            
+    }
+
+
 }

@@ -26,7 +26,7 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             canvas.SetActive(true);
             inTrigger = true;
@@ -35,7 +35,7 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             canvas.SetActive(false);
             inTrigger = false;

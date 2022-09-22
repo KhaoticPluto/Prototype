@@ -117,7 +117,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
         WaveNumber++;
         SpawnedEnemies = 0;
-        maxEnemySpawn = maxEnemySpawn + 2 + WaveNumber;
+        maxEnemySpawn = maxEnemySpawn + WaveNumber;
         StartedWaves = true;
         nextWave = false;
         WaitForSeconds Wait = new WaitForSeconds(SpawnDelay);

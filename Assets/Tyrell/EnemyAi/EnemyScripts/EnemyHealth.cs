@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
         {
 
 
-            LevelSystem.instance.GainExperienceFlatRate(XpGiven);
+            LevelSystem.instance.GainExperienceScalable(XpGiven, 1);
             MoneyManager.instance.DropMoney();
             AiController.DestroyEnemy();
         }

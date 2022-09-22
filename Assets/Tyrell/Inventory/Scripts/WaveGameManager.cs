@@ -23,8 +23,7 @@ public class WaveGameManager : MonoBehaviour
     private void Start()
     {
         //find objects if not in slot
-        ItemChoice = GameObject.FindWithTag("ItemChoice");
-        Debug.Log("GameManager found " + ItemChoice);
+        
         ItemChoice.SetActive(true);
         ItemChoice.GetComponent<ItemChoice>().EndOfWave();
 
