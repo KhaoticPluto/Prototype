@@ -8,21 +8,17 @@ public class HUDManager : MonoBehaviour
 {
 
     //Player Upgrade
-    public TextMeshProUGUI moneyCounter;
-    public TextMeshProUGUI healthCounter;
     
-    public TextMeshProUGUI speedCounter;
-    //public TextMeshProUGUI inventoryCounter;
 
     //Scripts
     public Upgradeables stats;
+    public LevelSystem levelStats;
     
     public movement playermovement;
     
 
     //UI Elements
     public TextMeshProUGUI MoneyText;
-    public TextMeshProUGUI PriceCountText;
     public TextMeshProUGUI healthText;
 
     public Slider dashCoolDown;
@@ -40,7 +36,8 @@ public class HUDManager : MonoBehaviour
 
             stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
             playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
-        
+        levelStats = GameObject.FindWithTag("Player").GetComponent<LevelSystem>();
+
         HudParent.SetActive(true);
         SettingsParent.SetActive(false);
 
@@ -54,14 +51,11 @@ public class HUDManager : MonoBehaviour
         {
             //Player Stats Text
             //HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
-            healthBar.value = stats.Health;
+            healthBar.value = stats.sliderHealthVal;
             healthText.text = stats.Health + " / " + stats.MaxHealth;
             MoneyText.text = " " + MoneyManager.Money;
 
-            healthCounter.text = " " + PlayerItemUpgradeRemove.instance.MaxHealthItem;
-            moneyCounter.text = " " + PlayerItemUpgradeRemove.instance.IncreaseMoneyItem;
-            speedCounter.text = " " + PlayerItemUpgradeRemove.instance.SpeedItem;
-            //inventoryCounter.text = " " + PlayerItemUpgradeRemove.instance.InventoryItem;
+            
 
             //Dashing Text
             dashCoolDown.value = playermovement._dashCooldown;
@@ -107,7 +101,7 @@ public class HUDManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
-        ES3AutoSaveMgr.Current.Save();
+        PlayerData.instance.SaveData();
         SettingsParent?.SetActive(true);
         HudParent.SetActive(false);
 

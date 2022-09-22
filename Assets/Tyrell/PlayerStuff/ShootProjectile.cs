@@ -101,11 +101,12 @@ public class ShootProjectile : MonoBehaviour
         float calCritChance = Random.Range(1, 100);
         if(upgrades.critChance >= calCritChance)
         {
-            upgrades.projectileDamage = upgrades.projectileDamage * 2;
+            upgrades.projectileDamage = Mathf.RoundToInt(upgrades.projectileDamage * upgrades.critDamage);
             isCriticalHit = true;
         }
         else
         {
+            upgrades.projectileDamage = upgrades.projectileBaseDamage;
             isCriticalHit = false;
         }
             

@@ -20,7 +20,9 @@ public class InventoryUIHandler : MonoBehaviour
     public GameObject playerStats;
     public GameObject SetBonus;
     public GameObject Border;
-    
+    public GameObject HUD;
+    public GameObject BG;
+
 
     private List<ItemSlot> itemSlotList = new List<ItemSlot>();
 
@@ -32,6 +34,8 @@ public class InventoryUIHandler : MonoBehaviour
 
     private void Start()
     {
+        HUD = GameObject.FindWithTag("HUD"); 
+
         Inventory.instance.onItemChange += UpdateInventoryUI;
         UpdateInventoryUI();
 
@@ -113,21 +117,27 @@ public class InventoryUIHandler : MonoBehaviour
     private void OpenInventory()
     {
         inventoryOpen = true;
-        inventoryParent.SetActive(true);
-        GunInventory.SetActive(true);
-        playerStats.SetActive(true);
-        SetBonus.SetActive(true);
-        Border.SetActive(true);
+        BG.SetActive(true);
+        //inventoryParent.SetActive(true);
+        //GunInventory.SetActive(true);
+        //playerStats.SetActive(true);
+        //SetBonus.SetActive(true);
+        //Border.SetActive(true);
+
+        HUD.SetActive(false);
     }
 
     public void CloseInventory()
     {
         inventoryOpen = false;
-        inventoryParent.SetActive(false);
-        GunInventory.SetActive(false);
-        playerStats.SetActive(false);
-        Border.SetActive(false);
-        SetBonus.SetActive(false);
+        BG.SetActive(false);
+        //inventoryParent.SetActive(false);
+        //GunInventory.SetActive(false);
+        //playerStats.SetActive(false);
+        //Border.SetActive(false);
+        //SetBonus.SetActive(false);
+
+        HUD.SetActive(true);
     }
 
 

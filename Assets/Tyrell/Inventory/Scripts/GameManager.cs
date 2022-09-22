@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     public float moveX;
     public float moveY;
 
-    
 
+    public int upgradeToSpawn = 0;
     
 
     private void Start()
@@ -45,17 +45,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Item newItem = GunItemList[Random.Range(0, GunItemList.Count)];
-
-            Inventory.instance.AddItem(Instantiate(newItem));
-        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Item newItem = GunItemList[Random.Range(0, GunItemList.Count)];
-
-            Inventory.instance.AddItem(Instantiate(newItem));
+            Inventory.instance.AddItem(GunItemList[upgradeToSpawn]);
         }
 
         if (Input.GetKeyDown(KeyCode.F2))

@@ -205,9 +205,9 @@ MonoBehaviour:
   - {fileID: 272386824661877869}
   - {fileID: 753394304559674943}
   - {fileID: 4894121455995006048}
-  - {fileID: 298502623545639986}
   - {fileID: 3362370395648204842}
   - {fileID: -6920174636116469947}
+  - {fileID: 5907893333857570846}
 --- !u!114 &272386824661877869
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -236,40 +236,6 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 1
     m_Value: 0
---- !u!114 &298502623545639986
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
-  m_Name: ShadowsMidtonesHighlights
-  m_EditorClassIdentifier: 
-  active: 0
-  shadows:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
-  midtones:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
-  highlights:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
-  shadowsStart:
-    m_OverrideState: 0
-    m_Value: 0
-  shadowsEnd:
-    m_OverrideState: 0
-    m_Value: 0.3
-  highlightsStart:
-    m_OverrideState: 0
-    m_Value: 0.55
-  highlightsEnd:
-    m_OverrideState: 0
-    m_Value: 1
 --- !u!114 &753394304559674943
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -282,27 +248,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 8.6
+    m_Value: 4.33
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.5
   scatter:
     m_OverrideState: 1
-    m_Value: 0.36
+    m_Value: 0.174
   clamp:
-    m_OverrideState: 0
-    m_Value: 65472
+    m_OverrideState: 1
+    m_Value: 1000
   tint:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
   skipIterations:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   dirtTexture:
     m_OverrideState: 0
@@ -360,3 +326,49 @@ MonoBehaviour:
   saturation:
     m_OverrideState: 1
     m_Value: 60
+--- !u!114 &5907893333857570846
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
+  gaussianStart:
+    m_OverrideState: 1
+    m_Value: 38
+  gaussianEnd:
+    m_OverrideState: 1
+    m_Value: 509.36
+  gaussianMaxRadius:
+    m_OverrideState: 1
+    m_Value: 1.374
+  highQualitySampling:
+    m_OverrideState: 1
+    m_Value: 0
+  focusDistance:
+    m_OverrideState: 1
+    m_Value: 3.41
+  aperture:
+    m_OverrideState: 1
+    m_Value: 13.2
+  focalLength:
+    m_OverrideState: 1
+    m_Value: 85
+  bladeCount:
+    m_OverrideState: 1
+    m_Value: 3
+  bladeCurvature:
+    m_OverrideState: 1
+    m_Value: 0
+  bladeRotation:
+    m_OverrideState: 1
+    m_Value: 0

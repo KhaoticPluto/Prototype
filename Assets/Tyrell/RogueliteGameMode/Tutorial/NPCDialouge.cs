@@ -26,7 +26,7 @@ public class NPCDialouge : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         Vector3 Pos = Camera.main.WorldToScreenPoint(NPCCharacter.position);
-        Pos.y += 175;
+        Pos.y += 10;
         ChatBackGround.position = Pos;
         this.gameObject.GetComponent<NPCDialouge>().enabled = true;
 

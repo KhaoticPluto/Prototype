@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3209897115468554673}
   - component: {fileID: 42037275192111966}
-  - component: {fileID: 4014593309151738539}
   - component: {fileID: 7255712957341698011}
   - component: {fileID: 2021187917377633160}
   - component: {fileID: 6644459444893265850}
+  - component: {fileID: 2124394022872331659}
   m_Layer: 8
   m_Name: PrisonerThug
   m_TagString: Enemy
@@ -63,19 +63,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &4014593309151738539
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7478370305448864161}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 40, y: 105, z: 35}
-  m_Center: {x: 0, y: 52, z: 3.7}
 --- !u!195 &7255712957341698011
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -86,8 +73,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 28
-  m_Speed: 10
-  m_Acceleration: 14
+  m_Speed: 20
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 100
   m_StoppingDistance: 0
@@ -120,17 +107,17 @@ MonoBehaviour:
     m_Bits: 64
   whatIsntPlayer:
     serializedVersion: 2
-    m_Bits: 65463
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 40
+    m_Bits: 131007
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
   timeBetweenAttacks: 1
   alreadyAttacked: 0
-  sightRange: 300
-  attackRange: 4.5
+  sightRange: 200
+  attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  playerInSight: 0
   Enemy: {fileID: 7478370305448864161}
   RendMaterials:
   - {fileID: 4426985576068444212}
@@ -155,10 +142,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
-  MaxHealth: 2
+  Health: 50
+  MaxHealth: 50
+  XpGiven: 5
   AiController: {fileID: 2021187917377633160}
   HealthSlider: {fileID: 2297107732019659606}
+--- !u!136 &2124394022872331659
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478370305448864161}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 33.11
+  m_Height: 106.28912
+  m_Direction: 1
+  m_Center: {x: 0.9899998, y: 50.444557, z: 0}
 --- !u!1001 &325061965387277689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +168,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 1656411223050243112, guid: e8b39724bf35f254da13afdb326ea508, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 2718919773908219820, guid: e8b39724bf35f254da13afdb326ea508, type: 3}
       propertyPath: m_Name
       value: Thug RHand
@@ -233,6 +239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 428742989023297899, guid: 3aca8a50339d7b04987fd89031a487da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 464035640603234872, guid: 3aca8a50339d7b04987fd89031a487da, type: 3}
       propertyPath: m_Name
       value: Thug Head
@@ -300,6 +310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 891128788655484417, guid: 37204aa2357730541914d7aabf6018ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     - target: {fileID: 6085784223295157463, guid: 37204aa2357730541914d7aabf6018ab, type: 3}
       propertyPath: m_Name
       value: Thug Body
@@ -415,6 +429,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003878549217377822, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
 --- !u!23 &717025445831287073 stripped
@@ -603,6 +621,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003878549217377822, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6f6aa4706c8dab4e8886f9ece9b5c5a, type: 3}
 --- !u!4 &4965114063454375784 stripped
@@ -622,6 +644,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3209897115468554673}
     m_Modifications:
+    - target: {fileID: 1977214032438484902, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 19.373562
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 19.373562
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 19.373562
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520742512033226569, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 75.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2694359507083242515, guid: c310b41e48d885a4faec73463f632b53, type: 3}
       propertyPath: m_Name
       value: Thug LHand
@@ -670,6 +712,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3709234063454467023, guid: c310b41e48d885a4faec73463f632b53, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f575eb850e23243955a13fb96d1a2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c310b41e48d885a4faec73463f632b53, type: 3}
 --- !u!4 &4720223192919032899 stripped

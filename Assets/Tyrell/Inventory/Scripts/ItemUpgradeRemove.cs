@@ -27,7 +27,7 @@ public class ItemUpgradeRemove : MonoBehaviour
 
     }
 
-    public void OnStatItemUse(ItemType itemType, float amount)
+    public void OnStatItemUse(ItemType itemType, float amount, float upgradeAmount)
     {
         NumberOfUpgrades++;
         upgrade.GetComponent<Upgradeables>();
@@ -35,52 +35,52 @@ public class ItemUpgradeRemove : MonoBehaviour
         switch (itemType)
         {
             case ItemType.FireRate:
-                upgrade.UpgradeFireRate(amount);
+                upgrade.UpgradeFireRate(amount, upgradeAmount);
                 break;
 
             case ItemType.Damage:
-                upgrade.UpgradeProjectileDamage(amount);
+                upgrade.UpgradeProjectileDamage(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSpeed:
-                upgrade.UpgradeProjectileSpeed(amount);
+                upgrade.UpgradeProjectileSpeed(amount, upgradeAmount);
                 break;
 
             case ItemType.NumOfProjectiles:
-                upgrade.UpgradeNumOfProjectiles(amount);
+                upgrade.UpgradeNumOfProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSize:
-                upgrade.UpgradeProjectileSize(amount);
+                upgrade.UpgradeProjectileSize(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectilePierce:
-                upgrade.UpgradePierceCount(amount);
+                upgrade.UpgradePierceCount(amount, upgradeAmount);
                 break;
 
             case ItemType.CritChance:
-                upgrade.UpgradeCritChance(amount);
+                upgrade.UpgradeCritChance(amount, upgradeAmount);
                 break;
 
             case ItemType.Ricochet:
-                upgrade.UpgradeRicochet(amount);
+                upgrade.UpgradeRicochet(amount, upgradeAmount);
                 break;
 
             case ItemType.ImpactExplosion:
-                upgrade.UpgradeImpactExpolosion(amount);
+                upgrade.UpgradeImpactExpolosion(amount, upgradeAmount);
                 break;
 
             case ItemType.Freeze:
-                upgrade.UpgradeFreezeProjectiles(amount);
+                upgrade.UpgradeFreezeProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.IncreaseSpread:
-                upgrade.UpgradesSpreadFactor(amount);
+                upgrade.UpgradesSpreadFactor(amount, upgradeAmount);
                 break;
         }
     }
 
-    public void OnStatItemRemove(ItemType itemType, float amount)
+    public void OnStatItemRemove(ItemType itemType, float amount, float upgradeAmount)
     {
         NumberOfUpgrades--;
         upgrade.GetComponent<Upgradeables>();
@@ -88,47 +88,47 @@ public class ItemUpgradeRemove : MonoBehaviour
         switch (itemType)
         {
             case ItemType.FireRate:
-                upgrade.RemoveUpgradeFireRate(amount);
+                upgrade.RemoveUpgradeFireRate(amount, upgradeAmount);
                 break;
 
             case ItemType.Damage:
-                upgrade.RemoveUpgradeProjectileDamage(amount);
+                upgrade.RemoveUpgradeProjectileDamage(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSpeed:
-                upgrade.RemoveUpgradeProjectileSpeed(amount);
+                upgrade.RemoveUpgradeProjectileSpeed(amount, upgradeAmount);
                 break;
 
             case ItemType.NumOfProjectiles:
-                upgrade.RemoveUpgradeNumOfProjectiles(amount);
+                upgrade.RemoveUpgradeNumOfProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectileSize:
-                upgrade.RemoveProjectileSize(amount);
+                upgrade.RemoveProjectileSize(amount, upgradeAmount);
                 break;
 
             case ItemType.ProjectilePierce:
-                upgrade.RemovePierceCount(amount);
+                upgrade.RemovePierceCount(amount, upgradeAmount);
                 break;
 
             case ItemType.CritChance:
-                upgrade.RemoveCritChance(amount);
+                upgrade.RemoveCritChance(amount, upgradeAmount);
                 break;
 
             case ItemType.Ricochet:
-                upgrade.RemoveRicochet(amount);
+                upgrade.RemoveRicochet(amount, upgradeAmount);
                 break;
 
             case ItemType.ImpactExplosion:
-                upgrade.RemoveImpactExplosion(amount);
+                upgrade.RemoveImpactExplosion(amount, upgradeAmount);
                 break;
 
             case ItemType.Freeze:
-                upgrade.RemoveFreezeProjectiles(amount);
+                upgrade.RemoveFreezeProjectiles(amount, upgradeAmount);
                 break;
 
             case ItemType.IncreaseSpread:
-                upgrade.RemoveSpreadFactor(amount);
+                upgrade.RemoveSpreadFactor(amount, upgradeAmount);
                 break;
         }
     }

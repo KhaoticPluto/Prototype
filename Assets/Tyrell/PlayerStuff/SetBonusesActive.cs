@@ -24,17 +24,17 @@ public class SetBonusesActive : MonoBehaviour
         switch (bonusType)
         {
             case BonusType.ArmorPiercer:
-                ArmorPiercer(amount);
+                ArmorPiercer();
                 SetBonusUI.instance.CompleteSetIcon(bonusType);
                 break;
 
             case BonusType.MegaRicochet:
-                MegaRicochet(amount);
+                MegaRicochet();
                 SetBonusUI.instance.CompleteSetIcon(bonusType);
                 break;
 
             case BonusType.ExplosiveMagnet:
-                ExplosionMagnet(amount);
+                ExplosionMagnet();
                 SetBonusUI.instance.CompleteSetIcon(bonusType);
                 break;
 
@@ -49,7 +49,7 @@ public class SetBonusesActive : MonoBehaviour
                 break;
 
             case BonusType.UltraFreeze:
-                UltraFreeze(amount);
+                UltraFreeze();
                 SetBonusUI.instance.CompleteSetIcon(bonusType);
                 break;
         }
@@ -61,17 +61,17 @@ public class SetBonusesActive : MonoBehaviour
         switch (bonusType)
         {
             case BonusType.ArmorPiercer:
-                RemoveArmorPiercer(amount);
+                RemoveArmorPiercer();
                 SetBonusUI.instance.RemoveSetIcon(bonusType);
                 break;
 
             case BonusType.MegaRicochet:
-                RemoveMegaRicochet(amount);
+                RemoveMegaRicochet();
                 SetBonusUI.instance.RemoveSetIcon(bonusType);
                 break;
 
             case BonusType.ExplosiveMagnet:
-                RemoveExplosionMagnet(amount);
+                RemoveExplosionMagnet();
                 SetBonusUI.instance.RemoveSetIcon(bonusType);
                 break;
 
@@ -86,53 +86,47 @@ public class SetBonusesActive : MonoBehaviour
                 break;
 
             case BonusType.UltraFreeze:
-                RemoveUltraFreeze(amount);
+                RemoveUltraFreeze();
                 SetBonusUI.instance.RemoveSetIcon(bonusType);
                 break;
         }
 
     }
 
-    public void ArmorPiercer(float amount)
+    public void ArmorPiercer()
     {
         upgrade.ArmorPiercer = true;
-        upgrade.PierceCountUpgraded += amount;
         
     }
-    public void RemoveArmorPiercer(float amount)
+    public void RemoveArmorPiercer()
     {
         upgrade.ArmorPiercer = false;
-        upgrade.PierceCountUpgraded -= amount;
         
     }
 
-    public void MegaRicochet(float amount)
+    public void MegaRicochet()
     {
         Debug.Log("Mega Ricochet");
         upgrade.MegaRicochet = true;
-        upgrade.ricochetCountUpgraded += (int)amount;
         
     }
-    public void RemoveMegaRicochet(float amount)
+    public void RemoveMegaRicochet()
     {
         Debug.Log("Mega Ricochet Removed");
         upgrade.MegaRicochet = false;
-        upgrade.ricochetCountUpgraded -= (int)amount;
         
     }
 
-    public void ExplosionMagnet(float amount)
+    public void ExplosionMagnet()
     {
         Debug.Log("Explosive Magnet");
         upgrade.ExplosionMagnet = true;
-        upgrade.ExplosionArea += (int)amount;
         
     }
-    public void RemoveExplosionMagnet(float amount)
+    public void RemoveExplosionMagnet()
     {
         Debug.Log("Explosive Magnet Removed");
         upgrade.ExplosionMagnet = false;
-        upgrade.ExplosionArea -= (int)amount;
         
     }
 
@@ -162,18 +156,16 @@ public class SetBonusesActive : MonoBehaviour
         
     }
 
-    public void UltraFreeze(float amount)
+    public void UltraFreeze()
     {
         Debug.Log("Ultra freeze");
         upgrade.UltraFreeze = true;
-        upgrade.FreezeTime += amount;
         
     }
-    public void RemoveUltraFreeze(float amount)
+    public void RemoveUltraFreeze()
     {
         Debug.Log("Remove Ultra freeze");
         upgrade.UltraFreeze = false;
-        upgrade.FreezeTime -= amount;
         
     }
 

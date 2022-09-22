@@ -7,18 +7,31 @@ using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
-    [ES3Serializable]public int level;
+    #region singleton
+    public static LevelSystem instance;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
+
+
+    public int level;
     public float maxLevel;
-    [ES3Serializable] public float currentXp;
+    public float currentXp;
     public int nextLevelXp = 100;
+    public int EXPpoints;
     [Header("Multipliers")]
     [Range(1f, 300f)]
-    public float additionMultiplier;
+    public float additionMultiplier = 2;
     [Range(2f, 4f)]
-    public float powerMultiplier = 20f;
+    public float powerMultiplier = 2f;
     [Range(7f, 14f)]
     public float divisionMultiplier = 7f;
-    //public GameObject levelUpEffect;
+
+    public GameObject levelUpEffect;
 
     [Header("UI")]
     public Image frontXpBar;
@@ -36,6 +49,9 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
+        
+
+
         levelText.text = "Level " + level;
         XpText.text = Mathf.Round(currentXp) + "/" + Mathf.Round(nextLevelXp);
         frontXpBar.fillAmount = currentXp / nextLevelXp;
@@ -62,11 +78,10 @@ public class LevelSystem : MonoBehaviour
             backXpBar.fillAmount = currentXp / nextLevelXp;
         }
 
-        if (Input.GetKeyDown(KeyCode.Equals))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            GainExperienceFlatRate(10);
+            GainExperienceScalable(25, 1);
         }
-
     }
     private void UpdateXpUI() 
     {
@@ -125,13 +140,15 @@ public class LevelSystem : MonoBehaviour
 
         XpText.text = Mathf.Round(currentXp) + "/" + nextLevelXp;
         levelText.text = "Level " + level;
-        //Instantiate(levelUpEffect, transform.position, Quaternion.identity);
+        EXPpoints++;
+        GameObject effect = Instantiate(levelUpEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 2);
         //source.PlayOneShot(levelUpSound);
     }
 
     private int CalculateNextLevelXp() 
     {
-        int solveForRequiredXp = 0;
+        int solveForRequiredXp = 500;
         for (int levelCycle = 1; levelCycle <= level; levelCycle++)
         {
             solveForRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, levelCycle / divisionMultiplier));
