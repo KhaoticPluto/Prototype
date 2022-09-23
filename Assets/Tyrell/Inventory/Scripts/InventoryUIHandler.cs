@@ -30,6 +30,7 @@ public class InventoryUIHandler : MonoBehaviour
 
     private void Start()
     {
+        CloseInventory();
         HUD = GameObject.FindWithTag("HUD"); 
 
         Inventory.instance.onItemChange += UpdateInventoryUI;

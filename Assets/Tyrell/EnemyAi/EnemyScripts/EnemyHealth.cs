@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     public float MaxHealth = 35;
     public float XpGiven = 10;
 
+    public Vector3 pubDamageSpawn = Vector3.zero;
+
     public EnemyAiController AiController;
 
     public Slider HealthSlider;
@@ -39,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
         float damageSpawn = Random.Range(0, 4);
         Vector3 enemyPos = new Vector3(transform.position.x + damageSpawn, transform.position.y + 5, transform.position.z);
 
-        DamagePopUp.Create(enemyPos, amount, isCrit);
+        DamagePopUp.Create(enemyPos + pubDamageSpawn, amount, isCrit);
 
         AiController.IncreaseSightRange();
     }

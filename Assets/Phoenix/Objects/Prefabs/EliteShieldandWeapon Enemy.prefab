@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 4
   MaxHealth: 4
+  XpGiven: 10
   AiController: {fileID: 2182072678104157528}
   HealthSlider: {fileID: 2295010383748110906}
 --- !u!114 &2182072678104157528
@@ -453,6 +454,10 @@ PrefabInstance:
     - target: {fileID: 823853182695006089, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027287254275288518, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.37200165
       objectReference: {fileID: 0}
     - target: {fileID: 4393486439037895639, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_Name

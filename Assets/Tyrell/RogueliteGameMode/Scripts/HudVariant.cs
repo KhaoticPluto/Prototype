@@ -17,7 +17,8 @@ public class HudVariant : MonoBehaviour
 
 
     //UI Elements
-    public TextMeshProUGUI HealthText;
+    public Slider healthBar;
+    public TextMeshProUGUI healthText;
     public TextMeshProUGUI MoneyText;
 
 
@@ -49,7 +50,8 @@ public class HudVariant : MonoBehaviour
     public void Update()
     {
         //Player Stats Text
-        HealthText.text = "Health " + stats.MaxHealth + " / " + stats.Health;
+        healthBar.value = stats.sliderHealthVal;
+        healthText.text = stats.Health + " / " + stats.MaxHealth;
         MoneyText.text = "" + MoneyManager.Money;
 
 

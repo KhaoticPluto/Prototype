@@ -131,6 +131,13 @@ public class Upgradeables : MonoBehaviour
         return Health / MaxHealth;
     }
 
+    //Needs work in order to calculate better scaleability;
+    float CalculatePercentageUpgrades(float amount, float upgradeAmount)
+    {
+        amount = amount + upgradeAmount;
+
+        return amount;
+    }
 
     #region GunUpgrades
 
@@ -141,7 +148,7 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeProjectileSpeed(float amount, float upgradeAmount)
     {
         ProSpeedUpgraded++;
-        projectileSpeed = projectileSpeed * (amount + upgradeAmount);
+        projectileSpeed = projectileSpeed * CalculatePercentageUpgrades(amount, upgradeAmount);
 
         projectileDamage = Mathf.RoundToInt(projectileDamage * (1 +upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * (1 + upgradeAmount));
@@ -149,7 +156,7 @@ public class Upgradeables : MonoBehaviour
     public void RemoveUpgradeProjectileSpeed(float amount, float upgradeAmount)
     {
         ProSpeedUpgraded--;
-        projectileSpeed = projectileSpeed / (amount + upgradeAmount);
+        projectileSpeed = projectileSpeed / CalculatePercentageUpgrades(amount, upgradeAmount);
 
         projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (1 + upgradeAmount));

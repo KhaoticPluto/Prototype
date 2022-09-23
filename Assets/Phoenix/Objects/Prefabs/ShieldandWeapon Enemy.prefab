@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 4
   MaxHealth: 4
+  XpGiven: 10
   AiController: {fileID: 2163128153570171523}
   HealthSlider: {fileID: 2275793196412440033}
 --- !u!114 &2163128153570171523
@@ -193,8 +194,12 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 40
+  whatIsntPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 0
   timeBetweenAttacks: 1.5
   alreadyAttacked: 0
   sightRange: 65
@@ -203,6 +208,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   isFrozen: 0
   Enemy: {fileID: 7318741427902670464}
+  RendMaterials: []
   roomspawn: {fileID: 0}
   IsRogueLite: 0
   projectile: {fileID: 6671229746167309813, guid: 88908d3e6dc3ee244b51a5d3f53dbdd4, type: 3}
@@ -448,6 +454,10 @@ PrefabInstance:
     - target: {fileID: 823853182695006089, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027287254275288518, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.37200165
       objectReference: {fileID: 0}
     - target: {fileID: 4393486439037895639, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_Name

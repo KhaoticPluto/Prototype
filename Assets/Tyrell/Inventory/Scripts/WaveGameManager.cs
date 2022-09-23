@@ -16,9 +16,12 @@ public class WaveGameManager : MonoBehaviour
     public GameObject ItemChoice;
 
     public GameObject shop;
+    public GameObject shopOpenText;
     public bool ShopOpen;
 
     public int WavesCompleted;
+
+    public EnemySpawnSystem spawnSystem;
 
     private void Start()
     {
@@ -35,7 +38,16 @@ public class WaveGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (spawnSystem.nextWave)
+        {
+            shopOpenText.SetActive(true);
+        }
+        else
+        {
+            shopOpenText.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T) )
         {
             if (ShopOpen)
             {
@@ -43,7 +55,7 @@ public class WaveGameManager : MonoBehaviour
             }
             else
             {
-                if(InventoryUIHandler.instance.inventoryOpen == false & HUDManager.isPaused == false)
+                if(InventoryUIHandler.instance.inventoryOpen == false & HUDManager.isPaused == false & spawnSystem.nextWave == true)
                 OpenShop();
             }
         }
@@ -71,7 +83,7 @@ public class WaveGameManager : MonoBehaviour
     {
         ShopOpen = true;
         shop.SetActive(true);
-        Time.timeScale = 0.7f;
+        Time.timeScale = 0;
     }
 
     public void CloseShop()

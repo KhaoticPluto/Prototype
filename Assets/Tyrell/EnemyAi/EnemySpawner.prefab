@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7699816710013258534
 Transform:
@@ -46,7 +46,7 @@ GameObject:
   m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7699816711054587750
 Transform:
@@ -168,15 +168,14 @@ MonoBehaviour:
   - {fileID: 5110083538416064819, guid: 4c4477f0bbec16e44bad5f32db3d3619, type: 3}
   BossPrefabs: {fileID: 7771385933403044320, guid: 53e1ca194f5713d4796112b89a351a67, type: 3}
   maxEnemySpawn: 2
-  coroutineRunning: 0
   EnemyParent: {fileID: 7699816710013258534}
   showItems: 0
   WaveNumber: 0
   MaxWaves: 0
   StartedWaves: 0
   nextWave: 0
-  NextWaveTimer: 5
-  resetTimer: 5
+  NextWaveTimer: 10
+  resetTimer: 10
   manager: {fileID: 0}
   additionMultiplier: 11
   powerMultiplier: 2

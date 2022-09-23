@@ -30,8 +30,6 @@ public class EnemySpawnSystem : MonoBehaviour
 
 
 
-    public bool coroutineRunning;
-
     public Transform EnemyParent;
 
     public bool showItems;
@@ -40,8 +38,8 @@ public class EnemySpawnSystem : MonoBehaviour
     public int MaxWaves;
     public bool StartedWaves;
     public bool nextWave;
-    public float NextWaveTimer = 5;
-    public float resetTimer = 5;
+    public float NextWaveTimer = 10;
+    public float resetTimer = 10;
 
     int EliteWave = 1;
 
@@ -112,7 +110,8 @@ public class EnemySpawnSystem : MonoBehaviour
     /*******///enemy spawning code
     IEnumerator SpawnEnemiesOverTime()
     {
-        yield return new WaitForSeconds(5);
+        bool elitesSpawned = false;
+        yield return new WaitForSeconds(NextWaveTimer);
         bool bossSpawned = false;
 
         WaveNumber++;
@@ -132,10 +131,11 @@ public class EnemySpawnSystem : MonoBehaviour
             {
                 for (int i = 0; i < EliteWave; i++)
                 {
+                    elitesSpawned = true;
                     SpawnElites();
                     SpawnedEnemies++;
                 }
-                EliteWave++;
+                
 
             }
             if (WaveNumber % 10 == 0 && !bossSpawned)
@@ -145,6 +145,10 @@ public class EnemySpawnSystem : MonoBehaviour
                 bossSpawned = true;
             }
             yield return Wait;
+        }
+        if (elitesSpawned)
+        {
+            EliteWave++;
         }
 
     }
