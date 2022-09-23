@@ -23,6 +23,7 @@ public class LevelSystem : MonoBehaviour
     public float currentXp;
     public int nextLevelXp = 100;
     public int EXPpoints;
+    public int EXPpointsGiven = 3;
     [Header("Multipliers")]
     [Range(1f, 300f)]
     public float additionMultiplier = 2;
@@ -140,7 +141,7 @@ public class LevelSystem : MonoBehaviour
 
         XpText.text = Mathf.Round(currentXp) + "/" + nextLevelXp;
         levelText.text = "Level " + level;
-        EXPpoints++;
+        EXPpoints += EXPpointsGiven;
         GameObject effect = Instantiate(levelUpEffect, transform.position, Quaternion.identity);
         Destroy(effect, 2);
         //source.PlayOneShot(levelUpSound);

@@ -189,12 +189,12 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeNumOfProjectiles(float amount, float upgradeAmount)
     {
         ProjectilesNumUpgraded++;
-        NumberOfProjectile += (int)(amount + upgradeAmount);
+        NumberOfProjectile = NumberOfProjectile + (int)(amount + upgradeAmount);
     }
     public void RemoveUpgradeNumOfProjectiles(float amount, float upgradeAmount)
     {
         ProjectilesNumUpgraded--;
-        NumberOfProjectile -= (int)(amount + upgradeAmount);
+        NumberOfProjectile = NumberOfProjectile - (int)(amount + upgradeAmount);
     }
 
     //ProjectileSize upgrades
