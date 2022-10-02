@@ -5,9 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class LoadRougeLite : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public GameObject Text;
+    bool inTrigger;
+
+    private void Update()
     {
-        if (other.gameObject.tag == "Player")
-            SceneManager.LoadScene(2);
+        if (inTrigger)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                LoadSceneManager.instance.LoadRogueGame();
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Text.SetActive(true);
+            inTrigger = true;
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Text.SetActive(false);
+            inTrigger = false;
+        }
+
     }
 }

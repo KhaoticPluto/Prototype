@@ -22,7 +22,8 @@ public class LevelSystem : MonoBehaviour
     public float maxLevel;
     public float currentXp;
     public int nextLevelXp = 100;
-    public float EXPpoints;
+    public int EXPpoints;
+    public int EXPpointsGiven = 3;
     [Header("Multipliers")]
     [Range(1f, 300f)]
     public float additionMultiplier = 2;
@@ -77,8 +78,11 @@ public class LevelSystem : MonoBehaviour
             frontXpBar.fillAmount = currentXp / nextLevelXp;
             backXpBar.fillAmount = currentXp / nextLevelXp;
         }
-        
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GainExperienceScalable(25, 1);
+        }
     }
     private void UpdateXpUI() 
     {
@@ -137,7 +141,7 @@ public class LevelSystem : MonoBehaviour
 
         XpText.text = Mathf.Round(currentXp) + "/" + nextLevelXp;
         levelText.text = "Level " + level;
-        EXPpoints++;
+        EXPpoints += EXPpointsGiven;
         GameObject effect = Instantiate(levelUpEffect, transform.position, Quaternion.identity);
         Destroy(effect, 2);
         //source.PlayOneShot(levelUpSound);

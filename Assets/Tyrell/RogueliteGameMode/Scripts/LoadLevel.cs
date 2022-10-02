@@ -20,7 +20,10 @@ public class LoadLevel : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        LoadSceneManager.instance.LoadStartingArea();
+        if (PlayerData.TutorialComplete == 1)
+            LoadSceneManager.instance.LoadStartingArea();
+        else
+            LoadSceneManager.instance.LoadTutorial();
     }
 
 

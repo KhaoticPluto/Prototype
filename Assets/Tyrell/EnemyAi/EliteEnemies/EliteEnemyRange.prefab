@@ -34,7 +34,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4419221288912044342}
+  - {fileID: 3947758215263510473}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   MaxHealth: 50
   XpGiven: 10
   AiController: {fileID: -5195344680530814690}
-  HealthSlider: {fileID: 8005942974425858749}
+  HealthSlider: {fileID: 7243945171240033346}
 --- !u!114 &-5195344680530814690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
     m_Bits: 128
   timeBetweenAttacks: 5
   alreadyAttacked: 0
-  sightRange: 50
+  sightRange: 300
   attackRange: 80
   playerInSightRange: 0
   playerInAttackRange: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   IsRogueLite: 0
   projectile: {fileID: 6671229746167309813, guid: 352ad6f6d95c53443a5aadd7c637233f, type: 3}
   bulletVelocity: 100
---- !u!1001 &4074412636227749895
+--- !u!1001 &3681204252370065144
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -217,11 +217,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0.9789
       objectReference: {fileID: 0}
     - target: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 1.1319
       objectReference: {fileID: 0}
     - target: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,11 +253,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.0962
       objectReference: {fileID: 0}
     - target: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 4.2823
       objectReference: {fileID: 0}
     - target: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -281,15 +281,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
---- !u!224 &4419221288912044342 stripped
+--- !u!224 &3947758215263510473 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
-  m_PrefabInstance: {fileID: 4074412636227749895}
+  m_PrefabInstance: {fileID: 3681204252370065144}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8005942974425858749 stripped
+--- !u!114 &7243945171240033346 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6310081852871264954, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
-  m_PrefabInstance: {fileID: 4074412636227749895}
+  m_PrefabInstance: {fileID: 3681204252370065144}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

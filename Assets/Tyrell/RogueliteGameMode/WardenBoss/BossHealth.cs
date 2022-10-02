@@ -20,7 +20,7 @@ public class BossHealth : MonoBehaviour
         if (Health <= 0)
         {
             DestroyWardenBoss();
-            LoadSceneManager.instance.LoadStartingArea();
+            
         }
     }
 

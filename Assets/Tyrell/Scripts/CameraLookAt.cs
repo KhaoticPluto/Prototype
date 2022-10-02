@@ -4,35 +4,20 @@ using UnityEngine;
 
 public class CameraLookAt : MonoBehaviour
 {
-    #region singleton
-    public static CameraLookAt instance;
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-    }
-    #endregion
+    public MousePosition mousePos;
 
-    public Transform Player;
-    public Transform Boss;
-
-    public void LookForBoss()
+    private void Start()
     {
-        Boss = GameObject.FindWithTag("Boss").gameObject.transform;
+        mousePos.GetComponent<MousePosition>();
     }
-    
 
     // Update is called once per frame
     void Update()
     {
-        if(Boss != null)
-        {
-            transform.position = Vector3.Lerp(Player.position, Boss.position, 0.5f);
-        }
-        else
-        {
-            transform.position = Player.position;
-        }
+        Vector3 pos = mousePos.WorldPosition;
+        pos.y = 2;
+
+        this. gameObject.transform.position = pos;
 
     }
 }

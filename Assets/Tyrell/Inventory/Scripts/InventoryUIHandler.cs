@@ -15,11 +15,7 @@ public class InventoryUIHandler : MonoBehaviour
 
     public bool inventoryOpen = false;
     public bool InventoryOpen => inventoryOpen;
-    public GameObject inventoryParent;
-    public GameObject GunInventory;
-    public GameObject playerStats;
-    public GameObject SetBonus;
-    public GameObject Border;
+    
     public GameObject HUD;
     public GameObject BG;
 
@@ -34,24 +30,19 @@ public class InventoryUIHandler : MonoBehaviour
 
     private void Start()
     {
+        CloseInventory();
         HUD = GameObject.FindWithTag("HUD"); 
 
         Inventory.instance.onItemChange += UpdateInventoryUI;
         UpdateInventoryUI();
 
-        OpenInventory();
-        StartCoroutine(CloseTheInventory());
     }
 
-    IEnumerator CloseTheInventory()
-    {
-        yield return new WaitForSeconds(.05f);
-        CloseInventory();
-    }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateInventoryUI();
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             //checks if game is paused or not before allowing the inventory to open
@@ -118,11 +109,6 @@ public class InventoryUIHandler : MonoBehaviour
     {
         inventoryOpen = true;
         BG.SetActive(true);
-        //inventoryParent.SetActive(true);
-        //GunInventory.SetActive(true);
-        //playerStats.SetActive(true);
-        //SetBonus.SetActive(true);
-        //Border.SetActive(true);
 
         HUD.SetActive(false);
     }
@@ -131,11 +117,6 @@ public class InventoryUIHandler : MonoBehaviour
     {
         inventoryOpen = false;
         BG.SetActive(false);
-        //inventoryParent.SetActive(false);
-        //GunInventory.SetActive(false);
-        //playerStats.SetActive(false);
-        //Border.SetActive(false);
-        //SetBonus.SetActive(false);
 
         HUD.SetActive(true);
     }

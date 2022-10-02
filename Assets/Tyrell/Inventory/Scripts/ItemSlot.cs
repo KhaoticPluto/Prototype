@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public Image icon;
-    private Item item;
+    public Item item;
     public bool isBeingDraged = false;
 
     public Item Item => item;
@@ -56,7 +56,7 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
-    public void OnCursorEnter()
+    public virtual void OnCursorEnter()
     {
         if (item == null || isBeingDraged == true) return;
 
@@ -64,7 +64,7 @@ public class ItemSlot : MonoBehaviour
         GameManager.instance.DisplayItemInfo(item.name, item.GetItemDescription(), transform.position);
     }
 
-    public void OnCursorExit()
+    public virtual void OnCursorExit()
     {
         if (item == null) return;
 
