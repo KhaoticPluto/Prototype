@@ -8,16 +8,44 @@ public class LoadRougeLite : MonoBehaviour
     public GameObject Text;
     bool inTrigger;
 
+    public GameObject chooseDifficulty;
+
+    public static int Difficulty = 2;
+
+    private void Start()
+    {
+        chooseDifficulty.SetActive(false);
+    }
+
     private void Update()
     {
         if (inTrigger)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                LoadSceneManager.instance.LoadRogueGame();
+                chooseDifficulty.SetActive(true);
             }
         }
     }
+
+    public void SetNormal()
+    {
+        Difficulty = 2;
+        LoadSceneManager.instance.LoadRogueGame();
+    }
+
+    public void SetEasy()
+    {
+        Difficulty = 1;
+        LoadSceneManager.instance.LoadRogueGame();
+    }
+
+    public void SetHard()
+    {
+        Difficulty = 3;
+        LoadSceneManager.instance.LoadRogueGame();
+    }
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -34,6 +62,7 @@ public class LoadRougeLite : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Text.SetActive(false);
+            chooseDifficulty.SetActive(false);
             inTrigger = false;
         }
 

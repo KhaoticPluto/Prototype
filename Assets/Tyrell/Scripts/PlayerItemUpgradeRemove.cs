@@ -28,11 +28,6 @@ public class PlayerItemUpgradeRemove : MonoBehaviour
     
 
 
-
-
-
-
-
     private void Start()
     {
         if (GameObject.FindWithTag("Player") != null)
