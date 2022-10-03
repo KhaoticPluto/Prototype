@@ -13,7 +13,6 @@ public class HUDManager : MonoBehaviour
     //Scripts
     public Upgradeables stats;
     public LevelSystem levelStats;
-    
     public movement playermovement;
     
 
@@ -88,6 +87,11 @@ public class HUDManager : MonoBehaviour
 
     }
 
+    public void HudOpenInventory()
+    {
+        InventoryUIHandler.instance.OpenInventory();
+    }
+    
 
     public void ResumeGame()
     {

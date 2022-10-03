@@ -52,7 +52,7 @@ public class InventoryUIHandler : MonoBehaviour
                 //close inventory
                 CloseInventory();
                 GameManager.instance.DestroyItemInfo();
-                Time.timeScale = 1;
+                
             }
             else
             {
@@ -60,7 +60,7 @@ public class InventoryUIHandler : MonoBehaviour
                 {
                     //openInventory
                     OpenInventory();
-                    Time.timeScale = 0;
+                    
                 }
                 
             }
@@ -106,7 +106,7 @@ public class InventoryUIHandler : MonoBehaviour
     }
 
 
-    private void OpenInventory()
+    public void OpenInventory()
     {
         inventoryOpen = true;
         //BG.SetActive(true);
@@ -115,6 +115,7 @@ public class InventoryUIHandler : MonoBehaviour
         thisCanvas.interactable = true;
 
         HUD.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void CloseInventory()
@@ -126,6 +127,7 @@ public class InventoryUIHandler : MonoBehaviour
         thisCanvas.interactable = false;
 
         HUD.SetActive(true);
+        Time.timeScale = 1;
     }
 
 
