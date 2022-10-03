@@ -16,7 +16,7 @@ public class RoomManager : MonoBehaviour
 
     public Transform[] RoomSpawn;
 
-    [Header("Multipliers")]
+    [Header("Enemy health Multipliers")]
     [Range(1f, 300f)]
     public float additionMultiplier;
     [Range(2f, 4f)]
@@ -47,6 +47,8 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
+        SetDifficulty();
+
         player = GameObject.FindWithTag("Player").transform;
 
         RoomNumber = 0;
@@ -57,7 +59,50 @@ public class RoomManager : MonoBehaviour
         player.transform.position = pos;
 
         SpawnUpgradeRoom();
+
         
+
+    }
+
+    public void SetDifficulty()
+    {
+
+        switch (LoadRougeLite.Difficulty)
+        {
+            case 1:
+
+                additionMultiplier = 10;
+                powerMultiplier = 4;
+                divisionMultiplier = 7f;
+
+                break;
+
+            case 2:
+
+                additionMultiplier = 2;
+                powerMultiplier = 4;
+                divisionMultiplier = 7f;
+
+                break;
+
+
+            case 3:
+
+                additionMultiplier = 40;
+                powerMultiplier = 4;
+                divisionMultiplier = 7f;
+
+                break;
+
+            default:
+
+                additionMultiplier = 10;
+                powerMultiplier = 4;
+                divisionMultiplier = 7f;
+
+                break;
+        }
+
     }
 
 

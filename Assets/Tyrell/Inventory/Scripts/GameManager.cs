@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        
     }
 
 
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Inventory.instance.AddItem(GunItemList[upgradeToSpawn]);
+            Inventory.instance.AddItemToGun(GunItemList[upgradeToSpawn]);
         }
 
         if (Input.GetKeyDown(KeyCode.F2))

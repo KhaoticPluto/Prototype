@@ -146,6 +146,9 @@ public class PlayerData : MonoBehaviour
         _currentXP = _levelSystem.currentXp;
         _nextLevelXp = _levelSystem.nextLevelXp;
         _xpPoints = _levelSystem.EXPpoints;
+
+
+        #region Items
         _explosionLevel = explosion.level;
         _damageLevel = Damage.level;
         _fireRateLevel = fireRate.level;
@@ -156,7 +159,10 @@ public class PlayerData : MonoBehaviour
         _spreadLevel = Spread.level;
         _freezeLevel = Freeze.level;
         _bigLevel = Big.level;
-        _pierceLevel = Pierce.level;
+        _pierceLevel = Pierce.level; 
+        #endregion
+
+
     }
     public void LoadData()
     {

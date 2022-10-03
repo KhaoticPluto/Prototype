@@ -1045,6 +1045,7 @@ GameObject:
   - component: {fileID: 4548980009996714921}
   - component: {fileID: 4548980009996714918}
   - component: {fileID: 4409231999832102812}
+  - component: {fileID: 1751836515}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: InventoryCanvas
@@ -1093,7 +1094,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 21
+  m_SortingOrder: 22
   m_TargetDisplay: 0
 --- !u!114 &4548980009996714920
 MonoBehaviour:
@@ -1148,6 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryOpen: 0
+  thisCanvas: {fileID: 1751836515}
   HUD: {fileID: 0}
   BG: {fileID: 3305736237253396258}
   inventorySlotPrefab: {fileID: 1536721052074975365, guid: 2117be5fd412da048b55090f34a23a37, type: 3}
@@ -1172,6 +1174,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!225 &1751836515
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4548980009996714919}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4548980010272013177
 GameObject:
   m_ObjectHideFlags: 0

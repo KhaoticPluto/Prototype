@@ -15,7 +15,8 @@ public class InventoryUIHandler : MonoBehaviour
 
     public bool inventoryOpen = false;
     public bool InventoryOpen => inventoryOpen;
-    
+
+    public CanvasGroup thisCanvas;
     public GameObject HUD;
     public GameObject BG;
 
@@ -34,7 +35,6 @@ public class InventoryUIHandler : MonoBehaviour
         HUD = GameObject.FindWithTag("HUD"); 
 
         Inventory.instance.onItemChange += UpdateInventoryUI;
-        UpdateInventoryUI();
 
     }
 
@@ -43,6 +43,7 @@ public class InventoryUIHandler : MonoBehaviour
     void Update()
     {
         UpdateInventoryUI();
+        Inventory.instance.onItemChange += UpdateInventoryUI;
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             //checks if game is paused or not before allowing the inventory to open
@@ -108,7 +109,10 @@ public class InventoryUIHandler : MonoBehaviour
     private void OpenInventory()
     {
         inventoryOpen = true;
-        BG.SetActive(true);
+        //BG.SetActive(true);
+        thisCanvas.alpha = 1;
+        thisCanvas.blocksRaycasts = true;
+        thisCanvas.interactable = true;
 
         HUD.SetActive(false);
     }
@@ -116,7 +120,10 @@ public class InventoryUIHandler : MonoBehaviour
     public void CloseInventory()
     {
         inventoryOpen = false;
-        BG.SetActive(false);
+        //BG.SetActive(false);
+        thisCanvas.alpha = 0;
+        thisCanvas.blocksRaycasts = false;
+        thisCanvas.interactable = false;
 
         HUD.SetActive(true);
     }

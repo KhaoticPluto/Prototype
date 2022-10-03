@@ -374,7 +374,7 @@ public class Upgradeables : MonoBehaviour
     {
         Item newItem = GameManager.instance.GunItemList[Random.Range(0, GameManager.instance.GunItemList.Count)];
 
-        Inventory.instance.AddItem(Instantiate(newItem));
+        Inventory.instance.AddItemToGun(Instantiate(newItem));
     }
 
     //Dash Cooldown
