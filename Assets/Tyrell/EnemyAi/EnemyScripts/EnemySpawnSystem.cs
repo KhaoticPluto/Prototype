@@ -129,11 +129,14 @@ public class EnemySpawnSystem : MonoBehaviour
 
             if (WaveNumber % 5 == 0)
             {
+
                 for (int i = 0; i < EliteWave; i++)
                 {
                     elitesSpawned = true;
                     SpawnElites();
                     SpawnedEnemies++;
+                    if (elitesSpawned == true)
+                        EliteWave++;
                 }
                 
 
@@ -146,10 +149,7 @@ public class EnemySpawnSystem : MonoBehaviour
             }
             yield return Wait;
         }
-        if (elitesSpawned)
-        {
-            EliteWave++;
-        }
+        
 
     }
 

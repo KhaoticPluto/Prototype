@@ -41,6 +41,8 @@ public enum BonusType
     Seeking,
     LifeSteal,
     UltraFreeze,
+    TackShooter,
+
 
 
 

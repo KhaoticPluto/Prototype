@@ -19,11 +19,21 @@ public class SetBonusesCheck : MonoBehaviour
     public bool _lifeStealSet = false;
     public SetBonuses _UltraFreeze;
     public bool _ultraFreezeSet = false;
+    public SetBonuses _TackShooter;
+    public bool _tackShooterSet = false;
 
     private void Update()
     {
+        CheckSetBonuses();
+
+    }
+
+
+    void CheckSetBonuses()
+    {
+        #region ArmorPierce
         //Armor Pierce set bonus
-        if (upgrades.PierceUpgraded >= 2 &&_armorPierceSet == false)
+        if (upgrades.PierceUpgraded >= 2 && _armorPierceSet == false)
         {
             _ArmorPiercer.setComplete();
             _armorPierceSet = true;
@@ -33,9 +43,11 @@ public class SetBonusesCheck : MonoBehaviour
             _ArmorPiercer.setRemoved();
             _armorPierceSet = false;
         }
+        #endregion
 
+        #region MegaRicochet
         //Mega Ricochet Set Bonus
-        if(upgrades.RicochetUpgraded >= 2 && upgrades.ProDamageUpgraded >=1
+        if (upgrades.RicochetUpgraded >= 2 && upgrades.ProDamageUpgraded >= 1
             && upgrades.ProSpeedUpgraded >= 1 && _megaRicochetSet == false)
         {
             _MegaRicochet.setComplete();
@@ -47,9 +59,11 @@ public class SetBonusesCheck : MonoBehaviour
             _MegaRicochet.setRemoved();
             _megaRicochetSet = false;
         }
+        #endregion
 
+        #region ExplosionMagnet
         //Explosion Magnet set bonus
-        if (upgrades.ExplosionUpgraded >= 4 &&  _explosionMagnetSet == false)
+        if (upgrades.ExplosionUpgraded >= 4 && _explosionMagnetSet == false)
         {
             _ExplosionMagnet.setComplete();
             _explosionMagnetSet = true;
@@ -59,21 +73,25 @@ public class SetBonusesCheck : MonoBehaviour
             _ExplosionMagnet.setRemoved();
             _explosionMagnetSet = false;
         }
+        #endregion
 
+        #region Seeking
         //Seeking Set Bonus
-        if(upgrades.ExplosionUpgraded >= 1 && upgrades.ProSpeedUpgraded >= 2 && _seekingSet == false)
+        if (upgrades.ExplosionUpgraded >= 1 && upgrades.ProSpeedUpgraded >= 2 && _seekingSet == false)
         {
             _Seeking.setComplete();
             _seekingSet = true;
         }
-        else if((upgrades.ExplosionUpgraded < 1 || upgrades.ProSpeedUpgraded < 2) && _seekingSet == true)
+        else if ((upgrades.ExplosionUpgraded < 1 || upgrades.ProSpeedUpgraded < 2) && _seekingSet == true)
         {
             _Seeking.setRemoved();
             _seekingSet = false;
         }
+        #endregion
 
+        #region LifeSteal
         //LifeSteal Set bonus
-        if(upgrades.ProDamageUpgraded >= 3 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceUpgraded >= 2
+        if (upgrades.ProDamageUpgraded >= 3 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceUpgraded >= 2
              && _lifeStealSet == false)
         {
             _LifeSteal.setComplete();
@@ -85,7 +103,9 @@ public class SetBonusesCheck : MonoBehaviour
             _LifeSteal.setRemoved();
             _lifeStealSet = false;
         }
+        #endregion
 
+        #region UltraFreeze
         //UltraFreeze
         if (upgrades.ExplosionUpgraded >= 2 && upgrades.FreezeUpgraded >= 2 && _ultraFreezeSet == false)
         {
@@ -97,9 +117,24 @@ public class SetBonusesCheck : MonoBehaviour
             _UltraFreeze.setRemoved();
             _ultraFreezeSet = false;
         }
+        #endregion
 
+        #region TackShooter
+        //TackShooter
+        if (upgrades.SpreadUpgraded >= 2 && upgrades.ProjectilesNumUpgraded >= 2 &&
+            upgrades.FireRateUpgraded >= 2 && _tackShooterSet == false)
+        {
+            _TackShooter.setComplete();
+            _tackShooterSet = true;
+        }
+        else if((upgrades.SpreadUpgraded < 2 || upgrades.ProjectilesNumUpgraded < 2 ||
+            upgrades.FireRateUpgraded < 2) && _tackShooterSet == true)
+        {
+            _TackShooter.setRemoved();
+            _tackShooterSet = false;
+        }
 
+        #endregion
     }
-
 
 }

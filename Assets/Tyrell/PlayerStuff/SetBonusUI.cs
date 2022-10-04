@@ -21,6 +21,7 @@ public class SetBonusUI : MonoBehaviour
     public GameObject LifeStealIcon;
     public GameObject ArmorPierceIcon;
     public GameObject SeekingIcon;
+    public GameObject TackShooterIcon;
 
     GameObject newfreeze;
     GameObject newFire;
@@ -28,6 +29,7 @@ public class SetBonusUI : MonoBehaviour
     GameObject newLifeSteal;
     GameObject newArmorPierce;
     GameObject newSeeking;
+    GameObject newTackShooter;
 
 
     public void CompleteSetIcon(BonusType bonusType)
@@ -58,7 +60,9 @@ public class SetBonusUI : MonoBehaviour
                 newfreeze = Instantiate(FreezeIcon, transform);
                 break;
 
-
+            case BonusType.TackShooter:
+                newTackShooter = Instantiate(TackShooterIcon, transform);
+                break;
 
         }
     }
@@ -91,7 +95,9 @@ public class SetBonusUI : MonoBehaviour
                 Destroy(newfreeze);
                 break;
 
-
+            case BonusType.TackShooter:
+                Destroy(newTackShooter);
+                break;
 
         }
     }
