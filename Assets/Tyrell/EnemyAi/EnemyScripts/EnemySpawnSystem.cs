@@ -41,7 +41,7 @@ public class EnemySpawnSystem : MonoBehaviour
     public float NextWaveTimer = 10;
     public float resetTimer = 10;
 
-    int EliteWave = 1;
+    int EliteWave = 0;
 
 
     public WaveGameManager manager;
@@ -111,8 +111,9 @@ public class EnemySpawnSystem : MonoBehaviour
     IEnumerator SpawnEnemiesOverTime()
     {
         bool elitesSpawned = false;
-        yield return new WaitForSeconds(NextWaveTimer);
         bool bossSpawned = false;
+        yield return new WaitForSeconds(NextWaveTimer);
+        
 
         WaveNumber++;
         SpawnedEnemies = 0;
@@ -127,16 +128,16 @@ public class EnemySpawnSystem : MonoBehaviour
 
             SpawnedEnemies++;
 
-            if (WaveNumber % 5 == 0)
+            if (WaveNumber % 5 == 0 && !elitesSpawned)
             {
-
+                EliteWave++;
                 for (int i = 0; i < EliteWave; i++)
                 {
-                    elitesSpawned = true;
+                    
                     SpawnElites();
                     SpawnedEnemies++;
-                    if (elitesSpawned == true)
-                        EliteWave++;
+                    elitesSpawned = true;
+
                 }
                 
 
