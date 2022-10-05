@@ -22,17 +22,22 @@ public class EnemyHealth : MonoBehaviour
 
         if (Health <= 0)
         {
-
-
-            LevelSystem.instance.GainExperienceScalable(XpGiven, 1);
-            MoneyManager.instance.DropMoney();
-            AiController.DestroyEnemy();
+            EnemyKilled("EnemiesKilled");
         }
 
         if (Health > MaxHealth)
         {
             Health = MaxHealth;
         }
+    }
+
+
+    void EnemyKilled(string Name)
+    {
+        AchievementManager.instance.AddAchievementProgress(Name, 1);
+        LevelSystem.instance.GainExperienceScalable(XpGiven, LevelSystem.instance.level);
+        MoneyManager.instance.DropMoney();
+        AiController.DestroyEnemy();
     }
 
     public void EnemyTakeDamage(float amount, bool isCrit)

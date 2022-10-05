@@ -22,6 +22,8 @@ public class SetBonusUI : MonoBehaviour
     public GameObject ArmorPierceIcon;
     public GameObject SeekingIcon;
     public GameObject TackShooterIcon;
+    public GameObject CritMakerIcon;
+    public GameObject MinigunIcon;
 
     GameObject newfreeze;
     GameObject newFire;
@@ -30,6 +32,8 @@ public class SetBonusUI : MonoBehaviour
     GameObject newArmorPierce;
     GameObject newSeeking;
     GameObject newTackShooter;
+    GameObject newCritMaker;
+    GameObject newMinigun;
 
 
     public void CompleteSetIcon(BonusType bonusType)
@@ -62,6 +66,14 @@ public class SetBonusUI : MonoBehaviour
 
             case BonusType.TackShooter:
                 newTackShooter = Instantiate(TackShooterIcon, transform);
+                break;
+
+            case BonusType.CritMaker:
+                newCritMaker = Instantiate(CritMakerIcon, transform);
+                break;
+
+            case BonusType.Minigun:
+                newMinigun = Instantiate(MinigunIcon, transform);
                 break;
 
         }
@@ -99,6 +111,13 @@ public class SetBonusUI : MonoBehaviour
                 Destroy(newTackShooter);
                 break;
 
+            case BonusType.CritMaker:
+                Destroy(newCritMaker);
+                break;
+
+            case BonusType.Minigun:
+                Destroy(newMinigun);
+                break;
         }
     }
     

@@ -21,7 +21,9 @@ public class MousePosition : MonoBehaviour
 
         if(Physics.Raycast(ray, out RaycastHit hitData, 1000, WhatIsGround))
         {
-            WorldPosition = hitData.point;
+            Vector3 pos = hitData.point;
+            pos.y = 2;
+            WorldPosition = pos;
         }
 
         

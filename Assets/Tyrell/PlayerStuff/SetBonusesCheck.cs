@@ -21,6 +21,11 @@ public class SetBonusesCheck : MonoBehaviour
     public bool _ultraFreezeSet = false;
     public SetBonuses _TackShooter;
     public bool _tackShooterSet = false;
+    public SetBonuses _CritMaker;
+    public bool _critMakerSet = false;
+    public SetBonuses _Minigun;
+    public bool _minigunSet = false;
+
 
     private void Update()
     {
@@ -91,13 +96,13 @@ public class SetBonusesCheck : MonoBehaviour
 
         #region LifeSteal
         //LifeSteal Set bonus
-        if (upgrades.ProDamageUpgraded >= 3 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceUpgraded >= 2
+        if (upgrades.ProDamageUpgraded >= 2 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceUpgraded >= 2
              && _lifeStealSet == false)
         {
             _LifeSteal.setComplete();
             _lifeStealSet = true;
         }
-        else if ((upgrades.ProDamageUpgraded < 3 || upgrades.ProjectilesNumUpgraded < 2 || upgrades.PierceUpgraded < 2)
+        else if ((upgrades.ProDamageUpgraded < 2 || upgrades.ProjectilesNumUpgraded < 2 || upgrades.PierceUpgraded < 2)
            && _lifeStealSet == true)
         {
             _LifeSteal.setRemoved();
@@ -135,6 +140,33 @@ public class SetBonusesCheck : MonoBehaviour
         }
 
         #endregion
+
+        #region CritChance
+        if (upgrades.CritChanceUpgraded >= 7 && _critMakerSet == false)
+        {
+            _CritMaker.setComplete();
+            _critMakerSet = true;
+        }
+        else if (upgrades.CritChanceUpgraded < 7 && _critMakerSet == true)
+        {
+            _CritMaker.setRemoved();
+            _critMakerSet = false;
+        }
+        #endregion
+
+        #region Minigun
+        if (upgrades.FireRateUpgraded >= 4 && upgrades.SpreadUpgraded >= 1 && _minigunSet == false)
+        {
+            _Minigun.setComplete();
+            _minigunSet = true;
+        }
+        else if ((upgrades.FireRateUpgraded < 4 || upgrades.SpreadUpgraded < 1) && _minigunSet == true)
+        {
+            _Minigun.setRemoved();
+            _minigunSet = false;
+        }
+        #endregion
+
     }
 
 }

@@ -28,7 +28,6 @@ public class Bullet : MonoBehaviour
     public bool isSeeking;
     public bool isLifeSteal;
     public bool isUltraFreeze;
-    public bool isTackShooter;
 
 
 
@@ -132,10 +131,8 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Boss")
         {
-            damageSpawn = Random.Range(0, 3);
-            
-            collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage, isCritical);
-            
+            DamageToBoss(collision.gameObject);
+
             if (isLifeSteal)
             {
                 StealLife();
@@ -148,10 +145,7 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            damageSpawn = Random.Range(0, 3);
-            
-            collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, isCritical);
-            Vector3 enemyPos = new Vector3(collision.gameObject.transform.position.x + damageSpawn, collision.gameObject.transform.position.y + 5, collision.gameObject.transform.position.z);
+            DamageToEnemy(collision.gameObject);
 
             if (freezeTime > 0)
             {
@@ -190,15 +184,15 @@ public class Bullet : MonoBehaviour
         ///Mega Ricochet set bonus
         if (isMegaRicochet)
         {
-            Damage += 1;
+            Damage = Damage * 2;
             rb.AddForce(rb.velocity / 5 , ForceMode.VelocityChange);
         }
         ///
 
         if (collision.gameObject.tag == "Enemy")
         {
-            damageSpawn = Random.Range(0, 3);
-            collision.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, isCritical);
+            DamageToEnemy(collision.gameObject);
+
 
             if (freezeTime > 0)
             {
@@ -214,8 +208,7 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Boss")
         {
-            damageSpawn = Random.Range(0, 3);
-            collision.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage, isCritical);
+            DamageToBoss(collision.gameObject);
             if (isLifeSteal)
             {
                 StealLife();
@@ -230,6 +223,24 @@ public class Bullet : MonoBehaviour
         }
 
     }
+
+    void DamageToEnemy(GameObject enemy)
+    {
+        DamageDealt("DamageDealt");
+        enemy.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, isCritical);
+    }
+    void DamageToBoss(GameObject boss)
+    {
+        DamageDealt("DamageDealt");
+        boss.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage, isCritical);
+    }
+
+
+    public void DamageDealt(string Name)
+    {
+        AchievementManager.instance.AddAchievementProgress(Name, Damage);
+    }
+
 
     /// <summary>
     /// for the explosion, will check for colliders in the physics overlapsphere

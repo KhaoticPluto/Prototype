@@ -10,6 +10,8 @@ public class BossHealth : MonoBehaviour
     public float Health = 100;
     public float MaxHealth = 100;
 
+    public float XpGiven = 500;
+
     public TextMeshProUGUI WardenName;
     public Slider WardenHealthBar;
 
@@ -19,9 +21,17 @@ public class BossHealth : MonoBehaviour
 
         if (Health <= 0)
         {
-            DestroyWardenBoss();
+            EnemyKilled("BossKilled");
             
         }
+    }
+
+    void EnemyKilled(string Name)
+    {
+        AchievementManager.instance.AddAchievementProgress(Name, 1);
+        LevelSystem.instance.GainExperienceScalable(XpGiven, LevelSystem.instance.level);
+        MoneyManager.instance.DropMoney();
+        DestroyWardenBoss();
     }
 
     public void EnemyTakeDamage(float amount, bool isCrit)

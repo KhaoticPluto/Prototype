@@ -43,6 +43,8 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public bool LifeSteal;
     [HideInInspector] public bool UltraFreeze;
     [HideInInspector] public bool TackShooter;
+    [HideInInspector] public bool CritMaker;
+    [HideInInspector] public bool Minigun;
 
     #endregion
 
@@ -154,6 +156,24 @@ public class Upgradeables : MonoBehaviour
         _fireRate = _fireRate * amount;
     }
 
+    public void CritMakerUpgrade()
+    {
+        critChance += 50;
+    }
+    public void CritMakerRemove()
+    {
+        critChance -= 50;
+    }
+
+    public void MinigunUpgrade(float amount)
+    {
+        _fireRate = _fireRate / amount;
+    }
+    public void MinigunRemove(float amount)
+    {
+        _fireRate = _fireRate * amount;
+    }
+
     #endregion
 
 
@@ -167,7 +187,7 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeProjectileSpeed(float amount, float upgradeAmount)
     {
         ProSpeedUpgraded++;
-        projectileSpeed = projectileSpeed * CalculatePercentageUpgrades(amount, upgradeAmount);
+        projectileSpeed = projectileSpeed + (amount * (1 + upgradeAmount));
 
         projectileDamage = Mathf.RoundToInt(projectileDamage * (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * (1 + upgradeAmount));
@@ -175,7 +195,7 @@ public class Upgradeables : MonoBehaviour
     public void RemoveUpgradeProjectileSpeed(float amount, float upgradeAmount)
     {
         ProSpeedUpgraded--;
-        projectileSpeed = projectileSpeed / CalculatePercentageUpgrades(amount, upgradeAmount);
+        projectileSpeed = projectileSpeed - (amount * (1 + upgradeAmount));
 
         projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (1 + upgradeAmount));
@@ -235,8 +255,13 @@ public class Upgradeables : MonoBehaviour
     public void UpgradeProjectileSize(float amount, float upgradeAmount)
     {
         projectileSizeUpgraded++;
-        ProjectileSize = new Vector3(ProjectileSize.x + (amount + upgradeAmount),
-            ProjectileSize.y + (amount + upgradeAmount), ProjectileSize.z + (amount + upgradeAmount));
+        Vector3 Size = ProjectileSize;
+        Size.x = Size.x + amount + upgradeAmount;
+        Size.y = Size.y + amount + upgradeAmount;
+        Size.z = Size.z + amount + upgradeAmount;
+
+
+        ProjectileSize = Size;
 
         projectileDamage = Mathf.RoundToInt(projectileDamage * (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * (1 + upgradeAmount));
@@ -245,8 +270,13 @@ public class Upgradeables : MonoBehaviour
     public void RemoveProjectileSize(float amount, float upgradeAmount)
     {
         projectileSizeUpgraded--;
-        ProjectileSize = new Vector3(ProjectileSize.x - (amount + upgradeAmount),
-            ProjectileSize.y - (amount + upgradeAmount), ProjectileSize.z - (amount + upgradeAmount));
+        Vector3 Size = ProjectileSize;
+        Size.x = Size.x - amount - upgradeAmount;
+        Size.y = Size.y - amount - upgradeAmount;
+        Size.z = Size.z - amount - upgradeAmount;
+
+
+        ProjectileSize = Size;
 
         projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (1 + upgradeAmount));

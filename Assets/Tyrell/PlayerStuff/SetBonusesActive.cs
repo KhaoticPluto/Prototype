@@ -57,6 +57,17 @@ public class SetBonusesActive : MonoBehaviour
                 TackShooter(amount);
                 SetBonusUI.instance.CompleteSetIcon(bonusType);
                 break;
+
+            case BonusType.CritMaker:
+                CritMaker();
+                SetBonusUI.instance.CompleteSetIcon(bonusType);
+                break;
+
+            case BonusType.Minigun:
+                Minigun(amount);
+                SetBonusUI.instance.CompleteSetIcon(bonusType);
+                break;
+
         }
         
     }
@@ -99,33 +110,48 @@ public class SetBonusesActive : MonoBehaviour
                 RemoveTackShooter(amount);
                 SetBonusUI.instance.RemoveSetIcon(bonusType);
                 break;
+
+            case BonusType.CritMaker:
+                RemoveCritMaker();
+                SetBonusUI.instance.RemoveSetIcon(bonusType);
+                break;
+
+            case BonusType.Minigun:
+                RemoveMinigun(amount);
+                SetBonusUI.instance.RemoveSetIcon(bonusType);
+                break;
+
         }
 
     }
 
+    #region Armor
     public void ArmorPiercer()
     {
         upgrade.ArmorPiercer = true;
-        
+
     }
     public void RemoveArmorPiercer()
     {
         upgrade.ArmorPiercer = false;
-        
-    }
 
+    }
+    #endregion
+
+    #region Ricochet
     public void MegaRicochet()
     {
         Debug.Log("Mega Ricochet");
         upgrade.MegaRicochet = true;
-        
+
     }
     public void RemoveMegaRicochet()
     {
         Debug.Log("Mega Ricochet Removed");
         upgrade.MegaRicochet = false;
-        
-    }
+
+    } 
+    #endregion
 
     public void ExplosionMagnet()
     {
@@ -191,4 +217,41 @@ public class SetBonusesActive : MonoBehaviour
         upgrade.TackShooter = false;
         upgrade.TackShooterRemove(amount);
     }
+
+
+    #region CritMaker
+
+    public void CritMaker()
+    {
+        Debug.Log("Crit Maker");
+        upgrade.CritMaker = true;
+        upgrade.CritMakerUpgrade();
+    }
+    public void RemoveCritMaker()
+    {
+        Debug.Log("Remove Crit Maker");
+        upgrade.CritMaker = false;
+        upgrade.CritMakerRemove();
+    }
+
+
+    #endregion
+
+    #region Minigun
+    public void Minigun(float amount)
+    {
+        Debug.Log("Minigun");
+        upgrade.Minigun = true;
+        upgrade.MinigunUpgrade(amount);
+    }
+    public void RemoveMinigun(float amount)
+    {
+        Debug.Log("Remove Minigun");
+        upgrade.Minigun = false;
+        upgrade.MinigunRemove(amount);
+    }
+
+
+    #endregion
+
 }
