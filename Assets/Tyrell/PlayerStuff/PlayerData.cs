@@ -71,6 +71,8 @@ public class PlayerData : MonoBehaviour
     public static int TutorialComplete = 0;
     int tutorialDefault = 0;
 
+    
+
     public void Start()
     {
         LoadData(); 
@@ -82,7 +84,7 @@ public class PlayerData : MonoBehaviour
         _levelSystem.EXPpoints = _xpPoints;
 
         //Upgrades
-        #region ItemLoad
+        
         explosion.level = _explosionLevel;
         explosion.UpgradeAmount = 0;
         explosion.baselevel = 0;
@@ -98,46 +100,46 @@ public class PlayerData : MonoBehaviour
         fireRate.baselevel = 0;
         fireRate.UpdateUpgrade();
 
-        Ricochet.level = _fireRateLevel;
+        Ricochet.level = _ricochetLevel;
         Ricochet.UpgradeAmount = 0;
         Ricochet.baselevel = 0;
         Ricochet.UpdateUpgrade();
 
-        SpeedUp.level = _fireRateLevel;
+        SpeedUp.level = _speedLevel;
         SpeedUp.UpgradeAmount = 0;
         SpeedUp.baselevel = 0;
         SpeedUp.UpdateUpgrade();
 
-        Duplicate.level = _fireRateLevel;
+        Duplicate.level = _duplicateLevel;
         Duplicate.UpgradeAmount = 0;
         Duplicate.baselevel = 0;
         Duplicate.UpdateUpgrade();
 
-        Crit.level = _fireRateLevel;
+        Crit.level = _critLevel;
         Crit.UpgradeAmount = 0;
         Crit.baselevel = 0;
         Crit.UpdateUpgrade();
 
-        Spread.level = _fireRateLevel;
+        Spread.level = _spreadLevel;
         Spread.UpgradeAmount = 0;
         Spread.baselevel = 0;
         Spread.UpdateUpgrade();
 
-        Freeze.level = _fireRateLevel;
+        Freeze.level = _freezeLevel;
         Freeze.UpgradeAmount = 0;
         Freeze.baselevel = 0;
         Freeze.UpdateUpgrade();
 
-        Big.level = _fireRateLevel;
+        Big.level = _bigLevel;
         Big.UpgradeAmount = 0;
         Big.baselevel = 0;
         Big.UpdateUpgrade();
 
-        Pierce.level = _fireRateLevel;
+        Pierce.level = _pierceLevel;
         Pierce.UpgradeAmount = 0;
         Pierce.baselevel = 0;
         Pierce.UpdateUpgrade(); 
-        #endregion
+        
     }
 
     private void Update()
@@ -148,7 +150,7 @@ public class PlayerData : MonoBehaviour
         _xpPoints = _levelSystem.EXPpoints;
 
 
-        #region Items
+        
         _explosionLevel = explosion.level;
         _damageLevel = Damage.level;
         _fireRateLevel = fireRate.level;
@@ -160,7 +162,7 @@ public class PlayerData : MonoBehaviour
         _freezeLevel = Freeze.level;
         _bigLevel = Big.level;
         _pierceLevel = Pierce.level; 
-        #endregion
+        
 
 
     }
@@ -172,7 +174,7 @@ public class PlayerData : MonoBehaviour
         _nextLevelXp = ES3.Load("NextLevelXp", DefaultNextLevelXp);
         _xpPoints = ES3.Load("XPPoints", DefaultXpPoints);
 
-        #region ItemSaves
+        
         _explosionLevel = ES3.Load("ExplosionUpgradeLevel", DefaultUpgradeLevel);
         _damageLevel = ES3.Load("DamageUpgradeLevel", DefaultUpgradeLevel);
         _fireRateLevel = ES3.Load("FireRateUpgradeLevel", DefaultUpgradeLevel);
@@ -184,7 +186,7 @@ public class PlayerData : MonoBehaviour
         _freezeLevel = ES3.Load("FreezeUpgradeLevel", DefaultUpgradeLevel);
         _bigLevel = ES3.Load("BigUpgradeLevel", DefaultUpgradeLevel);
         _pierceLevel = ES3.Load("PierceUpgradeLevel", DefaultUpgradeLevel); 
-        #endregion
+        
     }
 
     public void SaveData()
@@ -194,7 +196,7 @@ public class PlayerData : MonoBehaviour
         ES3.Save("NextLevelXp", _nextLevelXp);
         ES3.Save("XPPoints", _xpPoints);
 
-        #region ItemSave
+        
         ES3.Save("ExplosionUpgradeLevel", _explosionLevel);
         ES3.Save("DamageUpgradeLevel", _damageLevel);
         ES3.Save("FireRateUpgradeLevel", _fireRateLevel);
@@ -206,7 +208,7 @@ public class PlayerData : MonoBehaviour
         ES3.Save("FreezeUpgradeLevel", _freezeLevel);
         ES3.Save("BigUpgradeLevel", _bigLevel);
         ES3.Save("PierceUpgradeLevel", _pierceLevel); 
-        #endregion
+        
 
     }
 

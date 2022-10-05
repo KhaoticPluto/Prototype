@@ -42,6 +42,9 @@ public enum BonusType
     LifeSteal,
     UltraFreeze,
     TackShooter,
+    CritMaker,
+    Minigun,
+
 
 
 
