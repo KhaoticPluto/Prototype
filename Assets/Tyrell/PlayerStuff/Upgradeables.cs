@@ -42,6 +42,7 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public bool Seeking;
     [HideInInspector] public bool LifeSteal;
     [HideInInspector] public bool UltraFreeze;
+    [HideInInspector] public bool TackShooter;
 
     #endregion
 
@@ -122,7 +123,6 @@ public class Upgradeables : MonoBehaviour
     private void Update()
     {
         sliderHealthVal = CalculateHealth();
-        
 
     }
 
@@ -139,18 +139,37 @@ public class Upgradeables : MonoBehaviour
         return amount;
     }
 
+
+    #region SetBonus
+    public void TackShooterUpgrade(float amount)
+    {
+        NumberOfProjectile += (int)amount;
+        SpreadFactor += amount;
+        _fireRate = _fireRate / amount;
+    }
+    public void TackShooterRemove(float amount)
+    {
+        NumberOfProjectile -= (int)amount;
+        SpreadFactor -= amount;
+        _fireRate = _fireRate * amount;
+    }
+
+    #endregion
+
+
     #region GunUpgrades
 
 
     //*------- Gun Upgrades --------*//
 
+    #region ProjectileSpeed
     //Projectile speed upgrade
     public void UpgradeProjectileSpeed(float amount, float upgradeAmount)
     {
         ProSpeedUpgraded++;
         projectileSpeed = projectileSpeed * CalculatePercentageUpgrades(amount, upgradeAmount);
 
-        projectileDamage = Mathf.RoundToInt(projectileDamage * (1 +upgradeAmount));
+        projectileDamage = Mathf.RoundToInt(projectileDamage * (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage * (1 + upgradeAmount));
     }
     public void RemoveUpgradeProjectileSpeed(float amount, float upgradeAmount)
@@ -161,7 +180,9 @@ public class Upgradeables : MonoBehaviour
         projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (1 + upgradeAmount));
     }
+    #endregion
 
+    #region ProjectileDamage
     //Projectile Damage upgrade
     public void UpgradeProjectileDamage(float amount, float upgradeAmount)
     {
@@ -176,7 +197,9 @@ public class Upgradeables : MonoBehaviour
         projectileDamage = Mathf.RoundToInt(projectileDamage / (amount + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (amount + upgradeAmount));
     }
+    #endregion
 
+    #region FireRate
     //Fire Rate upgrades
     public void UpgradeFireRate(float amount, float upgradeAmount)
     {
@@ -191,7 +214,9 @@ public class Upgradeables : MonoBehaviour
         FireRateUpgraded--;
 
     }
+    #endregion
 
+    #region Duplicate
     //increase amount of Projectiles upgrade
     public void UpgradeNumOfProjectiles(float amount, float upgradeAmount)
     {
@@ -203,7 +228,9 @@ public class Upgradeables : MonoBehaviour
         ProjectilesNumUpgraded--;
         NumberOfProjectile = NumberOfProjectile - (int)(amount + upgradeAmount);
     }
+    #endregion
 
+    #region ProjectileSize
     //ProjectileSize upgrades
     public void UpgradeProjectileSize(float amount, float upgradeAmount)
     {
@@ -224,7 +251,9 @@ public class Upgradeables : MonoBehaviour
         projectileDamage = Mathf.RoundToInt(projectileDamage / (1 + upgradeAmount));
         projectileBaseDamage = Mathf.RoundToInt(projectileBaseDamage / (1 + upgradeAmount));
     }
+    #endregion
 
+    #region Pierce
     //Upgrade Pierce
     public void UpgradePierceCount(float amount, float upgradeAmount)
     {
@@ -236,8 +265,10 @@ public class Upgradeables : MonoBehaviour
         PierceUpgraded--;
         PierceCountUpgraded -= (int)(amount + upgradeAmount);
     }
+    #endregion
 
 
+    #region CritChance
     //Crit Chance
     public void UpgradeCritChance(float amount, float upgradeAmount)
     {
@@ -258,7 +289,9 @@ public class Upgradeables : MonoBehaviour
         critDamage = critDamage / (1 + upgradeAmount);
         CritChanceUpgraded--;
     }
+    #endregion
 
+    #region Ricochet
     //Ricochet
     public void UpgradeRicochet(float amount, float upgradeAmount)
     {
@@ -272,24 +305,26 @@ public class Upgradeables : MonoBehaviour
         Ricochet = false;
         ricochetCountUpgraded -= (int)(amount + upgradeAmount);
     }
+    #endregion
 
+    #region ImpactExplosion
     //Impact Explosion
     public void UpgradeImpactExpolosion(float amount, float upgradeamount)
     {
         ExplosionUpgraded++;
-        ExplosionArea++;
-        ExplosionArea = ExplosionArea * (amount + upgradeamount);
+        ExplosionArea += amount + upgradeamount;
         explosiveCountUpgraded++;
     }
     public void RemoveImpactExplosion(float amount, float upgradeamount)
     {
         ExplosionUpgraded--;
-        
-        ExplosionArea = ExplosionArea / (amount + upgradeamount);
-        ExplosionArea--;
+
+        ExplosionArea -= amount + upgradeamount;
         explosiveCountUpgraded--;
     }
+    #endregion
 
+    #region Freeze
     //freeze
     public void UpgradeFreezeProjectiles(float amount, float upgradeAmount)
     {
@@ -300,9 +335,11 @@ public class Upgradeables : MonoBehaviour
     {
         FreezeTime -= amount + upgradeAmount;
         FreezeUpgraded--;
-    }
+    } 
+    #endregion
 
-    //Spread Factor
+    #region Spread
+		//Spread Factor
     public void UpgradesSpreadFactor(float amount, float upgradeAmount)
     {
         SpreadUpgraded++;
@@ -326,7 +363,8 @@ public class Upgradeables : MonoBehaviour
         _fireRate = _fireRate * (1 + upgradeAmount);
         ProjectileSize = new Vector3(ProjectileSize.x / (1 + upgradeAmount), ProjectileSize.y / (1 + upgradeAmount)
             , ProjectileSize.z / (1 + upgradeAmount));
-    }
+    } 
+    #endregion
 
 
     //*------- Gun Upgrades --------*//

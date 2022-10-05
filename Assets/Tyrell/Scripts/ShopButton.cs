@@ -32,7 +32,7 @@ public class ShopButton : MonoBehaviour
         {
             MoneyManager.Money -= ItemCost;
             item.Use();
-            ItemCost = Mathf.RoundToInt(ItemCost * 1.25f);
+            ItemCost = Mathf.RoundToInt(ItemCost + (ItemCost / 7));
             
         }
         else

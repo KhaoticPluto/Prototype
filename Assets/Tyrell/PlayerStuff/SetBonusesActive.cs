@@ -52,6 +52,11 @@ public class SetBonusesActive : MonoBehaviour
                 UltraFreeze();
                 SetBonusUI.instance.CompleteSetIcon(bonusType);
                 break;
+
+            case BonusType.TackShooter:
+                TackShooter(amount);
+                SetBonusUI.instance.CompleteSetIcon(bonusType);
+                break;
         }
         
     }
@@ -87,6 +92,11 @@ public class SetBonusesActive : MonoBehaviour
 
             case BonusType.UltraFreeze:
                 RemoveUltraFreeze();
+                SetBonusUI.instance.RemoveSetIcon(bonusType);
+                break;
+
+            case BonusType.TackShooter:
+                RemoveTackShooter(amount);
                 SetBonusUI.instance.RemoveSetIcon(bonusType);
                 break;
         }
@@ -169,5 +179,16 @@ public class SetBonusesActive : MonoBehaviour
         
     }
 
-
+    public void TackShooter(float amount)
+    {
+        Debug.Log("Tack Shooter");
+        upgrade.TackShooter = true;
+        upgrade.TackShooterUpgrade(amount);
+    }
+    public void RemoveTackShooter(float amount)
+    {
+        Debug.Log("Remove Tack Shooter");
+        upgrade.TackShooter = false;
+        upgrade.TackShooterRemove(amount);
+    }
 }

@@ -28,6 +28,8 @@ public class Bullet : MonoBehaviour
     public bool isSeeking;
     public bool isLifeSteal;
     public bool isUltraFreeze;
+    public bool isTackShooter;
+
 
 
     public Collider ricochet;

@@ -73,6 +73,7 @@ public class ShootProjectile : MonoBehaviour
             bulletScript.isSeeking = upgrades.Seeking;
             bulletScript.isLifeSteal = upgrades.LifeSteal;
             bulletScript.isUltraFreeze = upgrades.UltraFreeze;
+            bulletScript.isTackShooter = upgrades.TackShooter;
 
             bullet.transform.localScale = upgrades.ProjectileSize;
 
