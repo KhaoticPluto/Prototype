@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 7202653629900133094}
   - component: {fileID: 1063258165517193957}
   - component: {fileID: 8428908896013448773}
+  - component: {fileID: 1776872544513816425}
   m_Layer: 8
   m_Name: Guard1
   m_TagString: Enemy
@@ -263,6 +264,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1776872544513816425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675983425641567754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2561fc3005f9cf245bca31bcbe8d7b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1063258165517193957}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1536
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsntPlayer:
+    serializedVersion: 2
+    m_Bits: 17671
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
+  timeBetweenAttacks: 2
+  alreadyAttacked: 0
+  sightRange: 300
+  attackRange: 20
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  isFrozen: 0
+  Enemy: {fileID: 3675983425641567754}
+  RendMaterials:
+  - {fileID: 0}
+  roomspawn: {fileID: 0}
+  IsRogueLite: 0
+  projectile: {fileID: 6671229746167309813, guid: 88908d3e6dc3ee244b51a5d3f53dbdd4, type: 3}
+  bulletVelocity: 30
 --- !u!1 &5010662042725263841
 GameObject:
   m_ObjectHideFlags: 0
