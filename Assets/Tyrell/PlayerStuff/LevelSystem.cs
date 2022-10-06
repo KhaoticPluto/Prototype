@@ -129,6 +129,7 @@ public class LevelSystem : MonoBehaviour
         delayTimer = 0f;
 
     }
+
     public void LevelUp() 
     {
         level += 1;

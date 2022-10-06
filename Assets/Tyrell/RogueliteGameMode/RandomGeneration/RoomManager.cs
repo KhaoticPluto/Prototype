@@ -45,6 +45,11 @@ public class RoomManager : MonoBehaviour
     public GameObject BossRoom;
     public int BossRoomNumber;
 
+    public int difficultyXp = 0;
+
+
+
+
     private void Start()
     {
         SetDifficulty();
@@ -74,7 +79,7 @@ public class RoomManager : MonoBehaviour
                 additionMultiplier = 10;
                 powerMultiplier = 4;
                 divisionMultiplier = 7f;
-
+                difficultyXp = 10;
                 break;
 
             case 2:
@@ -82,7 +87,7 @@ public class RoomManager : MonoBehaviour
                 additionMultiplier = 2;
                 powerMultiplier = 4;
                 divisionMultiplier = 7f;
-
+                difficultyXp = 5;
                 break;
 
 
@@ -91,7 +96,7 @@ public class RoomManager : MonoBehaviour
                 additionMultiplier = 40;
                 powerMultiplier = 4;
                 divisionMultiplier = 7f;
-
+                difficultyXp = 40;
                 break;
 
             default:
@@ -99,7 +104,7 @@ public class RoomManager : MonoBehaviour
                 additionMultiplier = 10;
                 powerMultiplier = 4;
                 divisionMultiplier = 7f;
-
+                difficultyXp = 100;
                 break;
         }
 

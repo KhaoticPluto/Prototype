@@ -7,31 +7,43 @@ public class XpPointsUpgrade : MonoBehaviour
 {
 
     public GameObject _canvas;
+    public GameObject _openCanvas;
     public TextMeshProUGUI XpPoints;
+
+    bool inTrigger;
 
     public GameObject Player;
     LevelSystem levelStats;
-    Upgradeables upgradeStats;
 
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
         levelStats = Player.GetComponent<LevelSystem>();
-        upgradeStats = Player.GetComponent<Upgradeables>();
 
+        _openCanvas.SetActive(false);
         _canvas.SetActive(false);
     }
 
     private void Update()
     {
         XpPoints.text = "Lincoln Points: " + levelStats.EXPpoints ;
+
+        if (inTrigger)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _canvas.SetActive(true);
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            _canvas.SetActive(true);
+            _openCanvas.SetActive(true);
+            inTrigger = true;
         }
 
 
@@ -41,6 +53,8 @@ public class XpPointsUpgrade : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            inTrigger = false;
+            _openCanvas.SetActive(false);
             _canvas.SetActive(false);
             GameManager.instance.DestroyItemInfo();
         }

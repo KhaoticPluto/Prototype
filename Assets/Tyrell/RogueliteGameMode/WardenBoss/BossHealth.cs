@@ -12,12 +12,12 @@ public class BossHealth : MonoBehaviour
 
     public float XpGiven = 500;
 
-    public TextMeshProUGUI WardenName;
-    public Slider WardenHealthBar;
+    public TextMeshProUGUI Name;
+    public Slider HealthBar;
 
     private void Update()
     {
-        WardenHealthBar.value = CalculateHealth();
+        HealthBar.value = CalculateHealth();
 
         if (Health <= 0)
         {

@@ -166,6 +166,7 @@ public class EnemySpawnSystem : MonoBehaviour
         GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
         Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
         Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<EnemyHealth>().XpGiven = 5;
         enemyList.Add(Enemy);
         
 
@@ -180,6 +181,7 @@ public class EnemySpawnSystem : MonoBehaviour
         GameObject Enemy = Instantiate(ElitePrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
         Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
         Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<EnemyHealth>().XpGiven = 20;
         enemyList.Add(Enemy);
     }
 
@@ -189,8 +191,9 @@ public class EnemySpawnSystem : MonoBehaviour
 
 
         GameObject Enemy = Instantiate(BossPrefabs, spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
-        Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
-        Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<BossHealth>().MaxHealth += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<BossHealth>().Health += CalculateEnemyHealthScaler();
+        Enemy.GetComponent<BossHealth>().XpGiven = 100;
         enemyList.Add(Enemy);
     }
 

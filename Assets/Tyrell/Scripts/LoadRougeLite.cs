@@ -11,6 +11,7 @@ public class LoadRougeLite : MonoBehaviour
     public GameObject chooseDifficulty;
 
     public static int Difficulty = 2;
+    
 
     private void Start()
     {
@@ -31,12 +32,14 @@ public class LoadRougeLite : MonoBehaviour
     public void SetNormal()
     {
         Difficulty = 2;
+        
         LoadSceneManager.instance.LoadRogueGame();
     }
 
     public void SetEasy()
     {
         Difficulty = 1;
+        
         LoadSceneManager.instance.LoadRogueGame();
     }
 
