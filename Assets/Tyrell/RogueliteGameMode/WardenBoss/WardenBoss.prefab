@@ -68,6 +68,38 @@ Transform:
   m_Father: {fileID: 6141203289735287124}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &685614524572982322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 8189684407616958225, guid: d423065f3bab9684bb0197c9b2726097, type: 3}
+  m_PrefabInstance: {fileID: 8657132709658047267}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200439232776701576}
+  - component: {fileID: 7021672546057927787}
+  m_Layer: 0
+  m_Name: 'Shield (Missing Prefab with guid: d423065f3bab9684bb0197c9b2726097)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &200439232776701576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 8857536203321259435, guid: d423065f3bab9684bb0197c9b2726097, type: 3}
+  m_PrefabInstance: {fileID: 8657132709658047267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685614524572982322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2931251502456713876}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1171468118754988161
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,8 +1008,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10000
   MaxHealth: 10000
-  WardenName: {fileID: 8886651075414969056}
-  WardenHealthBar: {fileID: 8374080128978763310}
+  XpGiven: 500
+  Name: {fileID: 0}
+  HealthBar: {fileID: 0}
+  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 7f8973169e032144aa11e90979690f1e, type: 3}
+  customColor: {r: 0.06474723, g: 0.46295127, b: 0.9150943, a: 0}
 --- !u!114 &5051679396230079728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,16 +1417,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d423065f3bab9684bb0197c9b2726097, type: 3}
---- !u!4 &200439232776701576 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8857536203321259435, guid: d423065f3bab9684bb0197c9b2726097, type: 3}
-  m_PrefabInstance: {fileID: 8657132709658047267}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &685614524572982322 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8189684407616958225, guid: d423065f3bab9684bb0197c9b2726097, type: 3}
-  m_PrefabInstance: {fileID: 8657132709658047267}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7021672546057927787
 MonoBehaviour:
   m_ObjectHideFlags: 0

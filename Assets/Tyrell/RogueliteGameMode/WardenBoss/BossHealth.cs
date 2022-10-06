@@ -15,6 +15,9 @@ public class BossHealth : MonoBehaviour
     public TextMeshProUGUI Name;
     public Slider HealthBar;
 
+    public GameObject EnemyDeathParticle;
+    public Color customColor;
+
     private void Update()
     {
         HealthBar.value = CalculateHealth();
@@ -28,6 +31,10 @@ public class BossHealth : MonoBehaviour
 
     void EnemyKilled(string Name)
     {
+        GameObject enemyDeathParticle = Instantiate(EnemyDeathParticle, transform.position, Quaternion.identity);
+        enemyDeathParticle.GetComponent<EnemyDeathParticle>().newColor = customColor;
+        Destroy(enemyDeathParticle, 2);
+
         AchievementManager.instance.AddAchievementProgress(Name, 1);
         LevelSystem.instance.GainExperienceScalable(XpGiven, LevelSystem.instance.level);
         MoneyManager.instance.DropMoney();

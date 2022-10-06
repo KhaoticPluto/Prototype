@@ -16,6 +16,10 @@ public class EnemyHealth : MonoBehaviour
 
     public Slider HealthSlider;
 
+    public GameObject EnemyDeathParticle;
+    public Color customColor;
+    
+
     private void Update()
     {
         HealthSlider.value = CalculateHealth();
@@ -34,6 +38,11 @@ public class EnemyHealth : MonoBehaviour
 
     void EnemyKilled(string Name)
     {
+        GameObject enemyDeathParticle = Instantiate(EnemyDeathParticle, transform.position, Quaternion.identity);
+        enemyDeathParticle.GetComponent<EnemyDeathParticle>().newColor = customColor;
+        Destroy(enemyDeathParticle, 2);
+
+
         AchievementManager.instance.AddAchievementProgress(Name, 1);
         LevelSystem.instance.GainExperienceScalable(XpGiven, LevelSystem.instance.level);
         MoneyManager.instance.DropMoney();
