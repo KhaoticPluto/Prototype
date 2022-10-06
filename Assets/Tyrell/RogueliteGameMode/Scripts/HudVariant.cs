@@ -81,26 +81,7 @@ public class HudVariant : MonoBehaviour
             }
         }
 
-        //Wave Text
-        WaveText.text = "Wave : " + EnemySpawn.WaveNumber;
-        if (EnemySpawn.nextWave)
-        {
-
-            EnemySpawn.NextWaveTimer -= Time.deltaTime;
-            NextWaveText.gameObject.SetActive(true);
-            DisplayTime(EnemySpawn.NextWaveTimer);
-            if (EnemySpawn.showItems)
-            {
-                EnemySpawn.ShowItemChooser();
-                EnemySpawn.showItems = false;
-            }
-
-        }
-        else
-        {
-            NextWaveText.gameObject.SetActive(false);
-            EnemySpawn.NextWaveTimer = EnemySpawn.resetTimer;
-        }
+        
     }
 
 
@@ -122,10 +103,4 @@ public class HudVariant : MonoBehaviour
 
     }
 
-    void DisplayTime(float timeToDisplay)
-    {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        NextWaveText.text = "Next Wave " + string.Format("{1:00}", minutes, seconds);
-    }
 }

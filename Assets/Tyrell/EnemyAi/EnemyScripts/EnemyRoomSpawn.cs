@@ -78,6 +78,7 @@ public class EnemyRoomSpawn : MonoBehaviour
         GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
         Enemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.CalculateEnemyHealthScaler();
         Enemy.GetComponent<EnemyHealth>().Health += RoomManager.instance.CalculateEnemyHealthScaler();
+        Enemy.GetComponent<EnemyHealth>().XpGiven = RoomManager.instance.difficultyXp;
         Enemy.GetComponent<EnemyAiController>().roomspawn = this;
         Enemy.GetComponent<EnemyAiController>().IsRogueLite = true;
         enemyList.Add(Enemy);

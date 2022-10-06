@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.Animations;
 
 public class InventoryUIHandler : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class InventoryUIHandler : MonoBehaviour
     public GameObject HUD;
     public GameObject BG;
 
+    public Animator animator;
 
     private List<ItemSlot> itemSlotList = new List<ItemSlot>();
 
@@ -50,6 +52,7 @@ public class InventoryUIHandler : MonoBehaviour
             if (inventoryOpen)
             {
                 //close inventory
+                //TimeScaleOne();
                 CloseInventory();
                 GameManager.instance.DestroyItemInfo();
                 
@@ -109,25 +112,42 @@ public class InventoryUIHandler : MonoBehaviour
     public void OpenInventory()
     {
         inventoryOpen = true;
-        //BG.SetActive(true);
+        
         thisCanvas.alpha = 1;
+        animator.SetTrigger("OpenUI");
         thisCanvas.blocksRaycasts = true;
         thisCanvas.interactable = true;
 
         HUD.SetActive(false);
+        
+    }
+
+    void TimeScaleZero()
+    {
         Time.timeScale = 0;
+    }
+
+    void TimeScaleOne()
+    {
+        
+        Time.timeScale = 1;
+    }
+
+    void CanvasAlphaZero()
+    {
+        thisCanvas.alpha = 0;
     }
 
     public void CloseInventory()
     {
         inventoryOpen = false;
-        //BG.SetActive(false);
-        thisCanvas.alpha = 0;
+        
+        
+        animator.SetTrigger("CloseUI");
         thisCanvas.blocksRaycasts = false;
         thisCanvas.interactable = false;
 
         HUD.SetActive(true);
-        Time.timeScale = 1;
     }
 
 

@@ -61,6 +61,7 @@ public class EnemyChallengeRoomSpawn : EnemyRoomSpawn
         GameObject eliteEnemy = Instantiate(elitePrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
         eliteEnemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.CalculateEnemyHealthScaler();
         eliteEnemy.GetComponent<EnemyHealth>().Health += RoomManager.instance.CalculateEnemyHealthScaler();
+        eliteEnemy.GetComponent<EnemyHealth>().XpGiven = RoomManager.instance.difficultyXp + 20;
         eliteEnemy.GetComponent<EnemyAiController>().roomspawn = this;
         eliteEnemy.GetComponent<EnemyAiController>().IsRogueLite = true;
         enemyList.Add(eliteEnemy);

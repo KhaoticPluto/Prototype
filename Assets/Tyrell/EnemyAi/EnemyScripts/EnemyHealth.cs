@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float Health = 35;
     public float MaxHealth = 35;
-    public float XpGiven = 10;
+    public float XpGiven;
 
     public Vector3 pubDamageSpawn = Vector3.zero;
 
