@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
+
 
 public class InventoryUIHandler : MonoBehaviour
 {
@@ -29,14 +29,17 @@ public class InventoryUIHandler : MonoBehaviour
     
     public Transform invetoryItemTransform;
 
-
+    bool keyPressed;
 
     private void Start()
     {
+        thisCanvas.blocksRaycasts = false;
+        thisCanvas.interactable = false;
         CloseInventory();
         HUD = GameObject.FindWithTag("HUD"); 
 
         Inventory.instance.onItemChange += UpdateInventoryUI;
+
 
     }
 
@@ -44,22 +47,23 @@ public class InventoryUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         UpdateInventoryUI();
         Inventory.instance.onItemChange += UpdateInventoryUI;
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !keyPressed)
         {
             //checks if game is paused or not before allowing the inventory to open
             if (inventoryOpen)
             {
                 //close inventory
-                //TimeScaleOne();
                 CloseInventory();
                 GameManager.instance.DestroyItemInfo();
                 
             }
             else
             {
-                if(HUDManager.isPaused == false)
+                if (HUDManager.isPaused == false && !keyPressed)
                 {
                     //openInventory
                     OpenInventory();
@@ -111,6 +115,7 @@ public class InventoryUIHandler : MonoBehaviour
 
     public void OpenInventory()
     {
+        keyPressed = true;
         inventoryOpen = true;
         
         thisCanvas.alpha = 1;
@@ -124,6 +129,7 @@ public class InventoryUIHandler : MonoBehaviour
 
     void TimeScaleZero()
     {
+        keyPressed = false;
         Time.timeScale = 0;
     }
 
@@ -135,11 +141,13 @@ public class InventoryUIHandler : MonoBehaviour
 
     void CanvasAlphaZero()
     {
+        keyPressed = false;
         thisCanvas.alpha = 0;
     }
 
     public void CloseInventory()
     {
+        keyPressed = true;
         inventoryOpen = false;
         
         

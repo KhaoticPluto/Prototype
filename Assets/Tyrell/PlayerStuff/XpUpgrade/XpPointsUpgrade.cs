@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class XpPointsUpgrade : MonoBehaviour
 {
+    public Animator _animator;
 
     public GameObject _canvas;
-    public GameObject _openCanvas;
     public TextMeshProUGUI XpPoints;
 
     bool inTrigger;
@@ -20,7 +21,7 @@ public class XpPointsUpgrade : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
         levelStats = Player.GetComponent<LevelSystem>();
 
-        _openCanvas.SetActive(false);
+
         _canvas.SetActive(false);
     }
 
@@ -28,13 +29,6 @@ public class XpPointsUpgrade : MonoBehaviour
     {
         XpPoints.text = "Lincoln Points: " + levelStats.EXPpoints ;
 
-        if (inTrigger)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                _canvas.SetActive(true);
-            }
-        }
 
     }
 
@@ -42,8 +36,7 @@ public class XpPointsUpgrade : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _openCanvas.SetActive(true);
-            inTrigger = true;
+            OpenCanvas();
         }
 
 
@@ -53,13 +46,26 @@ public class XpPointsUpgrade : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            inTrigger = false;
-            _openCanvas.SetActive(false);
-            _canvas.SetActive(false);
-            GameManager.instance.DestroyItemInfo();
+            _animator.SetTrigger("UIClose");
         }
     }
 
+    public void CloseAnimation()
+    {
+        _animator.SetTrigger("UIClose");
+    }
 
+    public void OpenCanvas()
+    {
+        _animator.SetTrigger("UIOpen");
+        _canvas.SetActive(true);
+    }
+
+    public void CloseCanvas()
+    {
+        
+        _canvas.SetActive(false);
+        GameManager.instance.DestroyItemInfo();
+    }
 
 }

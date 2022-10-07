@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public Upgradeables upgrade;
+    bool playerDead = false;
 
     bool Invincibility;
 
@@ -15,9 +16,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if (upgrade.Health <= 0)
+        if (upgrade.Health <= 0 && !playerDead)
         {
             Debug.Log("Player Died");
+            playerDead = true;
             PlayerDied();
             
             
@@ -56,8 +58,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayerDied()
     {
-        PlayerData.instance.SaveData();
-        LoadSceneManager.instance.LoadStartingArea();
+        if (PlayerData.TutorialComplete == 0)
+        {
+            if (FindObjectOfType<TutorialManager>() != null)
+                TutorialManager.instance.ShowDeathMSG();
+            
+        }
+        else
+        {
+            PlayerData.instance.SaveData();
+            LoadSceneManager.instance.LoadStartingArea();
+        }
+
+        
     }
 
 
