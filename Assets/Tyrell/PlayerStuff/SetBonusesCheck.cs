@@ -96,13 +96,13 @@ public class SetBonusesCheck : MonoBehaviour
 
         #region LifeSteal
         //LifeSteal Set bonus
-        if (upgrades.ProDamageUpgraded >= 2 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.PierceUpgraded >= 2
+        if (upgrades.ProDamageUpgraded >= 2 && upgrades.ProjectilesNumUpgraded >= 2 && upgrades.projectileSizeUpgraded >= 1
              && _lifeStealSet == false)
         {
             _LifeSteal.setComplete();
             _lifeStealSet = true;
         }
-        else if ((upgrades.ProDamageUpgraded < 2 || upgrades.ProjectilesNumUpgraded < 2 || upgrades.PierceUpgraded < 2)
+        else if ((upgrades.ProDamageUpgraded < 2 || upgrades.ProjectilesNumUpgraded < 2 || upgrades.projectileSizeUpgraded < 1)
            && _lifeStealSet == true)
         {
             _LifeSteal.setRemoved();

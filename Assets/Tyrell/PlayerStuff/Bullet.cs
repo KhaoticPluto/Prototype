@@ -117,8 +117,7 @@ public class Bullet : MonoBehaviour
 
     void StealLife()
     {
-        int lifeStolen = (int)Damage;
-        Debug.Log(lifeStolen);
+        int lifeStolen = Mathf.RoundToInt(Damage / 10);
         _playerHealth.GetComponent<PlayerHealth>().GainHealth(lifeStolen);
     }
 
