@@ -363,7 +363,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.5
   alreadyAttacked: 0
   sightRange: 300
-  attackRange: 4
+  attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
@@ -391,8 +391,8 @@ MonoBehaviour:
   pubDamageSpawn: {x: 0, y: 0, z: 0}
   AiController: {fileID: 5074251722712979979}
   HealthSlider: {fileID: 310938700371919625}
-  EnemyDeathParticle: {fileID: 0}
-  customColor: {r: 0, g: 0, b: 0, a: 0}
+  EnemyDeathParticle: {fileID: 6888162441433419997}
+  customColor: {r: 0, g: 0.6392157, b: 1, a: 0}
 --- !u!136 &6544223941926816880
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -664,14 +664,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6284717979142818219}
     m_Modifications:
-    - target: {fileID: 562191878162576006, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
-      propertyPath: MaxDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 562191878162576006, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
-      propertyPath: MinDamage
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1402356123653473617, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
       propertyPath: m_RootOrder
       value: 0
