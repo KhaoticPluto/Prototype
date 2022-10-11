@@ -35,7 +35,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     {
         
 
-        maxEnemySpawn += RoomManager.instance.RoomNumber / 2;
+        maxEnemySpawn = RoomManager.instance.CalculateEnemySpawns();
 
         StartCoroutine(WaitForPlayer());
         

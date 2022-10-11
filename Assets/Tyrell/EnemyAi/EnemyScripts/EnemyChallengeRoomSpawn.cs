@@ -29,7 +29,7 @@ public class EnemyChallengeRoomSpawn : EnemyRoomSpawn
     {
 
 
-        maxEnemySpawn += RoomManager.instance.RoomNumber;
+        maxEnemySpawn = RoomManager.instance.CalculateEnemySpawns();
 
         StartCoroutine(ChallengeWaitForPlayer());
 
@@ -44,7 +44,11 @@ public class EnemyChallengeRoomSpawn : EnemyRoomSpawn
         {
             SpawnEnemies();
         }
-        SpawnElite();
+        for (int i = 0; i < RoomManager.instance.EliteEnemies; i++)
+        {
+            SpawnElite();
+        }
+        
     }
 
     public override void ShowNewItems()

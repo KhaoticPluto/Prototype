@@ -45,9 +45,11 @@ public class RoomManager : MonoBehaviour
     public GameObject BossRoom;
     public int BossRoomNumber;
 
+
     public int difficultyXp = 0;
-
-
+    int BaseEnemySpawn = 5;
+    public int ExtraEnemies = 0;
+    public int EliteEnemies;
 
 
     private void Start()
@@ -76,18 +78,22 @@ public class RoomManager : MonoBehaviour
         {
             case 1:
 
-                additionMultiplier = 10;
-                powerMultiplier = 4;
-                divisionMultiplier = 7f;
-                difficultyXp = 10;
-                break;
-
-            case 2:
-
                 additionMultiplier = 2;
                 powerMultiplier = 4;
                 divisionMultiplier = 7f;
                 difficultyXp = 5;
+                ExtraEnemies = -2;
+                EliteEnemies = 0;
+                break;
+
+            case 2:
+
+                additionMultiplier = 10;
+                powerMultiplier = 4;
+                divisionMultiplier = 7f;
+                difficultyXp = 10;
+                ExtraEnemies = 0;
+                EliteEnemies = 0;
                 break;
 
 
@@ -96,15 +102,19 @@ public class RoomManager : MonoBehaviour
                 additionMultiplier = 40;
                 powerMultiplier = 4;
                 divisionMultiplier = 7f;
-                difficultyXp = 40;
+                difficultyXp = 20;
+                ExtraEnemies = 2;
+                EliteEnemies = 1;
                 break;
 
             default:
 
-                additionMultiplier = 10;
+                additionMultiplier = 100;
                 powerMultiplier = 4;
                 divisionMultiplier = 7f;
                 difficultyXp = 100;
+                ExtraEnemies = 5;
+                EliteEnemies = 2;
                 break;
         }
 
@@ -163,6 +173,7 @@ public class RoomManager : MonoBehaviour
 
     public void SpawnChallengeRoom()
     {
+        EliteEnemies++;
         int spawnedRoom = Random.Range(0, ChallengeRoomList.Count);
         Instantiate(ChallengeRoomList[spawnedRoom], RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
         RoomNumber++;
@@ -178,6 +189,15 @@ public class RoomManager : MonoBehaviour
 
         Instantiate(BossRoom, RoomSpawn[RoomNumber].transform.position, Quaternion.identity);
 
+    }
+
+    public int CalculateEnemySpawns()
+    {
+        int EnemiesToSpawn = 0;
+
+        EnemiesToSpawn = BaseEnemySpawn + ExtraEnemies + (RoomNumber / 2);
+
+        return EnemiesToSpawn;
     }
 
 

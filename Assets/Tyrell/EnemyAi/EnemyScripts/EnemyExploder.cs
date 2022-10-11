@@ -106,7 +106,7 @@ public class EnemyExploder : EnemyAiController
         DestroyEnemy();
     }
 
-    void CheckForPlayer()
+    public void CheckForPlayer()
     {
 
         GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
@@ -128,7 +128,7 @@ public class EnemyExploder : EnemyAiController
             {
                 
                 
-                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(explosionDamage, false);
+                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(explosionDamage * 100, true);
                 
             }
         }
