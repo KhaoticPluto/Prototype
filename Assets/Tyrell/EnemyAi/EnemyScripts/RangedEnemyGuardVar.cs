@@ -21,6 +21,7 @@ public class RangedEnemyGuardVar : EnemyAiController
         {
             ///Attack code here
             animator.SetTrigger("isAttacking");
+
             Rigidbody rb = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity).GetComponent<Rigidbody>();
             rb.transform.LookAt(player.transform);
             rb.velocity = transform.forward * bulletVelocity;
