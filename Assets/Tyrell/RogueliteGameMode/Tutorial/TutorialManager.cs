@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -12,6 +14,8 @@ public class TutorialManager : MonoBehaviour
     }
     #endregion
 
+    public GameObject TutDeathMSG;
+
     public void TutorialComplete()
     {
         ES3.Save("TutorialComplete", 1);
@@ -19,7 +23,19 @@ public class TutorialManager : MonoBehaviour
 
     }
 
+    public void ShowDeathMSG()
+    {
+        StartCoroutine(DeathMSG());
+    }
 
+    IEnumerator DeathMSG()
+    {
+        TutDeathMSG.SetActive(true);
+
+        yield return new WaitForSeconds(5);
+
+        TutDeathMSG.SetActive(false);
+    }
 
 
 }
