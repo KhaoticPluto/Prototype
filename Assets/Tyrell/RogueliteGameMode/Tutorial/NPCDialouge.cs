@@ -13,15 +13,18 @@ public class NPCDialouge : MonoBehaviour
     public AudioClip aClips;
     AudioSource aSource = null;
 
-    private DialougeSystem dialogueSystem;
+    public DialougeSystem dialogueSystem;
 
     public string Name;
 
     [TextArea(5, 10)]
     public string[] sentences;
 
+    bool audioplaying = false;
+
     void Start()
     {
+        //aSource.GetComponent<AudioSource>();
         dialogueSystem = FindObjectOfType<DialougeSystem>();
     }
 
@@ -35,7 +38,11 @@ public class NPCDialouge : MonoBehaviour
 
         if ((other.gameObject.tag == "Player")) 
         {
-            PlayAudio();
+            //if (!audioplaying)
+            //{
+            //    //PlayAudio();
+            //}
+
             this.gameObject.GetComponent<NPCDialouge>().enabled = true;
             dialogueSystem.Names = Name;
             dialogueSystem.dialogueLines = sentences;
@@ -45,19 +52,22 @@ public class NPCDialouge : MonoBehaviour
 
     void PlayAudio()
     {
+        audioplaying = true;
         aSource.PlayOneShot(aClips);
 
     }
 
     void StopAudio()
     {
+        audioplaying = false;
         aSource.Stop();
+        
     }
 
 
     public void OnTriggerExit()
     {
-        StopAudio();
+        //StopAudio();
         FindObjectOfType<DialougeSystem>().OutOfRange();
         this.gameObject.GetComponent<NPCDialouge>().enabled = false;
     }
