@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388029211627896099}
-  m_Mesh: {fileID: -2432090755550338912, guid: 703f426f34d10574098ba1c6f904d2ef, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 5f250b3f76bfd314ba89dcfeeb459943, type: 2}
 --- !u!23 &7589001237309288159
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -83,6 +83,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1786888643089639781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 388925651103672181, guid: e7a1b1263323a7f4ca80660ae879e4ec, type: 3}
+  m_PrefabInstance: {fileID: 5773214353186878470}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5776380169004601123}
+  m_Layer: 0
+  m_Name: 'Gun (Missing Prefab with guid: e7a1b1263323a7f4ca80660ae879e4ec)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5776380169004601123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 15552546622061349, guid: e7a1b1263323a7f4ca80660ae879e4ec, type: 3}
+  m_PrefabInstance: {fileID: 5773214353186878470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786888643089639781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5669054425040037816}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2700162631586761807
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +155,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2700162631586761807}
-  m_Mesh: {fileID: -2432090755550338912, guid: df412ca8414903a4d8575cbf6027b919, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c2efde3ebee55be40b74405dce9702a1, type: 2}
 --- !u!23 &6242324773294634103
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -179,8 +210,8 @@ GameObject:
   - component: {fileID: 7202653629900133094}
   - component: {fileID: 1063258165517193957}
   - component: {fileID: 8498307261239625012}
-  - component: {fileID: 2652711799328214708}
   - component: {fileID: 8428908896013448773}
+  - component: {fileID: 8404258573188856785}
   m_Layer: 8
   m_Name: Guard1
   m_TagString: Enemy
@@ -262,56 +293,10 @@ MonoBehaviour:
   MaxHealth: 35
   XpGiven: 0
   pubDamageSpawn: {x: 0, y: 0, z: 0}
-  AiController: {fileID: 2652711799328214708}
+  AiController: {fileID: 0}
   HealthSlider: {fileID: 1730725413983311012}
   EnemyDeathParticle: {fileID: 3675983425641567754}
   customColor: {r: 0, g: 0.6382828, b: 1, a: 0}
---- !u!114 &2652711799328214708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3675983425641567754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b161045a12dd2f74b83eded0b6f6b60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 1063258165517193957}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1536
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  whatIsntPlayer:
-    serializedVersion: 2
-    m_Bits: 17671
-  whatIsBullet:
-    serializedVersion: 2
-    m_Bits: 128
-  timeBetweenAttacks: 2
-  alreadyAttacked: 0
-  sightRange: 300
-  attackRange: 20
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  isFrozen: 0
-  Enemy: {fileID: 3675983425641567754}
-  RendMaterials:
-  - {fileID: 7307692042363808293}
-  - {fileID: 7589001237309288159}
-  - {fileID: 3547236100918990733}
-  - {fileID: 4426792060341812611}
-  - {fileID: 6242324773294634103}
-  - {fileID: 7261210981368675145}
-  roomspawn: {fileID: 0}
-  IsRogueLite: 0
-  animator: {fileID: 8428908896013448773}
-  projectile: {fileID: 6312070379732830562, guid: 98790e98400b1754c8f3493e4f2e3c08, type: 3}
-  bulletVelocity: 35
 --- !u!95 &8428908896013448773
 Animator:
   serializedVersion: 4
@@ -332,6 +317,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8404258573188856785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675983425641567754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f490f462d9cf6c14c88580c7bdc37807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsntPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 0
+  timeBetweenAttacks: 0
+  alreadyAttacked: 0
+  sightRange: 0
+  attackRange: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  isFrozen: 0
+  Enemy: {fileID: 0}
+  RendMaterials: []
+  roomspawn: {fileID: 0}
+  IsRogueLite: 0
+  animator: {fileID: 0}
+  projectile: {fileID: 0}
+  bulletVelocity: 0
 --- !u!1 &5010662042725263841
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +397,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5010662042725263841}
-  m_Mesh: {fileID: -2432090755550338912, guid: 990baf1b89d5f0c4ca8be0b376552d40, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 98a04874f7edd044bb0deb49f8cbc896, type: 2}
 --- !u!23 &7261210981368675145
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -455,7 +480,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7649959354932722697}
-  m_Mesh: {fileID: -2432090755550338912, guid: 0383f2ac1becb6a40a967603b11d6396, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7a1b1f8995b8ed74582e6a654f2ba4d3, type: 2}
 --- !u!23 &4426792060341812611
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -538,7 +563,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8740033236383306113}
-  m_Mesh: {fileID: -2432090755550338912, guid: 349fccf2379567b4999bb8dfafd40f8b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 6ce901a4597d483479e6f846b809189b, type: 2}
 --- !u!23 &7307692042363808293
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -621,7 +646,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9197276016771823964}
-  m_Mesh: {fileID: -2432090755550338912, guid: 96186d1f472f5944d9150aa9b416ec2a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1bfd4b699af98674ea8898152defdd10, type: 2}
 --- !u!23 &3547236100918990733
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -721,11 +746,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a1b1263323a7f4ca80660ae879e4ec, type: 3}
---- !u!4 &5776380169004601123 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 15552546622061349, guid: e7a1b1263323a7f4ca80660ae879e4ec, type: 3}
-  m_PrefabInstance: {fileID: 5773214353186878470}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5945402521818153388
 PrefabInstance:
   m_ObjectHideFlags: 0
