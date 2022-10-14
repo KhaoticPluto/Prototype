@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
     public LayerMask WhatIsEnemy;
     public LayerMask WhatisWall;
 
+    public Transform TipOfBullet;
 
     public GameObject Explosion;
     public GameObject FreezeExplosion;
@@ -125,8 +126,9 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         pierceCount++;
-        GameObject _particle = Instantiate(_bulletHitParticles, transform.position, Quaternion.identity);
-        Destroy(_particle, 1f);
+        GameObject _particle = Instantiate(_bulletHitParticles, TipOfBullet.position, Quaternion.identity);
+        _particle.transform.localScale += this.transform.localScale;
+        Destroy(_particle, 0.5f);
 
         if (collision.gameObject.tag == "Boss")
         {
@@ -170,6 +172,7 @@ public class Bullet : MonoBehaviour
         if (_upgrades.explosiveCountUpgraded > 0)
         {
             CheckForEnemies();
+            
         }
 
     }
@@ -178,8 +181,9 @@ public class Bullet : MonoBehaviour
     {
         ricochetCount++;
         transform.forward = rb.velocity;
-        GameObject _particle = Instantiate(_bulletHitParticles, transform.position, Quaternion.identity);
-        Destroy(_particle, 1f);
+        GameObject _particle = Instantiate(_bulletHitParticles, TipOfBullet.position, Quaternion.identity);
+        _particle.transform.localScale += this.transform.localScale;
+        Destroy(_particle, 0.5f);
         ///Mega Ricochet set bonus
         if (isMegaRicochet)
         {
@@ -247,42 +251,36 @@ public class Bullet : MonoBehaviour
     /// </summary>
     void CheckForEnemies()
     {
-        
+        SpawnExplosion();
+        ///Explosion Magnet set bonus
+        if (isExplosionMagnet)
+        {
+            FireRemnants();
+
+        }
+        ///ultraFreeze
+        if (isUltraFreeze)
+        {
+            SpawnFreezeExplosion();
+
+        }
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosiveArea, WhatIsEnemy);
         foreach (Collider collider in colliders)
         {
-            if(collider.gameObject.tag == "Enemy" )
-            {
-                damageSpawn = Random.Range(0, 4);
-                SpawnExplosion();
-                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage / 2, isCritical);
+            if(collider.CompareTag("Enemy"))
+            {                
+                collider.gameObject.GetComponent<EnemyHealth>().EnemyTakeDamage(Mathf.RoundToInt(Damage / 2), isCritical);
 
-                ///Explosion Magnet set bonus
-                if (isExplosionMagnet)
-                {
-                    FireRemnants();
-
-                }
                 ///ultraFreeze
                 if (isUltraFreeze)
                 {
-                    SpawnFreezeExplosion();
                     collider.gameObject.GetComponent<EnemyAiController>().StartFrozen(freezeTime / 2);
-
                 }
             }
-            else if(collider.gameObject.tag == "Boss")
-            {
-                damageSpawn = Random.Range(0, 4);
-                SpawnExplosion();
-                collider.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Damage / 2, isCritical);
-
-                if (isExplosionMagnet)
-                {
-                    FireRemnants();
-
-                }
-
+            else if(collider.CompareTag("Boss"))
+            {                
+                collider.gameObject.GetComponent<BossHealth>().EnemyTakeDamage(Mathf.RoundToInt(Damage / 2), isCritical);               
             }
 
         }
@@ -290,7 +288,7 @@ public class Bullet : MonoBehaviour
 
     void SpawnFreezeExplosion()
     {
-        GameObject explosion = Instantiate(FreezeExplosion, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(FreezeExplosion, TipOfBullet.position, Quaternion.identity);
         explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
         Destroy(explosion, 1.5f);
     }
@@ -298,7 +296,7 @@ public class Bullet : MonoBehaviour
 
     void SpawnExplosion()
     {
-        GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(Explosion, TipOfBullet.position, Quaternion.identity);
         explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);
         Destroy(explosion, 1.5f);
     }
@@ -310,9 +308,8 @@ public class Bullet : MonoBehaviour
         ParticleSystem ps = remnants.GetComponent<ParticleSystem>();
         var sh = ps.shape;
         sh.radius = explosiveArea / 2;
-        SphereCollider sphere = remnants.GetComponent<SphereCollider>();
-        sphere.radius = explosiveArea / 2;
-        remnants.GetComponent<EnvironmentalDangers>().radius = explosiveArea / 2;
+        EnvironmentalDangers ed = remnants.GetComponent<EnvironmentalDangers>();
+        ed.Damage = Mathf.RoundToInt(Damage / 2);
         Destroy(remnants, 5);
     }
     

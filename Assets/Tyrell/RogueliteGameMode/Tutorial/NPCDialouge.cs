@@ -10,6 +10,9 @@ public class NPCDialouge : MonoBehaviour
     public Transform ChatBackGround;
     public Transform NPCCharacter;
 
+    public AudioClip aClips;
+    AudioSource aSource = null;
+
     private DialougeSystem dialogueSystem;
 
     public string Name;
@@ -32,6 +35,7 @@ public class NPCDialouge : MonoBehaviour
 
         if ((other.gameObject.tag == "Player")) 
         {
+            PlayAudio();
             this.gameObject.GetComponent<NPCDialouge>().enabled = true;
             dialogueSystem.Names = Name;
             dialogueSystem.dialogueLines = sentences;
@@ -39,8 +43,21 @@ public class NPCDialouge : MonoBehaviour
         }
     }
 
+    void PlayAudio()
+    {
+        aSource.PlayOneShot(aClips);
+
+    }
+
+    void StopAudio()
+    {
+        aSource.Stop();
+    }
+
+
     public void OnTriggerExit()
     {
+        StopAudio();
         FindObjectOfType<DialougeSystem>().OutOfRange();
         this.gameObject.GetComponent<NPCDialouge>().enabled = false;
     }

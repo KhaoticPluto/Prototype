@@ -106,7 +106,7 @@ public class HUDManager : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0;
         PlayerData.instance.SaveData();
-        SettingsParent?.SetActive(true);
+        SettingsParent.SetActive(true);
         HudParent.SetActive(false);
 
     }
