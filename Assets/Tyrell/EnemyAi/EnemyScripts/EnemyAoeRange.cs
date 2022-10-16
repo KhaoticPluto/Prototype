@@ -7,7 +7,7 @@ public class EnemyAoeRange : EnemyAiController
     public GameObject projectile;
     public int ProjectilesFired = 5;
     public float projectileSpread = -45f;
-    
+
 
     public float projectilesSpeed;
     public bool isElite;
@@ -16,7 +16,7 @@ public class EnemyAoeRange : EnemyAiController
 
     public override void AttackPlayer()
     {
-        
+
 
         Vector3 offsetPlayer = player.transform.position - transform.position;
 
@@ -27,10 +27,10 @@ public class EnemyAoeRange : EnemyAiController
         //agent.SetDestination(transform.position);
 
         transform.LookAt(player);
-        
+
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        
-        
+
+
         if (!alreadyAttacked)
         {
             ///Attack code here
@@ -46,9 +46,9 @@ public class EnemyAoeRange : EnemyAiController
 
                 projectileSpread += 15f;
 
-                
-                rb.AddForce(aoeProjectile.transform.forward * projectilesSpeed, ForceMode.VelocityChange) ;
-                
+
+                rb.AddForce(aoeProjectile.transform.forward * projectilesSpeed, ForceMode.VelocityChange);
+
             }
 
             ///End of attack code
@@ -59,13 +59,13 @@ public class EnemyAoeRange : EnemyAiController
 
     }
 
-    
+
 
     public override void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        
-        
+
+
     }
 
     public override void ResetAttack()
@@ -75,3 +75,4 @@ public class EnemyAoeRange : EnemyAiController
     }
 
 }
+

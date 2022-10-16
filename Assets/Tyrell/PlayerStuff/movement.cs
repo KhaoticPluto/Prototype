@@ -119,29 +119,24 @@ public class movement : MonoBehaviour
         {
             StartCoroutine(IsKnockBacked());
         }
-        
 
         Timer += Time.deltaTime;
 
-        if(Timer > DelayAmount)
+        if (Timer > DelayAmount)
         {
             Timer = 0;
             if (DetectMovement == 1)
             {
                 HowMuchPlayerMoved++;
-                
+
             }
             if (DetectMovement == 0)
             {
                 HowMuchPlayerStill++;
-                
+
             }
 
         }
-
-        
-        
-        
 
     }
 
@@ -201,8 +196,11 @@ public class movement : MonoBehaviour
 
         while (Time.time < startTime + upgrade._dashTime)
         {
-            controller.Move(_moveDirection.ToIso() * upgrade._dashSpeed * Time.deltaTime);
-            
+            if(DetectMovement == 1)
+                controller.Move(_moveDirection.ToIso() * upgrade._dashSpeed * Time.deltaTime);
+            else
+                controller.Move(transform.forward * (upgrade._dashSpeed + 160) * Time.deltaTime);
+
             _dashCooldown = upgrade._dashCooldownTime;
             _isDashing = false;
             yield return null;

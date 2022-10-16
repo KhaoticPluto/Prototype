@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    void EnemyKilled(string Name)
+    public virtual void EnemyKilled(string Name)
     {
         GameObject enemyDeathParticle = Instantiate(EnemyDeathParticle, transform.position, Quaternion.identity);
         enemyDeathParticle.GetComponent<EnemyDeathParticle>().newColor = customColor;

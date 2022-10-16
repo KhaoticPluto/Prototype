@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3307521731157396059}
   - component: {fileID: 1603328052822333968}
   - component: {fileID: 3307521731157396061}
-  - component: {fileID: -8582391336687900752}
   - component: {fileID: 3850542442741390902}
+  - component: {fileID: -4133207223462345270}
   m_Layer: 8
   m_Name: EnemyExploder
   m_TagString: Enemy
@@ -123,26 +123,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-8582391336687900752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3307521731157396062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 15
-  MaxHealth: 15
-  XpGiven: 5
-  pubDamageSpawn: {x: 0, y: 0, z: 0}
-  AiController: {fileID: 3850542442741390902}
-  HealthSlider: {fileID: 1074902124127939698}
-  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
-  customColor: {r: 1, g: 0.77254903, b: 0.023529412, a: 0}
 --- !u!114 &3850542442741390902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +169,27 @@ MonoBehaviour:
   WhatIsOtherEnemies:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &-4133207223462345270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307521731157396062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99eb8f8b80aac4f41a1f1373482260ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 10
+  MaxHealth: 10
+  XpGiven: 0
+  pubDamageSpawn: {x: 0, y: 0, z: 0}
+  AiController: {fileID: 3850542442741390902}
+  HealthSlider: {fileID: 1074902124127939698}
+  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
+  customColor: {r: 1, g: 0.7534226, b: 0, a: 0}
+  explode: {fileID: 3850542442741390902}
 --- !u!1001 &4930390762244077946
 PrefabInstance:
   m_ObjectHideFlags: 0

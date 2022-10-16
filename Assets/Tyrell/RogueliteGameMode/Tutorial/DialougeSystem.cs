@@ -25,12 +25,12 @@ public class DialougeSystem : MonoBehaviour
     public bool dialogueEnded = false;
     public bool outOfRange = true;
 
-    public AudioClip audioClip;
-    AudioSource audioSource;
+    //public AudioClip audioClip;
+    //AudioSource audioSource;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         dialogueText.text = "";
         dialogueBoxGUI.gameObject.SetActive(false);
     }
