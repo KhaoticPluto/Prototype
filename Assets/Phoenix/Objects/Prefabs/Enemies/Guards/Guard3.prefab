@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158075351657616234}
-  m_Mesh: {fileID: 4300000, guid: 80565ecaab632c24084331ca7a6272e1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 23f5ffa66363f3342854795cff3047bd, type: 2}
 --- !u!23 &4855032284402838443
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814606424600121244}
-  m_Mesh: {fileID: 4300000, guid: 5c50455338298094cac2835efe6c3b6d, type: 2}
+  m_Mesh: {fileID: 4300000, guid: db2e085713baf814ba27d2790d691c8c, type: 2}
 --- !u!23 &2645564933718200823
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5791038130262027774}
-  m_Mesh: {fileID: 4300000, guid: 8104da17104f89841be820481cbf0f8a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 83fbab8ffe90b8648bdbf105e7c49b81, type: 2}
 --- !u!23 &5211030346647002413
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6088425437229934995}
-  m_Mesh: {fileID: 4300000, guid: 1e9e3c93599e17e41bac59edfc2d265e, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 7ce9783e4aecddd4c92cea7773bbbe71, type: 2}
 --- !u!23 &6281120179049211036
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 6649511347719830530}
   - component: {fileID: 6088713170529354728}
   - component: {fileID: 2330411219843623902}
-  - component: {fileID: 5847787459247861936}
+  - component: {fileID: 3599537439259119053}
   m_Layer: 8
   m_Name: Guard3
   m_TagString: Enemy
@@ -400,7 +400,7 @@ Animator:
   m_GameObject: {fileID: 7350509462297052140}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6eb41d752f808744aaf3c39aed734fd0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 25804a173b90fc846ae5bfd2686b4f0a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -448,11 +448,11 @@ MonoBehaviour:
   MaxHealth: 35
   XpGiven: 5
   pubDamageSpawn: {x: 0, y: 0, z: 0}
-  AiController: {fileID: 5847787459247861936}
+  AiController: {fileID: 3599537439259119053}
   HealthSlider: {fileID: 385128237614855679}
   EnemyDeathParticle: {fileID: 7350509462297052140}
   customColor: {r: 0, g: 0.6392157, b: 1, a: 0}
---- !u!114 &5847787459247861936
+--- !u!114 &3599537439259119053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -461,37 +461,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 7350509462297052140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b161045a12dd2f74b83eded0b6f6b60a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b5e3f40fec78c043933154def46c8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 6088713170529354728}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1536
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   whatIsntPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 17671
   whatIsBullet:
     serializedVersion: 2
-    m_Bits: 0
-  timeBetweenAttacks: 0
+    m_Bits: 128
+  timeBetweenAttacks: 0.5
   alreadyAttacked: 0
-  sightRange: 0
-  attackRange: 0
+  sightRange: 300
+  attackRange: 90
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 7350509462297052140}
   RendMaterials: []
   roomspawn: {fileID: 0}
   IsRogueLite: 0
-  animator: {fileID: 0}
-  projectile: {fileID: 0}
-  bulletVelocity: 0
+  animator: {fileID: 8428908896013448773, guid: 04f167e4f5c6af84085b63fc32074116, type: 3}
+  projectile: {fileID: 6312070379732830562, guid: c889927b1fe45264895f1febe27dd1b8, type: 3}
+  bulletVelocity: 30
 --- !u!1 &9122380855636941855
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9122380855636941855}
-  m_Mesh: {fileID: 4300000, guid: b2f3ee209dc0d9c42bc16244d297ee05, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 7213bf96e59228f46b21ed4b813b15fc, type: 2}
 --- !u!23 &6086161095209847927
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -615,7 +615,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9183905491600008963}
-  m_Mesh: {fileID: 4300000, guid: f540dab9f75a93849b08360bf00620d0, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bce6dc354e65b454887f7799efaee499, type: 2}
 --- !u!23 &8842244423285491366
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -116,7 +116,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928054220805743140}
-  m_Mesh: {fileID: 4300000, guid: 6d1f06b98e0c2464cb88176aa86c3fc3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e23c14b3008c6e24280bd455f5a5aa12, type: 2}
 --- !u!23 &6208725308966502301
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695272081264733994}
-  m_Mesh: {fileID: 4300000, guid: 30fafe723d5917b4d9e36f6093f5d87a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 46e8aed8e5efd0245a1e552fef6e54f5, type: 2}
 --- !u!23 &3829507848991728038
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093363584210757248}
-  m_Mesh: {fileID: 4300000, guid: b27868db01d61744bad4c5fc0a2b8e02, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f9322349607185d44a1f2f6c83bc038e, type: 2}
 --- !u!23 &5792200094485833043
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -730,7 +730,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2626045884573207451}
-  m_Mesh: {fileID: 4300000, guid: 0871efb706cb5fe468c9b199472b17d1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9189a99b72f7b6b4c83331c201af0147, type: 2}
 --- !u!23 &8241953998518873763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -813,7 +813,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3313597362487434263}
-  m_Mesh: {fileID: 4300000, guid: 89424ab9c2b5e7a4f834a760f915b5e8, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bafe029ba36800d4393d08f30b432aea, type: 2}
 --- !u!23 &6828899710931188116
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -904,6 +904,8 @@ GameObject:
   - component: {fileID: 1585320078632323230}
   - component: {fileID: 4390457431133105050}
   - component: {fileID: 7261786209470867541}
+  - component: {fileID: 3176605594739496306}
+  - component: {fileID: 3752286506460075036}
   m_Layer: 8
   m_Name: GuardElite1
   m_TagString: Enemy
@@ -989,6 +991,69 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3176605594739496306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565683209605131544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 35
+  MaxHealth: 35
+  XpGiven: 0
+  pubDamageSpawn: {x: 0, y: 0, z: 0}
+  AiController: {fileID: 3752286506460075036}
+  HealthSlider: {fileID: 5274623668697735103}
+  EnemyDeathParticle: {fileID: 3565683209605131544}
+  customColor: {r: 0.010946936, g: 0.7735849, b: 0.08436452, a: 0}
+--- !u!114 &3752286506460075036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565683209605131544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b009292ad97caa7449eb4ad875c39bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1585320078632323230}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1536
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsntPlayer:
+    serializedVersion: 2
+    m_Bits: 17671
+  whatIsBullet:
+    serializedVersion: 2
+    m_Bits: 128
+  timeBetweenAttacks: 3
+  alreadyAttacked: 0
+  sightRange: 300
+  attackRange: 20
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  isFrozen: 0
+  Enemy: {fileID: 3565683209605131544}
+  RendMaterials: []
+  roomspawn: {fileID: 0}
+  IsRogueLite: 0
+  projectile: {fileID: 6164408097980257859, guid: 2b65ad3095a8066429a5f7a97bb3e4b5, type: 3}
+  ProjectilesFired: 5
+  projectileSpread: -45
+  animator: {fileID: 7261786209470867541}
+  projectilesSpeed: 50
+  isElite: 0
 --- !u!1 &5957596523952213051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1131,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5990003115862672345}
-  m_Mesh: {fileID: 4300000, guid: 1f826c54df505864794d6df8002684cf, type: 2}
+  m_Mesh: {fileID: 4300000, guid: df2326798279d6947ac45cccc0c311ec, type: 2}
 --- !u!23 &5777403091463590312
 MeshRenderer:
   m_ObjectHideFlags: 0
