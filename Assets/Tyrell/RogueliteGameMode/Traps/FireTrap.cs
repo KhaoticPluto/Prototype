@@ -28,10 +28,14 @@ public class FireTrap : MonoBehaviour
         foreach (Collider col in hitColliders)
         {
             
-            if (col.gameObject.tag == "Player")
+            if (col.CompareTag( "Player"))
             {
                 col.GetComponent<PlayerHealth>().TakeDamage(Damage);
 
+            }
+            if (col.CompareTag("Enemy"))
+            {
+                col.GetComponent<EnemyHealth>().EnemyTakeDamage(Damage, false);
             }
         }
 
