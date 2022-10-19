@@ -20,7 +20,7 @@ public class NPCDialouge : MonoBehaviour
     [TextArea(5, 10)]
     public string[] sentences;
 
-    bool audioplaying = false;
+    //bool audioplaying = false;
 
     void Start()
     {
@@ -52,14 +52,14 @@ public class NPCDialouge : MonoBehaviour
 
     void PlayAudio()
     {
-        audioplaying = true;
+        //audioplaying = true;
         aSource.PlayOneShot(aClips);
 
     }
 
     void StopAudio()
     {
-        audioplaying = false;
+        //audioplaying = false;
         aSource.Stop();
         
     }

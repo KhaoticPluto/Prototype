@@ -554,7 +554,7 @@ NavMeshAgent:
   m_Speed: 4
   m_Acceleration: 14
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -615,7 +615,7 @@ MonoBehaviour:
   pubDamageSpawn: {x: 0, y: 0, z: 0}
   AiController: {fileID: 5693325206116309803}
   HealthSlider: {fileID: 8969293706559562559}
-  EnemyDeathParticle: {fileID: 7340522601798896564}
+  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
   customColor: {r: 0.011764706, g: 0.77254903, b: 0.08627451, a: 0}
 --- !u!114 &5693325206116309803
 MonoBehaviour:
@@ -651,7 +651,13 @@ MonoBehaviour:
   playerInAttackRange: 0
   isFrozen: 0
   Enemy: {fileID: 7340522601798896564}
-  RendMaterials: []
+  RendMaterials:
+  - {fileID: 4320982765857466392}
+  - {fileID: 1170970670089057062}
+  - {fileID: 9049814923146564613}
+  - {fileID: 4158058950195045413}
+  - {fileID: 1133525501510971987}
+  - {fileID: 8319506474991127720}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
   animator: {fileID: 585626416818849967}

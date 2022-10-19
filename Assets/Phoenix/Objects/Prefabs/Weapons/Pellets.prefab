@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2502916201101719414}
   - component: {fileID: -594097584536198110}
   - component: {fileID: 6282762477120353459}
+  - component: {fileID: 8330604461774792381}
   m_Layer: 0
   m_Name: Pellets
   m_TagString: Untagged
@@ -93,7 +94,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6164408097980257859}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.9
@@ -114,3 +115,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 0
+--- !u!114 &8330604461774792381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164408097980257859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bff45f70e037f48ae39a29b2881117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDamage: 15
+  MinDamage: 5
