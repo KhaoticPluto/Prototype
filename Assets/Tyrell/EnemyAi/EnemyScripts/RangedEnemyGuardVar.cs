@@ -25,6 +25,7 @@ public class RangedEnemyGuardVar : EnemyAiController
             Rigidbody rb = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity).GetComponent<Rigidbody>();
             rb.gameObject.transform.LookAt(player.transform);
             rb.velocity = transform.forward * bulletVelocity;
+            rb.gameObject.transform.Rotate(0, -90, 0);
             //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
             ///End of attack code
