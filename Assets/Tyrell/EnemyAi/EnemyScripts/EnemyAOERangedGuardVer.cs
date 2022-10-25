@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAOERangedGuardVer : EnemyAiController
 {
+
     public GameObject projectile;
     public int ProjectilesFired = 5;
     public float projectileSpread = -45f;
@@ -15,12 +16,7 @@ public class EnemyAOERangedGuardVer : EnemyAiController
 
     public override void AttackPlayer()
     {
-
-
-        Vector3 offsetPlayer = player.transform.position - transform.position;
-
-        Vector3 dir = Vector3.Cross(offsetPlayer, Vector3.down);
-        agent.SetDestination(transform.position + dir);
+        agent.SetDestination(transform.position);
 
         //Make sure enemy doesn't move
         //agent.SetDestination(transform.position);
@@ -35,6 +31,7 @@ public class EnemyAOERangedGuardVer : EnemyAiController
             ///Attack code here
             for (int i = 0; i < ProjectilesFired; i++)
             {
+                animator.SetTrigger("isAttacking");
 
                 GameObject aoeProjectile = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity);
                 Rigidbody rb = aoeProjectile.GetComponent<Rigidbody>();

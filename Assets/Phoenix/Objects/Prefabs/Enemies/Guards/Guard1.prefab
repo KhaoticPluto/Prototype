@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 335269176267798817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 34.2, y: 50.3, z: -6.5}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5126007802178629349}
@@ -357,7 +357,7 @@ NavMeshAgent:
   m_Speed: 12
   m_Acceleration: 14
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -384,7 +384,7 @@ MonoBehaviour:
   pubDamageSpawn: {x: 0, y: 0, z: 0}
   AiController: {fileID: 9020242470248723084}
   HealthSlider: {fileID: 1264244314118397433}
-  EnemyDeathParticle: {fileID: 4218761701097742167}
+  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
   customColor: {r: 0, g: 0.6382828, b: 1, a: 0}
 --- !u!95 &9040630879858212632
 Animator:
@@ -396,7 +396,7 @@ Animator:
   m_GameObject: {fileID: 4218761701097742167}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f529d514e22969042b720c6511c63e73, type: 2}
+  m_Controller: {fileID: 9100000, guid: cf1023e57e97b8745a94bc146d86fcaa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5e3f40fec78c043933154def46c8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1063258165517193957, guid: 04f167e4f5c6af84085b63fc32074116, type: 3}
+  agent: {fileID: 526579974003317688}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -439,13 +439,19 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
-  Enemy: {fileID: 3675983425641567754, guid: 04f167e4f5c6af84085b63fc32074116, type: 3}
-  RendMaterials: []
+  Enemy: {fileID: 4218761701097742167}
+  RendMaterials:
+  - {fileID: 6980076342195988354}
+  - {fileID: 7846846325481661304}
+  - {fileID: 4086429977188572880}
+  - {fileID: 6858572490872601898}
+  - {fileID: 3810227760724686046}
+  - {fileID: 7875312452253512212}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
-  animator: {fileID: 8428908896013448773, guid: 04f167e4f5c6af84085b63fc32074116, type: 3}
-  projectile: {fileID: 6312070379732830562, guid: c889927b1fe45264895f1febe27dd1b8, type: 3}
-  bulletVelocity: 30
+  animator: {fileID: 9040630879858212632}
+  projectile: {fileID: 2152071528183880243, guid: d2ecbd44f66f2034e87f83bfd1ecea1d, type: 3}
+  bulletVelocity: 40
 --- !u!1 &4901030667131688428
 GameObject:
   m_ObjectHideFlags: 0

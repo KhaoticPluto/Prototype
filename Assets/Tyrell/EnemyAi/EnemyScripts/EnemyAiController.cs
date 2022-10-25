@@ -64,7 +64,10 @@ public class EnemyAiController : MonoBehaviour
 
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Wander();
-        if (playerInSightRange  && !playerInAttackRange) ChasePlayer();
+
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        else if (playerInSightRange && playerInAttackRange && CanSeeTarget() == false) ChasePlayer();
+
         if (playerInAttackRange && playerInSightRange && !isFrozen && CanSeeTarget()) AttackPlayer();
         //if (!playerInAttackRange && playerInSightRange && bulletInRange) EvadeBullet();
 
@@ -84,7 +87,7 @@ public class EnemyAiController : MonoBehaviour
         Vector3 rayToTarget = player.transform.position - this.transform.position;
         //perform a raycast to determine if there's anything between the agent and the target
         
-        if (Physics.Raycast(this.transform.position, rayToTarget, out raycastInfo, sightRange , whatIsPlayer))
+        if (Physics.Raycast(this.transform.position, rayToTarget, out raycastInfo, sightRange))
         {
             //ray will hit the target if no other colliders in the way
             if (raycastInfo.transform.gameObject.tag == "Player")

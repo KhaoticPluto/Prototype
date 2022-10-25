@@ -400,7 +400,7 @@ Animator:
   m_GameObject: {fileID: 7350509462297052140}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 25804a173b90fc846ae5bfd2686b4f0a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9ed198984f2e1ca4485f1a814161a90c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -423,7 +423,7 @@ NavMeshAgent:
   m_Speed: 9
   m_Acceleration: 14
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -450,7 +450,7 @@ MonoBehaviour:
   pubDamageSpawn: {x: 0, y: 0, z: 0}
   AiController: {fileID: 3599537439259119053}
   HealthSlider: {fileID: 385128237614855679}
-  EnemyDeathParticle: {fileID: 7350509462297052140}
+  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
   customColor: {r: 0, g: 0.6392157, b: 1, a: 0}
 --- !u!114 &3599537439259119053
 MonoBehaviour:
@@ -478,7 +478,7 @@ MonoBehaviour:
   whatIsBullet:
     serializedVersion: 2
     m_Bits: 128
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 0.8
   alreadyAttacked: 0
   sightRange: 300
   attackRange: 90
@@ -486,12 +486,18 @@ MonoBehaviour:
   playerInAttackRange: 0
   isFrozen: 0
   Enemy: {fileID: 7350509462297052140}
-  RendMaterials: []
+  RendMaterials:
+  - {fileID: 8842244423285491366}
+  - {fileID: 6281120179049211036}
+  - {fileID: 4855032284402838443}
+  - {fileID: 2645564933718200823}
+  - {fileID: 6086161095209847927}
+  - {fileID: 5211030346647002413}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
-  animator: {fileID: 8428908896013448773, guid: 04f167e4f5c6af84085b63fc32074116, type: 3}
-  projectile: {fileID: 6312070379732830562, guid: c889927b1fe45264895f1febe27dd1b8, type: 3}
-  bulletVelocity: 30
+  animator: {fileID: 6649511347719830530}
+  projectile: {fileID: 2152071528183880243, guid: d2ecbd44f66f2034e87f83bfd1ecea1d, type: 3}
+  bulletVelocity: 40
 --- !u!1 &9122380855636941855
 GameObject:
   m_ObjectHideFlags: 0

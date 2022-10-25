@@ -325,7 +325,7 @@ NavMeshAgent:
   m_Speed: 12
   m_Acceleration: 14
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -363,12 +363,18 @@ MonoBehaviour:
   timeBetweenAttacks: 0.5
   alreadyAttacked: 0
   sightRange: 300
-  attackRange: 2
+  attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
   isFrozen: 0
   Enemy: {fileID: 6888162441433419997}
-  RendMaterials: []
+  RendMaterials:
+  - {fileID: 3580984907257809813}
+  - {fileID: 6204384051591386252}
+  - {fileID: 3443824736003373906}
+  - {fileID: 623213080866903184}
+  - {fileID: 2475366564819848767}
+  - {fileID: 1549599816037063524}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
   animator: {fileID: 5778484647653399297}
@@ -391,7 +397,7 @@ MonoBehaviour:
   pubDamageSpawn: {x: 0, y: 0, z: 0}
   AiController: {fileID: 5074251722712979979}
   HealthSlider: {fileID: 310938700371919625}
-  EnemyDeathParticle: {fileID: 6888162441433419997}
+  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
   customColor: {r: 0, g: 0.6392157, b: 1, a: 0}
 --- !u!136 &6544223941926816880
 CapsuleCollider:
@@ -403,8 +409,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 21
-  m_Height: 104
+  m_Radius: 14.2
+  m_Height: 90.8
   m_Direction: 1
   m_Center: {x: 0.95, y: 40.5, z: -4}
 --- !u!1 &6956148263093086631
@@ -711,6 +717,34 @@ PrefabInstance:
     - target: {fileID: 1746829146296016875, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
       propertyPath: m_Name
       value: Taser
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853865279687443188, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
+      propertyPath: m_Size.x
+      value: 6.7483454
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853865279687443188, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
+      propertyPath: m_Size.y
+      value: 7.499999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853865279687443188, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
+      propertyPath: m_Size.z
+      value: 6.5694695
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853865279687443188, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
+      propertyPath: m_Center.x
+      value: -1.8741726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853865279687443188, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
+      propertyPath: m_Center.y
+      value: 5.8999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853865279687443188, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
+      propertyPath: m_Center.z
+      value: 0.834735
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853865279687443188, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea0e48134e636924a9acfdc968bc4ab0, type: 3}
