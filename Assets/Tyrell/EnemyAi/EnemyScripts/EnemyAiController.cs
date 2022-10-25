@@ -10,7 +10,7 @@ public class EnemyAiController : MonoBehaviour
     public NavMeshAgent agent;
 
     //players transform so enemy knows what to look for
-    public Transform player;
+    public Transform player;   
 
     //layermask so the ai knows what is the ground and player
     public LayerMask whatIsGround, whatIsPlayer, whatIsntPlayer, whatIsBullet;
@@ -19,7 +19,7 @@ public class EnemyAiController : MonoBehaviour
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
 
-
+    
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
@@ -34,7 +34,9 @@ public class EnemyAiController : MonoBehaviour
 
     //Script for the roguelite mode enemy room spawn
     public EnemyRoomSpawn roomspawn;
-    public bool IsRogueLite = false; 
+    public bool IsRogueLite = false;
+
+    public GameObject FreezePaticles;
     #endregion
 
     void Awake()
@@ -124,6 +126,10 @@ public class EnemyAiController : MonoBehaviour
 
     IEnumerator SetFrozen(float FreezeTime)
     {
+        GameObject freeze = Instantiate(FreezePaticles, transform.position + Vector3.up, Quaternion.identity);
+        freeze.transform.position = transform.position;
+        Destroy(freeze, FreezeTime);
+
         Color customColor = new Color(0, 0.9556165f, 1, 1);
         gameObject.GetComponent<NavMeshAgent>().isStopped = true;
         foreach(Renderer mats in RendMaterials)

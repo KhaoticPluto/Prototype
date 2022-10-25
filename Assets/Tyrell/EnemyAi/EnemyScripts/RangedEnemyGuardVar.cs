@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class RangedEnemyGuardVar : EnemyAiController
 {
+
+
     public Animator animator;
 
     public GameObject projectile;
 
     public float bulletVelocity = 0f;
+    public Transform GunPoint;
+    public GameObject MuzzleFlash;
+
     public override void AttackPlayer()
     {
         
@@ -22,7 +27,12 @@ public class RangedEnemyGuardVar : EnemyAiController
             
             animator.SetTrigger("isAttacking");
 
-            Rigidbody rb = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity).GetComponent<Rigidbody>();
+            GameObject muzFlash = Instantiate(MuzzleFlash, GunPoint.position, Quaternion.identity);
+            muzFlash.transform.LookAt(player);
+            muzFlash.transform.Rotate(0, -90, 0);
+            Destroy(muzFlash, 0.05f);
+
+            Rigidbody rb = Instantiate(projectile, new Vector3(GunPoint.position.x, 2, GunPoint.position.z), Quaternion.identity).GetComponent<Rigidbody>();
             rb.gameObject.transform.LookAt(player.transform);
             rb.velocity = transform.forward * bulletVelocity;
             rb.gameObject.transform.Rotate(0, -90, 0);

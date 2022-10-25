@@ -726,9 +726,11 @@ MonoBehaviour:
   _pfBullet:
   - {fileID: 5072560294769514290, guid: 43792ad4e1b00054d847868028802d6c, type: 3}
   upgrades: {fileID: 4883173065574751562}
+  MuzzleFlash: {fileID: 100008, guid: 7b4c09739930d43458b94e59aa06933a, type: 3}
   baseSpread: 15
   spreadFactor: 0
   mousepos: {fileID: 9106102149235899697}
+  Shot: 0
 --- !u!114 &6572015540969281457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,6 +803,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgrade: {fileID: 4883173065574751562}
+  RendMaterials:
+  - {fileID: 7126652125199847551}
 --- !u!114 &8503657061165946038
 MonoBehaviour:
   m_ObjectHideFlags: 0

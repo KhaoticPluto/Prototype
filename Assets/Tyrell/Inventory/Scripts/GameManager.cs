@@ -44,10 +44,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    Inventory.instance.AddItemToGun(GunItemList[upgradeToSpawn]);
-        //}
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Inventory.instance.AddItemToGun(GunItemList[upgradeToSpawn]);
+        }
 
         if (Input.GetKeyDown(KeyCode.F2))
         {

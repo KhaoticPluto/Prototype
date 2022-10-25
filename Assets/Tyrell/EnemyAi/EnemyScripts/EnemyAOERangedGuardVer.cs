@@ -14,6 +14,9 @@ public class EnemyAOERangedGuardVer : EnemyAiController
     public float projectilesSpeed;
     public bool isElite;
 
+    public Transform GunPoint;
+    public GameObject MuzzleFlash;
+
     public override void AttackPlayer()
     {
         agent.SetDestination(transform.position);
@@ -33,7 +36,13 @@ public class EnemyAOERangedGuardVer : EnemyAiController
             {
                 animator.SetTrigger("isAttacking");
 
-                GameObject aoeProjectile = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity);
+                GameObject muzFlash = Instantiate(MuzzleFlash, GunPoint.position, Quaternion.identity);
+                muzFlash.transform.LookAt(player);
+                muzFlash.transform.Rotate(0, -90, 0);
+                Destroy(muzFlash, 0.05f);
+
+                GameObject aoeProjectile = Instantiate(projectile, new Vector3(GunPoint.position.x, 2, GunPoint.position.z) , Quaternion.identity);
+
                 Rigidbody rb = aoeProjectile.GetComponent<Rigidbody>();
 
                 aoeProjectile.transform.LookAt(player);

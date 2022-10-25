@@ -114,7 +114,7 @@ NavMeshAgent:
   m_Speed: 8
   m_Acceleration: 12
   avoidancePriority: 10
-  m_AngularSpeed: 180
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 3307521731157396059}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
+  FreezePaticles: {fileID: 9006409544324220127, guid: 0264786a8b645344ba0453371cd2fa13, type: 3}
   Explosion: {fileID: 3802423153891719707, guid: 44704e05c2f49374c95bd881a7185710, type: 3}
   explosiveArea: 10
   explosionDamage: 10
@@ -189,6 +190,8 @@ MonoBehaviour:
   HealthSlider: {fileID: 1074902124127939698}
   EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
   customColor: {r: 1, g: 0.7534226, b: 0, a: 0}
+  RendMaterials:
+  - {fileID: 3307521731157396059}
   explode: {fileID: 3850542442741390902}
 --- !u!1001 &4930390762244077946
 PrefabInstance:

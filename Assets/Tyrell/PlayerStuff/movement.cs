@@ -63,7 +63,7 @@ public class movement : MonoBehaviour
 
     private void Update()
     {
-        
+        isShooting = shootProjectile.Shot;
         //Input
         GatherInput();
         //Aim
@@ -75,14 +75,14 @@ public class movement : MonoBehaviour
         //Shoots projectile from shootprojectile script
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            isShooting = true;
+            
             shootProjectile.ComponentShoot();
             _animator.SetBool("isWalkOrShooting", true);
 
         }
         else
         {
-            isShooting = false;
+            
             _animator.SetBool("isWalkOrShooting", false);
         }
 

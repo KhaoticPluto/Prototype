@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: 4791544695987631021}
   roomspawn: {fileID: 0}
   IsRogueLite: 0
+  FreezePaticles: {fileID: 9006409544324220127, guid: 0264786a8b645344ba0453371cd2fa13, type: 3}
   animator: {fileID: 4118921638397744508}
   agentTransform: {fileID: 240282476735349761}
 --- !u!95 &4118921638397744508
@@ -149,7 +150,14 @@ MonoBehaviour:
   AiController: {fileID: 3572810805014757642}
   HealthSlider: {fileID: 2312058614153189027}
   EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
-  customColor: {r: 0.8207547, g: 0.5104584, b: 0.17421682, a: 0}
+  customColor: {r: 0.8679245, g: 0.6895509, b: 0.495372, a: 0}
+  RendMaterials:
+  - {fileID: 7832232717858142289}
+  - {fileID: 631591123249457830}
+  - {fileID: 6136973726852408303}
+  - {fileID: 6541662683501991959}
+  - {fileID: 2867285638671682242}
+  - {fileID: 4791544695987631021}
 --- !u!136 &1224078962060304986
 CapsuleCollider:
   m_ObjectHideFlags: 0

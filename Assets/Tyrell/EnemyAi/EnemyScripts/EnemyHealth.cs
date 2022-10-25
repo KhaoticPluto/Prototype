@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public float Health = 35;
     public float MaxHealth = 35;
     public float XpGiven;
+    float HitTime = 0.1f;
 
     public Vector3 pubDamageSpawn = Vector3.zero;
 
@@ -18,7 +19,8 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject EnemyDeathParticle;
     public Color customColor;
-    
+
+    public Renderer[] RendMaterials;
 
     private void Update()
     {
@@ -51,6 +53,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyTakeDamage(float amount, bool isCrit)
     {
+        StartCoroutine(SetHit());
         Health -= amount;
         float damageSpawn = Random.Range(0, 4);
         Vector3 enemyPos = new Vector3(transform.position.x + damageSpawn, transform.position.y + 5, transform.position.z);
@@ -58,6 +61,32 @@ public class EnemyHealth : MonoBehaviour
         DamagePopUp.Create(enemyPos + pubDamageSpawn, amount, isCrit);
 
         AiController.IncreaseSightRange();
+    }
+
+    IEnumerator SetHit()
+    {
+        Color customColor = new Color(0.9245283f, 0.3968494f, 0.3968494f, 1);
+        if (!AiController.isFrozen)
+        {
+            foreach (Renderer mats in RendMaterials)
+            {
+                mats.GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
+                mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
+            }
+        }
+        
+
+        
+        yield return new WaitForSeconds(HitTime);
+
+        if (!AiController.isFrozen)
+        {
+            foreach (Renderer mats in RendMaterials)
+            {
+                mats.GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
+                mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
+            }
+        }
     }
 
     public void EnemyGainHealth(float amount)

@@ -9,6 +9,9 @@ public class PlayerHealth : MonoBehaviour
 
     bool Invincibility;
 
+    public Renderer[] RendMaterials;
+    float HitTime = 0.1f;
+
     private void Start()
     {
         upgrade.GetComponent<Upgradeables>();
@@ -36,12 +39,31 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!Invincibility)
         {
+            StartCoroutine(SetHit());
             upgrade.Health -= amount;
             Debug.Log("Player took damage " + amount);
             DamagePopUp.Create(transform.position + (Vector3.up * 4), amount, false);
         }
         
         StartCoroutine(Invincible(0.5f));
+    }
+
+    IEnumerator SetHit()
+    {
+        Color customColor = new Color(0.9245283f, 0.3968494f, 0.3968494f, 1);
+        foreach (Renderer mats in RendMaterials)
+        {
+            mats.GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
+            mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
+        }
+
+        yield return new WaitForSeconds(HitTime);
+
+        foreach (Renderer mats in RendMaterials)
+        {
+            mats.GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
+            mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
+        }
     }
 
     public void GainHealth(float amount)

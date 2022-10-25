@@ -18,6 +18,9 @@ public class BossHealth : MonoBehaviour
     public GameObject EnemyDeathParticle;
     public Color customColor;
 
+    public Renderer[] RendMaterials;
+    float HitTime = 0.1f;
+
     private void Update()
     {
         HealthBar.value = CalculateHealth();
@@ -43,10 +46,33 @@ public class BossHealth : MonoBehaviour
 
     public void EnemyTakeDamage(float amount, bool isCrit)
     {
+        StartCoroutine(SetHit());
         Health -= amount;
         float damageSpawn = Random.Range(0, 4);
         Vector3 enemyPos = new Vector3(transform.position.x + damageSpawn, transform.position.y + 15, transform.position.z);
         DamagePopUp.Create(enemyPos, amount, isCrit);
+    }
+
+    IEnumerator SetHit()
+    {
+        Color customColor = new Color(0.9245283f, 0.3968494f, 0.3968494f, 1);
+
+        foreach (Renderer mats in RendMaterials)
+        {
+            mats.GetComponent<Renderer>().material.SetColor("_BaseColor", customColor);
+            mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", customColor);
+        }
+
+
+        yield return new WaitForSeconds(HitTime);
+
+
+        foreach (Renderer mats in RendMaterials)
+        {
+            mats.GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
+            mats.GetComponent<Renderer>().material.SetColor("_1st_ShadeColor", Color.white);
+        }
+
     }
 
     public void DestroyWardenBoss()
