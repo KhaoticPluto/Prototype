@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4388663427917535314
 Transform:
@@ -112,12 +112,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37091d2ddf6624c97c0133569f84ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1000000
-  MaxHealth: 1000000
-  XpGiven: 100000
+  Health: 10000
+  MaxHealth: 10000
+  XpGiven: 20
   pubDamageSpawn: {x: -5, y: 0, z: 2}
   AiController: {fileID: 1347599214945205719}
   HealthSlider: {fileID: 1505944944736836466}
+  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
+  customColor: {r: 1, g: 0.8638505, b: 0.5990566, a: 0}
+  RendMaterials:
+  - {fileID: 4388663427917535312}
 --- !u!114 &1347599214945205719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +159,7 @@ MonoBehaviour:
   RendMaterials: []
   roomspawn: {fileID: 0}
   IsRogueLite: 0
+  FreezePaticles: {fileID: 0}
 --- !u!1001 &4861595053980799432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,6 +167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4388663427917535314}
     m_Modifications:
+    - target: {fileID: 151258642106827439, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 423060110144014641, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -246,9 +255,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 636386207556366269, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 823853182695006089, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561503485233381849, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2027287254275288518, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_SizeDelta.x
@@ -290,9 +307,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3427103137515353986, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161039548064100660, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4393486439037895639, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
       propertyPath: m_Name
       value: EliteEnemyHealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393486439037895639, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480724881305327934, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3c378184a082cb41ac7154806dc3c85, type: 3}

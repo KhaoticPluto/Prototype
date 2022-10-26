@@ -7,9 +7,6 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
 
-    //Player Upgrade
-    
-
     //Scripts
     public Upgradeables stats;
     public LevelSystem levelStats;
@@ -27,14 +24,17 @@ public class HUDManager : MonoBehaviour
     //different ui parents
     public GameObject HudParent;
     public GameObject SettingsParent;
+    public GameObject SettingPanel;
+    public GameObject BasePanel;
     public static bool isPaused = false;
+
 
     // Start is called before the first frame update
     public void Start()
     {
 
-            stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
-            playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
+        stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+        playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
         levelStats = GameObject.FindWithTag("Player").GetComponent<LevelSystem>();
 
         HudParent.SetActive(true);
@@ -60,11 +60,6 @@ public class HUDManager : MonoBehaviour
             dashCoolDown.value = playermovement._dashCooldown;
         }
 
-        
-
-        
-
-
         //Settings Stuff
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -78,8 +73,8 @@ public class HUDManager : MonoBehaviour
             {
                 //openInventory
                 PauseGame();
-                ///closes inventory if player presses pause while inventory open
-                InventoryUIHandler.instance.CloseInventory();
+                
+
             }
         }
 
@@ -108,7 +103,8 @@ public class HUDManager : MonoBehaviour
         PlayerData.instance.SaveData();
         SettingsParent.SetActive(true);
         HudParent.SetActive(false);
-
+        SettingPanel.SetActive(false);
+        BasePanel.SetActive(true);
     }
 
 

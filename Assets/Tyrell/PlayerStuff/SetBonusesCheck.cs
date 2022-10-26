@@ -155,12 +155,12 @@ public class SetBonusesCheck : MonoBehaviour
         #endregion
 
         #region Minigun
-        if (upgrades.FireRateUpgraded >= 4 && upgrades.SpreadUpgraded >= 1 && _minigunSet == false)
+        if (upgrades.FireRateUpgraded >= 3 && upgrades.SpreadUpgraded >= 1 && _minigunSet == false)
         {
             _Minigun.setComplete();
             _minigunSet = true;
         }
-        else if ((upgrades.FireRateUpgraded < 4 || upgrades.SpreadUpgraded < 1) && _minigunSet == true)
+        else if ((upgrades.FireRateUpgraded < 3 || upgrades.SpreadUpgraded < 1) && _minigunSet == true)
         {
             _Minigun.setRemoved();
             _minigunSet = false;

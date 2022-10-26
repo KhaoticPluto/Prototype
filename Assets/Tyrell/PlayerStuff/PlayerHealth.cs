@@ -40,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
         if (!Invincibility)
         {
             StartCoroutine(SetHit());
+            CinemachineShake.Instance.ShakeCamera(5f, 0.2f);
             upgrade.Health -= amount;
             Debug.Log("Player took damage " + amount);
             DamagePopUp.Create(transform.position + (Vector3.up * 4), amount, false);

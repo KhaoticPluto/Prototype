@@ -47,6 +47,8 @@ public class ShootProjectile : MonoBehaviour
 
     void Shoot(int numberOfProjectiles)
     {
+        CinemachineShake.Instance.ShakeCamera(2f, 0.2f);
+
         GameObject muzFlash = Instantiate(MuzzleFlash, GunPoint.position, Quaternion.identity);
         muzFlash.transform.LookAt(mousepos.WorldPosition);
         muzFlash.transform.Rotate(0, -90, 0);
