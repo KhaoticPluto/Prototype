@@ -108,6 +108,7 @@ public class EnemyExploder : EnemyAiController
 
     public void CheckForPlayer()
     {
+        CinemachineShake.Instance.ShakeCamera(5f, 0.2f);
 
         GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
         explosion.transform.localScale = new Vector3(explosiveArea, explosiveArea, explosiveArea);

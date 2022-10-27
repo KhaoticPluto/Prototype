@@ -83,28 +83,6 @@ public class ItemChoice : MonoBehaviour
         RemoveFromList(newitem);
     }
 
-    //void CheckRarity()
-    //{
-    //    int RarityCheck = Random.Range(1, 4);
-    //    switch (RarityCheck)
-    //    {
-    //        case 1:
-
-    //            break;
-
-    //        case 2:
-
-    //            break;
-
-    //        case 3:
-
-    //            break;
-
-    //        case 4:
-
-    //            break;
-    //    }
-    //}
 
    public void DestoryItems()
     {

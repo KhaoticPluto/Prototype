@@ -112,6 +112,9 @@ public class ShootProjectile : MonoBehaviour
 
     private float CalculateDamage()
     {
+        isCriticalHit = false;
+        upgrades.projectileDamage = upgrades.projectileBaseDamage;
+
         float calCritChance = Random.Range(1, 100);
         if(upgrades.critChance >= calCritChance)
         {

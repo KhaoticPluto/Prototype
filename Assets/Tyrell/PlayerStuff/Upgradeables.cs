@@ -307,7 +307,7 @@ public class Upgradeables : MonoBehaviour
             critChance += amount;
 
 
-        critDamage = critDamage * (1 + upgradeAmount);
+        critDamage +=  upgradeAmount;
         CritChanceUpgraded++;
     }
     public void RemoveCritChance(float amount, float upgradeAmount)
@@ -316,7 +316,7 @@ public class Upgradeables : MonoBehaviour
         if (CritChanceUpgraded <= 5)
             critChance -= amount;
 
-        critDamage = critDamage / (1 + upgradeAmount);
+        critDamage -= upgradeAmount;
         CritChanceUpgraded--;
     }
     #endregion

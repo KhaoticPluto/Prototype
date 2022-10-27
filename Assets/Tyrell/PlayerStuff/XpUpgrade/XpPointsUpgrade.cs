@@ -16,8 +16,11 @@ public class XpPointsUpgrade : MonoBehaviour
     public GameObject Player;
     LevelSystem levelStats;
 
+    public GameObject Info;
+
     private void Start()
     {
+        
         Player = GameObject.FindWithTag("Player");
         levelStats = Player.GetComponent<LevelSystem>();
 
@@ -28,14 +31,13 @@ public class XpPointsUpgrade : MonoBehaviour
     private void Update()
     {
         XpPoints.text = "Lincoln Points: " + levelStats.EXPpoints ;
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            
             OpenCanvas();
         }
 
@@ -57,6 +59,14 @@ public class XpPointsUpgrade : MonoBehaviour
 
     public void OpenCanvas()
     {
+        if (PlayerData.EnhancementInfoClosed == 0)
+        {
+            Info.SetActive(true);
+        }
+        else
+        {
+            Info.SetActive(false);
+        }
         _animator.SetTrigger("UIOpen");
         _canvas.SetActive(true);
     }
@@ -66,6 +76,12 @@ public class XpPointsUpgrade : MonoBehaviour
         
         _canvas.SetActive(false);
         GameManager.instance.DestroyItemInfo();
+    }
+
+    public void CloseInfo()
+    {
+        Info.SetActive(false);
+        ES3.Save("EnhancementInfoClosed", 1);
     }
 
 }

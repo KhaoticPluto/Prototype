@@ -126,14 +126,14 @@ public class SetBonusesCheck : MonoBehaviour
 
         #region TackShooter
         //TackShooter
-        if (upgrades.SpreadUpgraded >= 2 && upgrades.ProjectilesNumUpgraded >= 2 &&
-            upgrades.FireRateUpgraded >= 2 && _tackShooterSet == false)
+        if (upgrades.SpreadUpgraded >= 3 && upgrades.ProjectilesNumUpgraded >= 3 &&
+            upgrades.FireRateUpgraded >= 3 && _tackShooterSet == false)
         {
             _TackShooter.setComplete();
             _tackShooterSet = true;
         }
-        else if((upgrades.SpreadUpgraded < 2 || upgrades.ProjectilesNumUpgraded < 2 ||
-            upgrades.FireRateUpgraded < 2) && _tackShooterSet == true)
+        else if((upgrades.SpreadUpgraded < 3 || upgrades.ProjectilesNumUpgraded < 3 ||
+            upgrades.FireRateUpgraded < 3) && _tackShooterSet == true)
         {
             _TackShooter.setRemoved();
             _tackShooterSet = false;
@@ -142,12 +142,12 @@ public class SetBonusesCheck : MonoBehaviour
         #endregion
 
         #region CritChance
-        if (upgrades.CritChanceUpgraded >= 7 && _critMakerSet == false)
+        if (upgrades.CritChanceUpgraded >= 8 && _critMakerSet == false)
         {
             _CritMaker.setComplete();
             _critMakerSet = true;
         }
-        else if (upgrades.CritChanceUpgraded < 7 && _critMakerSet == true)
+        else if (upgrades.CritChanceUpgraded < 8 && _critMakerSet == true)
         {
             _CritMaker.setRemoved();
             _critMakerSet = false;

@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     public Slider HealthSlider;
 
     public GameObject EnemyDeathParticle;
+    public GameObject EnemyHitParticle;
     public Color customColor;
 
     public Renderer[] RendMaterials;
@@ -40,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
 
     public virtual void EnemyKilled(string Name)
     {
-        GameObject enemyDeathParticle = Instantiate(EnemyDeathParticle, transform.position, Quaternion.identity);
+        GameObject enemyDeathParticle = Instantiate(EnemyDeathParticle, transform.position + (Vector3.up * 2), Quaternion.identity);
         enemyDeathParticle.GetComponent<EnemyDeathParticle>().newColor = customColor;
         Destroy(enemyDeathParticle, 2);
 
@@ -54,6 +55,10 @@ public class EnemyHealth : MonoBehaviour
     public void EnemyTakeDamage(float amount, bool isCrit)
     {
         StartCoroutine(SetHit());
+        
+        GameObject enemyHit = Instantiate(EnemyHitParticle, transform.position + (Vector3.up * 2), Quaternion.identity);
+        enemyHit.GetComponent<EnemyDeathParticle>().newColor = customColor;
+        Destroy(enemyHit, 2);
         Health -= amount;
         float damageSpawn = Random.Range(0, 4);
         Vector3 enemyPos = new Vector3(transform.position.x + damageSpawn, transform.position.y + 5, transform.position.z);
