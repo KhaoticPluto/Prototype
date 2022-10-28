@@ -23,6 +23,9 @@ public class EnemyHealth : MonoBehaviour
 
     public Renderer[] RendMaterials;
 
+    public AudioSource aSource;
+    public AudioClip aClip;
+
     private void Update()
     {
         HealthSlider.value = CalculateHealth();
@@ -41,6 +44,8 @@ public class EnemyHealth : MonoBehaviour
 
     public virtual void EnemyKilled(string Name)
     {
+        //aSource.PlayOneShot(aClip);
+
         GameObject enemyDeathParticle = Instantiate(EnemyDeathParticle, transform.position + (Vector3.up * 2), Quaternion.identity);
         enemyDeathParticle.GetComponent<EnemyDeathParticle>().newColor = customColor;
         Destroy(enemyDeathParticle, 2);
@@ -55,8 +60,8 @@ public class EnemyHealth : MonoBehaviour
     public void EnemyTakeDamage(float amount, bool isCrit)
     {
         StartCoroutine(SetHit());
-        
-        GameObject enemyHit = Instantiate(EnemyHitParticle, transform.position + (Vector3.up * 2), Quaternion.identity);
+        //aSource.PlayOneShot(aClip);
+        GameObject enemyHit = Instantiate(EnemyHitParticle, transform.position + (Vector3.up * 2), Quaternion.Euler(0,0,90));
         enemyHit.GetComponent<EnemyDeathParticle>().newColor = customColor;
         Destroy(enemyHit, 2);
         Health -= amount;

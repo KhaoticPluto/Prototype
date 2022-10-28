@@ -62,6 +62,9 @@ public class EnemyChallengeRoomSpawn : EnemyRoomSpawn
         int spawnNum = Random.Range(0, spawnZones.Length);
         int enemyNum = Random.Range(0, elitePrefabs.Length);
 
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
+
         GameObject eliteEnemy = Instantiate(elitePrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
         eliteEnemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.CalculateEnemyHealthScaler();
         eliteEnemy.GetComponent<EnemyHealth>().Health += RoomManager.instance.CalculateEnemyHealthScaler();

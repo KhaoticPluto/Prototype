@@ -42,7 +42,7 @@ public class PlayerStats : MonoBehaviour
             //Gun stats texts
             DamageText.text = "Damage: " + stats.projectileDamage;
             ProSpeedText.text = "Projectile Speed: " + stats.projectileSpeed;
-            FireRateText.text = "Fire Rate: " + stats._fireRate;
+            FireRateText.text = "Fire Rate: " + stats._fireRate.ToString("F2");
             NumOfProjectiles.text = "Projectiles: " + stats.NumberOfProjectile;
             CritChance.text = "Crit Chance: " + stats.critChance + "%";
             PriceCountText.text = "Pierce Count: " + stats.PierceCountUpgraded;

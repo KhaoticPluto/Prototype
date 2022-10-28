@@ -30,9 +30,10 @@ public class WardenBossManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public Transform[] spawnZones;
     public List<GameObject> enemyList = new List<GameObject>();
+    public GameObject EnemySpawnEffect;
     //****************
 
-    
+
 
     private void Start()
     {
@@ -86,13 +87,6 @@ public class WardenBossManager : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
     /*******///enemy spawning code
     IEnumerator SpawnEnemiesOverTime()
     {
@@ -129,16 +123,19 @@ public class WardenBossManager : MonoBehaviour
         
     }
 
-        void SpawnRandomEnemy()
-        {
-            int spawnNum = Random.Range(0, spawnZones.Length);
-            int enemyNum = Random.Range(0, enemyPrefabs.Length);
+    void SpawnRandomEnemy()
+    {
+        int spawnNum = Random.Range(0, spawnZones.Length);
+        int enemyNum = Random.Range(0, enemyPrefabs.Length);
 
-            GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
+
+        GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
         // need a health scaler the scales over time maybe??
-            Enemy.GetComponent<EnemyHealth>().MaxHealth += EnemyHealthAdd;
-            Enemy.GetComponent<EnemyHealth>().Health += EnemyHealthAdd;
-            enemyList.Add(Enemy);
-        }
-    /*********/
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += EnemyHealthAdd;
+        Enemy.GetComponent<EnemyHealth>().Health += EnemyHealthAdd;
+        enemyList.Add(Enemy);
+    }
+
 }
