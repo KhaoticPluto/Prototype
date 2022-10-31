@@ -54,8 +54,6 @@ public class HUDManager : MonoBehaviour
             healthText.text = stats.Health + " / " + stats.MaxHealth;
             MoneyText.text = " " + MoneyManager.Money;
 
-            
-
             //Dashing Text
             dashCoolDown.value = playermovement._dashCooldown;
         }
