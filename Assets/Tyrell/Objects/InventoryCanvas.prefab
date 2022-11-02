@@ -1546,8 +1546,8 @@ GameObject:
   - component: {fileID: 4548980011022273409}
   - component: {fileID: 4548980011022273413}
   - component: {fileID: 4548980011022273410}
+  - component: {fileID: 4548980011022273411}
   - component: {fileID: 4548980011022273408}
-  - component: {fileID: 9187673988354533833}
   m_Layer: 5
   m_Name: GunInventory
   m_TagString: GunInventory
@@ -1620,21 +1620,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4548980011022273408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4548980011022273438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db7d2fe9bd2515f4d87bd5eb4d128f06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GunInventorySlots: []
-  InventorySlot: {fileID: -5507582517330810776, guid: e6e1f6ae3d0d615478e7b02af3a00713, type: 3}
---- !u!114 &9187673988354533833
+--- !u!114 &4548980011022273411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1654,10 +1640,24 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 120, y: 120}
+  m_Spacing: {x: 60, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &4548980011022273408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4548980011022273438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7d2fe9bd2515f4d87bd5eb4d128f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunInventorySlots: []
+  InventorySlot: {fileID: -5507582517330810776, guid: e6e1f6ae3d0d615478e7b02af3a00713, type: 3}
 --- !u!1 &4548980011183245140
 GameObject:
   m_ObjectHideFlags: 0

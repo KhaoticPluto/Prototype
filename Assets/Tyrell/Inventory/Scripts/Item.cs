@@ -63,7 +63,7 @@ public class Item : ScriptableObject
 
     public virtual string GetItemUpgradeDescription()
     {
-        return itemUpgradeDescription;
+        return itemUpgradeDescription + Cost;
     }
 
 }

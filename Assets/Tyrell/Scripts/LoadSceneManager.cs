@@ -63,10 +63,4 @@ public class LoadSceneManager : MonoBehaviour
         PlayerData.instance.SaveData();
         SceneManager.LoadScene(4);
     }
-
-    public void DeathScreen()
-    {
-        PlayerData.instance.SaveData();
-        SceneManager.LoadScene("gameOver");
-    }
 }

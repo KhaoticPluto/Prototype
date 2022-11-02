@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
@@ -72,9 +71,7 @@ public class PlayerData : MonoBehaviour
     public static int TutorialComplete = 0;
     int tutorialDefault = 0;
 
-    //settings
     
-
 
     public void Start()
     {
@@ -86,9 +83,8 @@ public class PlayerData : MonoBehaviour
         _levelSystem.nextLevelXp = _nextLevelXp;
         _levelSystem.EXPpoints = _xpPoints;
 
-        #region Upgrade
         //Upgrades
-
+        
         explosion.level = _explosionLevel;
         explosion.UpgradeAmount = 0;
         explosion.baselevel = 0;
@@ -142,11 +138,8 @@ public class PlayerData : MonoBehaviour
         Pierce.level = _pierceLevel;
         Pierce.UpgradeAmount = 0;
         Pierce.baselevel = 0;
-        Pierce.UpdateUpgrade();  
-        #endregion
-
-
-
+        Pierce.UpdateUpgrade(); 
+        
     }
 
     private void Update()

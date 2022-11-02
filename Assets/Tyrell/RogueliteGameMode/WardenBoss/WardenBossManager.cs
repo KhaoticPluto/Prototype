@@ -18,8 +18,6 @@ public class WardenBossManager : MonoBehaviour
     public GameObject WardenBoss;
     public GameObject IdleBoss;
     public Transform WardenBossSpawn;
-    public GameObject Laser;
-
 
     //*************** Enemy Spawn variables
     [Header("Enemy Variables")]
@@ -38,8 +36,6 @@ public class WardenBossManager : MonoBehaviour
     {
         StartCoroutine(SpawnEnemiesOverTime());
         PhaseTwo = false;
-        Laser.SetActive(true);
-        _switch.SetActive(true);
         Player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         foreach (GameObject wall in CloseWalls)
         {
@@ -74,8 +70,6 @@ public class WardenBossManager : MonoBehaviour
 
     void BossPhaseTwo()
     {
-        Laser.SetActive(false);
-        _switch.SetActive(false);
         Player.position = playerNewPos.position;
         foreach(GameObject wall in CloseWalls)
         {

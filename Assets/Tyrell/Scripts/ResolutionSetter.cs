@@ -27,7 +27,6 @@ public class ResolutionSetter : MonoBehaviour
 
     public void OnChange(int value)
     {
-        
         Resolution res = Screen.resolutions[value];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
     }
