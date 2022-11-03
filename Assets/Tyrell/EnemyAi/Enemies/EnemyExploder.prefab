@@ -178,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3307521731157396062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99eb8f8b80aac4f41a1f1373482260ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b7c9860882ca504eb96778277b3b269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 10
@@ -187,8 +187,8 @@ MonoBehaviour:
   pubDamageSpawn: {x: 0, y: 0, z: 0}
   AiController: {fileID: 3850542442741390902}
   HealthSlider: {fileID: 1074902124127939698}
-  EnemyDeathParticle: {fileID: 1713883245821395045, guid: 95cd9441655faf44590bb53e40fdbbf4, type: 3}
-  customColor: {r: 1, g: 0.7534226, b: 0, a: 0}
+  EnemyDeathParticle: {fileID: 7314962251208402207}
+  customColor: {r: 1, g: 0.89203674, b: 0, a: 0}
   explode: {fileID: 3850542442741390902}
 --- !u!1001 &4930390762244077946
 PrefabInstance:
@@ -309,5 +309,10 @@ MonoBehaviour:
 --- !u!224 &6675523389537857529 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1785815108360590979, guid: d82abdf0f0955fe47a30ce217cac7ac0, type: 3}
+  m_PrefabInstance: {fileID: 4930390762244077946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7314962251208402207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2445370140951829605, guid: d82abdf0f0955fe47a30ce217cac7ac0, type: 3}
   m_PrefabInstance: {fileID: 4930390762244077946}
   m_PrefabAsset: {fileID: 0}
