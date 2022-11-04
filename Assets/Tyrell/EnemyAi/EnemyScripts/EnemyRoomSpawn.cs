@@ -43,7 +43,7 @@ public class EnemyRoomSpawn : MonoBehaviour
 
 
 
-    IEnumerator WaitForPlayer()
+    internal IEnumerator WaitForPlayer()
     {
         yield return new WaitForSeconds(2);
         for (int i = 0; i < maxEnemySpawn; i++)
@@ -68,7 +68,7 @@ public class EnemyRoomSpawn : MonoBehaviour
         ShowItems.instance.ShowItemChoice();
     }
 
-    public void SpawnEnemies()
+    public virtual void SpawnEnemies()
     {
 
 

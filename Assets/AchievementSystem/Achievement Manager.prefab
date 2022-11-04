@@ -1481,16 +1481,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5869893064589555807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cdc328a33300e34d9812896a5035b37, type: 3}
+  m_Script: {fileID: 11500000, guid: e8a86e8ea5d58f84c8459725f6ab927a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StackPanels:
-  - {fileID: 5869893064252793321}
-  - {fileID: 5869893064157425273}
-  - {fileID: 5869893064959519082}
-  - {fileID: 5869893063797868282}
+  StackPanels: []
   BackLog: []
-  AchievementTemplate: {fileID: 1144969350263548, guid: 52f308551e6b1a347a3a0d7de8089fa2, type: 3}
+  AchievementTemplate: {fileID: 0}
 --- !u!1 &5869893064832991959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,17 +1532,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5869893064832991959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4649ecec4d59d264faf94e9ac18561b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 765d376ae4546834abe583ccdab29125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollContent: {fileID: 5869806132476980482}
-  prefab: {fileID: 1144969350263548, guid: 52f308551e6b1a347a3a0d7de8089fa2, type: 3}
-  Menu: {fileID: 5869116409126469268}
-  Filter: {fileID: 0}
-  CountText: {fileID: 3529245492741264697}
-  CompleteText: {fileID: 2656519149230087592}
-  Scrollbar: {fileID: 5828700596380768718}
-  OpenMenuKey: 106
+  DisplayTime: 3
+  NumberOnScreen: 3
+  ShowExactProgress: 0
+  DisplayAchievements: 0
+  StackLocation: 0
+  AutoSave: 0
+  SpoilerAchievementMessage: Hidden
+  AchievedSound: {fileID: 0}
+  ProgressMadeSound: {fileID: 0}
+  States: []
+  AchievementList: []
+  UseFinalAchievement: 0
+  FinalAchievementKey: 
+  Stack: {fileID: 0}
 --- !u!114 &5869893064832991960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,93 +1558,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5869893064832991959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23953d3cc6573c745b3dc7bc5720c369, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e27fbebb15ee5d4eb19d0abe5ba6c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayTime: 3
-  NumberOnScreen: 3
-  ShowExactProgress: 1
-  DisplayAchievements: 1
-  StackLocation: 3
-  AutoSave: 1
-  SpoilerAchievementMessage: Hidden
-  AchievedSound: {fileID: 8300000, guid: 3400fb2a60564af4db6cc1c28c188006, type: 3}
-  ProgressMadeSound: {fileID: 8300000, guid: 9492b32862561624aa75d621f48074c5, type: 3}
-  States:
-  - Progress: 0
-    LastProgressUpdate: 0
-    Achieved: 0
-  - Progress: 630
-    LastProgressUpdate: 1
-    Achieved: 0
-  - Progress: 13
-    LastProgressUpdate: 0
-    Achieved: 0
-  - Progress: 0
-    LastProgressUpdate: 0
-    Achieved: 0
-  - Progress: 0
-    LastProgressUpdate: 0
-    Achieved: 0
-  AchievementList:
-  - Key: Escape
-    DisplayName: Escape
-    Description: Escape zartacla Prison
-    LockedIcon: {fileID: 0}
-    LockOverlay: 0
-    AchievedIcon: {fileID: 0}
-    Spoiler: 0
-    Progression: 1
-    ProgressGoal: 1
-    NotificationFrequency: 1
-    ProgressSuffix: 
-  - Key: DamageDealt
-    DisplayName: Damage Dealt
-    Description: Deal 10,000 damage
-    LockedIcon: {fileID: 0}
-    LockOverlay: 0
-    AchievedIcon: {fileID: 0}
-    Spoiler: 0
-    Progression: 1
-    ProgressGoal: 10000
-    NotificationFrequency: 500
-    ProgressSuffix: ' K'
-  - Key: EnemiesKilled
-    DisplayName: Enemies Killed
-    Description: Kill 1000 enemies
-    LockedIcon: {fileID: 0}
-    LockOverlay: 0
-    AchievedIcon: {fileID: 0}
-    Spoiler: 0
-    Progression: 1
-    ProgressGoal: 1000
-    NotificationFrequency: 100
-    ProgressSuffix: 
-  - Key: CompletedEscapes
-    DisplayName: Completed Escapes
-    Description: Escape 5 times
-    LockedIcon: {fileID: 0}
-    LockOverlay: 0
-    AchievedIcon: {fileID: 0}
-    Spoiler: 0
-    Progression: 1
-    ProgressGoal: 5
-    NotificationFrequency: 1
-    ProgressSuffix: 
-  - Key: BossKilled
-    DisplayName: Bosses Killed
-    Description: Kill 20 Bosses
-    LockedIcon: {fileID: 0}
-    LockOverlay: 0
-    AchievedIcon: {fileID: 0}
-    Spoiler: 0
-    Progression: 1
-    ProgressGoal: 20
-    NotificationFrequency: 1
-    ProgressSuffix: 
-  UseFinalAchievement: 0
-  FinalAchievementKey: 
-  Stack: {fileID: 5869893064589555812}
+  scrollContent: {fileID: 0}
+  prefab: {fileID: 0}
+  Menu: {fileID: 0}
+  Filter: {fileID: 0}
+  CountText: {fileID: 0}
+  CompleteText: {fileID: 0}
+  Scrollbar: {fileID: 0}
+  OpenMenuKey: 0
 --- !u!1 &5869893064959519081
 GameObject:
   m_ObjectHideFlags: 0
