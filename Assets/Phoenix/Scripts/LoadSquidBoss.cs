@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LoadSquidBoss : MonoBehaviour
 {
-    bool inTrigger;
+    Collider _trigger;
 
     private void Start()
     {
