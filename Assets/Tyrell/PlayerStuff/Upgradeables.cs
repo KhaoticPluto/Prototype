@@ -16,7 +16,7 @@ public class Upgradeables : MonoBehaviour
     #region KeepsTrackOfUpgrades
 
     //upgrade Analytics values
-    [HideInInspector] public int NumberOfUpgrades = 0;
+    [HideInInspector] public int NumberOfUpgrades;
     [HideInInspector] public int ProSpeedUpgraded = 0;
     [HideInInspector] public int ProDamageUpgraded = 0;
     [HideInInspector] public int FireRateUpgraded = 0;
@@ -28,6 +28,11 @@ public class Upgradeables : MonoBehaviour
     [HideInInspector] public int ExplosionUpgraded = 0;
     [HideInInspector] public int FreezeUpgraded = 0;
     [HideInInspector] public int SpreadUpgraded = 0;
+
+    [HideInInspector] public float DamageDealt = 0;
+    [HideInInspector] public float HighestDamage = 0;
+    [HideInInspector] public int EnemiesKilled = 0;
+
 
     #endregion
 
@@ -120,13 +125,17 @@ public class Upgradeables : MonoBehaviour
     private void Start()
     {
         gunInventoryController = FindObjectOfType<GunInventoryController>(transform);
+        HighestDamage = 0;
+        EnemiesKilled = 0;
+        DamageDealt = 0;
     }
 
     private void Update()
     {
         sliderHealthVal = CalculateHealth();
-
+        
     }
+
 
     float CalculateHealth()
     {
@@ -139,6 +148,19 @@ public class Upgradeables : MonoBehaviour
         amount = amount + upgradeAmount;
 
         return amount;
+    }
+
+
+    public void CalculateEnemiesKilled()
+    {
+        EnemiesKilled++;
+    }
+    public void CalculateDamageDealt(float amount)
+    {
+        DamageDealt += amount;
+
+        if (amount > HighestDamage)
+            HighestDamage = amount;
     }
 
 
@@ -307,7 +329,7 @@ public class Upgradeables : MonoBehaviour
             critChance += amount;
 
 
-        critDamage = critDamage * (1 + upgradeAmount);
+        critDamage +=  upgradeAmount;
         CritChanceUpgraded++;
     }
     public void RemoveCritChance(float amount, float upgradeAmount)
@@ -316,7 +338,7 @@ public class Upgradeables : MonoBehaviour
         if (CritChanceUpgraded <= 5)
             critChance -= amount;
 
-        critDamage = critDamage / (1 + upgradeAmount);
+        critDamage -= upgradeAmount;
         CritChanceUpgraded--;
     }
     #endregion

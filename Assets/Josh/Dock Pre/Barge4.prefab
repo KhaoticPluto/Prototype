@@ -982,6 +982,18 @@ PrefabInstance:
       value: 13.01
       objectReference: {fileID: 0}
     - target: {fileID: 3514659097453640107, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514659097453640107, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
+      propertyPath: _OnTrigger
+      value: 
+      objectReference: {fileID: 2501020332400982728}
+    - target: {fileID: 3514659097453640107, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
+      propertyPath: ExtraEnemies
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514659097453640107, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
       propertyPath: spawnZones.Array.data[0]
       value: 
       objectReference: {fileID: 1630140704244060725}
@@ -1063,17 +1075,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
+--- !u!114 &2501020332400982728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3514659097453640105, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
+  m_PrefabInstance: {fileID: 1329682765584237409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501020332400982734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5359513b7687324a86f7e116d5aee68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2501020332400982730 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3514659097453640107, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
   m_PrefabInstance: {fileID: 1329682765584237409}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_GameObject: {fileID: 2501020332400982734}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbbadd7e0b08a814db2f28dd3e6bbfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2501020332400982734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3514659097453640111, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
+  m_PrefabInstance: {fileID: 1329682765584237409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3681634256960921056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501020332400982734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191dee83a37f2f045a81606010ccffa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemChoice: {fileID: 0}
+  ItemChoiceDestryoed: 0
 --- !u!4 &2501020332400982735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3514659097453640110, guid: 02b3412bfa05c0f499adccb8a31124da, type: 3}
@@ -1572,6 +1614,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5054247843294300204, guid: f0f34634aebc4f548a8f641469d841b2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 2fd52d5dbb236ec4ba57d233f8912945, type: 2}
     - target: {fileID: 5174183600368141566, guid: f0f34634aebc4f548a8f641469d841b2, type: 3}
       propertyPath: m_Name
       value: Barge

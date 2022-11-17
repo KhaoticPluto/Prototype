@@ -13,9 +13,11 @@ public class Boiler : MonoBehaviour
 
     public WardenBossManager boilerManager;
 
+    
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PlayerBullet")
+        if (other.CompareTag("PlayerBullet"))
         {
             animator.SetTrigger("Hit");
             health -= other.GetComponent<Bullet>().Damage;

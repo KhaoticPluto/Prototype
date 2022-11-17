@@ -28,7 +28,7 @@ public class EnemySpawnSystem : MonoBehaviour
     [SerializeField]
     private int maxEnemySpawn;
 
-
+    public GameObject EnemySpawnEffect;
 
     public Transform EnemyParent;
 
@@ -163,6 +163,9 @@ public class EnemySpawnSystem : MonoBehaviour
         int spawnNum = Random.Range(0, spawnZones.Length);
         int enemyNum = Random.Range(0, enemyPrefabs.Length);
 
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
+
         GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
         Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
         Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
@@ -178,6 +181,9 @@ public class EnemySpawnSystem : MonoBehaviour
         int spawnNum = Random.Range(0, spawnZones.Length);
         int enemyNum = Random.Range(0, ElitePrefabs.Length);
 
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
+
         GameObject Enemy = Instantiate(ElitePrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
         Enemy.GetComponent<EnemyHealth>().MaxHealth += CalculateEnemyHealthScaler();
         Enemy.GetComponent<EnemyHealth>().Health += CalculateEnemyHealthScaler();
@@ -189,6 +195,8 @@ public class EnemySpawnSystem : MonoBehaviour
     {
         int spawnNum = Random.Range(0, spawnZones.Length);
 
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
 
         GameObject Enemy = Instantiate(BossPrefabs, spawnZones[spawnNum].transform.position, Quaternion.identity, EnemyParent);
         Enemy.GetComponent<BossHealth>().MaxHealth += CalculateEnemyHealthScaler();

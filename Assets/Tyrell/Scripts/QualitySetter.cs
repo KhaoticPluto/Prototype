@@ -7,8 +7,12 @@ public class QualitySetter : MonoBehaviour
 {
     public TMP_Dropdown _dropdown;
 
+    public int Qvalue;
+    public bool Changed = false;
+
     private void Start()
     {
+        Changed = false;
         _dropdown = GetComponent<TMP_Dropdown>();
         _dropdown.options.Clear();
         string[] qualityLevels = QualitySettings.names;
@@ -25,6 +29,7 @@ public class QualitySetter : MonoBehaviour
 
     public void ChangeQuality(int value)
     {
-        QualitySettings.SetQualityLevel(value);
+        Changed = true;
+        Qvalue = value;
     }
 }

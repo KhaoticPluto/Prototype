@@ -18,6 +18,8 @@ public class WardenBossManager : MonoBehaviour
     public GameObject WardenBoss;
     public GameObject IdleBoss;
     public Transform WardenBossSpawn;
+    public GameObject Laser;
+
 
     //*************** Enemy Spawn variables
     [Header("Enemy Variables")]
@@ -28,14 +30,17 @@ public class WardenBossManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public Transform[] spawnZones;
     public List<GameObject> enemyList = new List<GameObject>();
+    public GameObject EnemySpawnEffect;
     //****************
 
-    
+
 
     private void Start()
     {
         StartCoroutine(SpawnEnemiesOverTime());
         PhaseTwo = false;
+        Laser.SetActive(true);
+        _switch.SetActive(true);
         Player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         foreach (GameObject wall in CloseWalls)
         {
@@ -70,6 +75,8 @@ public class WardenBossManager : MonoBehaviour
 
     void BossPhaseTwo()
     {
+        Laser.SetActive(false);
+        _switch.SetActive(false);
         Player.position = playerNewPos.position;
         foreach(GameObject wall in CloseWalls)
         {
@@ -78,13 +85,6 @@ public class WardenBossManager : MonoBehaviour
         Instantiate(WardenBoss, WardenBossSpawn.position, Quaternion.identity);
         Destroy(IdleBoss);
     }
-
-
-
-
-
-
-
 
 
     /*******///enemy spawning code
@@ -123,16 +123,19 @@ public class WardenBossManager : MonoBehaviour
         
     }
 
-        void SpawnRandomEnemy()
-        {
-            int spawnNum = Random.Range(0, spawnZones.Length);
-            int enemyNum = Random.Range(0, enemyPrefabs.Length);
+    void SpawnRandomEnemy()
+    {
+        int spawnNum = Random.Range(0, spawnZones.Length);
+        int enemyNum = Random.Range(0, enemyPrefabs.Length);
 
-            GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
+
+        GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
         // need a health scaler the scales over time maybe??
-            Enemy.GetComponent<EnemyHealth>().MaxHealth += EnemyHealthAdd;
-            Enemy.GetComponent<EnemyHealth>().Health += EnemyHealthAdd;
-            enemyList.Add(Enemy);
-        }
-    /*********/
+        Enemy.GetComponent<EnemyHealth>().MaxHealth += EnemyHealthAdd;
+        Enemy.GetComponent<EnemyHealth>().Health += EnemyHealthAdd;
+        enemyList.Add(Enemy);
+    }
+
 }

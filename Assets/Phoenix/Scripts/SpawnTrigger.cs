@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpawnTrigger : MonoBehaviour
 {
-    EnemyRoomSpawn _spawn;
+    EnemyBargeSpawn _spawn;
     Collider _trigger;
 
     private void Start()
     {
-        _spawn = GetComponent<EnemyRoomSpawn>();
+        _spawn = GetComponent<EnemyBargeSpawn>();
         _trigger = GetComponent<Collider>();
     }
 

@@ -6,18 +6,15 @@ public class EnemyChallengeRoomSpawn : EnemyRoomSpawn
 {
 
 
-
-    //[SerializeField]
-    //private Transform[] chaspawnZones; // Array filled with spawn zones transform
-
-    //[SerializeField]
-    //private GameObject[] enemyPrefabs; // All available enemy prefabs stored here
-
     [SerializeField]
     private GameObject[] elitePrefabs;
 
     [SerializeField]
     public List<GameObject> challengeenemyList = new List<GameObject>();
+
+
+    public GameObject ChallengeItemChoice;
+
 
 
     public override void FixedUpdate()
@@ -27,8 +24,6 @@ public class EnemyChallengeRoomSpawn : EnemyRoomSpawn
 
     public override void Start()
     {
-
-
         maxEnemySpawn = RoomManager.instance.CalculateEnemySpawns();
 
         StartCoroutine(ChallengeWaitForPlayer());
@@ -53,14 +48,22 @@ public class EnemyChallengeRoomSpawn : EnemyRoomSpawn
 
     public override void ShowNewItems()
     {
-        base.ShowNewItems();
+
         ShowItems.instance.ShowItemChoice();
+        
+        ChallengeItemChoice.SetActive(true);
+        ChallengeItemChoice.GetComponent<DropItemChoice>().ShowItems();
+        
+
     }
 
     void SpawnElite()
     {
         int spawnNum = Random.Range(0, spawnZones.Length);
         int enemyNum = Random.Range(0, elitePrefabs.Length);
+
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
 
         GameObject eliteEnemy = Instantiate(elitePrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
         eliteEnemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.CalculateEnemyHealthScaler();

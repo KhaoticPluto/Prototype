@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAOERangedGuardVer : EnemyAiController
 {
+
     public GameObject projectile;
     public int ProjectilesFired = 5;
     public float projectileSpread = -45f;
@@ -13,14 +14,14 @@ public class EnemyAOERangedGuardVer : EnemyAiController
     public float projectilesSpeed;
     public bool isElite;
 
+    public Transform GunPoint;
+    public GameObject MuzzleFlash;
+
+    public AudioClip aClip;
+
     public override void AttackPlayer()
     {
-
-
-        Vector3 offsetPlayer = player.transform.position - transform.position;
-
-        Vector3 dir = Vector3.Cross(offsetPlayer, Vector3.down);
-        agent.SetDestination(transform.position + dir);
+        agent.SetDestination(transform.position);
 
         //Make sure enemy doesn't move
         //agent.SetDestination(transform.position);
@@ -35,8 +36,16 @@ public class EnemyAOERangedGuardVer : EnemyAiController
             ///Attack code here
             for (int i = 0; i < ProjectilesFired; i++)
             {
+                animator.SetTrigger("isAttacking");
+                aSource.PlayOneShot(aClip);
 
-                GameObject aoeProjectile = Instantiate(projectile, transform.position + Vector3.up, Quaternion.identity);
+                GameObject muzFlash = Instantiate(MuzzleFlash, GunPoint.position, Quaternion.identity);
+                muzFlash.transform.LookAt(player);
+                muzFlash.transform.Rotate(0, -90, 0);
+                Destroy(muzFlash, 0.05f);
+
+                GameObject aoeProjectile = Instantiate(projectile, new Vector3(GunPoint.position.x, 2, GunPoint.position.z) , Quaternion.identity);
+
                 Rigidbody rb = aoeProjectile.GetComponent<Rigidbody>();
 
                 aoeProjectile.transform.LookAt(player);

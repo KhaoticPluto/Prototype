@@ -7,9 +7,6 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
 
-    //Player Upgrade
-    
-
     //Scripts
     public Upgradeables stats;
     public LevelSystem levelStats;
@@ -27,16 +24,30 @@ public class HUDManager : MonoBehaviour
     //different ui parents
     public GameObject HudParent;
     public GameObject SettingsParent;
+    public GameObject SettingPanel;
+    public GameObject BasePanel;
     public static bool isPaused = false;
+    public GameObject GameOver;
+
+    //GameOver Stats
+    public TextMeshProUGUI EnemiesKilled;
+    public TextMeshProUGUI Upgrades;
+    public TextMeshProUGUI HightestDamage;
+    public TextMeshProUGUI DamageDealt;
+
+
+    AudioSource aSource;
+    public AudioClip[] aClip;
 
     // Start is called before the first frame update
     public void Start()
     {
-
-            stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
-            playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
+        Time.timeScale = 1;
+        aSource = GetComponent<AudioSource>();
+        stats = GameObject.FindWithTag("Player").GetComponent<Upgradeables>();
+        playermovement = GameObject.FindWithTag("Player").GetComponent<movement>();
         levelStats = GameObject.FindWithTag("Player").GetComponent<LevelSystem>();
-
+        GameOver.SetActive(false);
         HudParent.SetActive(true);
         SettingsParent.SetActive(false);
 
@@ -60,11 +71,6 @@ public class HUDManager : MonoBehaviour
             dashCoolDown.value = playermovement._dashCooldown;
         }
 
-        
-
-        
-
-
         //Settings Stuff
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -78,8 +84,8 @@ public class HUDManager : MonoBehaviour
             {
                 //openInventory
                 PauseGame();
-                ///closes inventory if player presses pause while inventory open
-                InventoryUIHandler.instance.CloseInventory();
+                
+
             }
         }
 
@@ -87,14 +93,26 @@ public class HUDManager : MonoBehaviour
 
     }
 
-    public void HudOpenInventory()
+    public void DeathScreen()
     {
-        InventoryUIHandler.instance.OpenInventory();
+        Time.timeScale = 0;
+        GameOver.SetActive(true);
+        stats.NumberOfUpgrades = stats.ProSpeedUpgraded + stats.ProDamageUpgraded + stats.FireRateUpgraded
+            + stats.ProjectilesNumUpgraded + stats.projectileSizeUpgraded + stats.PierceUpgraded + stats.CritChanceUpgraded
+            + stats.RicochetUpgraded + stats.ExplosionUpgraded + stats.FreezeUpgraded + stats.SpreadUpgraded;
+        EnemiesKilled.text = "Enemies Killed: " + stats.EnemiesKilled;
+        DamageDealt.text = "Damage Dealt: " + stats.DamageDealt;
+        Upgrades.text = "upgrades used: " + stats.NumberOfProjectile;
+        HightestDamage.text = "Highest Damage: " + stats.HighestDamage;
+
+
     }
-    
+
+
 
     public void ResumeGame()
     {
+        aSource.PlayOneShot(aClip[1]);
         isPaused = false;
         Time.timeScale = 1;
         SettingsParent.SetActive(false);
@@ -103,13 +121,20 @@ public class HUDManager : MonoBehaviour
 
     public void PauseGame()
     {
+        aSource.PlayOneShot(aClip[0]);
         isPaused = true;
         Time.timeScale = 0;
         PlayerData.instance.SaveData();
         SettingsParent.SetActive(true);
         HudParent.SetActive(false);
-
+        SettingPanel.SetActive(false);
+        BasePanel.SetActive(true);
     }
 
+
+    public void PlayClick()
+    {
+        aSource.PlayOneShot(aClip[2]);
+    }
 
 }

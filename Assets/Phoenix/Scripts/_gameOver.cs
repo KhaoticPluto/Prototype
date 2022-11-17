@@ -1,30 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class _gameOver : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //Results
+    public TextMeshProUGUI MoneyText;
+    public TextMeshProUGUI upgrades;
+    Upgradeables uStats;
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        MoneyText.text = " " + MoneyManager.Money;
+        uStats.UpgradeUsedMost = " ";
     }
+
     // Sends us back to the Main Menu
     public void QuitGame()
     {
-        SceneManager.LoadScene("Menu");
+        
+        SceneManager.LoadScene(0);
+
     }
 
     // Restarts Game, sends it back to Start Level
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+
+        SceneManager.LoadScene(3);
     }
 }

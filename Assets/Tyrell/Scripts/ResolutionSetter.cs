@@ -7,9 +7,14 @@ using TMPro;
 public class ResolutionSetter : MonoBehaviour
 {
     public TMP_Dropdown _dropdown;
+    public int Rvalue;
+    public bool Changed = false;
 
     void Start()
     {
+        
+
+        Changed = false;
         _dropdown = GetComponent<TMP_Dropdown>();
         _dropdown.options.Clear();
         Resolution[] res = Screen.resolutions;
@@ -27,7 +32,8 @@ public class ResolutionSetter : MonoBehaviour
 
     public void OnChange(int value)
     {
-        Resolution res = Screen.resolutions[value];
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        Changed = true;
+        Rvalue = value;
+        
     }
 }

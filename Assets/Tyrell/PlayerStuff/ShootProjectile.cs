@@ -8,16 +8,23 @@ public class ShootProjectile : MonoBehaviour
     public GameObject[] _pfBullet;
     public Upgradeables upgrades;
 
+    public GameObject MuzzleFlash;
+
     public float baseSpread = 15;
     public float spreadFactor;
 
     public MousePosition mousepos;
 
     bool isCriticalHit;
+    public bool Shot;
+
+    AudioSource aSource;
+    public AudioClip shoot;
 
     private void Start()
     {
         upgrades.GetComponent<Upgradeables>();
+        aSource = GetComponent<AudioSource>();
     }
 
     public void ComponentShoot()
@@ -26,21 +33,33 @@ public class ShootProjectile : MonoBehaviour
         {
             //ShootProjectiles(upgrades.NumberOfProjectile);
             Shoot(upgrades.NumberOfProjectile);
+            Shot = true;
         }
         else{
             if (Time.time > upgrades._nextFire && upgrades._fireRate > 0)
             {
                 upgrades._nextFire = Time.time + upgrades._fireRate;
                 Shoot(upgrades.NumberOfProjectile);
-                //StartCoroutine(ShootProjectiles(upgrades.NumberOfProjectile));
+                Shot = true;
+                
             }
  
         }
+        
             
     }
 
     void Shoot(int numberOfProjectiles)
     {
+        aSource.PlayOneShot(shoot);
+
+        CinemachineShake.Instance.ShakeCamera(2f, 0.2f);
+
+        GameObject muzFlash = Instantiate(MuzzleFlash, GunPoint.position, Quaternion.identity);
+        muzFlash.transform.LookAt(mousepos.WorldPosition);
+        muzFlash.transform.Rotate(0, -90, 0);
+        Destroy(muzFlash, 0.05f);
+
         spreadFactor = upgrades.SpreadFactor;
         if(numberOfProjectiles >= 2)
         {
@@ -93,11 +112,15 @@ public class ShootProjectile : MonoBehaviour
             
         }
         upgrades.SpreadFactor = spreadFactor;
+        Shot = false;
     }
 
 
     private float CalculateDamage()
     {
+        isCriticalHit = false;
+        upgrades.projectileDamage = upgrades.projectileBaseDamage;
+
         float calCritChance = Random.Range(1, 100);
         if(upgrades.critChance >= calCritChance)
         {

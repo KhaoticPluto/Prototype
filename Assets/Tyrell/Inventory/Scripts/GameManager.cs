@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     public float moveX;
     public float moveY;
 
-
     public int upgradeToSpawn = 0;
     
 
@@ -54,6 +53,7 @@ public class GameManager : MonoBehaviour
             TakeScreenshot();
         }
 
+        
     }
 
     
@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
             Destroy(currentItemInfo.gameObject);
         }
 
+        buttonPos = Input.mousePosition;
         buttonPos.x -= moveX;
         buttonPos.y += moveY;
 

@@ -17,7 +17,7 @@ public class LoadSceneManager : MonoBehaviour
 
     public void QuitGame()
     {
-        PlayerData.instance.SaveData();
+        //PlayerData.instance.SaveData();
 
         Application.Quit();
     }

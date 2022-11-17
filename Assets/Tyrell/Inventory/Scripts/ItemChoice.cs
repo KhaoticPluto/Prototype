@@ -15,11 +15,14 @@ public class ItemChoice : MonoBehaviour
     int totalCount = 3;
     int completedCount = 0;
 
+    
 
     private void Start()
     {
         //closes inventory when items show
-        InventoryUIHandler.instance.CloseInventory();
+        //if(InventoryUIHandler.instance.inventoryOpen)
+        //    InventoryUIHandler.instance.CloseInventory();
+
     }
 
     private void Update()
@@ -83,28 +86,6 @@ public class ItemChoice : MonoBehaviour
         RemoveFromList(newitem);
     }
 
-    //void CheckRarity()
-    //{
-    //    int RarityCheck = Random.Range(1, 4);
-    //    switch (RarityCheck)
-    //    {
-    //        case 1:
-
-    //            break;
-
-    //        case 2:
-
-    //            break;
-
-    //        case 3:
-
-    //            break;
-
-    //        case 4:
-
-    //            break;
-    //    }
-    //}
 
    public void DestoryItems()
     {

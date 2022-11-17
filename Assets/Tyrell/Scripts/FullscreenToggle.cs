@@ -7,13 +7,22 @@ public class FullscreenToggle : MonoBehaviour
 {
     public Toggle _toggle;
 
+    public bool _FullScreen;
+    public bool Changed = false;
+
+
     private void OnEnable()
     {
+        Changed = false;
         _toggle = GetComponent<Toggle>();
         _toggle.isOn = Screen.fullScreen;
     }
+
     public void Change(bool on)
     {
-        Screen.fullScreenMode = on ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.Windowed;
+        Changed = true;
+        _FullScreen = on;
     }
+
+
 }

@@ -5,18 +5,39 @@ using UnityEngine;
 public class BoardBarge : MonoBehaviour
 {
     public Transform Destination;
-    
+    public GameObject Text;
+    public GameObject Player;
+    bool inTrigger;
 
-    private void Start()
+    private void Update()
     {
-        
+        if (inTrigger)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Player.transform.position = Destination.position;
+                Debug.Log("Move");
+            }
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == ("Player"))
+        if (other.CompareTag("Player"))
         {
-            other.transform.position = Destination.position;
+            Text.SetActive(true);
+            inTrigger = true;
+
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Text.SetActive(false);
+            inTrigger = false;
+        }
+
     }
 }

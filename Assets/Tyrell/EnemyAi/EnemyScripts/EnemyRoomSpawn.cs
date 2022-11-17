@@ -26,6 +26,8 @@ public class EnemyRoomSpawn : MonoBehaviour
 
     public int maxEnemySpawn;
 
+    public GameObject EnemySpawnEffect;
+
     public virtual void FixedUpdate()
     {
         enemyList.RemoveAll(GameObject => GameObject == null);
@@ -43,7 +45,7 @@ public class EnemyRoomSpawn : MonoBehaviour
 
 
 
-    internal IEnumerator WaitForPlayer()
+    IEnumerator WaitForPlayer()
     {
         yield return new WaitForSeconds(2);
         for (int i = 0; i < maxEnemySpawn; i++)
@@ -68,12 +70,15 @@ public class EnemyRoomSpawn : MonoBehaviour
         ShowItems.instance.ShowItemChoice();
     }
 
-    public virtual void SpawnEnemies()
+    public void SpawnEnemies()
     {
 
 
         int spawnNum = Random.Range(0, spawnZones.Length);
         int enemyNum = Random.Range(0, enemyPrefabs.Length);
+
+        GameObject EnemySpawn = Instantiate(EnemySpawnEffect, spawnZones[spawnNum].transform.position, Quaternion.identity);
+        Destroy(EnemySpawn, 3);
 
         GameObject Enemy = Instantiate(enemyPrefabs[enemyNum], spawnZones[spawnNum].transform.position, Quaternion.identity, transform);
         Enemy.GetComponent<EnemyHealth>().MaxHealth += RoomManager.instance.CalculateEnemyHealthScaler();

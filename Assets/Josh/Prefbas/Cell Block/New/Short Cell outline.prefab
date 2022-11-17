@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6097936239556355557}
   - component: {fileID: 6147461135288425870}
   - component: {fileID: 2473046231417048083}
+  - component: {fileID: 8156450878675010927}
   m_Layer: 10
   m_Name: Short Cell outline
   m_TagString: Untagged
@@ -97,3 +98,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 25, z: 3}
   m_Center: {x: -12.5, y: 13.5, z: -23.5}
+--- !u!114 &8156450878675010927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327745303189586624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a6ed971bc104448a61ea2c53b6ee65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NormalWall: {fileID: 4300000, guid: 8a984fb5d17c8544d9c64b46f6fa9f1f, type: 2}
+  _WallHole: {fileID: 4300000, guid: e14c69814aa51064da94ddb0802076b2, type: 2}
+  _wallBreakParticles: {fileID: 8879408669832174122, guid: 210bc84a19a62664e9bec7661ec9523a, type: 3}
+  _particleSpawn: {fileID: 6914416714668648838, guid: d6472ae2d73b4404e9b62cc22ff1d4b9, type: 3}
+  roomspawn: {fileID: 0}

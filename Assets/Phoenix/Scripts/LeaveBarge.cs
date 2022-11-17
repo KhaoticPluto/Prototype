@@ -19,6 +19,7 @@ public class LeaveBarge : MonoBehaviour
         if (other.gameObject.tag == ("Player") && bargeSpawn.enemyList.Count <= 0)
         {
             other.transform.position = Destination.position;
+            Debug.Log("I LIIIIIVE");
         }
     }
 }

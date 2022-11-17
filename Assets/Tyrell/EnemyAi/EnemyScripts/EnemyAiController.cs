@@ -10,7 +10,7 @@ public class EnemyAiController : MonoBehaviour
     public NavMeshAgent agent;
 
     //players transform so enemy knows what to look for
-    public Transform player;
+    public Transform player;   
 
     //layermask so the ai knows what is the ground and player
     public LayerMask whatIsGround, whatIsPlayer, whatIsntPlayer, whatIsBullet;
@@ -19,7 +19,7 @@ public class EnemyAiController : MonoBehaviour
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
 
-
+    
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
@@ -34,8 +34,13 @@ public class EnemyAiController : MonoBehaviour
 
     //Script for the roguelite mode enemy room spawn
     public EnemyRoomSpawn roomspawn;
-    public bool IsRogueLite = false; 
+    public EnemyBargeSpawn bargespawn;
+    public bool IsRogueLite = false;
+
+    public GameObject FreezePaticles;
     #endregion
+
+    public AudioSource aSource;
 
     void Awake()
     {
@@ -45,6 +50,7 @@ public class EnemyAiController : MonoBehaviour
 
     private void Start()
     {
+        aSource = GetComponent<AudioSource>();
         //this will find the player transform when the enemy is spawned ///very important
         if (GameObject.FindWithTag("Player") != null)
         {
@@ -64,7 +70,10 @@ public class EnemyAiController : MonoBehaviour
 
         //if any of theese are true it will set the enemies state
         if (!playerInSightRange && !playerInAttackRange) Wander();
-        if (playerInSightRange  && !playerInAttackRange) ChasePlayer();
+
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        else if (playerInSightRange && playerInAttackRange && CanSeeTarget() == false) ChasePlayer();
+
         if (playerInAttackRange && playerInSightRange && !isFrozen && CanSeeTarget()) AttackPlayer();
         //if (!playerInAttackRange && playerInSightRange && bulletInRange) EvadeBullet();
 
@@ -84,7 +93,7 @@ public class EnemyAiController : MonoBehaviour
         Vector3 rayToTarget = player.transform.position - this.transform.position;
         //perform a raycast to determine if there's anything between the agent and the target
         
-        if (Physics.Raycast(this.transform.position, rayToTarget, out raycastInfo, sightRange , whatIsPlayer))
+        if (Physics.Raycast(this.transform.position, rayToTarget, out raycastInfo, sightRange))
         {
             //ray will hit the target if no other colliders in the way
             if (raycastInfo.transform.gameObject.tag == "Player")
@@ -121,6 +130,10 @@ public class EnemyAiController : MonoBehaviour
 
     IEnumerator SetFrozen(float FreezeTime)
     {
+        GameObject freeze = Instantiate(FreezePaticles, transform.position + Vector3.up, Quaternion.identity);
+        freeze.transform.position = transform.position;
+        Destroy(freeze, FreezeTime);
+
         Color customColor = new Color(0, 0.9556165f, 1, 1);
         gameObject.GetComponent<NavMeshAgent>().isStopped = true;
         foreach(Renderer mats in RendMaterials)
@@ -196,7 +209,13 @@ public class EnemyAiController : MonoBehaviour
     {
         if (IsRogueLite == true )
         {
+            if (roomspawn != null)
             roomspawn.RemoveEnemy(Enemy);
+
+            Debug.Log(bargespawn);
+
+            if (bargespawn != null)
+                bargespawn.RemoveEnemy(Enemy);
         }
         
 
